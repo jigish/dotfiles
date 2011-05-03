@@ -21,7 +21,10 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # Update git submodules
 cd $SCRIPTDIR
 git submodule update --init
+cd iterm2-config
+git checkout master
 cd vim-config
+git checkout master
 git submodule update --init
 
 # Make Command-T
