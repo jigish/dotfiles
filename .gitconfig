@@ -1,0 +1,34 @@
+[user]
+  name = Jigish Patel
+  email = jigish@ooyala.com
+[core]
+  excludesfile = ~/.git-global-ignore
+  editor = vim
+[diff]
+  tool = vimdiff
+[color]
+  diff = auto
+  status = auto
+  branch = auto
+[alias]
+  stat = status
+  s = status --ignore-submodules=untracked
+  c = commit
+  a = add
+  sn = status --untracked=no
+  co = checkout
+  wc = whatchanged
+  l = log
+  b = branch
+  sub = submodule
+  subadd = submodule add
+  pom = push origin master
+[branch]
+  autosetuprebase = always
+[gc]
+  auto = 0
+[push]
+  default = tracking
+[github]
+	user = jigish
+	token = 4d100dc6538f6cc81fd34942bf911be0

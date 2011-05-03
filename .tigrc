@@ -1,0 +1,1 @@
+bind diff r !open http://dmac-dev1.sv2/ooyala/ooyala/commit/%(commit)
