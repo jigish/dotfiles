@@ -34,6 +34,6 @@ LPURPLE="\[\033[1;35m\]"
 YELLOW="\[\033[1;33m\]"
 WHITE="\[\033[1;37m\]"
 NOCOLOR="\[\033[0m\]"
-PS1="$CYAN[\t] \u \W \!$ $NOCOLOR"
+PS1="$BLUE[\t] \u \W \!$ $NOCOLOR"
 
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
