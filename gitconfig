@@ -29,6 +29,3 @@
   auto = 0
 [push]
   default = tracking
-[github]
-	user = jigish
-	token = 4d100dc6538f6cc81fd34942bf911be0
