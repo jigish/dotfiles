@@ -32,6 +32,9 @@ ln -s $CURRDIR/tigrc .tigrc
 ln -s $CURRDIR/vim-config .vim
 ln -s .vim/vimrc .vimrc
 ln -s .vim/gvimrc .gvimrc
+if [[ "$1" == "-ooyala" ]] ; then
+  ln -s $CURRDIR/ooyala/bashrc.ooyala .bashrc.ooyala
+fi
 
 # Copy iTerm2 Configs
 cp $CURRDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
