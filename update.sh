@@ -32,13 +32,13 @@ make
 
 # Create Links
 cd ~
-ln -s $SCRIPTDIR/bashrc .bashrc
-ln -s $SCRIPTDIR/gitconfig .gitconfig
-ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-ln -s $SCRIPTDIR/tigrc .tigrc
-ln -s $SCRIPTDIR/vim-config .vim
-ln -s .vim/vimrc .vimrc
-ln -s .vim/gvimrc .gvimrc
+[[ -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
+[[ -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
+[[ -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
+[[ -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
+[[ -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ -L .vimrc ]] && ln -s .vim/vimrc .vimrc
+[[ -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~/dotfiles-ooyala
   git pull
