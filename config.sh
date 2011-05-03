@@ -23,7 +23,7 @@ cd $SCRIPTDIR
 git submodule update --init
 cd iterm2-config
 git checkout master
-cd vim-config
+cd ../vim-config
 git checkout master
 git submodule update --init
 
