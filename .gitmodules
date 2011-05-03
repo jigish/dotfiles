@@ -1,0 +1,3 @@
+[submodule "ooyala"]
+	path = ooyala
+	url = https://github.com/jigish/dotfiles-ooyala.git
