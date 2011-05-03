@@ -1,12 +1,26 @@
+# Terminal Colors
 export CLICOLOR=1
 export TERM="xterm-256color"
+
+# Bash History Options
 export HISTSIZE=1000000
-export HISTCONTROL=ignoredups
-export HISTCONTROL=ignoreboth
+export HISTCONTROL='ignoreboth'
+export HISTIGNORE='&:ls:[bf]g:exit'
+export HISTTIMEFORMAT='%b %d %H:%M:%S: '
+shopt -s histappend
+set cmdhist
 
 set -o vi
 
 export EDITOR=vim
+
+# MacPorts Bash Completion
+if [ -f /opt/local/etc/bash_completion ]; then
+  . /opt/local/etc/bash_completion
+fi
+
+bind "set completion-ignore-case on"
+shopt -s cdspell
 
 alias vi='vim'
 alias l='ls'
