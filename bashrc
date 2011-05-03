@@ -34,6 +34,13 @@ LPURPLE="\[\033[1;35m\]"
 YELLOW="\[\033[1;33m\]"
 WHITE="\[\033[1;37m\]"
 NOCOLOR="\[\033[0m\]"
-PS1="$BLUE[\t] \u \W \!$ $NOCOLOR"
+
+function cool_prompt {
+  PS1="$BLUE[\t] \u "
+  [[ $(type -t __git_ps1) = "function" ]] && PS1="${PS1}$(__git_ps1 '%s:')"
+  PS1="${PS1}\W \!$ $NOCOLOR"
+}
+
+PROMPT_COMMAND=cool_prompt
 
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
