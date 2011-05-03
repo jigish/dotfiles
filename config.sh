@@ -39,7 +39,9 @@ ln -s $SCRIPTDIR/vim-config .vim
 ln -s .vim/vimrc .vimrc
 ln -s .vim/gvimrc .gvimrc
 if [[ "$1" == "-ooyala" ]] ; then
-  ln -s $SCRIPTDIR/ooyala/bashrc.ooyala .bashrc.ooyala
+  cd ~
+  git clone https://github.com/jigish/dotfiles-ooyala.git
+  ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
 fi
 
 # Copy iTerm2 Configs
