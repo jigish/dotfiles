@@ -1,3 +1,6 @@
 [submodule "ooyala"]
 	path = ooyala
 	url = https://github.com/jigish/dotfiles-ooyala.git
+[submodule "iterm2-colors"]
+	path = iterm2-colors
+	url = https://github.com/jigish/iterm2-colors.git
