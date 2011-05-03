@@ -18,12 +18,16 @@ fi
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+# Update git submodules
+cd $SCRIPTDIR
+git submodule update --init
+cd vim-config
+git submodule update --init
+
 # Make Command-T
-cd vim-config/bundle/command-t/ruby/command-t
+cd $SCRIPTDIR/vim-config/bundle/command-t/ruby/command-t
 ruby extconf.rb
 make
-
-cd $SCRIPTDIR
 
 # Create Links
 cd ~
