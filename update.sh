@@ -32,18 +32,18 @@ make
 
 # Create Links
 cd ~
-[[ -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
-[[ -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
-[[ -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-[[ -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
-[[ -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
-[[ -L .vimrc ]] && ln -s .vim/vimrc .vimrc
-[[ -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
+[[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
+[[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
+[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
+[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
+[[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~/dotfiles-ooyala
   git pull
   cd ~
-  ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
+  [[ ! -L .bashrc.ooyala ]] && ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
 fi
 
 # Copy iTerm2 Configs
