@@ -3,3 +3,6 @@
 *~
 .d8_history
 .vim/.netrwhist
+
+# OS X stuff
+.DS_Store
