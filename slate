@@ -46,4 +46,3 @@ bind pad3:ctrl,alt throw 0 resize
 bind pad4:ctrl move screenOriginX,screenOriginY screenSizeX/3,screenSizeY
 bind pad5:ctrl move screenOriginX+screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
 bind pad6:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
-bind pad/:ctrl iamanerrorcase o em gee
