@@ -1,9 +1,18 @@
+# Chat Bar of 1st monitor
+bind pad0:ctrl move screenOriginX,screenOriginY screenSizeX/9,screenSizeY 0
+
+# Main Window of 1st monitor
+bind pad.:ctrl move screenOriginX+screenSizeX/9,screenOriginY 8*screenSizeX/9,screenSizeY 0
+
 # Bottom-Left of 2nd monitor
 bind pad1:ctrl move screenOriginX,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
 # Bottom-Middle of 2nd monitor
 bind pad2:ctrl move screenOriginX+screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
 # Bottom-Right of 2nd monitor
 bind pad3:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+
+# Middle of 2nd monitor
+bind pad5:ctrl move screenOriginX+screenSizeX/8,screenOriginY+screenSizeY/8 3*screenSizeX/4,3*screenSizeY/4 1
 
 # Top-Left of 2nd monitor
 bind pad7:ctrl move screenOriginX,screenOriginY screenSizeX/2,screenSizeY/2 1
@@ -44,5 +53,4 @@ bind pad3:ctrl,alt throw 0 resize
 
 # Test Bindings
 bind pad4:ctrl move screenOriginX,screenOriginY screenSizeX/3,screenSizeY
-bind pad5:ctrl move screenOriginX+screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
 bind pad6:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
