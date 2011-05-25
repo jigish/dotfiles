@@ -1,0 +1,44 @@
+# Bottom-Left of 2nd monitor
+bind pad1:ctrl move screenOriginX,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+# Bottom-Middle of 2nd monitor
+bind pad2:ctrl move screenOriginX+screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+# Bottom-Right of 2nd monitor
+bind pad3:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+
+# Top-Left of 2nd monitor
+bind pad7:ctrl move screenOriginX,screenOriginY screenSizeX/2,screenSizeY/2 1
+# Top-Middle of 2nd monitor
+bind pad8:ctrl move screenOriginX+screenSizeX/6,screenOriginY 2*screenSizeX/3,screenSizeY/2 1
+# Top-Right of 2nd monitor
+bind pad9:ctrl move screenOriginX+screenSizeX/2,screenOriginY screenSizeX/2,screenSizeY/2 1
+
+# Top of 3rd monitor
+bind pad*:ctrl move screenOriginX,screenOriginY screenSizeX,screenSizeY/3 2
+# Middle of 3rd monitor
+bind pad-:ctrl move screenOriginX,screenOriginY+screenSizeY/3 screenSizeX,screenSizeY/3 2
+# Bottom of 3rd monitor
+bind pad+:ctrl move screenOriginX,screenOriginY+2*screenSizeY/3 screenSizeX,screenSizeY/3 2
+
+# Resize Bindings
+bind right:ctrl resize +10% +0
+bind left:ctrl resize -10% +0
+bind down:ctrl resize +0 +10%
+bind up:ctrl resize +0 -10%
+
+# Push Bindings
+bind right:ctrl,alt push right
+bind left:ctrl,alt push left
+bind down:ctrl,alt push down
+bind up:ctrl,alt push up
+
+# Nudge Bindings
+bind right:ctrl,shift nudge +10% +0
+bind left:ctrl,shift nudge -10% +0
+bind down:ctrl,shift nudge +0 +10%
+bind up:ctrl,shift nudge +0 -10%
+
+# Test Bindings
+bind pad4:ctrl move screenOriginX,screenOriginY screenSizeX/3,screenSizeY
+bind pad5:ctrl move screenOriginX+screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
+bind pad6:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
+bind pad/:ctrl iamanerrorcase o em gee
