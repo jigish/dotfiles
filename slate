@@ -37,6 +37,11 @@ bind left:ctrl,shift nudge -10% +0
 bind down:ctrl,shift nudge +0 +10%
 bind up:ctrl,shift nudge +0 -10%
 
+# Throw Bindings
+bind pad1:ctrl,alt throw 2 resize
+bind pad2:ctrl,alt throw 1 resize
+bind pad3:ctrl,alt throw 0 resize
+
 # Test Bindings
 bind pad4:ctrl move screenOriginX,screenOriginY screenSizeX/3,screenSizeY
 bind pad5:ctrl move screenOriginX+screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
