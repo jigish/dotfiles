@@ -1,57 +1,66 @@
+config defaultToCurrentScreen true
+
 # Chat Bar of 1st monitor
-bind pad0:ctrl move screenOriginX,screenOriginY screenSizeX/9,screenSizeY 0
+bind pad0:ctrl move screenOriginX;screenOriginY               screenSizeX/9;screenSizeY 0
 # Main Window of 1st monitor
-bind pad.:ctrl move screenOriginX+screenSizeX/9,screenOriginY 8*screenSizeX/9,screenSizeY 0
+bind pad.:ctrl move screenOriginX+screenSizeX/9;screenOriginY 8*screenSizeX/9;screenSizeY 0
 
 # Bottom-Left of 2nd monitor
-bind pad1:ctrl move screenOriginX,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+bind pad1:ctrl move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/3;screenSizeY/2     1
 # Bottom-Middle of 2nd monitor
-bind pad2:ctrl move screenOriginX+screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+bind pad2:ctrl move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     1
 # Bottom-Right of 2nd monitor
-bind pad3:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY+screenSizeY/2 screenSizeX/3,screenSizeY/2 1
+bind pad3:ctrl move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     1
 # Middle of 2nd monitor
-bind pad5:ctrl move screenOriginX+screenSizeX/8,screenOriginY+screenSizeY/8 3*screenSizeX/4,3*screenSizeY/4 1
+bind pad5:ctrl move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 1
 # Top-Left of 2nd monitor
-bind pad7:ctrl move screenOriginX,screenOriginY screenSizeX/2,screenSizeY/2 1
+bind pad7:ctrl move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     1
 # Top-Middle of 2nd monitor
-bind pad8:ctrl move screenOriginX+screenSizeX/6,screenOriginY 2*screenSizeX/3,screenSizeY/2 1
+bind pad8:ctrl move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   1
 # Top-Right of 2nd monitor
-bind pad9:ctrl move screenOriginX+screenSizeX/2,screenOriginY screenSizeX/2,screenSizeY/2 1
+bind pad9:ctrl move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     1
 
 # Top of 3rd monitor
-bind pad*:ctrl move screenOriginX,screenOriginY screenSizeX,screenSizeY/3 2
+bind pad*:ctrl move screenOriginX;screenOriginY                 screenSizeX;screenSizeY/3 2
 # Middle of 3rd monitor
-bind pad-:ctrl move screenOriginX,screenOriginY+screenSizeY/3 screenSizeX,screenSizeY/3 2
+bind pad-:ctrl move screenOriginX;screenOriginY+screenSizeY/3   screenSizeX;screenSizeY/3 2
 # Bottom of 3rd monitor
-bind pad+:ctrl move screenOriginX,screenOriginY+2*screenSizeY/3 screenSizeX,screenSizeY/3 2
+bind pad+:ctrl move screenOriginX;screenOriginY+2*screenSizeY/3 screenSizeX;screenSizeY/3 2
 
 # Resize Bindings
 bind right:ctrl resize +10% +0
-bind left:ctrl resize -10% +0
-bind down:ctrl resize +0 +10%
-bind up:ctrl resize +0 -10%
+bind left:ctrl  resize -10% +0
+bind down:ctrl  resize +0   +10%
+bind up:ctrl    resize +0   -10%
+bind left:alt   resize +10% +0 bottom-right
+bind right:alt  resize -10% +0 bottom-right
+bind up:alt     resize +0   +10% bottom-right
+bind down:alt   resize +0   -10% bottom-right
 
 # Push Bindings
-bind right:ctrl,alt push right bar-resize:screenSizeX/3
-bind left:ctrl,alt push left bar-resize:screenSizeX/3
-bind down:ctrl,alt push down bar-resize:screenSizeY/2
-bind up:ctrl,alt push up bar-resize:screenSizeY/2
+bind right:ctrl;alt push right bar-resize:screenSizeX/3
+bind left:ctrl;alt  push left  bar-resize:screenSizeX/3
+bind down:ctrl;alt  push down  bar-resize:screenSizeY/2
+bind up:ctrl;alt    push up    bar-resize:screenSizeY/2
 
 # Nudge Bindings
-bind right:ctrl,shift nudge +10% +0
-bind left:ctrl,shift nudge -10% +0
-bind down:ctrl,shift nudge +0 +10%
-bind up:ctrl,shift nudge +0 -10%
+bind right:ctrl;shift nudge +10% +0
+bind left:ctrl;shift  nudge -10% +0
+bind down:ctrl;shift  nudge +0   +10%
+bind up:ctrl;shift    nudge +0   -10%
 
 # Throw Bindings
-bind pad1:ctrl,alt throw 2 resize
-bind pad2:ctrl,alt throw 1 resize
-bind pad3:ctrl,alt throw 0 resize
+bind pad1:ctrl;alt throw 2 resize
+bind pad2:ctrl;alt throw 1 resize
+bind pad3:ctrl;alt throw 0 resize
 
 # Test Bindings
-#bind pad4:ctrl move screenOriginX,screenOriginY screenSizeX/3,screenSizeY
-#bind pad6:ctrl move screenOriginX+2*screenSizeX/3,screenOriginY screenSizeX/3,screenSizeY
-#bind 1:ctrl corner top-left resize:screenSizeX/3,screenSizeY/2
-#bind 2:ctrl corner top-right resize:screenSizeX/2,screenSizeY/3
-#bind 3:ctrl corner bottom-left resize:screenSizeX/3,screenSizeY/2
-#bind 4:ctrl corner bottom-right resize:screenSizeX/2,screenSizeY/3
+#bind 1:ctrl move screenOriginX;screenOriginY screenSizeX/3;screenSizeY
+#bind 2:ctrl move screenOriginX+2*screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY
+#bind 1:ctrl corner top-left resize:screenSizeX/3;screenSizeY/2
+#bind 2:ctrl corner top-right resize:screenSizeX/2;screenSizeY/3
+#bind 3:ctrl corner bottom-left resize:screenSizeX/3;screenSizeY/2
+#bind 4:ctrl corner bottom-right resize:screenSizeX/2;screenSizeY/3
+#bind 1:ctrl;alt throw 2 resize
+#bind 2:ctrl;alt throw 1 resize:screenSizeX/2;screenSizeY/2
+#bind 3:ctrl;alt throw 0 resize
