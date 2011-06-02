@@ -57,4 +57,7 @@ function cool_prompt {
 
 PROMPT_COMMAND=cool_prompt
 
+# Default Mac Web Server
+export DOCROOT=/Library/WebServer/Documents
+
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
