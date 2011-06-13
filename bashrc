@@ -23,6 +23,7 @@ bind "set completion-ignore-case on"
 shopt -s cdspell
 
 alias vi='vim'
+alias v='vim'
 alias l='ls'
 alias la='ls -alh'
 alias lt='ls -alrth'
@@ -59,5 +60,10 @@ PROMPT_COMMAND=cool_prompt
 
 # Default Mac Web Server
 export DOCROOT=/Library/WebServer/Documents
+
+# Expected working dir for code
+export CODE=~/code
+alias cdcode='cd $CODE'
+alias cdslate='cd $CODE/slate'
 
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"

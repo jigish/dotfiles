@@ -67,4 +67,5 @@ bind pad3:ctrl;alt throw 0 resize
 #bind 2:ctrl;alt throw 1 resize:screenSizeX/2;screenSizeY/2
 #bind 3:ctrl;alt throw 0 resize
 #bind 1:ctrl throw 0 qweqe
-#bind 3:ctrl chain push up | push right | push down | push left
+bind 1:ctrl chain push up bar-resize:screenSizeY/2 | push right bar-resize:screenSizeX/2 | push down bar-resize:screenSizeY/2 | push left bar-resize:screenSizeX/2
+bind 2:ctrl chain throw 2 resize | throw 1 resize | throw 0 resize
