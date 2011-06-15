@@ -16,7 +16,7 @@ alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 scr
 alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       2
 
 layout default 'iTerm'                       ${2-bot-r} | ${2-bot-m} | ${2-bot-l}
-layout default 'Google Chrome'               ${1-main}
+layout default 'Google Chrome':REPEAT        ${1-main}
 layout default 'MacVim'                      ${2-top-r} | ${2-top-l} | ${2-top-m}
 layout default 'Flex Builder'                ${2-top-l}
 layout default 'GitX'                        ${3-bot}
