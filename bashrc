@@ -66,4 +66,7 @@ export CODE=~/code
 alias cdcode='cd $CODE'
 alias cdslate='cd $CODE/slate'
 
+# z!
+. ~/bin/z.sh
+
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"

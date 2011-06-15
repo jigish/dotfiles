@@ -21,9 +21,11 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # Update git submodules
 cd $SCRIPTDIR
 git pull
-git submodule update --init
+echo "updating submodules in `pwd`"
+git submodule update
 cd vim-config
-git submodule update --init
+echo "updating submodules in `pwd`"
+git submodule update
 
 # Make Command-T
 cd $SCRIPTDIR/vim-config/bundle/command-t/ruby/command-t
@@ -37,8 +39,12 @@ cd ~
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
 [[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ ! -L .slate ]] && ln -s $SCRIPTDIR/slate .slate
+[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
+cd bin
+[[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~/dotfiles-ooyala
   git pull

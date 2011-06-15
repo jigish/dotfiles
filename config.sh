@@ -40,8 +40,11 @@ ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 ln -s $SCRIPTDIR/tigrc .tigrc
 ln -s $SCRIPTDIR/vim-config .vim
 ln -s $SCRIPTDIR/slate .slate
+ln -s $SCRIPTDIR/zshrc .zshrc
 ln -s .vim/vimrc .vimrc
 ln -s .vim/gvimrc .gvimrc
+cd bin
+ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~
   git clone https://github.com/jigish/dotfiles-ooyala.git
