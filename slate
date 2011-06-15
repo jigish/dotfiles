@@ -65,7 +65,7 @@ bind pad2:ctrl;alt throw 1 resize
 bind pad3:ctrl;alt throw 0 resize
 
 # Layout Binding
-bind pad=:ctrl layout default
+bind padEnter:ctrl layout default
 
 # Test Bindings
 #bind 1:ctrl move screenOriginX;screenOriginY screenSizeX/3;screenSizeY/2
@@ -81,3 +81,4 @@ bind pad=:ctrl layout default
 #bind 1:ctrl chain push up bar-resize:screenSizeY/2 | push right bar-resize:screenSizeX/2 | push down bar-resize:screenSizeY/2 | push left bar-resize:screenSizeX/2
 #bind 2:ctrl chain throw 2 resize | throw 1 resize | throw 0 resize
 #bind 3:ctrl layout default
+#bind left:ctrl;cmd  move screenOriginX;screenOriginY windowSizeX;windowSizeY
