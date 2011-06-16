@@ -1,6 +1,7 @@
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
+config secondsBetweenRepeat 0.1
 
 alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       0
 alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     0
@@ -15,13 +16,13 @@ alias 3-top   move screenOriginX;screenOriginY                               scr
 alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 screenSizeX;screenSizeY/3       2
 alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       2
 
-layout default 'iTerm'                       ${2-bot-r} | ${2-bot-m} | ${2-bot-l}
+layout default 'iTerm':SORT_TITLE            ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
 layout default 'Google Chrome':REPEAT        ${1-main}
 layout default 'MacVim'                      ${2-top-r} | ${2-top-l} | ${2-top-m}
 layout default 'Flex Builder'                ${2-top-l}
 layout default 'GitX'                        ${3-bot}
 layout default 'Ooyala Player Debug Console' ${3-top}
-layout default 'Adium':IGNORE_FAIL           ${3-mid} | ${1-chat}
+layout default 'Adium':IGNORE_FAIL,MAIN_LAST ${1-chat} | ${3-mid}
 layout default 'Firefox'                     ${2-mid}
 
 bind pad0:ctrl ${1-chat}
@@ -82,3 +83,6 @@ bind padEnter:ctrl layout default
 #bind 2:ctrl chain throw 2 resize | throw 1 resize | throw 0 resize
 #bind 3:ctrl layout default
 #bind left:ctrl;cmd  move screenOriginX;screenOriginY windowSizeX;windowSizeY
+#layout test 'Adium':IGNORE_FAIL,MAIN_LAST move screenOriginX,screenOriginY screenSizeX/9;screenSizeY | move screenOriginX+screenSizeX/9;screenOriginY 300,300
+#layout test 'iTerm':SORT_TITLE move screenOriginX;screenOriginY screenSizeX/3;screenSizeY | move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY | move screenOriginX+screenSizeX*2/3;screenOriginY screenSizeX/3;screenSizeY
+#bind 4:ctrl layout test
