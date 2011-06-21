@@ -40,7 +40,7 @@ layout 1monitor 'MacVim':REPEAT                          ${1-main}
 layout 1monitor 'Flex Builder':REPEAT                    ${1-main}
 layout 1monitor 'GitX':REPEAT                            ${1-main}
 layout 1monitor 'Ooyala Player Debug Console':REPEAT     ${1-main}
-layout 1monitor 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-mid}
+layout 1monitor 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${1-main}
 layout 1monitor 'Firefox':REPEAT                         ${1-main}
 
 # Basic location bindings
