@@ -5,8 +5,8 @@ config secondsBetweenRepeat 0.1
 config checkDefaultsOnLoad true
 
 # Monitor Aliases
-alias mon-laptop 1440x900
-alias mon-30inch 2560x1600
+alias mon-laptop   1440x900
+alias mon-30inch   2560x1600
 alias mon-vertical 1080x1920
 
 # Position Aliases
@@ -89,6 +89,6 @@ bind padEnter:ctrl layout 3monitors
 
 # Default Layouts
 default 3monitors resolutions:${mon-laptop};${mon-30inch};${mon-vertical}
-default 1monitor resolutions:${mon-laptop}
+default 1monitor  resolutions:${mon-laptop}
 
 source .slate.test if_exists
