@@ -2,29 +2,48 @@ config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
 config secondsBetweenRepeat 0.1
+config checkDefaultsOnLoad true
 
-alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       0
-alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     0
-alias 2-bot-l move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/3;screenSizeY/2     1
-alias 2-bot-m move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     1
-alias 2-bot-r move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     1
-alias 2-mid   move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 1
-alias 2-top-l move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     1
-alias 2-top-m move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   1
-alias 2-top-r move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     1
-alias 3-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/3       2
-alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 screenSizeX;screenSizeY/3       2
-alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       2
+# Monitor Aliases
+alias mon-laptop 1440x900
+alias mon-30inch 2560x1600
+alias mon-vertical 1080x1920
 
-layout default 'iTerm':SORT_TITLE            ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
-layout default 'Google Chrome':REPEAT        ${1-main}
-layout default 'MacVim'                      ${2-top-r} | ${2-top-l} | ${2-top-m}
-layout default 'Flex Builder'                ${2-top-l}
-layout default 'GitX'                        ${3-bot}
-layout default 'Ooyala Player Debug Console' ${3-top}
-layout default 'Adium':IGNORE_FAIL,MAIN_LAST ${1-chat} | ${3-mid}
-layout default 'Firefox'                     ${2-mid}
+# Position Aliases
+alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       ${mon-laptop}
+alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     ${mon-laptop}
+alias 2-bot-l move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/3;screenSizeY/2     ${mon-30inch}
+alias 2-bot-m move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     ${mon-30inch}
+alias 2-bot-r move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     ${mon-30inch}
+alias 2-mid   move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 ${mon-30inch}
+alias 2-top-l move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     ${mon-30inch}
+alias 2-top-m move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   ${mon-30inch}
+alias 2-top-r move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     ${mon-30inch}
+alias 3-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/3       ${mon-vertical}
+alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 screenSizeX;screenSizeY/3       ${mon-vertical}
+alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       ${mon-vertical}
 
+# 3 Monitor layout
+layout 3monitors 'iTerm':SORT_TITLE                       ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
+layout 3monitors 'Google Chrome':REPEAT                   ${1-main}
+layout 3monitors 'MacVim'                                 ${2-top-r} | ${2-top-l} | ${2-top-m}
+layout 3monitors 'Flex Builder'                           ${2-top-l}
+layout 3monitors 'GitX':REPEAT                            ${3-bot}
+layout 3monitors 'Ooyala Player Debug Console'            ${3-top}
+layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-mid}
+layout 3monitors 'Firefox':REPEAT                         ${2-mid}
+
+# 1 Monitor layout
+layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
+layout 1monitor 'Google Chrome':REPEAT                   ${1-main}
+layout 1monitor 'MacVim':REPEAT                          ${1-main}
+layout 1monitor 'Flex Builder':REPEAT                    ${1-main}
+layout 1monitor 'GitX':REPEAT                            ${1-main}
+layout 1monitor 'Ooyala Player Debug Console':REPEAT     ${1-main}
+layout 1monitor 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-mid}
+layout 1monitor 'Firefox':REPEAT                         ${1-main}
+
+# Basic location bindings
 bind pad0:ctrl ${1-chat}
 bind pad.:ctrl ${1-main}
 bind pad1:ctrl ${2-bot-l}
@@ -66,23 +85,10 @@ bind pad2:ctrl;alt throw 1 resize
 bind pad3:ctrl;alt throw 0 resize
 
 # Layout Binding
-bind padEnter:ctrl layout default
+bind padEnter:ctrl layout 3monitors
 
-# Test Bindings
-#bind 1:ctrl move screenOriginX;screenOriginY screenSizeX/3;screenSizeY/2
-#bind 2:ctrl move screenOriginX;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2
-#bind 1:ctrl corner top-left resize:screenSizeX/3;screenSizeY/2
-#bind 2:ctrl corner top-right resize:screenSizeX/2;screenSizeY/3
-#bind 3:ctrl corner bottom-left resize:screenSizeX/3;screenSizeY/2
-#bind 4:ctrl corner bottom-right resize:screenSizeX/2;screenSizeY/3
-#bind 1:ctrl;alt throw 2 resize
-#bind 2:ctrl;alt throw 1 resize:screenSizeX/2;screenSizeY/2
-#bind 3:ctrl;alt throw 0 resize
-#bind 1:ctrl throw 0 qweqe
-#bind 1:ctrl chain push up bar-resize:screenSizeY/2 | push right bar-resize:screenSizeX/2 | push down bar-resize:screenSizeY/2 | push left bar-resize:screenSizeX/2
-#bind 2:ctrl chain throw 2 resize | throw 1 resize | throw 0 resize
-#bind 3:ctrl layout default
-#bind left:ctrl;cmd  move screenOriginX;screenOriginY windowSizeX;windowSizeY
-#layout test 'Adium':IGNORE_FAIL,MAIN_LAST move screenOriginX,screenOriginY screenSizeX/9;screenSizeY | move screenOriginX+screenSizeX/9;screenOriginY 300,300
-#layout test 'iTerm':SORT_TITLE move screenOriginX;screenOriginY screenSizeX/3;screenSizeY | move screenOriginX+screenSizeX/3;screenOriginY screenSizeX/3;screenSizeY | move screenOriginX+screenSizeX*2/3;screenOriginY screenSizeX/3;screenSizeY
-#bind 4:ctrl layout test
+# Default Layouts
+default 3monitors resolutions:${mon-laptop};${mon-30inch};${mon-vertical}
+default 1monitor resolutions:${mon-laptop}
+
+source .slate.test if_exists
