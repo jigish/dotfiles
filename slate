@@ -3,6 +3,7 @@ config nudgePercentOf screenSize
 config resizePercentOf screenSize
 config secondsBetweenRepeat 0.1
 config checkDefaultsOnLoad true
+config focusCheckWidthMax 3000
 
 # Monitor Aliases
 alias mon-laptop   1440x900
@@ -68,23 +69,31 @@ bind up:alt     resize +0   +10% bottom-right
 bind down:alt   resize +0   -10% bottom-right
 
 # Push Bindings
-bind right:ctrl;alt push right bar-resize:screenSizeX/3
-bind left:ctrl;alt  push left  bar-resize:screenSizeX/3
-bind down:ctrl;alt  push down  bar-resize:screenSizeY/2
-bind up:ctrl;alt    push up    bar-resize:screenSizeY/2
+bind right:alt push right bar-resize:screenSizeX/3
+bind left:alt  push left  bar-resize:screenSizeX/3
+bind down:alt  push down  bar-resize:screenSizeY/2
+bind up:alt    push up    bar-resize:screenSizeY/2
 
 # Nudge Bindings
-bind right:ctrl;shift nudge +10% +0
-bind left:ctrl;shift  nudge -10% +0
-bind down:ctrl;shift  nudge +0   +10%
-bind up:ctrl;shift    nudge +0   -10%
+bind right:ctrl;alt nudge +10% +0
+bind left:ctrl;alt  nudge -10% +0
+bind down:ctrl;alt  nudge +0   +10%
+bind up:ctrl;alt    nudge +0   -10%
 
 # Throw Bindings
 bind pad1:ctrl;alt throw 2 resize
 bind pad2:ctrl;alt throw 1 resize
 bind pad3:ctrl;alt throw 0 resize
 
-# Layout Binding
+# Focus Bindings
+bind right:cmd    focus right
+bind left:cmd     focus left
+bind up:cmd       focus up
+bind down:cmd     focus down
+bind down:cmd;alt focus behind
+bind up:cmd;alt   focus behind
+
+# Layout Bindings
 bind padEnter:ctrl layout 3monitors
 
 # Default Layouts
