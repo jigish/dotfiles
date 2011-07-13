@@ -1,3 +1,4 @@
+# Configs
 config defaultToCurrentScreen true
 config nudgePercentOf screenSize
 config resizePercentOf screenSize
@@ -17,9 +18,12 @@ alias 2-bot-l move screenOriginX;screenOriginY+screenSizeY/2                 scr
 alias 2-bot-m move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     ${mon-30inch}
 alias 2-bot-r move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     ${mon-30inch}
 alias 2-mid   move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 ${mon-30inch}
+alias 2-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/2       ${mon-30inch}
 alias 2-top-l move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     ${mon-30inch}
 alias 2-top-m move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   ${mon-30inch}
 alias 2-top-r move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     ${mon-30inch}
+alias 2-left  move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY       ${mon-30inch}
+alias 2-right move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY       ${mon-30inch}
 alias 3-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/3       ${mon-vertical}
 alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 screenSizeX;screenSizeY/3       ${mon-vertical}
 alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       ${mon-vertical}
@@ -33,6 +37,7 @@ layout 3monitors 'GitX':REPEAT                            ${3-bot}
 layout 3monitors 'Ooyala Player Debug Console'            ${3-top}
 layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-mid}
 layout 3monitors 'Firefox':REPEAT                         ${2-mid}
+layout 3monitors 'Xcode':REPEAT                           ${2-top}
 
 # 1 Monitor layout
 layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
@@ -43,17 +48,27 @@ layout 1monitor 'GitX':REPEAT                            ${1-main}
 layout 1monitor 'Ooyala Player Debug Console':REPEAT     ${1-main}
 layout 1monitor 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${1-main}
 layout 1monitor 'Firefox':REPEAT                         ${1-main}
+layout 1monitor 'Xcode':REPEAT                           ${1-main}
 
-# Basic location bindings
+# Default Layouts
+default 3monitors resolutions:${mon-laptop};${mon-30inch};${mon-vertical}
+default 1monitor  resolutions:${mon-laptop}
+
+# Basic location Bindings
 bind pad0:ctrl ${1-chat}
+bind [:ctrl    ${1-chat}
 bind pad.:ctrl ${1-main}
+bind ]:ctrl    ${1-main}
 bind pad1:ctrl ${2-bot-l}
 bind pad2:ctrl ${2-bot-m}
 bind pad3:ctrl ${2-bot-r}
+bind pad4:ctrl ${2-left}
 bind pad5:ctrl ${2-mid}
+bind pad6:ctrl ${2-right}
 bind pad7:ctrl ${2-top-l}
 bind pad8:ctrl ${2-top-m}
 bind pad9:ctrl ${2-top-r}
+bind pad=:ctrl ${2-top}
 bind pad*:ctrl ${3-top}
 bind pad-:ctrl ${3-mid}
 bind pad+:ctrl ${3-bot}
@@ -61,43 +76,44 @@ bind pad+:ctrl ${3-bot}
 # Resize Bindings
 bind right:ctrl resize +10% +0
 bind left:ctrl  resize -10% +0
-bind down:ctrl  resize +0   +10%
 bind up:ctrl    resize +0   -10%
-bind left:alt   resize +10% +0 bottom-right
+bind down:ctrl  resize +0   +10%
 bind right:alt  resize -10% +0 bottom-right
+bind left:alt   resize +10% +0 bottom-right
 bind up:alt     resize +0   +10% bottom-right
 bind down:alt   resize +0   -10% bottom-right
 
 # Push Bindings
-bind right:alt push right bar-resize:screenSizeX/3
-bind left:alt  push left  bar-resize:screenSizeX/3
-bind down:alt  push down  bar-resize:screenSizeY/2
-bind up:alt    push up    bar-resize:screenSizeY/2
+bind right:ctrl;shift push right bar-resize:screenSizeX/3
+bind left:ctrl;shift  push left  bar-resize:screenSizeX/3
+bind up:ctrl;shift    push up    bar-resize:screenSizeY/2
+bind down:ctrl;shift  push down  bar-resize:screenSizeY/2
 
 # Nudge Bindings
 bind right:ctrl;alt nudge +10% +0
 bind left:ctrl;alt  nudge -10% +0
-bind down:ctrl;alt  nudge +0   +10%
 bind up:ctrl;alt    nudge +0   -10%
+bind down:ctrl;alt  nudge +0   +10%
 
 # Throw Bindings
-bind pad1:ctrl;alt throw 2 resize
-bind pad2:ctrl;alt throw 1 resize
-bind pad3:ctrl;alt throw 0 resize
+bind pad1:ctrl;alt      throw 2 resize
+bind pad2:ctrl;alt      throw 1 resize
+bind pad3:ctrl;alt      throw 0 resize
+bind right:ctrl;alt;cmd throw right resize
+bind left:ctrl;alt;cmd  throw left  resize
+bind up:ctrl;alt;cmd    throw up    resize
+bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
 bind right:cmd    focus right
 bind left:cmd     focus left
 bind up:cmd       focus up
 bind down:cmd     focus down
-bind down:cmd;alt focus behind
 bind up:cmd;alt   focus behind
+bind down:cmd;alt focus behind
 
 # Layout Bindings
 bind padEnter:ctrl layout 3monitors
 
-# Default Layouts
-default 3monitors resolutions:${mon-laptop};${mon-30inch};${mon-vertical}
-default 1monitor  resolutions:${mon-laptop}
-
+# Test Cases
 source .slate.test if_exists
