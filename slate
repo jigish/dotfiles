@@ -7,36 +7,36 @@ config checkDefaultsOnLoad true
 config focusCheckWidthMax 3000
 
 # Monitor Aliases
-alias mon-laptop   1440x900
-alias mon-30inch   2560x1600
-alias mon-vertical 1080x1920
+alias mon-laptop      1680x1050
+alias mon-thunderbolt 2560x1440
+alias mon-hp22inch    1920x1080
 
 # Position Aliases
 alias 1-chat  move screenOriginX;screenOriginY                               screenSizeX/9;screenSizeY       ${mon-laptop}
 alias 1-main  move screenOriginX+screenSizeX/9;screenOriginY                 8*screenSizeX/9;screenSizeY     ${mon-laptop}
-alias 2-bot   move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX;screenSizeY/2       ${mon-30inch}
-alias 2-bot-l move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/3;screenSizeY/2     ${mon-30inch}
-alias 2-bot-m move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     ${mon-30inch}
-alias 2-bot-r move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     ${mon-30inch}
-alias 2-mid   move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 ${mon-30inch}
-alias 2-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/2       ${mon-30inch}
-alias 2-top-l move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     ${mon-30inch}
-alias 2-top-m move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   ${mon-30inch}
-alias 2-top-r move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     ${mon-30inch}
-alias 2-left  move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY       ${mon-30inch}
-alias 2-right move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY       ${mon-30inch}
-alias 3-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/3       ${mon-vertical}
-alias 3-mid   move screenOriginX;screenOriginY+screenSizeY/3                 screenSizeX;screenSizeY/3       ${mon-vertical}
-alias 3-bot   move screenOriginX;screenOriginY+2*screenSizeY/3               screenSizeX;screenSizeY/3       ${mon-vertical}
+alias 2-bot   move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX;screenSizeY/2       ${mon-thunderbolt}
+alias 2-bot-l move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/3;screenSizeY/2     ${mon-thunderbolt}
+alias 2-bot-m move screenOriginX+screenSizeX/3;screenOriginY+screenSizeY/2   screenSizeX/3;screenSizeY/2     ${mon-thunderbolt}
+alias 2-bot-r move screenOriginX+2*screenSizeX/3;screenOriginY+screenSizeY/2 screenSizeX/3;screenSizeY/2     ${mon-thunderbolt}
+alias 2-mid   move screenOriginX+screenSizeX/8;screenOriginY+screenSizeY/8   3*screenSizeX/4;3*screenSizeY/4 ${mon-thunderbolt}
+alias 2-top   move screenOriginX;screenOriginY                               screenSizeX;screenSizeY/2       ${mon-thunderbolt}
+alias 2-top-l move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     ${mon-thunderbolt}
+alias 2-top-m move screenOriginX+screenSizeX/6;screenOriginY                 2*screenSizeX/3;screenSizeY/2   ${mon-thunderbolt}
+alias 2-top-r move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY/2     ${mon-thunderbolt}
+alias 2-left  move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY       ${mon-thunderbolt}
+alias 2-right move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY       ${mon-thunderbolt}
+alias 3-l-bot move screenOriginX;screenOriginY+screenSizeY/2                 screenSizeX/2;screenSizeY/2     ${mon-hp22inch}
+alias 3-l-top move screenOriginX;screenOriginY                               screenSizeX/2;screenSizeY/2     ${mon-hp22inch}
+alias 3-right move screenOriginX+screenSizeX/2;screenOriginY                 screenSizeX/2;screenSizeY       ${mon-hp22inch}
 
 # 3 Monitor layout
 layout 3monitors 'iTerm':SORT_TITLE                       ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
 layout 3monitors 'Google Chrome':REPEAT                   ${1-main}
 layout 3monitors 'MacVim'                                 ${2-top-r} | ${2-top-l} | ${2-top-m}
 layout 3monitors 'Flex Builder'                           ${2-top-l}
-layout 3monitors 'GitX':REPEAT                            ${3-bot}
-layout 3monitors 'Ooyala Player Debug Console'            ${3-top}
-layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-mid}
+layout 3monitors 'GitX':REPEAT                            ${3-right}
+layout 3monitors 'Ooyala Player Debug Console'            ${3-l-bot}
+layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-l-bot}
 layout 3monitors 'Firefox':REPEAT                         ${2-mid}
 layout 3monitors 'Xcode':REPEAT                           ${2-top}
 layout 3monitors 'Eclipse':REPEAT                         ${2-bot}
@@ -54,7 +54,7 @@ layout 1monitor 'Xcode':REPEAT                           ${1-main}
 layout 1monitor 'Eclipse':REPEAT                         ${1-main}
 
 # Default Layouts
-default 3monitors resolutions:${mon-laptop};${mon-30inch};${mon-vertical}
+default 3monitors resolutions:${mon-laptop};${mon-thunderbolt};${mon-hp22inch}
 default 1monitor  resolutions:${mon-laptop}
 
 # Basic location Bindings
@@ -73,9 +73,9 @@ bind pad8:ctrl ${2-top-m}
 bind pad9:ctrl ${2-top-r}
 bind pad=:ctrl ${2-top}
 bind pad/:ctrl ${2-bot}
-bind pad*:ctrl ${3-top}
-bind pad-:ctrl ${3-mid}
-bind pad+:ctrl ${3-bot}
+bind pad*:ctrl ${3-l-bot}
+bind pad-:ctrl ${3-l-top}
+bind pad+:ctrl ${3-right}
 
 # Resize Bindings
 bind right:ctrl resize +10% +0
@@ -118,6 +118,9 @@ bind down:cmd;alt focus behind
 
 # Layout Bindings
 bind padEnter:ctrl layout 3monitors
+
+# Window Hints
+bind =:cmd hint
 
 # Test Cases
 source .slate.test if_exists

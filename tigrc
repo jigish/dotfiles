@@ -1,1 +1,6 @@
-bind diff r !open http://dmac-dev1.sv2/ooyala/ooyala/commit/%(commit)
+set show-author = yes
+set show-rev-graph = yes
+set show-refs = yes
+set author-width = 8
+set line-number-interval = 1
+bind generic b !barkeep view %(commit)
