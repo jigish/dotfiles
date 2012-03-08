@@ -21,10 +21,8 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # Update git submodules
 cd $SCRIPTDIR
 git submodule update --init
-cd iterm2-config
-git checkout master
-cd ../vim-config
-git checkout master
+git submodule foreach checkout master
+cd vim-config
 git submodule update --init
 
 # Make Command-T
@@ -45,11 +43,6 @@ ln -s .vim/vimrc .vimrc
 ln -s .vim/gvimrc .gvimrc
 cd bin
 ln -s $SCRIPTDIR/z/z.sh
-if [[ "$1" == "-ooyala" ]] ; then
-  cd ~
-  git clone https://github.com/jigish/dotfiles-ooyala.git
-  ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
-fi
 
 # Copy iTerm2 Configs
 cp $SCRIPTDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
