@@ -10,7 +10,7 @@ export HISTTIMEFORMAT='%b %d %H:%M:%S: '
 shopt -s histappend
 set cmdhist
 
-set -o vi
+#set -o vi
 
 export EDITOR=vim
 
