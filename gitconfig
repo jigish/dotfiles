@@ -29,3 +29,5 @@
   auto = 0
 [push]
   default = tracking
+[heroku]
+	account = personal
