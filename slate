@@ -5,6 +5,9 @@ config resizePercentOf screenSize
 config secondsBetweenRepeat 0.1
 config checkDefaultsOnLoad true
 config focusCheckWidthMax 3000
+#config switchShowTitles true
+#config switchOrientation vertical
+#config switchIconSize 20
 
 # Monitor Aliases
 alias mon-laptop      1680x1050
@@ -120,7 +123,10 @@ bind down:cmd;alt focus behind
 bind padEnter:ctrl layout 3monitors
 
 # Window Hints
-bind =:cmd hint
+bind esc:cmd hint
+
+# Switch
+bind tab:cmd switch
 
 # Test Cases
 source .slate.test if_exists
