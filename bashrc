@@ -24,7 +24,7 @@ shopt -s cdspell
 
 alias vi='vim'
 alias v='vim'
-alias l='ls'
+alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
 alias g='git'
@@ -70,5 +70,8 @@ alias cdcode='z $CODE'
 alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'
 alias zslate='z $CODE/slate'
-
+dropbox-ctl() {
+  open "http://dl.dropbox.com/u/56340597/$1"
+}
+alias dropbox=dropbox-ctl
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
