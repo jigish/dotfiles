@@ -5,9 +5,6 @@ config resizePercentOf screenSize
 config secondsBetweenRepeat 0.1
 config checkDefaultsOnLoad true
 config focusCheckWidthMax 3000
-#config switchShowTitles true
-#config switchOrientation vertical
-#config switchIconSize 20
 
 # Monitor Aliases
 alias mon-laptop      1680x1050
@@ -43,6 +40,7 @@ layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-l-bot}
 layout 3monitors 'Firefox':REPEAT                         ${2-mid}
 layout 3monitors 'Xcode':REPEAT                           ${2-top}
 layout 3monitors 'Eclipse':REPEAT                         ${2-bot}
+layout 3monitors 'Spotify':REPEAT                         ${1-main}
 
 # 1 Monitor layout
 layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
@@ -55,6 +53,7 @@ layout 1monitor 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${1-main}
 layout 1monitor 'Firefox':REPEAT                         ${1-main}
 layout 1monitor 'Xcode':REPEAT                           ${1-main}
 layout 1monitor 'Eclipse':REPEAT                         ${1-main}
+layout 1monitor 'Spotify':REPEAT                         ${1-main}
 
 # Default Layouts
 default 3monitors resolutions:${mon-laptop};${mon-thunderbolt};${mon-hp22inch}
@@ -81,6 +80,7 @@ bind pad-:ctrl ${3-l-top}
 bind pad+:ctrl ${3-right}
 
 # Resize Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
 bind right:ctrl resize +10% +0
 bind left:ctrl  resize -10% +0
 bind up:ctrl    resize +0   -10%
@@ -91,18 +91,21 @@ bind up:alt     resize +0   +10% bottom-right
 bind down:alt   resize +0   -10% bottom-right
 
 # Push Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
 bind right:ctrl;shift push right bar-resize:screenSizeX/3
 bind left:ctrl;shift  push left  bar-resize:screenSizeX/3
 bind up:ctrl;shift    push up    bar-resize:screenSizeY/2
 bind down:ctrl;shift  push down  bar-resize:screenSizeY/2
 
 # Nudge Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
 bind right:ctrl;alt nudge +10% +0
 bind left:ctrl;alt  nudge -10% +0
 bind up:ctrl;alt    nudge +0   -10%
 bind down:ctrl;alt  nudge +0   +10%
 
 # Throw Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
 bind pad1:ctrl;alt      throw 2 resize
 bind pad2:ctrl;alt      throw 1 resize
 bind pad3:ctrl;alt      throw 0 resize
@@ -112,6 +115,7 @@ bind up:ctrl;alt;cmd    throw up    resize
 bind down:ctrl;alt;cmd  throw down  resize
 
 # Focus Bindings
+# NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
 bind right:cmd    focus right
 bind left:cmd     focus left
 bind up:cmd       focus up
@@ -125,8 +129,8 @@ bind padEnter:ctrl layout 3monitors
 # Window Hints
 bind esc:cmd hint
 
-# Switch
-bind tab:cmd switch
+# Switch currently doesn't work well so I'm commenting it out until I fix it.
+#bind tab:cmd switch
 
 # Test Cases
 source .slate.test if_exists
