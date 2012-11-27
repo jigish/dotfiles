@@ -19,7 +19,7 @@ if [ -f /opt/local/etc/bash_completion ]; then
   . /opt/local/etc/bash_completion
 fi
 
-bind "set completion-ignore-case on"
+#bind "set completion-ignore-case on"
 shopt -s cdspell
 
 alias vi='vim'
@@ -28,8 +28,10 @@ alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
 alias g='git'
+alias h='history |grep'
+alias b='cat ~/.bashrc |grep'
 
-export PATH=${PATH}:~/bin
+export PATH=${PATH}:~/bin:/usr/local/go/bin
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"
@@ -74,4 +76,5 @@ dropbox-ctl() {
   open "http://dl.dropbox.com/u/56340597/$1"
 }
 alias dropbox=dropbox-ctl
+alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"

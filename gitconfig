@@ -30,4 +30,4 @@
 [push]
   default = tracking
 [heroku]
-	account = personal
+  account = personal

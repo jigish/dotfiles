@@ -40,7 +40,20 @@ layout 3monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${3-l-bot}
 layout 3monitors 'Firefox':REPEAT                         ${2-mid}
 layout 3monitors 'Xcode':REPEAT                           ${2-top}
 layout 3monitors 'Eclipse':REPEAT                         ${2-bot}
-layout 3monitors 'Spotify':REPEAT                         ${1-main}
+layout 3monitors 'Spotify':REPEAT                         ${3-l-top}
+
+# 2 Monitor layout
+layout 2monitors 'iTerm':SORT_TITLE                       ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
+layout 2monitors 'Google Chrome':REPEAT                   ${1-main}
+layout 2monitors 'MacVim'                                 ${2-top-r} | ${2-top-l} | ${2-top-m}
+layout 2monitors 'Flex Builder'                           ${2-top-l}
+layout 2monitors 'GitX':REPEAT                            ${1-main}
+layout 2monitors 'Ooyala Player Debug Console'            ${1-main}
+layout 2monitors 'Adium':IGNORE_FAIL,TITLE_ORDER=Contacts ${1-chat} | ${1-main}
+layout 2monitors 'Firefox':REPEAT                         ${2-mid}
+layout 2monitors 'Xcode':REPEAT                           ${2-top}
+layout 2monitors 'Eclipse':REPEAT                         ${2-bot}
+layout 2monitors 'Spotify':REPEAT                         ${1-main}
 
 # 1 Monitor layout
 layout 1monitor 'iTerm':SORT_TITLE,REPEAT                ${1-main}
@@ -57,6 +70,7 @@ layout 1monitor 'Spotify':REPEAT                         ${1-main}
 
 # Default Layouts
 default 3monitors resolutions:${mon-laptop};${mon-thunderbolt};${mon-hp22inch}
+default 2monitors resolutions:${mon-laptop};${mon-thunderbolt}
 default 1monitor  resolutions:${mon-laptop}
 
 # Basic location Bindings
@@ -130,7 +144,11 @@ bind padEnter:ctrl layout 3monitors
 bind esc:cmd hint
 
 # Switch currently doesn't work well so I'm commenting it out until I fix it.
-#bind tab:cmd switch
+#bind tab:ctrl switch
+
+# Grid
+bind esc:ctrl grid
 
 # Test Cases
 source .slate.test if_exists
+
