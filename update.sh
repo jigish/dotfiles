@@ -39,7 +39,7 @@ cd ~
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
 [[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
-[[ ! -L .slate ]] && ln -s $SCRIPTDIR/slate .slate
+[[ ! -L .slate ]] && ln -s $SCRIPTDIR/slate.js .slate.js
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc

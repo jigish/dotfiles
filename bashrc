@@ -68,6 +68,7 @@ export DOCROOT=/Library/WebServer/Documents
 
 # Expected working dir for code
 export CODE=~/code
+export GOPATH=${CODE}/goroot
 alias cdcode='z $CODE'
 alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'

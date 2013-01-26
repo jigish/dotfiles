@@ -31,7 +31,7 @@ alias 3-right move screenOriginX+screenSizeX/2;screenOriginY                 scr
 
 # 3 Monitor layout
 layout 3monitors 'iTerm':SORT_TITLE                       ${2-bot-l} | ${2-bot-m} | ${2-bot-r}
-layout 3monitors 'Google Chrome':REPEAT                   ${1-main}
+layout 3monitors 'Google Chrome':REPEAT_LAST,TITLE_ORDER_REGEX=^Developer\sTools\s-\s.+$  ${3-right} | ${1-main}
 layout 3monitors 'MacVim'                                 ${2-top-r} | ${2-top-l} | ${2-top-m}
 layout 3monitors 'Flex Builder'                           ${2-top-l}
 layout 3monitors 'GitX':REPEAT                            ${3-right}
