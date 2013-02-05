@@ -81,7 +81,12 @@ var genBrowserHash = function(regex) {
 
 // 3 monitor layout
 var threeMonitorLayout = S.lay("threeMonitor", {
-  "Adium" : adiumHash,
+  "Adium" : {
+    "operations" : [lapChat, hpBottomLeft],
+    "ignore-fail" : true,
+    "title-order" : ["Contacts"],
+    "repeat-last" : true
+  },
   "MacVim" : mvimHash,
   "iTerm" : iTermHash,
   "Google Chrome" : genBrowserHash(/^Developer\sTools\s-\s.+$/),
@@ -238,7 +243,7 @@ S.bnda({
   "esc:cmd" : S.op("hint"),
 
   // Switch currently doesn't work well so I'm commenting it out until I fix it.
-  "tab:cmd" : S.op("switch"),
+  //"tab:cmd" : S.op("switch"),
 
   // Grid
   "esc:ctrl" : S.op("grid")
