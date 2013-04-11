@@ -160,6 +160,7 @@ var twoMonitor = S.op("layout", { "name" : twoMonitorLayout });
 var oneMonitor = S.op("layout", { "name" : oneMonitorLayout });
 var universalLayout = function() {
   // Should probably make sure the resolutions match but w/e
+  S.log("SCREEN COUNT: "+S.screenCount());
   if (S.screenCount() === 3) {
     threeMonitor.run();
   } else if (S.screenCount() === 2) {
