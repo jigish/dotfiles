@@ -233,6 +233,12 @@ S.bnda({
 
   // Focus Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings
+  "l:cmd" : S.op("focus", { "direction" : "right" }),
+  "h:cmd" : S.op("focus", { "direction" : "left" }),
+  "k:cmd" : S.op("focus", { "direction" : "up" }),
+  "j:cmd" : S.op("focus", { "direction" : "down" }),
+  "k:cmd;alt" : S.op("focus", { "direction" : "behind" }),
+  "j:cmd;alt" : S.op("focus", { "direction" : "behind" }),
   "right:cmd" : S.op("focus", { "direction" : "right" }),
   "left:cmd" : S.op("focus", { "direction" : "left" }),
   "up:cmd" : S.op("focus", { "direction" : "up" }),
