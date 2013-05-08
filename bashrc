@@ -62,7 +62,7 @@ WHITE="\[\033[1;37m\]"
 NOCOLOR="\[\033[0m\]"
 
 function cool_prompt {
-  PS1="$BLUE[\t] \u "
+  PS1="$BLUE[\t] \u@\h "
   [[ $(type -t __git_ps1) = "function" ]] && PS1="${PS1}$(__git_ps1 '%s:')"
   PS1="${PS1}\W \!$ $NOCOLOR"
 }

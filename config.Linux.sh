@@ -34,8 +34,9 @@ fi
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .bashrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .bashrc ]] && ln -s .vim/gvimrc .gvimrc
+mkdir bin
 cd bin
-ln -s $SCRIPTDIR/z/z.sh
+[[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~/dotfiles-ooyala && git pull
   cd ~
