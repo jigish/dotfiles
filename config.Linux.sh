@@ -40,9 +40,9 @@ ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~/dotfiles-ooyala && git pull
   cd ~
-  ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
-  ln -s dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
-  ln -s dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
+  ln -s ~/dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
+  ln -s ~/dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
+  ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
 fi
 
 cd $CURRDIR
