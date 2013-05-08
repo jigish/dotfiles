@@ -17,18 +17,23 @@ git submodule update --init
 
 # Create Links
 cd ~
-mv .bashrc .bashrc.old
-ln -s $SCRIPTDIR/bashrc .bashrc
-ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
-ln -s $SCRIPTDIR/gitconfig .gitconfig
-ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-ln -s $SCRIPTDIR/tigrc .tigrc
-ln -s $SCRIPTDIR/vim-config .vim
-ln -s $SCRIPTDIR/slate.js .slate.js
-ln -s $SCRIPTDIR/zshrc .zshrc
-ln -s $SCRIPTDIR/screenrc .screenrc
-ln -s .vim/vimrc .vimrc
-ln -s .vim/gvimrc .gvimrc
+if [[ -f .bashrc]]; then
+  mv .bashrc .bashrc.old
+fi
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
+if [[ -f .gitconfig]]; then
+  mv .gitconfig .gitconfig.old
+fi
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/slate.js .slate.js
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
+[[ ! -L .bashrc ]] && ln -s .vim/vimrc .vimrc
+[[ ! -L .bashrc ]] && ln -s .vim/gvimrc .gvimrc
 cd bin
 ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
