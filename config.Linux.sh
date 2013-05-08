@@ -10,19 +10,19 @@ sudo apt-get install -y mosh
 
 # Update git submodules
 cd $SCRIPTDIR
+git pull
 git submodule update --init
-git submodule foreach checkout master
 cd vim-config
 git submodule update --init
 
 # Create Links
 cd ~
-if [[ -f .bashrc]]; then
+if [[ -f .bashrc ]]; then
   mv .bashrc .bashrc.old
 fi
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
-if [[ -f .gitconfig]]; then
+if [[ -f .gitconfig ]]; then
   mv .gitconfig .gitconfig.old
 fi
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
