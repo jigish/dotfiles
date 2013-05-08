@@ -32,8 +32,8 @@ ln -s $SCRIPTDIR/vim-config .vim
 ln -s $SCRIPTDIR/slate.js .slate.js
 ln -s $SCRIPTDIR/zshrc .zshrc
 ln -s $SCRIPTDIR/screenrc .screenrc
-&& ln -s .vim/vimrc .vimrc
-&& ln -s .vim/gvimrc .gvimrc
+ln -s .vim/vimrc .vimrc
+ln -s .vim/gvimrc .gvimrc
 mkdir bin
 cd bin
 ln -s $SCRIPTDIR/z/z.sh
