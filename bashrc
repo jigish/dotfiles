@@ -21,6 +21,15 @@ fi
 
 #bind "set completion-ignore-case on"
 shopt -s cdspell
+shopt -s checkwinsize
+
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
 
 alias vi='vim'
 alias v='vim'
@@ -60,9 +69,6 @@ function cool_prompt {
 
 PROMPT_COMMAND=cool_prompt
 
-# Default Mac Web Server
-export DOCROOT=/Library/WebServer/Documents
-
 # z!
 . ~/bin/z.sh
 
@@ -72,9 +78,6 @@ alias cdcode='z $CODE'
 alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'
 alias zslate='z $CODE/slate'
-dropbox-ctl() {
-  open "http://dl.dropbox.com/u/56340597/$1"
-}
-alias dropbox=dropbox-ctl
-alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
+
+[[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"

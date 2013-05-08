@@ -1,0 +1,10 @@
+# Darwin Specific Shit
+
+# Default Mac Web Server
+export DOCROOT=/Library/WebServer/Documents
+
+dropbox-ctl() {
+  open "http://dl.dropbox.com/u/56340597/$1"
+}
+alias dropbox=dropbox-ctl
+alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
