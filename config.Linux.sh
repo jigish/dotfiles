@@ -32,7 +32,7 @@ ln -s .vim/gvimrc .gvimrc
 cd bin
 ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
-  git clone ssh://git@git.corp.ooyala.com/users/jigish dotfiles-ooyala
+  cd ~/dotfiles-ooyala && git pull
   cd ~
   ln -s dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
   ln -s dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
