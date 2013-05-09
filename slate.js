@@ -59,7 +59,32 @@ var mvimHash = {
   "operations" : [tboltTopLeft, tboltTopRight],
   "repeat" : true
 };
+var iTermCounter = 0;
 var iTermHash = {
+  "operations" : [function(windowObject) {
+    var title = windowObject.title();
+    // should be sorted by title so 1 will be first. if we see 1, reset counter
+    if (title !== undefined && title.match(/^1\./)) {
+      iTermCounter = 0;
+    }
+    if (title !== undefined && title.match(/^\d+\. irssi$/)) {
+      windowObject.doOperation(hpBottomLeft);
+      return;
+    } else if (iTermCounter === 0) {
+      windowObject.doOperation(tboltBottomLeft);
+    } else if (iTermCounter === 1) {
+      windowObject.doOperation(tboltBottomMid);
+    } else if (iTermCounter === 2) {
+      windowObject.doOperation(tboltBottomRight);
+    } else {
+      windowObject.doOperation(lapMain);
+    }
+    iTermCounter++;
+  }],
+  "sort-title" : true,
+  "repeat-last" : true
+};
+var iTerm2MonHash = {
   "operations" : [tboltBottomLeft, tboltBottomMid, tboltBottomRight, lapMain],
   "sort-title" : true,
   "repeat-last" : true
@@ -117,7 +142,7 @@ var threeMonitorLayout = S.lay("threeMonitor", {
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : adiumHash,
   "MacVim" : mvimHash,
-  "iTerm" : iTermHash,
+  "iTerm" : iTerm2MonHash,
   "Google Chrome" : lapMainHash,
   "Xcode" : {
     "operations" : [tboltTop, lapMain],
