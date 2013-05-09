@@ -68,7 +68,7 @@ var iTermHash = {
       iTermCounter = 0;
     }
     if (title !== undefined && title.match(/^\d+\. irssi$/)) {
-      windowObject.doOperation(hpBottomLeft);
+      windowObject.doOperation(hpRight);
       return;
     } else if (iTermCounter === 0) {
       windowObject.doOperation(tboltBottomLeft);
