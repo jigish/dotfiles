@@ -3,7 +3,7 @@
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-sudo apt-get install -y curl wget python-software-properties
+sudo apt-get install -y curl wget ack-grep python-software-properties
 sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
 sudo apt-get install -y mosh
