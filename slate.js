@@ -3,13 +3,14 @@ S.cfga({
   "defaultToCurrentScreen" : true,
   "secondsBetweenRepeat" : 0.1,
   "checkDefaultsOnLoad" : true,
-  "focusCheckWidthMax" : 3000
+  "focusCheckWidthMax" : 3000,
+  "orderScreensLeftToRight" : true
 });
 
 // Monitors
-var monLaptop = "1680x1050";
-var monTbolt = "2560x1440";
-var monHP = "1920x1080";
+var monTboltL = "0";
+var monTboltR = "2";
+var monLaptop = "1";
 
 // Operations
 var lapChat = S.op("corner", {
@@ -19,25 +20,38 @@ var lapChat = S.op("corner", {
   "height" : "screenSizeY"
 });
 var lapMain = lapChat.dup({ "direction" : "top-right", "width" : "8*screenSizeX/9" });
-var tboltFull = S.op("move", {
-  "screen" : monTbolt,
+var tboltLFull = S.op("move", {
+  "screen" : monTboltL,
   "x" : "screenOriginX",
   "y" : "screenOriginY",
   "width" : "screenSizeX",
   "height" : "screenSizeY"
 });
-var tboltTop = tboltFull.dup({ "height" : "screenSizeY/2" });
-var tboltTopLeft = tboltTop.dup({ "width" : "screenSizeX/2" });
-var tboltTopRight = tboltTopLeft.dup({ "x" : "screenOriginX+screenSizeX/2" });
-var tboltBottom = tboltTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
-var tboltBottomLeft = tboltBottom.dup({ "width" : "screenSizeX/3" });
-var tboltBottomMid = tboltBottomLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
-var tboltBottomRight = tboltBottomLeft.dup({ "x" : "screenOriginX+2*screenSizeX/3" });
-var tboltLeft = tboltTopLeft.dup({ "height" : "screenSizeY" });
-var tboltRight = tboltTopRight.dup({ "height" : "screenSizeY" });
-var hpTopLeft = tboltTopLeft.dup({ "screen" : monHP });
-var hpBottomLeft = hpTopLeft.dup({ "y" : "screenOriginY+screenSizeY/2" });
-var hpRight = tboltRight.dup({ "screen" : monHP });
+var tboltLLeft = tboltLFull.dup({ "width" : "screenSizeX/3" });
+var tboltLMid = tboltLLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
+var tboltLRight = tboltLLeft.dup({ "x" : "screenOriginX+(screenSizeX*2/3)" });
+var tboltLLeftTop = tboltLLeft.dup({ "height" : "screenSizeY/2" });
+var tboltLLeftBot = tboltLLeftTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var tboltLMidTop = tboltLMid.dup({ "height" : "screenSizeY/2" });
+var tboltLMidBot = tboltLMidTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var tboltLRightTop = tboltLRight.dup({ "height" : "screenSizeY/2" });
+var tboltLRightBot = tboltLRightTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var tboltRFull = S.op("move", {
+  "screen" : monTboltR,
+  "x" : "screenOriginX",
+  "y" : "screenOriginY",
+  "width" : "screenSizeX",
+  "height" : "screenSizeY"
+});
+var tboltRLeft = tboltRFull.dup({ "width" : "screenSizeX/3" });
+var tboltRMid = tboltRLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
+var tboltRRight = tboltRLeft.dup({ "x" : "screenOriginX+(screenSizeX*2/3)" });
+var tboltRLeftTop = tboltRLeft.dup({ "height" : "screenSizeY/2" });
+var tboltRLeftBot = tboltRLeftTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var tboltRMidTop = tboltRMid.dup({ "height" : "screenSizeY/2" });
+var tboltRMidBot = tboltRMidTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
+var tboltRRightTop = tboltRRight.dup({ "height" : "screenSizeY/2" });
+var tboltRRightBot = tboltRRightTop.dup({ "y" : "screenOriginY+screenSizeY/2" });
 
 // common layout hashes
 var lapMainHash = {
@@ -51,50 +65,21 @@ var adiumHash = {
   "title-order" : ["Contacts"],
   "repeat-last" : true
 };
-var tboltTopHash  = {
-  "operations" : [tboltTop],
-  "repeat" : true
-};
 var mvimHash = {
-  "operations" : [tboltTopLeft, tboltTopRight],
+  "operations" : [tboltLRight, tboltRLeft],
   "repeat" : true
 };
-var iTermCounter = 0;
 var iTermHash = {
-  "operations" : [function(windowObject) {
-    var title = windowObject.title();
-    // should be sorted by title so 1 will be first. if we see 1, reset counter
-    if (title !== undefined && title.match(/^1\./)) {
-      iTermCounter = 0;
-    }
-    if (title !== undefined && title.match(/^\d+\. irssi$/)) {
-      windowObject.doOperation(hpRight);
-      return;
-    } else if (iTermCounter === 0) {
-      windowObject.doOperation(tboltBottomLeft);
-    } else if (iTermCounter === 1) {
-      windowObject.doOperation(tboltBottomMid);
-    } else if (iTermCounter === 2) {
-      windowObject.doOperation(tboltBottomRight);
-    } else {
-      windowObject.doOperation(lapMain);
-    }
-    iTermCounter++;
-  }],
+  "operations" : [tboltLMidTop, tboltLMidBot, tboltRMidTop, tboltRMidBot],
   "sort-title" : true,
-  "repeat-last" : true
-};
-var iTerm2MonHash = {
-  "operations" : [tboltBottomLeft, tboltBottomMid, tboltBottomRight, lapMain],
-  "sort-title" : true,
-  "repeat-last" : true
+  "repeat" : true
 };
 var genBrowserHash = function(regex) {
   return {
     "operations" : [function(windowObject) {
       var title = windowObject.title();
       if (title !== undefined && title.match(regex)) {
-        windowObject.doOperation(hpRight);
+        windowObject.doOperation(tboltLLeft);
       } else {
         windowObject.doOperation(lapMain);
       }
@@ -107,7 +92,7 @@ var genBrowserHash = function(regex) {
 // 3 monitor layout
 var threeMonitorLayout = S.lay("threeMonitor", {
   "Adium" : {
-    "operations" : [lapChat, hpBottomLeft],
+    "operations" : [lapChat, tboltLLeftBot],
     "ignore-fail" : true,
     "title-order" : ["Contacts"],
     "repeat-last" : true
@@ -115,47 +100,16 @@ var threeMonitorLayout = S.lay("threeMonitor", {
   "MacVim" : mvimHash,
   "iTerm" : iTermHash,
   "Google Chrome" : genBrowserHash(/^Developer\sTools\s-\s.+$/),
-  "Xcode" : {
-    "operations" : [tboltTop, hpRight],
-    "main-first" : true,
-    "repeat-last" : true
-  },
-  "Flex Builder" : tboltTopHash,
   "GitX" : {
-    "operations" : [hpRight],
-    "repeat" : true
-  },
-  "Ooyala Player Debug Console" : {
-    "operations" : [hpBottomLeft],
+    "operations" : [tboltLLeftTop],
     "repeat" : true
   },
   "Firefox" : genBrowserHash(/^Firebug\s-\s.+$/),
   "Safari" : lapMainHash,
-  "Eclipse" : tboltTopHash,
   "Spotify" : {
-    "operations" : [hpTopLeft],
+    "operations" : [tboltRRightTop],
     "repeat" : true
   }
-});
-
-// 2 monitor layout
-var twoMonitorLayout = S.lay("twoMonitor", {
-  "Adium" : adiumHash,
-  "MacVim" : mvimHash,
-  "iTerm" : iTerm2MonHash,
-  "Google Chrome" : lapMainHash,
-  "Xcode" : {
-    "operations" : [tboltTop, lapMain],
-    "main-first" : true,
-    "repeat-last" : true
-  },
-  "Flex Builder" : tboltTopHash,
-  "GitX" : lapMainHash,
-  "Ooyala Player Debug Console" : lapMainHash,
-  "Firefox" : lapMainHash,
-  "Safari" : lapMainHash,
-  "Eclipse" : tboltTopHash,
-  "Spotify" : lapMainHash
 });
 
 // 1 monitor layout
@@ -174,10 +128,12 @@ var oneMonitorLayout = S.lay("oneMonitor", {
   "Spotify" : lapMainHash
 });
 
+var twoMonitorLayout = oneMonitorLayout;
+
 // Defaults
-S.def([monHP, monTbolt, monLaptop], threeMonitorLayout);
-S.def([monTbolt, monLaptop], twoMonitorLayout);
-S.def([monLaptop], oneMonitorLayout);
+S.def(3, threeMonitorLayout);
+S.def(2, twoMonitorLayout);
+S.def(1, oneMonitorLayout);
 
 // Layout Operations
 var threeMonitor = S.op("layout", { "name" : threeMonitorLayout });
@@ -206,20 +162,26 @@ S.bnda({
   "[:ctrl" : lapChat,
   "pad.:ctrl" : lapMain,
   "]:ctrl" : lapMain,
-  "pad1:ctrl" : tboltBottomLeft,
-  "pad2:ctrl" : tboltBottomMid,
-  "pad3:ctrl" : tboltBottomRight,
-  "pad4:ctrl" : tboltLeft,
-  "pad5:ctrl" : tboltFull,
-  "pad6:ctrl" : tboltRight,
-  "pad7:ctrl" : tboltTopLeft,
-  "pad8:ctrl" : tboltTop,
-  "pad9:ctrl" : tboltTopRight,
-  "pad=:ctrl" : tboltTop,
-  "pad/:ctrl" : tboltBottom,
-  "pad*:ctrl" : hpBottomLeft,
-  "pad-:ctrl" : hpTopLeft,
-  "pad+:ctrl" : hpRight,
+  "pad1:ctrl" : tboltLLeftBot,
+  "pad2:ctrl" : tboltLMidBot,
+  "pad3:ctrl" : tboltLRightBot,
+  "pad4:ctrl" : tboltLLeftTop,
+  "pad5:ctrl" : tboltLMidTop,
+  "pad6:ctrl" : tboltLRightTop,
+  "pad7:ctrl" : tboltLLeft,
+  "pad8:ctrl" : tboltLMid,
+  "pad9:ctrl" : tboltLRight,
+  "pad=:ctrl" : tboltLFull,
+  "pad1:alt" : tboltRLeftBot,
+  "pad2:alt" : tboltRMidBot,
+  "pad3:alt" : tboltRRightBot,
+  "pad4:alt" : tboltRLeftTop,
+  "pad5:alt" : tboltRMidTop,
+  "pad6:alt" : tboltRRightTop,
+  "pad7:alt" : tboltRLeft,
+  "pad8:alt" : tboltRMid,
+  "pad9:alt" : tboltRRight,
+  "pad=:alt" : tboltRFull,
 
   // Resize Bindings
   // NOTE: some of these may *not* work if you have not removed the expose/spaces/mission control bindings

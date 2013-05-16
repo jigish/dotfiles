@@ -40,7 +40,9 @@ alias g='git'
 alias h='history |grep'
 alias b='cat ~/.bashrc |grep'
 
-export PATH=${PATH}:~/bin:/usr/local/go/bin
+export GOPATH=~/.go
+
+export PATH=${PATH}:~/bin:/usr/local/go/bin:${GOPATH}/bin
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"
