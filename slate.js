@@ -10,7 +10,7 @@ S.cfga({
 // Monitors
 var monTboltL = "0";
 var monTboltR = "2";
-var monLaptop = "1";
+var monLaptop = "1680x1050";
 
 // Operations
 var lapChat = S.op("corner", {

@@ -21,7 +21,8 @@
   l = log
   b = branch
   sub = submodule
-  subadd = submodule add
+  suba = submodule add
+  subu = submodule update --init
   pom = push origin master
 [branch]
   autosetuprebase = always
