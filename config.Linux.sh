@@ -5,7 +5,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
-sudo apt-get install -y perl curl wget python-software-properties mosh ack-grep ctags
+sudo apt-get install -y perl curl wget python-software-properties mosh ctags
 
 # Update git submodules
 cd $SCRIPTDIR
@@ -43,6 +43,10 @@ if [[ "$1" == "-ooyala" ]] ; then
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
 fi
+# Ack
+curl http://beyondgrep.com/ack-2.04-single-file > ack
+chmod 755 ack
+
 
 cd /tmp
 wget https://bitbucket.org/pypa/setuptools/raw/0.7.2/ez_setup.py -O - | sudo python
