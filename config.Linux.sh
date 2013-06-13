@@ -44,6 +44,8 @@ if [[ "$1" == "-ooyala" ]] ; then
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
 fi
 
+cd /tmp
+wget https://bitbucket.org/pypa/setuptools/raw/0.7.2/ez_setup.py -O - | sudo python
 cd /usr/local
 sudo git clone https://github.com/Lokaltog/powerline.git
 cd powerline
