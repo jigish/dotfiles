@@ -3,10 +3,9 @@
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-sudo apt-get install -y perl curl wget python-software-properties
 sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
-sudo apt-get install -y mosh
+sudo apt-get install -y perl curl wget python-software-properties mosh ack
 
 # Update git submodules
 cd $SCRIPTDIR
@@ -44,8 +43,6 @@ if [[ "$1" == "-ooyala" ]] ; then
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
 fi
-
-curl http://beyondgrep.com/ack-2.04-single-file > ~/bin/ack && chmod 0755 !#:3
 
 cd /usr/local
 sudo git clone https://github.com/Lokaltog/powerline.git
