@@ -5,7 +5,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
-sudo apt-get install -y perl curl wget python-software-properties mosh ctags
+sudo apt-get install -y perl curl wget python-software-properties mosh ctags screen ngrep
 
 # Update git submodules
 cd $SCRIPTDIR
