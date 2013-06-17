@@ -24,6 +24,7 @@
   suba = submodule add
   subu = submodule update --init
   pom = push origin master
+  h = rev-parse HEAD
 [branch]
   autosetuprebase = always
 [gc]
