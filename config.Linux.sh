@@ -36,6 +36,10 @@ ln -s .vim/gvimrc .gvimrc
 mkdir bin
 cd bin
 ln -s $SCRIPTDIR/z/z.sh
+# Ack
+curl http://beyondgrep.com/ack-2.04-single-file > ack
+chmod 755 ack
+
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~
   git clone ssh://git@git.corp.ooyala.com/users/jigish dotfiles-ooyala
@@ -43,10 +47,6 @@ if [[ "$1" == "-ooyala" ]] ; then
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
   ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
 fi
-# Ack
-curl http://beyondgrep.com/ack-2.04-single-file > ack
-chmod 755 ack
-
 
 cd /tmp
 wget https://bitbucket.org/pypa/setuptools/raw/0.7.2/ez_setup.py -O - | sudo python
