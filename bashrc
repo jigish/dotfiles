@@ -10,7 +10,7 @@ export HISTTIMEFORMAT='%b %d %H:%M:%S: '
 shopt -s histappend
 set cmdhist
 
-#set -o vi
+set -o vi
 
 export EDITOR=vim
 
@@ -42,7 +42,9 @@ alias b='cat ~/.bashrc |grep'
 
 export GOPATH=~/.go
 
-export PATH=${PATH}:~/bin:/usr/local/go/bin:${GOPATH}/bin
+export SCALA_HOME=/usr/local/scala
+
+export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"
