@@ -4,5 +4,8 @@
 .d8_history
 .vim/.netrwhist
 
+# ctags stuff
+.tags
+
 # OS X stuff
 .DS_Store

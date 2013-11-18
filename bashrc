@@ -83,5 +83,12 @@ alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'
 alias zslate='z $CODE/slate'
 
+# Better ctags
+alias ctags=/usr/local/bin/ctags
+
+# Other Aliases
+alias svim='sudo vim'
+alias smvim='sudo mvim'
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
