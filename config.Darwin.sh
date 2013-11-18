@@ -42,9 +42,7 @@ ln -s $SCRIPTDIR/z/z.sh
 if [[ "$1" == "-ooyala" ]] ; then
   cd ~
   git clone ssh://git@git.corp.ooyala.com/users/jigish dotfiles-ooyala
-  ln -s ~/dotfiles-ooyala/bashrc.ooyala .bashrc.ooyala
-  ln -s ~/dotfiles-ooyala/screenrc.cybertron.prod .screenrc.cybertron.prod
-  ln -s ~/dotfiles-ooyala/screenrc.cybertron.dev .screenrc.cybertron.dev
+  ./dotfiles-ooyala/config.sh
 fi
 
 # Copy iTerm2 Configs
