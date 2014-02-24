@@ -90,5 +90,26 @@ alias ctags=/usr/local/bin/ctags
 alias svim='sudo vim'
 alias smvim='sudo mvim'
 
+# AWS Aliases
+alias adil='aws describe-instances'
+function adi-ctl {
+  adil $@ |awk -F "|" '{ print $2 " " $6 " " $9 " " $12 " " $13; }'
+}
+alias adi='adi-ctl'
+function adia-ctl {
+  adil $@ --region ap-northeast-1 |awk -F "|" '{ print $2 " " $6 " " $9 " " $12 " " $13; }'
+}
+alias adia='adia-ctl'
+function adie-ctl {
+  adil $@ --region eu-west-1 |awk -F "|" '{ print $2 " " $6 " " $9 " " $12 " " $13; }'
+}
+alias adie='adie-ctl'
+alias adg='aws describe-groups'
+
+alias gclone=gclone_ctl
+function gclone_ctl {
+  git clone ssh://git@github.com/$1
+}
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"

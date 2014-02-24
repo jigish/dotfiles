@@ -109,6 +109,10 @@ var threeMonitorLayout = S.lay("threeMonitor", {
   "Spotify" : {
     "operations" : [tboltRRightTop],
     "repeat" : true
+  },
+  "TextEdit" : {
+    "operations" : [tboltRRightBot],
+    "repeat" : true
   }
 });
 
