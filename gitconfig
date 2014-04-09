@@ -17,6 +17,7 @@
   a = add
   sn = status --untracked=no
   co = checkout
+  cb = checkout -b
   wc = whatchanged
   l = log
   b = branch
@@ -24,6 +25,7 @@
   suba = submodule add
   subu = submodule update --init
   pom = push origin master
+  po = push -u origin
   h = rev-parse HEAD
 [branch]
   autosetuprebase = always

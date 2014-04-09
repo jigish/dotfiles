@@ -43,6 +43,7 @@ alias b='cat ~/.bashrc |grep'
 export GOPATH=~/.go
 
 export SCALA_HOME=/usr/local/scala
+export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
 export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin
 
