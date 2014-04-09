@@ -1,9 +1,9 @@
 [submodule "vim-config"]
 	path = vim-config
-	url = https://github.com/jigish/vim-config
+	url = ssh://git@github.com/jigish/vim-config
 [submodule "iterm2-config"]
 	path = iterm2-config
-	url = https://github.com/jigish/iterm2-config
+	url = ssh://git@github.com/jigish/iterm2-config
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z
