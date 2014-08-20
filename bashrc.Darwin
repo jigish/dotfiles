@@ -10,6 +10,7 @@ alias dropbox=dropbox-ctl
 alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
 
 mvim-ctl() {
-  /opt/local/bin/mvim $1 >/dev/null 2>&1
+  ~/bin/macvim/mvim $1
 }
 alias mvim=mvim-ctl
+alias ack=ag

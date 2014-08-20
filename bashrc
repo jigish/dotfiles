@@ -14,9 +14,9 @@ set -o vi
 
 export EDITOR=vim
 
-# MacPorts Bash Completion
-if [ -f /opt/local/etc/bash_completion ]; then
-  . /opt/local/etc/bash_completion
+# Homebrew Bash Completion
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
 fi
 
 #bind "set completion-ignore-case on"
@@ -112,5 +112,7 @@ function gclone_ctl {
   git clone ssh://git@github.com/$1
 }
 
+alias bi='bundle install && rbenv rehash'
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
-[[ -s "$HOME/.bashrc.ooyala" ]] && source "$HOME/.bashrc.ooyala"
+[[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"
