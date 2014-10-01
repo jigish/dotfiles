@@ -20,14 +20,20 @@
   cb = checkout -b
   cp = cherry-pick
   wc = whatchanged
-  l = log
+  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
   b = branch
+  bd = branch -d
   sub = submodule
   suba = submodule add
   subu = submodule update --init
   pom = push origin master
   po = push -u origin
+  pob = !sh -c 'git push -u origin `git r`'
+  pdo = push --delete origin
+  r = rev-parse --abbrev-ref HEAD
   h = rev-parse HEAD
+  pr = pull-request
+  prm = "!sh -c '[ $# = 1 ] && git stash && git checkout master && git pull && git checkout $1 && git rebase master && git push -f && git checkout master && git merge $1 && git push && git pdo $1 && git bd $1 && exit 0 || echo \"usage: git prm <branch>\" >&2 && exit 1'"
 [branch]
   autosetuprebase = always
 [gc]
