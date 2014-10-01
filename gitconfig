@@ -20,7 +20,7 @@
   cb = checkout -b
   cp = cherry-pick
   wc = whatchanged
-  l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  l = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
   b = branch
   bd = branch -d
   sub = submodule
