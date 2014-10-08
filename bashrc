@@ -107,5 +107,13 @@ alias bi='bundle install && rbenv rehash'
 # Ag > Ack
 alias ack=ag
 
+# Spotify
+alias spn='spotify next'
+alias spf='spotify shuffle'
+alias spr='spotify repeat'
+alias sps='spotify status'
+alias spt='spotify toggle'
+alias spp='spotify toggle'
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"
