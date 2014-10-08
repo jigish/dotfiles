@@ -20,22 +20,20 @@ cd ~
 if [[ -f .bashrc ]]; then
   mv .bashrc .bashrc.old
 fi
-ln -s $SCRIPTDIR/bashrc .bashrc
-ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
+[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
+[[ ! -L .bashrc.`uname` ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
 if [[ -f .gitconfig ]]; then
   mv .gitconfig .gitconfig.old
 fi
-ln -s $SCRIPTDIR/gitconfig .gitconfig
-ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-ln -s $SCRIPTDIR/tigrc .tigrc
-ln -s $SCRIPTDIR/vim-config .vim
-ln -s $SCRIPTDIR/zshrc .zshrc
-ln -s $SCRIPTDIR/screenrc .screenrc
-ln -s .vim/vimrc .vimrc
-ln -s .vim/gvimrc .gvimrc
-mkdir bin
+[[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
+[[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
+[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
+[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
+[[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
+[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
+mkdir -p bin
 cd bin
-ln -s $SCRIPTDIR/z/z.sh
+[[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 
 cd $CURRDIR
-
