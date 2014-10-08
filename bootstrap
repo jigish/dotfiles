@@ -1,4 +1,4 @@
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-$SCRIPTDIR/bootstrap.`uname` $1
+$SCRIPTDIR/bootstrap.`uname`
