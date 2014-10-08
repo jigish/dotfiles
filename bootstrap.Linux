@@ -3,6 +3,9 @@
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+# we need to disable strict host checking for github since we're likey automating this shit
+echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+
 #sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
 #sudo apt-get install -y mosh
