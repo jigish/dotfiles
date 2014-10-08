@@ -26,6 +26,13 @@ var tboltFull = S.op("move", {
   "width" : "screenSizeX",
   "height" : "screenSizeY"
 });
+var tboltBig = S.op("move", {
+  "screen" : monTbolt,
+  "x" : "screenOriginX+screenSizeX/3",
+  "y" : "screenOriginY",
+  "width" : "screenSizeX*2/3",
+  "height" : "screenSizeY",
+});
 var tboltLeft = tboltFull.dup({ "width" : "screenSizeX/3" });
 var tboltMid = tboltLeft.dup({ "x" : "screenOriginX+screenSizeX/3" });
 var tboltRight = tboltLeft.dup({ "x" : "screenOriginX+(screenSizeX*2/3)" });
@@ -52,8 +59,8 @@ var mvimHash = {
   "operations" : [tboltMid, tboltRightTop],
   "repeat" : true
 };
-var iTermHash = {
-  "operations" : [tboltLeftBot,tboltRightBot],
+var tboltBigHash = {
+  "operations" : [tboltBig],
   "sort-title" : true,
   "repeat" : true
 };
@@ -75,13 +82,14 @@ var genBrowserHash = function(regex) {
 // 3 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : {
-    "operations" : [lapChat, tboltLeftTop],
+    "operations" : [lapChat, tboltLeftBot],
     "ignore-fail" : true,
     "title-order" : ["Contacts"],
     "repeat-last" : true
   },
   "MacVim" : mvimHash,
-  "iTerm" : iTermHash,
+  "iTerm" : tboltBigHash,
+  "Xcode" : tboltBigHash,
   "Google Chrome" : genBrowserHash(/^Developer\sTools\s-\s.+$/),
   "GitX" : {
     "operations" : [tboltLeftTop],
@@ -94,7 +102,7 @@ var twoMonitorLayout = S.lay("twoMonitor", {
     "repeat" : true
   },
   "TextEdit" : {
-    "operations" : [tboltLeftTop],
+    "operations" : [tboltLeftBot],
     "repeat" : true
   }
 });

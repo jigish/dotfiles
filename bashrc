@@ -116,5 +116,8 @@ function gclone_ctl {
 
 alias bi='bundle install && rbenv rehash'
 
+# Ag > Ack
+alias ack=ag
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"

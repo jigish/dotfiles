@@ -8,5 +8,3 @@ dropbox-ctl() {
 }
 alias dropbox=dropbox-ctl
 alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
-
-alias ack=ag
