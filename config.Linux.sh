@@ -6,7 +6,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 #sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
 #sudo apt-get install -y mosh
-sudo apt-get install -y perl curl wget python-software-properties ctags screen ngrep silversearcher-ag
+sudo apt-get install -y perl curl wget ctags screen ngrep silversearcher-ag
 
 # Update git submodules
 cd $SCRIPTDIR
