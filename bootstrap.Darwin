@@ -27,6 +27,7 @@ git submodule update --init
 
 # Create Links
 cd ~
+[[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
 [[ ! -L .bashrc.`uname` ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
