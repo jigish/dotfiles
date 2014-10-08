@@ -14,11 +14,6 @@ set -o vi
 
 export EDITOR=vim
 
-# Homebrew Bash Completion
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
-
 #bind "set completion-ignore-case on"
 shopt -s cdspell
 shopt -s checkwinsize
@@ -36,9 +31,6 @@ alias v='vim'
 alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
-alias git='hub'
-alias g='hub'
-alias gbranch='hub rev-parse --abbrev-ref HEAD'
 alias h='history |grep'
 alias b='cat ~/.bashrc |grep'
 
@@ -86,12 +78,8 @@ alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'
 alias zslate='z $CODE/slate'
 
-# Better ctags
-alias ctags=/usr/local/bin/ctags
-
 # Other Aliases
 alias svim='sudo vim'
-alias smvim='sudo mvim'
 
 # AWS Aliases
 alias adil='aws describe-instances'
