@@ -4,3 +4,9 @@
 [submodule "lucius"]
 	path = lucius
 	url = https://github.com/jonathanfilip/lucius
+[submodule "iterm2-config"]
+	path = iterm2-config
+	url = https://github.com/jigish/iterm2-config
+[submodule "vim-config"]
+	path = vim-config
+	url = https://github.com/jigish/vim-config
