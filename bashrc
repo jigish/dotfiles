@@ -1,7 +1,3 @@
-# chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.1.3
-
 # Terminal Colors
 export CLICOLOR=1
 export TERM="xterm-256color"
