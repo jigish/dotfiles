@@ -12,6 +12,13 @@ var monTbolt  = "2560x1600";
 var monLaptop = "1920x1200";
 
 // Operations
+var lapFull = S.op("move", {
+  "screen" : monLaptop,
+  "x" : "screenOriginX",
+  "y" : "screenOriginY",
+  "width" : "screenSizeX",
+  "height" : "screenSizeY"
+});
 var lapChat = S.op("corner", {
   "screen" : monLaptop,
   "direction" : "top-left",
@@ -49,6 +56,11 @@ var lapMainHash = {
   "ignore-fail" : true,
   "repeat" : true
 };
+var lapFullHash = {
+  "operations" : [lapFull],
+  "ignore-fail" : true,
+  "repeat" : true
+};
 var adiumHash = {
   "operations" : [lapChat, lapMain],
   "ignore-fail" : true,
@@ -64,6 +76,11 @@ var tboltBigHash = {
   "sort-title" : true,
   "repeat" : true
 };
+var tboltFullHash = {
+  "operations" : [tboltFull],
+  "sort-title" : true,
+  "repeat" : true
+};
 var genBrowserHash = function(regex) {
   return {
     "operations" : [function(windowObject) {
@@ -71,7 +88,7 @@ var genBrowserHash = function(regex) {
       if (title !== undefined && title.match(regex)) {
         windowObject.doOperation(tboltLeftBot);
       } else {
-        windowObject.doOperation(lapMain);
+        windowObject.doOperation(lapFull);
       }
     }],
     "ignore-fail" : true,
@@ -82,27 +99,27 @@ var genBrowserHash = function(regex) {
 // 3 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : {
-    "operations" : [lapChat, tboltLeftBot],
+    "operations" : [lapChat, lapMain],
     "ignore-fail" : true,
     "title-order" : ["Contacts"],
     "repeat-last" : true
   },
   "MacVim" : mvimHash,
-  "iTerm" : tboltBigHash,
+  "iTerm" : tboltFullHash,
   "Xcode" : tboltBigHash,
   "Google Chrome" : genBrowserHash(/^Developer\sTools\s-\s.+$/),
   "GitX" : {
-    "operations" : [tboltLeftTop],
+    "operations" : [lapFull],
     "repeat" : true
   },
   "Firefox" : genBrowserHash(/^Firebug\s-\s.+$/),
-  "Safari" : lapMainHash,
+  "Safari" : lapFullHash,
   "Spotify" : {
-    "operations" : [tboltLeftTop],
+    "operations" : [lapFull],
     "repeat" : true
   },
   "TextEdit" : {
-    "operations" : [tboltLeftBot],
+    "operations" : [lapFull],
     "repeat" : true
   }
 });
@@ -110,17 +127,17 @@ var twoMonitorLayout = S.lay("twoMonitor", {
 // 1 monitor layout
 var oneMonitorLayout = S.lay("oneMonitor", {
   "Adium" : adiumHash,
-  "MacVim" : lapMainHash,
-  "iTerm" : lapMainHash,
-  "Google Chrome" : lapMainHash,
-  "Xcode" : lapMainHash,
-  "Flex Builder" : lapMainHash,
-  "GitX" : lapMainHash,
-  "Ooyala Player Debug Console" : lapMainHash,
-  "Firefox" : lapMainHash,
-  "Safari" : lapMainHash,
-  "Eclipse" : lapMainHash,
-  "Spotify" : lapMainHash
+  "MacVim" : lapFullHash,
+  "iTerm" : lapFullHash,
+  "Google Chrome" : lapFullHash,
+  "Xcode" : lapFullHash,
+  "Flex Builder" : lapFullHash,
+  "GitX" : lapFullHash,
+  "Ooyala Player Debug Console" : lapFullHash,
+  "Firefox" : lapFullHash,
+  "Safari" : lapFullHash,
+  "Eclipse" : lapFullHash,
+  "Spotify" : lapFullHash
 });
 
 // Defaults

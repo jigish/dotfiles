@@ -1,3 +1,7 @@
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+chruby ruby-2.1.3
+
 # Terminal Colors
 export CLICOLOR=1
 export TERM="xterm-256color"
@@ -102,18 +106,17 @@ function gclone_ctl {
   git clone ssh://git@github.com/$1
 }
 
-alias bi='bundle install && rbenv rehash'
-
 # Ag > Ack
 alias ack=ag
 
 # Spotify
-alias spn='spotify next'
+alias spn='spotify next && spotify status'
 alias spf='spotify shuffle'
 alias spr='spotify repeat'
 alias sps='spotify status'
-alias spt='spotify toggle'
-alias spp='spotify toggle'
+alias spt='spotify toggle && spotify status'
+alias spp='spotify toggle && spotify status'
 
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"
+[[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
