@@ -61,7 +61,7 @@ WHITE="\[\033[1;37m\]"
 NOCOLOR="\[\033[0m\]"
 
 function cool_prompt {
-  PS1="$BLUE[\t] \u@\h "
+  PS1="$BLUE[\t] \u@$(if [[ -x /usr/local/bin/my-instance-name ]]; then echo "$RED$(/usr/local/bin/my-instance-name)$BLUE"; else hostname -s; fi) "
   [[ $(type -t __git_ps1) = "function" ]] && PS1="${PS1}$(__git_ps1 '%s:')"
   PS1="${PS1}\W \!$ $NOCOLOR"
 }
