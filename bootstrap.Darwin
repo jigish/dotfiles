@@ -21,7 +21,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # Update git submodules
 cd $SCRIPTDIR
 git submodule update --init
-git submodule foreach checkout master
+#git submodule foreach checkout master
 cd vim-config
 git submodule update --init
 
@@ -43,5 +43,9 @@ cd bin
 
 # Copy iTerm2 Configs
 cp $SCRIPTDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
+
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install curl wget the_silver_searcher chruby ruby-build
 
 cd $CURRDIR
