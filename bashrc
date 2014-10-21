@@ -39,7 +39,7 @@ export GOPATH=~/.go
 export SCALA_HOME=/usr/local/scala
 export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
 
-export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin
+export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"

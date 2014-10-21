@@ -40,6 +40,7 @@ cd ~
 [[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
+[[ ! -L spotify ]] && ln -s $SCRIPTDIR/spotify
 
 # Copy iTerm2 Configs
 cp $SCRIPTDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
