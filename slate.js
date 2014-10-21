@@ -96,7 +96,7 @@ var genBrowserHash = function(regex) {
   };
 }
 
-// 3 monitor layout
+// 2 monitor layout
 var twoMonitorLayout = S.lay("twoMonitor", {
   "Adium" : {
     "operations" : [lapChat, lapMain],
