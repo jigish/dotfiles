@@ -34,6 +34,7 @@
   h = rev-parse HEAD
   pr = pull-request -b develop
   prm = "!sh -c '[ $# = 1 ] && git checkout develop && git pull && git checkout $1 && git rebase develop && git push -f && git checkout develop && git merge $1 && git push && git pdo $1 && git bd $1 && exit 0 || echo \"usage: git prm <branch>\" >&2 && exit 1' -"
+  prmb = !sh -c 'git prm `git r`'
 [branch]
   autosetuprebase = always
 [gc]
