@@ -37,6 +37,7 @@ cd ~
 [[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
+[[ ! -L .xvimrc ]] && ln -s $SCRIPTDIR/xvimrc .xvimrc
 [[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
@@ -47,6 +48,6 @@ cp $SCRIPTDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-brew install curl wget the_silver_searcher chruby ruby-build
+brew install curl wget the_silver_searcher chruby ruby-build htop
 
 cd $CURRDIR
