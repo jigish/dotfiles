@@ -34,4 +34,7 @@ mkdir -p bin
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 
+cd ~/.vim/bundle/neobundle.vim
+./bin/neoinstall
+
 cd $CURRDIR

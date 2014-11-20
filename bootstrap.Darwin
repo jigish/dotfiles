@@ -50,4 +50,8 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 
 brew install curl wget the_silver_searcher chruby ruby-build htop
 
+# preinstall vim bundle
+cd ~/.vim/bundle/neobundle.vim
+./bin/neoinstall
+
 cd $CURRDIR
