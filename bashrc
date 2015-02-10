@@ -80,6 +80,7 @@ alias zslate='z $CODE/slate'
 
 # Other Aliases
 alias svim='sudo vim'
+alias rmswap='rm ~/.vim/tmp/swap/*'
 
 # AWS Aliases
 alias adil='aws describe-instances'
@@ -97,13 +98,17 @@ function adie-ctl {
 alias adie='adie-ctl'
 alias adg='aws describe-groups'
 
+# Ag > Ack
+alias ack=ag
+
+# hub > git
+eval "$(hub alias -s)"
+alias g='git'
+alias gbranch='git rev-parse --abbrev-ref HEAD'
 alias gclone=gclone_ctl
 function gclone_ctl {
   git clone ssh://git@github.com/$1
 }
-
-# Ag > Ack
-alias ack=ag
 
 # Spotify
 alias spn='spotify next && spotify status'

@@ -9,11 +9,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# hub > git
-alias git='hub'
-alias g='hub'
-alias gbranch='hub rev-parse --abbrev-ref HEAD'
-
 # Better ctags
 alias ctags=/usr/local/bin/ctags
 
