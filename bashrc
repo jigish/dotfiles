@@ -102,7 +102,7 @@ alias adg='aws describe-groups'
 alias ack=ag
 
 # hub > git
-eval "$(hub alias -s)"
+[ ! $(which hub) == "" ] && eval "$(hub alias -s)"
 alias g='git'
 alias gbranch='git rev-parse --abbrev-ref HEAD'
 alias gclone=gclone_ctl
