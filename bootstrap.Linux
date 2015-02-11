@@ -34,6 +34,8 @@ mkdir -p bin
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 
+[ ! $(which go) = "" ] && go get -u github.com/github/hub
+
 cd ~/.vim/bundle/neobundle.vim
 ./bin/neoinstall
 
