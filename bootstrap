@@ -22,6 +22,7 @@ cd ~
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
+[[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
 mkdir -p bin
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
