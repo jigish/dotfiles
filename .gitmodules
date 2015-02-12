@@ -10,3 +10,6 @@
 [submodule "vim-config"]
 	path = vim-config
 	url = https://github.com/jigish/vim-config
+[submodule "irssi/scripts/slack"]
+	path = irssi/scripts/slack
+	url = https://github.com/tedski/slack-irssi
