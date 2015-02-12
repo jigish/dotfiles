@@ -1,6 +1,19 @@
 #!/bin/bash
 
-CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
+# Create Links
+cd ~
+[[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
+[[ ! -L .xvimrc ]] && ln -s $SCRIPTDIR/xvimrc .xvimrc
+[[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
+mkdir -p bin
+cd bin
+[[ ! -L spotify ]] && ln -s $SCRIPTDIR/spotify
+
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+brew install curl wget the_silver_searcher chruby ruby-build htop
 
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]] ; then
   printf "\n> You appear to be running this script from within iTerm.app which could\n"
@@ -16,42 +29,5 @@ if ps wwwaux | egrep -q 'iTerm\.app' >/dev/null ; then
   exit 4
 fi
 
-SCRIPTDIR=$(cd `dirname $0` && pwd)
-
-# Update git submodules
-cd $SCRIPTDIR
-git submodule update --init
-#git submodule foreach checkout master
-cd vim-config
-git submodule update --init
-
-# Create Links
-cd ~
-[[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
-[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
-[[ ! -L .bashrc.`uname` ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
-[[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
-[[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
-[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
-[[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
-[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
-[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
-[[ ! -L .xvimrc ]] && ln -s $SCRIPTDIR/xvimrc .xvimrc
-[[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
-cd bin
-[[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
-[[ ! -L spotify ]] && ln -s $SCRIPTDIR/spotify
-
 # Copy iTerm2 Configs
 cp $SCRIPTDIR/iterm2-config/com.googlecode.iterm2.plist ~/Library/Preferences/
-
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-brew install curl wget the_silver_searcher chruby ruby-build htop
-
-# preinstall vim bundle
-cd ~/.vim/bundle/neobundle.vim
-./bin/neoinstall
-
-cd $CURRDIR

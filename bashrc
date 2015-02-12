@@ -36,9 +36,6 @@ alias b='cat ~/.bashrc |grep'
 
 export GOPATH=~/.go
 
-export SCALA_HOME=/usr/local/scala
-export SBT_OPTS="-XX:+CMSClassUnloadingEnabled -XX:PermSize=256M -XX:MaxPermSize=512M"
-
 export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin
 
 # Colorized Prompt
@@ -109,14 +106,6 @@ alias gclone=gclone_ctl
 function gclone_ctl {
   git clone ssh://git@github.com/$1
 }
-
-# Spotify
-alias spn='spotify next && spotify status'
-alias spf='spotify shuffle'
-alias spr='spotify repeat'
-alias sps='spotify status'
-alias spt='spotify toggle && spotify status'
-alias spp='spotify toggle && spotify status'
 
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"

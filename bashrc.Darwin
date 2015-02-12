@@ -21,4 +21,11 @@ dropbox-ctl() {
   open "http://dl.dropbox.com/u/56340597/$1"
 }
 alias dropbox=dropbox-ctl
-alias jsonpp=/usr/local/Cellar/jsonpp/86.64/bin/jsonpp
+
+# Spotify
+alias spn='spotify next && spotify status'
+alias spf='spotify shuffle'
+alias spr='spotify repeat'
+alias sps='spotify status'
+alias spt='spotify toggle && spotify status'
+alias spp='spotify toggle && spotify status'
