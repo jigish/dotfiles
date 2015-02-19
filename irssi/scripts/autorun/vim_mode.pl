@@ -1,0 +1,1 @@
+../misc/vim_mode.pl
