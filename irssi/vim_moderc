@@ -1,0 +1,12 @@
+map gp :bprev
+map gn :bnext
+map g1 :b 1
+map g2 :b 2
+map g3 :b 3
+map g4 :b 4
+map g5 :b 5
+map g6 :b 6
+map g7 :b 7
+map g8 :b 8
+map g9 :b 9
+map g0 :b 10
