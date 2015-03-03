@@ -10,3 +10,13 @@ map g7 :b 7
 map g8 :b 8
 map g9 :b 9
 map g0 :b 10
+map gq :b 11
+map gw :b 12
+map ge :b 13
+map gr :b 14
+map gt :b 15
+map gy :b 16
+map gu :b 17
+map gi :b 18
+map go :b 19
+map gp :b 20
