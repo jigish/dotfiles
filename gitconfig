@@ -21,6 +21,10 @@
   cp = cherry-pick
   wc = whatchanged
   l = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
+  f = fetch
+  fo = fetch origin
+  fom = fetch origin master:master
+  fod = fetch origin develop:develop
   b = branch
   bd = branch -d
   sub = submodule
