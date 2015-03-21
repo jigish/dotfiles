@@ -37,6 +37,7 @@
   r = rev-parse --abbrev-ref HEAD
   h = rev-parse HEAD
   pr = pull-request -b develop
+  prmaster = pull-request -b master
   prm = "!sh -c '[ $# = 1 ] && git checkout develop && git pull && git checkout $1 && git rebase develop && git push -f && git checkout develop && git merge $1 && git push && git pdo $1 && git bd $1 && exit 0 || echo \"usage: git prm <branch>\" >&2 && exit 1' -"
   prmm = "!sh -c '[ $# = 1 ] && git checkout master && git pull && git checkout $1 && git rebase master && git push -f && git checkout master && git merge $1 && git push && git pdo $1 && git bd $1 && exit 0 || echo \"usage: git prm <branch>\" >&2 && exit 1' -"
   prmb = !sh -c 'git prm `git r`'
