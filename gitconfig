@@ -16,6 +16,7 @@
   c = commit
   a = add
   sn = status --untracked=no
+  save = stash save -u
   co = checkout
   cb = checkout -b
   cp = cherry-pick
