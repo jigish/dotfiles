@@ -1,9 +1,5 @@
 # Darwin Specific Shit
 
-# chruby
-source /usr/local/opt/chruby/share/chruby/chruby.sh
-chruby ruby-2.1.3
-
 # Homebrew Bash Completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
