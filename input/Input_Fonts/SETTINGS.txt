@@ -6,12 +6,6 @@ your fonts with the inputCustomize.py command-line tool found in this package, o
 by re-downloading the fonts at <http://input.fontbureau.com/download>.
 
 
-	Four Style Family
-		Regular: InputMonoNarrow-Thin.ttf
-		Italic: InputMonoNarrow-ThinItalic.ttf
-		Bold: InputMonoNarrow-Regular.ttf
-		Bold Italic: InputMonoNarrow-Italic.ttf
-
 	Alternates
 		--a=ss
 		--braces=straight
@@ -20,4 +14,4 @@ by re-downloading the fonts at <http://input.fontbureau.com/download>.
 		--l=topserif
 		--zero=slash
 
-	Line Height: 1.2×
+	Line Height: 1.1×
