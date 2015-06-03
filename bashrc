@@ -36,7 +36,9 @@ alias b='cat ~/.bashrc |grep'
 
 export GOPATH=~/.go
 
-export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin
+export ECLIPSE_HOME=~/eclipse
+
+export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"
@@ -102,11 +104,10 @@ alias ack=ag
 [ ! $(which hub) == "" ] && eval "$(hub alias -s)"
 alias g='git'
 alias gbranch='git rev-parse --abbrev-ref HEAD'
-alias gclone=gclone_ctl
-function gclone_ctl {
+function gclone {
   git clone ssh://git@github.com/$1
 }
 
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
-[[ -s "$HOME/.bashrc.accompani" ]] && source "$HOME/.bashrc.accompani"
+[[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"

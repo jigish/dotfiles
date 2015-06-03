@@ -1,6 +1,6 @@
 [user]
   name = Jigish Patel
-  email = jigish@accompani.com
+  email = jigishp@netflix.com
 [core]
   excludesfile = ~/.git-global-ignore
   editor = vim

@@ -13,7 +13,7 @@ abstracts = {
   line_start = "%b:%c:%C:%n ";
 
   # timestamp styling, nothing by default
-  timestamp = "%c[%K$0-%c]";
+  timestamp = "%c[%n$0-%c]";
 
   # any kind of text that needs hilighting, default is to bold
   hilight = "%_$*%_";
