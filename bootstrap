@@ -31,9 +31,20 @@ cd bin
 
 # preinstall vim bundle
 cd ~/.vim/bundle/neobundle.vim
+git checkout master
+git pull
 ./bin/neoinstall
 
 # run os-specific shit
 $SCRIPTDIR/bootstrap.`uname`
+
+# run company-specific shit
+if [ "$1" = "netflix" ]; then
+  cd ~
+  [[ ! -d dotfiles-netflix ]] && git clone ssh://git@stash.corp.netflix.com:7999/~jigishp/dotfiles.git dotfiles-netflix
+  cd dotfiles-netflix
+  git pull
+  ./bootstrap
+fi
 
 cd $CURRDIR

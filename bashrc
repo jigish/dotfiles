@@ -108,6 +108,10 @@ function gclone {
   git clone ssh://git@github.com/$1
 }
 
+# Chruby
+source /usr/local/share/chruby/chruby.sh
+chruby 2.2.2
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
