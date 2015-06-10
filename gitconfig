@@ -43,7 +43,7 @@
   prmm = "!sh -c '[ $# = 1 ] && git checkout master && git pull && git checkout $1 && git rebase master && git push -f && git checkout master && git merge $1 && git push && git pdo $1 && git bd $1 && exit 0 || echo \"usage: git prm <branch>\" >&2 && exit 1' -"
   prmb = !sh -c 'git prm `git r`'
   prmmb = !sh -c 'git prmm `git r`'
-	create-pull-request = !sh -c 'stash pull-request $0'
+  create-pull-request = !sh -c 'stash pull-request $0'
 [branch]
   autosetuprebase = always
 [gc]
