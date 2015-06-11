@@ -1,0 +1,23 @@
+#!/bin/bash
+
+CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
+set -ex
+
+PREFIX=$HOME/bin/ctags-root
+
+cd $SCRIPTDIR/ctags
+
+mkdir -p $PREFIX
+
+make clean
+autoreconf -vfi
+./configure --prefix=$PREFIX
+make
+make install
+
+cd $HOME/bin
+ln -s $PREFIX/bin/* ./
+
+cd $CURRDIR

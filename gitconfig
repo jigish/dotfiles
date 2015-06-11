@@ -52,3 +52,5 @@
   default = tracking
 [heroku]
   account = personal
+[url "ssh://git@stash.corp.netflix.com"]
+  insteadOf = https://stash.corp.netflix.com/scm

@@ -19,7 +19,7 @@ shopt -s cdspell
 shopt -s checkwinsize
 
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    test -r $HOME/.dircolors && eval "$(dircolors -b $HOME/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
@@ -34,11 +34,15 @@ alias lt='ls -alrth'
 alias h='history |grep'
 alias b='cat ~/.bashrc |grep'
 
-export GOPATH=~/.go
+# i fucking hate godep
+export GOPATH=$HOME/code/go
 
-export ECLIPSE_HOME=~/eclipse
+export ECLIPSE_HOME=$HOME/eclipse
 
-export PATH=${PATH}:~/bin:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
+export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
+
+# proper ctags man
+export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH
 
 # Colorized Prompt
 BLACK="\[\033[0;30m\]"
@@ -68,10 +72,10 @@ function cool_prompt {
 PROMPT_COMMAND=cool_prompt
 
 # z!
-. ~/bin/z.sh
+. $HOME/bin/z.sh
 
 # Expected working dir for code
-export CODE=~/code
+export CODE=$HOME/code
 alias cdcode='z $CODE'
 alias cdslate='z $CODE/slate'
 alias zcode='z $CODE'

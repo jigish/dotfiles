@@ -5,9 +5,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# Better ctags
-alias ctags=/usr/local/bin/ctags
-
 alias smvim='sudo mvim'
 
 # Default Mac Web Server

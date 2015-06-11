@@ -13,3 +13,6 @@
 [submodule "irssi/scripts/slack"]
 	path = irssi/scripts/slack
 	url = https://github.com/tedski/slack-irssi
+[submodule "ctags"]
+	path = ctags
+	url = ssh://git@github.com/universal-ctags/ctags
