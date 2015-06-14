@@ -11,9 +11,9 @@ cd $SCRIPTDIR/ctags
 
 mkdir -p $PREFIX
 
-make clean
 autoreconf -vfi
 ./configure --prefix=$PREFIX
+make clean
 make
 make install
 
