@@ -2,13 +2,17 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# we need to disable strict host checking for github since we're likey automating this shit
-echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
-
 #sudo apt-get-repository ppa:keithw/mosh
 sudo apt-get update
 #sudo apt-get install -y mosh
 sudo apt-get install -y perl curl wget ctags screen ngrep silversearcher-ag
+
+# Chruby
+cd /tmp
+wget -O chruby-0.3.9.tar.gz https://github.com/postmodern/chruby/archive/v0.3.9.tar.gz
+tar -xzvf chruby-0.3.9.tar.gz
+cd chruby-0.3.9/
+sudo make install
 
 # Create Links
 cd ~

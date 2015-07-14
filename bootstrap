@@ -35,9 +35,6 @@ git checkout master
 git pull
 ./bin/neoinstall
 
-# install latest ctags
-$SCRIPTDIR/ctags
-
 # run os-specific shit
 $SCRIPTDIR/bootstrap.`uname`
 

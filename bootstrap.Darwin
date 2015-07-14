@@ -2,6 +2,9 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+# install latest ctags
+$SCRIPTDIR/bootstrap.ctags
+
 # Create Links
 cd ~
 [[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
