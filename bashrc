@@ -113,8 +113,10 @@ function gclone {
 }
 
 # Chruby
-source /usr/local/share/chruby/chruby.sh
-chruby 2.2.2
+if [ -f /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  chruby 2.2.2
+fi
 
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
