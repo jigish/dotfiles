@@ -39,7 +39,6 @@
   h = rev-parse HEAD
   pr = pull-request -b master
   prd = pull-request -b develop
-	create-pull-request = !sh -c 'stash pull-request $0'
 [branch]
   autosetuprebase = always
 [gc]

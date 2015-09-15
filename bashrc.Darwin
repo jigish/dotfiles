@@ -5,8 +5,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-alias smvim='sudo mvim'
-
 # Default Mac Web Server
 export DOCROOT=/Library/WebServer/Documents
 
@@ -14,13 +12,6 @@ dropbox() {
   open "http://dl.dropbox.com/u/56340597/$1"
 }
 
-# Spotify
-alias spn='spotify next && spotify status'
-alias spf='spotify shuffle'
-alias spr='spotify repeat'
-alias sps='spotify status'
-alias spt='spotify toggle && spotify status'
-alias spp='spotify toggle && spotify status'
 irc() {
   killall -9 bitlbee >/dev/null 2>&1
   bitlbee -D
