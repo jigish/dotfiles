@@ -37,7 +37,7 @@ alias b='cat ~/.bashrc |grep'
 # i fucking hate godep
 export GOPATH=$HOME/code/go
 
-export ECLIPSE_HOME=$HOME/eclipse
+export ECLIPSE_HOME=$HOME/eclipse/jee-mars/Eclipse.app/Contents/Eclipse
 
 export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
 
@@ -64,7 +64,7 @@ WHITE="\[\033[1;37m\]"
 NOCOLOR="\[\033[0m\]"
 
 function cool_prompt {
-  PS1="$BLUE[\t] \u@$(if [[ -x /usr/local/bin/my-instance-name ]]; then echo "$RED$(/usr/local/bin/my-instance-name)$BLUE"; else hostname -s; fi) "
+PS1="$BLUE[\t] \u@$(if [[ -x /usr/local/bin/my-instance-name ]]; then echo "$RED$(/usr/local/bin/my-instance-name)$BLUE"; elif [[ -f ~/.homed ]]; then echo "$RED$(hostname -s)$BLUE"; else hostname -s; fi) "
   [[ $(type -t __git_ps1) = "function" ]] && PS1="${PS1}$(__git_ps1 '%s:')"
   PS1="${PS1}\W \!$ $NOCOLOR"
 }
@@ -117,6 +117,9 @@ if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
   chruby 2.2.2
 fi
+
+# The Fuck
+eval "$(thefuck --alias)"
 
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
