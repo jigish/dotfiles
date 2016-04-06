@@ -26,8 +26,12 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias vi='vim'
-alias v='vim'
+function ovim {
+  /usr/local/bin/vim
+}
+alias vim='nvim'
+alias vi='nvim'
+alias v='nvim'
 alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
@@ -101,8 +105,8 @@ function adie-ctl {
 alias adie='adie-ctl'
 alias adg='aws describe-groups'
 
-# Ag > Ack
-alias ack=ag
+# Pt > Ag > Ack
+alias ack=pt
 
 # hub > git
 [ ! $(which hub) == "" ] && eval "$(hub alias -s)"
@@ -124,3 +128,5 @@ eval "$(thefuck --alias)"
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
