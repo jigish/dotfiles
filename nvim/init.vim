@@ -29,6 +29,7 @@ Plug 'gregsexton/Muon'
 
 " extra features
 Plug 'airblade/vim-gitgutter'
+Plug 'brettanomyces/nvim-terminus'
 Plug 'dansomething/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -69,6 +70,7 @@ set ignorecase
 set linespace=1
 set list
 set listchars=tab:▸\ ,eol:¬
+set noeb vb t_vb=
 set number
 set scrolloff=3
 set shortmess=atI
@@ -81,7 +83,6 @@ set textwidth=110
 set title
 set ts=2
 set undofile
-set vb t_vb=
 set wildmode=list:longest,full
 
 let &wrapmargin= &textwidth
@@ -180,6 +181,19 @@ nnoremap <leader>bC :bdelete!<CR>
 " exec
 nnoremap <leader>ee ^y$:!<c-r>0<CR>
 
+" terminal/split awesomeness
+tnoremap <Esc> <C-\><C-n>
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
+nnoremap <M-d> :vsplit<CR>
+nnoremap <M-D> :split<CR>
+
 " ctags
 map <leader>tw yiw:tag <c-r>0<CR>
 map <leader>ts :ts<CR>
@@ -231,10 +245,12 @@ map <leader>ga :Git add .<CR>
 nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
-nnoremap <silent><C-t> :Files<CR>
-nnoremap <silent><C-g> :GitFiles<CR>
-nnoremap <silent><C-b> :Buffers<CR>
-nnoremap <silent><C-p> :Tags<CR>
+let g:fzf_command_prefix = 'Fzf'
+nnoremap <silent><C-t> :FzfGitFiles<CR>
+nnoremap <silent><C-g> :FzfFiles<CR>
+nnoremap <silent><C-b> :FzfBuffers<CR>
+nnoremap <silent><C-p> :FzfTags<CR>
+nnoremap <silent><C-c> :FzfCommits<CR>
 
 " git gutter
 map <leader>gg :GitGutterToggle<CR>
