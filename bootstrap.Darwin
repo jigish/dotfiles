@@ -12,7 +12,7 @@ cd ~
 [[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 mkdir -p bin
 cd bin
-[[ ! -L spotify ]] && ln -s $SCRIPTDIR/spotify
+[[ ! -L spotify ]] && ln -s $SCRIPTDIR/bin/spotify
 
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 

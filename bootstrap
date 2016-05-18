@@ -23,17 +23,16 @@ cd ~
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
+mkdir -p .config
+cd .config
+[[ ! -L nvim ]] && ln -s $SCRIPTDIR/nvim nvim
+cd ~
 mkdir -p bin
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
+[[ ! -L e ]] && ln -s $SCRIPTDIR/bin/e
 
 [ ! $(which go) = "" ] && go get -u github.com/github/hub
-
-# preinstall vim bundle
-cd ~/.vim/bundle/neobundle.vim
-git checkout master
-git pull
-./bin/neoinstall
 
 # run os-specific shit
 $SCRIPTDIR/bootstrap.`uname`
