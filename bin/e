@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+
+"""Edit a file in the host nvim instance."""
+import os
+import sys
+
+from neovim import attach
+
+args = sys.argv[1:]
+if not args:
+    print "Usage: {} <filename>".format(sys.argv[0])
+    sys.exit(1)
+
+fname = os.path.realpath(args[0])
+
+addr = os.environ.get("NVIM_LISTEN_ADDRESS", None)
+if not addr:
+    os.execvp('nvim', ['nvim', fname])
+
+nvim = attach("socket", path=addr)
+
+nvim.input('<c-\\><c-n>')
+
+nvim.command("split {}".format(fname))
