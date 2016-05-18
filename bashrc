@@ -29,9 +29,9 @@ fi
 function ovim {
   /usr/local/bin/vim
 }
-alias vim='nvim'
-alias vi='nvim'
-alias v='nvim'
+alias vim='e'
+alias vi='e'
+alias v='e'
 alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
@@ -128,5 +128,13 @@ eval "$(thefuck --alias)"
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -30,16 +30,19 @@ Plug 'gregsexton/Muon'
 " extra features
 Plug 'airblade/vim-gitgutter'
 Plug 'brettanomyces/nvim-terminus'
+Plug 'Chiel92/vim-autoformat'
 Plug 'dansomething/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
+Plug 'mattn/vim-javafmt'
 Plug 'mhinz/vim-grepper'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
+Plug 'udalov/kotlin-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -76,12 +79,16 @@ set scrolloff=3
 set shortmess=atI
 set smartcase
 set smartindent
+set splitbelow
+set splitright
 set sts=2
 set sw=2
 set tags+=.tags
-set textwidth=110
+set textwidth=120
 set title
 set ts=2
+set ttimeout
+set ttimeoutlen=0
 set undofile
 set wildmode=list:longest,full
 
@@ -92,6 +99,13 @@ let mapleader=","
 augroup golang
   au!
   au FileType go setlocal noexpandtab
+augroup END
+
+augroup java
+  au!
+  au FileType java setlocal sts=4
+  au FileType java setlocal sw=4
+  au FileType java setlocal ts=4
 augroup END
 
 " auto-open quick fix window on make and such
@@ -177,12 +191,14 @@ nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>bD :bdelete!<CR>
 nnoremap <leader>bc :bdelete<CR>
 nnoremap <leader>bC :bdelete!<CR>
+nnoremap <leader>fD :call delete(@%)<CR>:bdelete!<CR>
 
 " exec
 nnoremap <leader>ee ^y$:!<c-r>0<CR>
 
 " terminal/split awesomeness
-tnoremap <Esc> <C-\><C-n>
+tnoremap <M-c> <C-\><C-n>
+tnoremap <M-x> <C-\><C-n>
 tnoremap <M-h> <C-\><C-n><C-w>h
 tnoremap <M-j> <C-\><C-n><C-w>j
 tnoremap <M-k> <C-\><C-n><C-w>k
@@ -193,6 +209,12 @@ nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
 nnoremap <M-d> :vsplit<CR>
 nnoremap <M-D> :split<CR>
+tnoremap <M-d> <C-\><C-n>:vsplit<CR>:terminal<CR>
+tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>
+nnoremap <M-t> :vsplit<CR>:terminal<CR>
+nnoremap <M-T> :split<CR>:terminal<CR>
+tnoremap <M-t> <C-\><C-n>:vsplit<CR>:terminal<CR>
+tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>
 
 " ctags
 map <leader>tw yiw:tag <c-r>0<CR>
@@ -228,29 +250,33 @@ au BufLeave *.java,*.scala map <leader>tw yiw:tag <c-r>0<CR>
 let g:EclimJavaSearchSingleResult='edit'
 let g:EclimScalaSearchSingleResult='edit'
 let g:EclimCompletionMethod = 'omnifunc'
+map <leader>eo :ProjectImport .<CR>:ProjectOpen<CR>
 map <leader>er :ProjectDelete <c-r>=expand('%:p:h:t')<CR><CR>:ProjectImport .<CR>:ProjectOpen<CR>
 vnoremap <leader>jg :JavaGetSet<CR>
 map <leader>jc :JavaConstructor<CR>
 map <leader>ji :JavaImport<CR>
 map <leader>jo :JavaImportOrganize<CR>
+map <leader>jf :JavaFmt<CR>
 
 " fugitive
 map <leader>gs :Gstatus<CR>
 map <leader>gc :Gcommit<CR>
 map <leader>gp :Git push<CR>
+map <leader>gP :Git pull<CR>
 map <leader>gl :Git pull<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>gb :Gblame<CR>
 map <leader>ga :Git add .<CR>
+map <leader>gr :!spr<CR>
+map <leader>spr :!spr<CR>
 nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-t> :FzfGitFiles<CR>
-nnoremap <silent><C-g> :FzfFiles<CR>
+nnoremap <silent><C-t> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
 nnoremap <silent><C-p> :FzfTags<CR>
-nnoremap <silent><C-c> :FzfCommits<CR>
 
 " git gutter
 map <leader>gg :GitGutterToggle<CR>
@@ -276,3 +302,6 @@ au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType 
 
 " tagbar
 map <leader>tb :TagbarToggle<CR>
+
+" javafmt
+let g:javafmt_options='-a'
