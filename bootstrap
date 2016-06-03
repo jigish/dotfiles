@@ -32,8 +32,6 @@ cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 [[ ! -L e ]] && ln -s $SCRIPTDIR/bin/e
 
-[ ! $(which go) = "" ] && go get -u github.com/github/hub
-
 # run os-specific shit
 $SCRIPTDIR/bootstrap.`uname`
 
