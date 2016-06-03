@@ -24,6 +24,9 @@ else
   brew install --HEAD --with-release neovim
 fi
 
+pip install --upgrade pip
+pip install --upgrade neovim
+
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]] ; then
   printf "\n> You appear to be running this script from within iTerm.app which could\n"
   printf "  overwrite your new preferences on quit.\n"

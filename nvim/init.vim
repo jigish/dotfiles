@@ -37,6 +37,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'mattn/vim-javafmt'
 Plug 'mhinz/vim-grepper'
+Plug 'neomake/neomake'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
@@ -273,10 +274,10 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-t> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
-nnoremap <silent><C-p> :FzfTags<CR>
+nnoremap <silent><C-t> :FzfTags<CR>
 
 " git gutter
 map <leader>gg :GitGutterToggle<CR>
@@ -292,6 +293,7 @@ nnoremap <leader>mm :wa<CR>:make<CR>
 nnoremap <leader>mc :wa<CR>:make clean<CR>
 nnoremap <leader>mt :wa<CR>:make test<CR>
 nnoremap <leader>mf :wa<CR>:make fmt<CR>
+autocmd! BufWritePost *.go Neomake
 
 " nerdtree
 let g:NERDTreeChDirMode=2
