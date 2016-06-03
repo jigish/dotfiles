@@ -119,7 +119,7 @@ function gclone {
 # Chruby
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
-  chruby 2.2.2
+  chruby 2.3.1
 fi
 
 # The Fuck

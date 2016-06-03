@@ -17,7 +17,7 @@ cd bin
 [[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew upgrade --all
-brew install curl wget pt the_silver_searcher chruby ruby-build htop bash-completion bazaar git go mercurial python subversion thefuck vim
+brew install curl wget pt the_silver_searcher chruby ruby-install htop bash-completion bazaar git go mercurial python subversion thefuck vim
 if [[ -x $(which nvim) ]]; then
   brew reinstall --HEAD neovim
 else
