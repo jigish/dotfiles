@@ -2,9 +2,6 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# install latest ctags
-$SCRIPTDIR/bootstrap.ctags
-
 # Create Links
 cd ~
 [[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
@@ -17,7 +14,7 @@ cd bin
 [[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew upgrade --all
-brew install curl wget pt the_silver_searcher chruby ruby-install htop bash-completion bazaar git go mercurial python subversion thefuck vim hub
+brew install bash-completion bazaar chruby ctags curl git go htop hub mercurial pt python ruby-install subversion the_silver_searcher thefuck vim wget
 if [[ -x $(which nvim) ]]; then
   brew reinstall --HEAD neovim
 else
