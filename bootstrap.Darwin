@@ -27,6 +27,8 @@ fi
 pip install --upgrade pip
 pip install --upgrade neovim
 
+cp $SCRIPTDIR/fonts/* ~/Library/Fonts/
+
 if [[ "$TERM_PROGRAM" == "iTerm.app" ]] ; then
   printf "\n> You appear to be running this script from within iTerm.app which could\n"
   printf "  overwrite your new preferences on quit.\n"
