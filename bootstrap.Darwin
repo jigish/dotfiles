@@ -21,6 +21,9 @@ else
   brew install --HEAD --with-release neovim
 fi
 
+mkdir -p ~/.rubies
+[[ ! -d ~/.rubies/2.3.1 ]] && ruby-install --install-dir /Users/jigish/.rubies/2.3.1 ruby 2.3.1
+
 pip install --upgrade pip
 pip install --upgrade neovim
 
