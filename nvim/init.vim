@@ -9,12 +9,9 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " syntax & language plugins
-Plug 'fatih/vim-go', { 'for' : ['go', 'godoc'] }
-Plug 'docker/docker', { 'rtp' : '/contrib/syntax/vim/'}
+Plug 'sheerun/vim-polyglot'
 Plug 'saltstack/salt-vim'
 Plug 'tfnico/vim-gradle'
-Plug 'tpope/vim-git'
-Plug 'vim-ruby/vim-ruby', { 'for' : ['eruby', 'ruby'] }
 
 " basics & dependencies
 Plug 'tpope/vim-abolish'
@@ -43,7 +40,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
-Plug 'udalov/kotlin-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -113,6 +109,9 @@ augroup END
 " TODO do I need this for neovim?
 autocmd QuickFixCmdPost [^l]* nested cwindow
 autocmd QuickFixCmdPost    l* nested lwindow
+
+" set terminal history to super long
+let g:terminal_scrollback_buffer_size = 2147483647
 
 " colors ----------------------------------------------------------------------------------------------------
 
@@ -251,6 +250,8 @@ au BufLeave *.java,*.scala map <leader>tw yiw:tag <c-r>0<CR>
 let g:EclimJavaSearchSingleResult='edit'
 let g:EclimScalaSearchSingleResult='edit'
 let g:EclimCompletionMethod = 'omnifunc'
+let g:EclimHtmlValidate = 0
+let g:EclimJavascriptValidate = 0
 map <leader>eo :ProjectImport .<CR>:ProjectOpen<CR>
 map <leader>er :ProjectDelete <c-r>=expand('%:p:h:t')<CR><CR>:ProjectImport .<CR>:ProjectOpen<CR>
 vnoremap <leader>jg :JavaGetSet<CR>
