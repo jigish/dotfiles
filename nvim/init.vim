@@ -12,6 +12,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'sheerun/vim-polyglot'
 Plug 'saltstack/salt-vim'
 Plug 'tfnico/vim-gradle'
+Plug 'bendavis78/vim-polymer'
 
 " basics & dependencies
 Plug 'tpope/vim-abolish'

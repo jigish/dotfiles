@@ -1,0 +1,14 @@
+#!/bin/bash
+
+[[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew update
+brew upgrade --all
+brew install bash-completion bazaar chruby ctags curl git go htop hub mercurial pt python ruby-install subversion the_silver_searcher thefuck vim wget
+if [[ -x $(which nvim) ]]; then
+  brew reinstall --HEAD neovim
+else
+  brew install --HEAD --with-release neovim
+fi
+
+pip install --upgrade pip
+pip install --upgrade neovim
