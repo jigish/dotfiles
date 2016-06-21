@@ -10,6 +10,7 @@ cd ~
 mkdir -p bin
 cd bin
 [[ ! -L spotify ]] && ln -s $SCRIPTDIR/bin/spotify
+[[ ! -L rebrew ]] && ln -s $SCRIPTDIR/bin/rebrew
 
 # set up brew & pip
 $SCRIPTDIR/bootstrap.brew
