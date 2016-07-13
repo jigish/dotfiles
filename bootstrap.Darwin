@@ -16,7 +16,7 @@ cd bin
 $SCRIPTDIR/bootstrap.brew
 
 mkdir -p ~/.rubies
-[[ ! -d ~/.rubies/2.3.1 ]] && ruby-install --install-dir /Users/jigish/.rubies/2.3.1 ruby 2.3.1
+[[ ! -d ~/.rubies/2.3.1 ]] && ruby-install --install-dir ${HOME}/.rubies/2.3.1 ruby 2.3.1
 
 cp $SCRIPTDIR/fonts/* ~/Library/Fonts/
 
