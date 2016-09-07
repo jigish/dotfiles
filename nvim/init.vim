@@ -29,7 +29,7 @@ Plug 'gregsexton/Muon'
 Plug 'airblade/vim-gitgutter'
 Plug 'brettanomyces/nvim-terminus'
 Plug 'Chiel92/vim-autoformat'
-Plug 'dansomething/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
+Plug 'jigish/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -276,8 +276,8 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
-nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>

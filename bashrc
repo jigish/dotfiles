@@ -41,7 +41,7 @@ alias b='cat ~/.bashrc |grep'
 # i fucking hate godep
 export GOPATH=$HOME/code/go
 
-export ECLIPSE_HOME=$HOME/eclipse/jee-mars/Eclipse.app/Contents/Eclipse
+export ECLIPSE_HOME=$HOME/eclipse/jee-neon/Eclipse.app/Contents/Eclipse
 
 export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
 
