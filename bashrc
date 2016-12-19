@@ -125,6 +125,11 @@ fi
 # The Fuck
 eval "$(thefuck --alias)"
 
+# Weather :)
+function weather {
+  curl -s wttr.in/$1
+}
+
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"

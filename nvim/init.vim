@@ -41,7 +41,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline' " TODO switch to lightline
 Plug 'vim-airline/vim-airline-themes'
 
 " TODO syntastic -> neomake
@@ -254,7 +254,7 @@ let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimHtmlValidate = 0
 let g:EclimJavascriptValidate = 0
 map <leader>eo :ProjectImport .<CR>:ProjectOpen<CR>
-map <leader>er :ProjectDelete <c-r>=expand('%:p:h:t')<CR><CR>:ProjectImport .<CR>:ProjectOpen<CR>
+map <leader>er :ProjectDelete <c-r>=strpart(getcwd(), strridx(getcwd(), '/') + 1)<CR><CR>:ProjectImport .<CR>:ProjectOpen<CR>
 vnoremap <leader>jg :JavaGetSet<CR>
 map <leader>jc :JavaConstructor<CR>
 map <leader>ji :JavaImport<CR>
