@@ -252,6 +252,7 @@ let g:EclimJavaSearchSingleResult='edit'
 let g:EclimScalaSearchSingleResult='edit'
 let g:EclimCompletionMethod = 'omnifunc'
 let g:EclimHtmlValidate = 0
+let g:EclimXmlValidate = 0
 let g:EclimJavascriptValidate = 0
 map <leader>eo :ProjectImport .<CR>:ProjectOpen<CR>
 map <leader>er :ProjectDelete <c-r>=strpart(getcwd(), strridx(getcwd(), '/') + 1)<CR><CR>:ProjectImport .<CR>:ProjectOpen<CR>
