@@ -210,12 +210,12 @@ nnoremap <M-k> <C-w>k
 nnoremap <M-l> <C-w>l
 nnoremap <M-d> :vsplit<CR>
 nnoremap <M-D> :split<CR>
-tnoremap <M-d> <C-\><C-n>:vsplit<CR>:terminal<CR>
-tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>
-nnoremap <M-t> :vsplit<CR>:terminal<CR>
-nnoremap <M-T> :split<CR>:terminal<CR>
-tnoremap <M-t> <C-\><C-n>:vsplit<CR>:terminal<CR>
-tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>
+tnoremap <M-d> <C-\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>
+nnoremap <M-t> :vsplit<CR>:terminal<CR>:set nonumber<CR>
+nnoremap <M-T> :split<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <M-t> <C-\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>
 
 " ctags
 map <leader>tw yiw:tag <c-r>0<CR>
@@ -277,8 +277,8 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
-nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name build -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
