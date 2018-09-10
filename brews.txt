@@ -20,6 +20,7 @@ readline
 ripgrep
 rlwrap
 ruby-install
+rustup
 subversion
 the_silver_searcher
 thefuck
