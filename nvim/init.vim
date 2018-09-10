@@ -290,8 +290,8 @@ map <leader>gg :GitGutterToggle<CR>
 map <leader>gr :GitGutterToggle<CR>:GitGutterToggle<CR>
 
 " grepper
-map <leader>aw :Grepper -tool pt -cword -noprompt<CR>
-map <leader>aa :Grepper -tool pt<CR>
+map <leader>aw :Grepper -tool rg -cword -noprompt<CR>
+map <leader>aa :Grepper -tool rg<CR>
 map <leader>ag :Grepper -tool git<CR>
 
 " TODO make/neomake
