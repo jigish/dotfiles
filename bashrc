@@ -34,8 +34,7 @@ alias vi='e'
 alias v='e'
 alias l='ls -alh'
 alias la='ls -alh'
-alias lt='ls -alrth'
-alias h='history |grep'
+alias lt='ls -alrth' alias h='history |grep'
 alias b='cat ~/.bashrc |grep'
 
 # i fucking hate godep
@@ -105,8 +104,8 @@ function adie-ctl {
 alias adie='adie-ctl'
 alias adg='aws describe-groups'
 
-# Pt > Ag > Ack
-alias ack=pt
+# rg > pt > ag > ack
+alias ack=rg
 
 # hub > git
 [ ! $(which hub) == "" ] && eval "$(hub alias -s)"
