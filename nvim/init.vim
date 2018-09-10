@@ -9,10 +9,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 " syntax & language plugins
+Plug 'bendavis78/vim-polymer'
 Plug 'sheerun/vim-polyglot'
 Plug 'saltstack/salt-vim'
 Plug 'tfnico/vim-gradle'
-Plug 'bendavis78/vim-polymer'
 
 " basics & dependencies
 Plug 'tpope/vim-abolish'
@@ -23,13 +23,15 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 
 " color schemes
-Plug 'gregsexton/Muon'
 Plug 'arcticicestudio/nord-vim'
+Plug 'gregsexton/Muon' " TODO remove. keeping around in case i end up hating nord.
 
 " extra features
 Plug 'airblade/vim-gitgutter'
 Plug 'brettanomyces/nvim-terminus'
 Plug 'Chiel92/vim-autoformat'
+Plug 'edkolev/tmuxline.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'jigish/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -42,7 +44,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
-Plug 'itchyny/lightline.vim'
 
 " TODO syntastic -> neomake
 " AnsiEsc?

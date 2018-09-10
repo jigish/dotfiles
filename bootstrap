@@ -23,9 +23,12 @@ cd ~
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
+[[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
+[[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/nvim nvim
+[[ ! -L alacritty ]] && ln -s $SCRIPTDIR/alacritty alacritty
 cd ~
 mkdir -p bin
 cd bin

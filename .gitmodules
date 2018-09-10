@@ -16,3 +16,6 @@
 [submodule "nord/nord-alacritty"]
 	path = nord/nord-alacritty
 	url = https://github.com/arcticicestudio/nord-alacritty.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
