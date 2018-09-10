@@ -34,7 +34,8 @@ alias vi='e'
 alias v='e'
 alias l='ls -alh'
 alias la='ls -alh'
-alias lt='ls -alrth' alias h='history |grep'
+alias lt='ls -alrth'
+alias h='history |grep'
 alias b='cat ~/.bashrc |grep'
 
 # i fucking hate godep
