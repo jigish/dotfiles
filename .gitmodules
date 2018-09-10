@@ -4,12 +4,15 @@
 [submodule "lucius"]
 	path = lucius
 	url = https://github.com/jonathanfilip/lucius
-[submodule "iterm2-config"]
-	path = iterm2-config
-	url = https://github.com/jigish/iterm2-config
 [submodule "vim-config"]
 	path = vim-config
 	url = https://github.com/jigish/vim-config
 [submodule "irssi/scripts/slack"]
 	path = irssi/scripts/slack
 	url = https://github.com/tedski/slack-irssi
+[submodule "nord/nord-iterm2"]
+	path = nord/nord-iterm2
+	url = https://github.com/arcticicestudio/nord-iterm2.git
+[submodule "nord/nord-alacritty"]
+	path = nord/nord-alacritty
+	url = https://github.com/arcticicestudio/nord-alacritty.git

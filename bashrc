@@ -43,7 +43,7 @@ export GOPATH=$HOME/code/go
 
 export ECLIPSE_HOME=$HOME/eclipse/java-photon/Eclipse.app/Contents/Eclipse
 
-export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:${ECLIPSE_HOME}
+export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:$HOME/.cargo/bin:${ECLIPSE_HOME}
 
 # proper ctags man
 export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH

@@ -24,6 +24,7 @@ Plug 'tpope/vim-surround'
 
 " color schemes
 Plug 'gregsexton/Muon'
+Plug 'arcticicestudio/nord-vim'
 
 " extra features
 Plug 'airblade/vim-gitgutter'
@@ -41,8 +42,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline' " TODO switch to lightline
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 
 " TODO syntastic -> neomake
 " AnsiEsc?
@@ -118,23 +118,13 @@ let g:terminal_scrollback_buffer_size = 2147483647
 
 set t_Co=256
 set background=dark
-colorscheme muon
-let g:airline_theme='raven'
-
-" fix NonText and SpecialKey (equivalent to Comment)
-hi NonText ctermfg=240 ctermbg=234 gui=None guifg=#585858 guibg=#1c1c1c
-hi SpecialKey ctermfg=240 ctermbg=234 gui=None guifg=#585858 guibg=#1c1c1c
-
-" fix sign column colors
-let g:gitgutter_override_sign_column_highlight=0
-hi SignColumn            ctermbg=bg
-hi GitGutterAdd          ctermfg=086
-hi GitGutterChange       ctermfg=214
-hi GitGutterDelete       ctermfg=161
-hi GitGutterChangeDelete ctermfg=166
+let g:nord_italic=1
+let g:nord_underline=1
+let g:nord_comment_brightness=12
+colorscheme nord
 
 " show extra whitespace
-hi ExtraWhitespace guibg=#CCCCCC
+hi ExtraWhitespace guibg=nord11
 hi ExtraWhitespace ctermbg=161
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -241,8 +231,27 @@ endfunction
 command! ReloadTags call ReloadTags()
 nnoremap <silent><F5> :ReloadTags<CR>:NERDTree<CR>:NERDTreeToggle<CR>
 
-" airline
-let g:airline_powerline_fonts=1
+" lightline
+let g:lightline = {
+  \   'colorscheme' : 'nord',
+  \   'active': {
+  \     'left':[ [ 'mode', 'paste' ],
+  \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
+  \     ]
+  \   },
+  \   'component': {
+  \     'lineinfo': ' %3l:%-2v',
+  \   },
+  \   'component_function': {
+  \     'gitbranch': 'fugitive#head',
+  \   }
+  \ }
+let g:lightline.separator = {
+  \   'left': '', 'right': ''
+  \}
+let g:lightline.subseparator = {
+  \   'left': '', 'right': ''
+  \}
 
 " eclim
 au BufEnter *.java map <leader>tw :JavaSearch<CR>
