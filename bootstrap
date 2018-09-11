@@ -57,4 +57,4 @@ cd $CURRDIR
 
 echo
 echo
-echo "done. you probably want to install alacritty too."
+echo "done. you probably want to install alacritty too. (run bootstrap.alacrity from a new shell)"

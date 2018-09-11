@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [[ -d /Applications/Alacritty.app ]]; then
+  echo "Already Installed."
+  exit
+fi
+
+CURRDIR=$(pwd)
+
+rustup-init
+
+mkdir -p $CODE/github/jwilm
+cd $CODE/github/jwilm
+git clone https://github.com/jwilm/alacritty.git
+cd alacritty
+make app
+cp -r target/release/osx/Alacritty.app /Applications/
+
+cd $CURRDIR
