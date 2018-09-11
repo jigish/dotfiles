@@ -55,4 +55,6 @@ fi
 
 cd $CURRDIR
 
+echo
+echo
 echo "done. you probably want to install alacritty too."
