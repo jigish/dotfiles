@@ -54,3 +54,5 @@ if [ "$1" = "netflix" ]; then
 fi
 
 cd $CURRDIR
+
+echo "done. you probably want to install alacritty too."
