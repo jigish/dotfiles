@@ -21,10 +21,16 @@ cd ~
 [[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
-[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
 [[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
 [[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
 [[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
+[[ ! -L .zprezto ]] && ln -s $SCRIPTDIR/prezto .zprezto
+[[ ! -L .zlogin ]] && ln -s $SCRIPTDIR/prezto/runcoms/zlogin .zlogin
+[[ ! -L .zlogout ]] && ln -s $SCRIPTDIR/prezto/runcoms/zlogout .zlogout
+[[ ! -L .zpreztorc ]] && ln -s $SCRIPTDIR/prezto/runcoms/zpreztorc .zpreztorc
+[[ ! -L .zprofile ]] && ln -s $SCRIPTDIR/prezto/runcoms/zprofile .zprofile
+[[ ! -L .zshenv ]] && ln -s $SCRIPTDIR/prezto/runcoms/zshenv .zshenv
+[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/prezto/runcoms/zshrc .zshrc
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim

@@ -29,9 +29,10 @@ fi
 function ovim {
   /usr/local/bin/vim
 }
-alias vim='e'
-alias vi='e'
-alias v='e'
+alias vim='edit'
+alias vi='edit'
+alias v='edit'
+alias e='edit'
 alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'

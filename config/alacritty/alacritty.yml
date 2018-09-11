@@ -1,4 +1,4 @@
-# Configuration for Alacritty, the GPU enhanced terminal emulator
+
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -220,7 +220,7 @@ live_config_reload: true
 # Entries in shell.args are passed unmodified as arguments to the shell.
 #
 shell:
-  program: /bin/bash
+  program: /usr/local/bin/zsh
   args:
     - --login
 
@@ -366,3 +366,13 @@ key_bindings:
   - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
   - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
   - { key: NumpadEnter,             chars: "\n"                          }
+  - { key: D,        mods: Alt|Shift, chars: "\x1bD"                     }
+  - { key: D,        mods: Alt,     chars: "\x1bd"                       }
+  - { key: T,        mods: Alt|Shift, chars: "\x1bT"                     }
+  - { key: T,        mods: Alt,     chars: "\x1bt"                       }
+  - { key: J,        mods: Alt,     chars: "\x1bj"                       }
+  - { key: K,        mods: Alt,     chars: "\x1bk"                       }
+  - { key: H,        mods: Alt,     chars: "\x1bh"                       }
+  - { key: L,        mods: Alt,     chars: "\x1bl"                       }
+  - { key: C,        mods: Alt,     chars: "\x1bc"                       }
+  - { key: X,        mods: Alt,     chars: "\x1bx"                       }
