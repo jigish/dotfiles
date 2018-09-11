@@ -29,3 +29,4 @@ vim
 wget
 xz
 zsh
+zsh-completions

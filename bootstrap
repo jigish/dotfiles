@@ -4,13 +4,17 @@ CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 # Update git submodules
+echo
+echo 'updating'
 cd $SCRIPTDIR
 git pull
 git submodule update --init
-cd ../prezto
+cd prezto
 git submodule update --init
 
 # Create Links
+echo
+echo 'symlinking dotfiles'
 cd ~
 [[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
@@ -31,10 +35,15 @@ cd ~
 [[ ! -L .zprofile ]] && ln -s $SCRIPTDIR/prezto/runcoms/zprofile .zprofile
 [[ ! -L .zshenv ]] && ln -s $SCRIPTDIR/prezto/runcoms/zshenv .zshenv
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/prezto/runcoms/zshrc .zshrc
+[[ ! -L .zshrc.`uname` ]] && ln -s $SCRIPTDIR/prezto/runcoms/zshrc.`uname` .zshrc.`uname`
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
 [[ ! -L alacritty ]] && ln -s $SCRIPTDIR/config/alacritty alacritty
+
+# Create Links for custom scrips
+echo
+echo 'symlinking custom scripts'
 cd ~
 mkdir -p bin
 cd bin
@@ -42,19 +51,29 @@ cd bin
 [[ ! -L e ]] && ln -s $SCRIPTDIR/bin/e
 
 # run os-specific shit
+echo
+echo "bootstrapping $(uname)"
 $SCRIPTDIR/bootstrap.`uname`
 
 # run company-specific shit
 if [ "$1" = "netflix" ]; then
+  echo
+  echo "bootstrapping netflix"
   cd ~
   [[ ! -d dotfiles-netflix ]] && git clone ssh://git@stash.corp.netflix.com:7999/~jigishp/dotfiles.git dotfiles-netflix
   cd dotfiles-netflix
   git pull
+  git submodule update --init
   ./bootstrap
 fi
 
-cd $CURRDIR
+. ~/.bashrc
 
+# install alacritty
 echo
+echo 'bootstrapping alacritty'
+$SCRIPTDIR/bootstrap.alacritty
+
+cd $CURRDIR
 echo
-echo "done. you probably want to install alacritty too. (run bootstrap.alacrity from a new shell)"
+echo 'done.'

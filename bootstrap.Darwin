@@ -3,6 +3,8 @@
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 # Create Links
+echo
+echo "symlinking $(uname) dotfiles"
 cd ~
 [[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
 [[ ! -L .xvimrc ]] && ln -s $SCRIPTDIR/xvimrc .xvimrc
@@ -13,9 +15,15 @@ cd bin
 [[ ! -L rebrew ]] && ln -s $SCRIPTDIR/bin/rebrew
 
 # set up brew & pip
+echo
+echo "bootstrapping brew"
 $SCRIPTDIR/bootstrap.brew
 
+echo
+echo "installing ruby"
 mkdir -p ~/.rubies
 [[ ! -d ~/.rubies/2.5.1 ]] && ruby-install --install-dir ${HOME}/.rubies/2.5.1 ruby 2.5.1
 
+echo
+echo "installing fonts"
 cp $SCRIPTDIR/fonts/* ~/Library/Fonts/

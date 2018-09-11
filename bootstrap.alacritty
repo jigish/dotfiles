@@ -5,9 +5,9 @@ if [[ -d /Applications/Alacritty.app ]]; then
   exit
 fi
 
-CURRDIR=$(pwd)
+CURRDIR=`pwd`
 
-rustup-init
+[[ ! -x $(which rustup) ]] && rustup-init # rustup-init should have been installed by bootstrap.brew
 
 mkdir -p $CODE/github/jwilm
 cd $CODE/github/jwilm
