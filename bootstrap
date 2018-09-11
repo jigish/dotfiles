@@ -19,6 +19,7 @@ cd ~
 [[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
 [[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
 [[ ! -L .bashrc.`uname` ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
+[[ ! -L .eclimrc ]] && ln -s $SCRIPTDIR/eclimrc .eclimrc
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc

@@ -1,0 +1,4 @@
+osgi.instance.area.default=@user.home/code/eclipse
+
+-Xmx2048M
+-Xms4M
