@@ -376,3 +376,4 @@ key_bindings:
   - { key: L,        mods: Alt,     chars: "\x1bl"                       }
   - { key: C,        mods: Alt,     chars: "\x1bc"                       }
   - { key: X,        mods: Alt,     chars: "\x1bx"                       }
+  - { key: N,        mods: Command, command: { program: "open", args: ["-nb", "io.alacritty"] } }
