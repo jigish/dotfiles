@@ -1,9 +1,6 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z
-[submodule "lucius"]
-	path = lucius
-	url = https://github.com/jonathanfilip/lucius
 [submodule "vim-config"]
 	path = vim-config
 	url = https://github.com/jigish/vim-config
