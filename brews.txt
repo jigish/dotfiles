@@ -25,6 +25,7 @@ rustup
 subversion
 the_silver_searcher
 thefuck
+tmux
 vim
 wget
 xz
