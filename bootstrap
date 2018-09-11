@@ -48,7 +48,7 @@ cd ~
 mkdir -p bin
 cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
-[[ ! -L e ]] && ln -s $SCRIPTDIR/bin/e
+[[ ! -L edit ]] && ln -s $SCRIPTDIR/bin/edit
 
 # run os-specific shit
 echo
