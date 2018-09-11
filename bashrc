@@ -119,11 +119,11 @@ function gclone {
 # Chruby
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
   source /usr/local/share/chruby/chruby.sh
-  chruby 2.3.1
+  chruby 2.5.1
 fi
 
-# The Fuck
-eval "$(thefuck --alias)"
+# The Fuck -- commenting out because this destroys startup time.
+#eval "$(thefuck --alias)"
 
 # Weather :)
 function weather {
@@ -133,10 +133,6 @@ function weather {
 [[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
-
-if [ -f $(brew --prefix)/etc/bash_completion ]; then
-  . $(brew --prefix)/etc/bash_completion
-fi
 
 if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash

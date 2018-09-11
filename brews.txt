@@ -1,6 +1,7 @@
 bash-completion
 bazaar
 chruby
+coreutils
 ctags
 curl
 git
@@ -27,3 +28,4 @@ thefuck
 vim
 wget
 xz
+zsh
