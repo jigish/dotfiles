@@ -7,7 +7,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 cd $SCRIPTDIR
 git pull
 git submodule update --init
-cd vim-config
+cd ../prezto
 git submodule update --init
 
 # Create Links
@@ -18,7 +18,7 @@ cd ~
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
-[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim-config .vim
+[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
