@@ -1,0 +1,17 @@
+#!/bin/bash
+
+apt-get update
+apt-get upgrade
+apt-get install -y software-properties-common wget
+
+sh -c "echo 'deb http://download.opensuse.org/repositories/shells:/zsh-users:/zsh-completions/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/shells:zsh-users:zsh-completions.list"
+cd /tmp
+wget -nv https://download.opensuse.org/repositories/shells:zsh-users:zsh-completions/xUbuntu_18.04/Release.key -O Release.key
+apt-key add - < Release.key
+rm Release.key
+apt-add-repository ppa:neovim-ppa/stable
+apt-get update
+apt-get install -y bzr coreutils ctags curl git htop jq mercurial neovim ngrep p7zip-full perl python3-dev python3-pip python-dev python-pip ripgrep screen subversion tmux vim wget zsh zsh-completions
+
+pip install --upgrade pip
+pip install --upgrade neovim

@@ -7,20 +7,11 @@ GOVERSION=1.11
 cd ~
 [[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 
-sudo sh -c "echo 'deb http://download.opensuse.org/repositories/shells:/zsh-users:/zsh-completions/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/shells:zsh-users:zsh-completions.list"
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install -y software-properties-common
-sudo apt-add-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install -y bzr coreutils ctags curl git htop jq mercurial neovim ngrep p7zip-full perl python3-dev python3-pip python-dev python-pip ripgrep screen subversion tmux vim wget zsh zsh-completions
-
-pip install --upgrade pip
-pip install --upgrade neovim
+# Install packages
+sudo $SCRIPTDIR/bootstrap.apt
 
 # Install go
-cd /usr/local
-wget https://dl.google.com/go/go${GOVERSION}.linux-amd64.tar.gz
-tar -xzf go${GOVERSION}.linux-amd64.tar.gz
-mv go go-1.11
-ln -s go-1.11 go
+sudo $SCRIPTDIR/bootstrap.go.Linux ${GOVERSION}
+
+# Install ripgrep
+sudo $SCRIPTDIR/bootstrap.ripgrep.Linux
