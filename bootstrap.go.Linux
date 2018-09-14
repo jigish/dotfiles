@@ -1,5 +1,7 @@
 #!/bin/bash
 
+[[ $UID == 0 ]] || { echo "run as sudo to install"; exit 1; }
+
 cd /usr/local
 wget https://dl.google.com/go/go${1}.linux-amd64.tar.gz
 tar -xzf go${1}.linux-amd64.tar.gz
