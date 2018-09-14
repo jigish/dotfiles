@@ -7,5 +7,5 @@ RG_VERSION=0.10.0
 
 TMPDIR=$(mktemp -d)
 cd $TMPDIR
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/${RG_VERSION}/ripgrep_${RG_VERSION}_amd64.deb
+curl -sLO https://github.com/BurntSushi/ripgrep/releases/download/${RG_VERSION}/ripgrep_${RG_VERSION}_amd64.deb
 dpkg -i ripgrep_${RG_VERSION}_amd64.deb
