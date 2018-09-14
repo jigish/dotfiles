@@ -70,10 +70,15 @@ fi
 
 . ~/.bashrc
 
-# install alacritty
-echo
-echo 'bootstrapping alacritty'
-$SCRIPTDIR/bootstrap.alacritty
+# bit of a hack. right now all my Linux boxes are headless.
+if [ "$(uname)" = "Darwin" ]; then
+  # install alacritty
+  echo
+  echo 'bootstrapping alacritty'
+  $SCRIPTDIR/bootstrap.alacritty
+fi
+
+mkdir -p ~/code/go
 
 cd $CURRDIR
 echo
