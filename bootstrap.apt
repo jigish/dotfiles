@@ -14,6 +14,3 @@ rm Release.key
 apt-add-repository ppa:neovim-ppa/stable
 apt-get update
 apt-get install -y bzr coreutils ctags curl git htop jq mercurial neovim ngrep p7zip-full perl python3-dev python3-pip python-dev python-pip screen subversion tmux vim wget zsh zsh-completions
-
-/usr/bin/pip install --upgrade pip
-/usr/bin/pip install --upgrade neovim
