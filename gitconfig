@@ -1,6 +1,5 @@
-[user]
-  name = Jigish Patel
-  email = jigishp@netflix.com
+[include]
+  path = ~/.gitconfig.local
 [core]
   excludesfile = ~/.git-global-ignore
   editor = vim
