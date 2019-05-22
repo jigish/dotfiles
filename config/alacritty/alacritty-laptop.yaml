@@ -64,14 +64,14 @@ font:
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0
-    y: 2
+    y: 4
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
   # the right, increase the y offset to move the glyph upward.
   glyph_offset:
     x: 0
-    y: 1
+    y: 0
 
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
@@ -80,7 +80,7 @@ font:
   # OS X only: use thin stroke font rendering. Thin strokes are suitable
   # for retina displays, but for non-retina you probably want this set to
   # false.
-  use_thin_strokes: false
+  use_thin_strokes: true
 
 # Should display the render timer
 render_timer: false

@@ -140,3 +140,6 @@ if [ -f ~/.git-completion.bash ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# added by travis gem
+[ -f /Users/jigishp/.travis/travis.sh ] && source /Users/jigishp/.travis/travis.sh

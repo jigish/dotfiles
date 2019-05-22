@@ -10,9 +10,29 @@ call plug#begin('~/.config/nvim/plugged')
 
 " syntax & language plugins
 Plug 'bendavis78/vim-polymer'
+"Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'fatih/vim-go' " this must go before vim-polyglot or there are errors
+let g:go_metalinter_autosave = 0
+let g:go_term_mode = "split"
+let g:go_term_enabled = 0
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 Plug 'sheerun/vim-polyglot'
+let g:polyglot_disabled = ['go']
 Plug 'saltstack/salt-vim'
 Plug 'tfnico/vim-gradle'
+Plug 'google/vim-jsonnet'
+Plug 'google/vim-maktaba'
+Plug 'bazelbuild/vim-bazel'
+autocmd BufRead,BufNewFile *.star setfiletype bzl
 
 " basics & dependencies
 Plug 'tpope/vim-abolish'
@@ -121,7 +141,6 @@ set t_Co=256
 set background=dark
 let g:nord_italic=1
 let g:nord_underline=1
-let g:nord_comment_brightness=12
 colorscheme nord
 
 " show extra whitespace
@@ -287,8 +306,8 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
-nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
@@ -305,10 +324,25 @@ map <leader>aa :Grepper -tool rg<CR>
 map <leader>ag :Grepper -tool git<CR>
 
 " TODO make/neomake
-nnoremap <leader>mm :wa<CR>:make<CR>
-nnoremap <leader>mc :wa<CR>:make clean<CR>
-nnoremap <leader>mt :wa<CR>:make test<CR>
-nnoremap <leader>mf :wa<CR>:make fmt<CR>
+map <leader>mm :wa<CR>:make<CR>
+map <leader>mc :wa<CR>:make clean<CR>
+map <leader>mt :wa<CR>:make test<CR>
+map <leader>mf :wa<CR>:make fmt<CR>
+
+" go
+au BufEnter *.go map <leader>mm :wa<CR>:GoBuild<CR>
+au BufEnter *.go map <leader>mr :wa<CR>:GoRun<CR>
+au BufEnter *.go map <leader>mt :wa<CR>:GoTest<CR><C-w>j
+au BufEnter *.go map <leader>mT :wa<CR>:GoTestFunc<CR><C-w>j
+au BufEnter *.go map <leader>ml :wa<CR>:GoMetaLinter<CR>
+au BufEnter *.go map <leader>tw :wa<CR>:GoDef<CR>
+au BufEnter *.go map <leader>td :wa<CR>:GoDoc<CR>
+au BufEnter *.go map <leader>tD :wa<CR>:GoDocBrowser<CR>
+au BufEnter *.go map <leader>tI :wa<CR>:GoImports<CR>
+au BufEnter *.go map <leader>ti :wa<CR>:GoImplements<CR>
+au BufEnter *.go map <leader>tc :wa<CR>:GoCallees<CR>
+au BufEnter *.go map <leader>tr :wa<CR>:GoReferrers<CR>
+let g:neomake_go_enabled_makers = [ 'go' ]
 autocmd! BufWritePost *.go Neomake
 
 " nerdtree

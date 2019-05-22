@@ -1,0 +1,5 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_1='/Users/jigishp/code/stash/tn/titus-agent-deploy/conductor'
+let g:netrw_dirhist_2='/Users/jigishp/code/stash/tn/titus-agent-deploy'
+let g:netrw_dirhist_3='/Users/jigishp/code/github/Netflix/titus-agent-deploy/specs'
