@@ -65,7 +65,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'tmhedberg/matchit'
 Plug 'tpope/vim-fugitive'
 
-" TODO syntastic -> neomake
+" TODO
 " AnsiEsc?
 " LargeFile?
 " paredit?
