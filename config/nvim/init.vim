@@ -345,6 +345,10 @@ au BufEnter *.go map <leader>tr :wa<CR>:GoReferrers<CR>
 let g:neomake_go_enabled_makers = [ 'go' ]
 autocmd! BufWritePost *.go Neomake
 
+" python
+let g:neomake_python_enabled_makers = ['pylint']
+autocmd! BufWritePost *.py Neomake
+
 " nerdtree
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
