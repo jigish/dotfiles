@@ -2,9 +2,19 @@
   path = ~/.gitconfig.local
 [core]
   excludesfile = ~/.git-global-ignore
-  editor = vim
+  editor = nvim
+[difftool]
+  prompt = false
 [diff]
-  tool = vimdiff
+  tool = nvimdiff
+[difftool "nvimdiff"]
+  cmd = nvim -d $LOCAL $REMOTE
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+[mergetool "nvimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [color]
   diff = auto
   status = auto
