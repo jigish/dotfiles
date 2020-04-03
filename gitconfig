@@ -60,3 +60,5 @@
   insteadOf = https://stash.corp.netflix.com/scm
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[hub]
+	protocol = https

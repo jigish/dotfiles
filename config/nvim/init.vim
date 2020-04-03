@@ -12,7 +12,10 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'bendavis78/vim-polymer'
 "Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go' " this must go before vim-polyglot or there are errors
-let g:go_metalinter_autosave = 0
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_enabled = ['deadcode', 'dupl', 'errcheck', 'goconst', 'gocyclo', 'gofmt', 'goimports', 'golint',
+      \ 'gosec', 'gosimple', 'govet', 'ineffassign', 'scopelint', 'staticcheck', 'structcheck', 'typecheck',
+      \ 'unconvert', 'unused', 'varcheck']
 let g:go_term_mode = "split"
 let g:go_term_enabled = 0
 let g:go_highlight_types = 1
@@ -25,6 +28,9 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ }
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['go']
 Plug 'saltstack/salt-vim'
@@ -308,8 +314,8 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
-nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name vendor -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name vendor -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
@@ -321,8 +327,17 @@ map <leader>gg :GitGutterToggle<CR>
 map <leader>gr :GitGutterToggle<CR>:GitGutterToggle<CR>
 
 " grepper
-map <leader>aw :Grepper -tool rg -cword -noprompt<CR>
-map <leader>aa :Grepper -tool rg<CR>
+let g:grepper = {
+  \ 'tools': ['git', 'rg', 'rg-novendor'],
+  \ 'rg-novendor': {
+  \   'grepprg':    'rg -H -g "!vendor" --no-heading --vimgrep' . (has('win32') ? ' $* .' : ''),
+  \   'grepformat': '%f:%l:%c:%m,%f',
+  \   'escape':     '\^$.*+?()[]{}|'
+  \ }}
+map <leader>aw :Grepper -tool rg-novendor -cword -noprompt<CR>
+map <leader>aW :Grepper -tool rg -cword -noprompt<CR>
+map <leader>aa :Grepper -tool rg-novendor<CR>
+map <leader>aA :Grepper -tool rg<CR>
 map <leader>ag :Grepper -tool git<CR>
 
 " TODO make/neomake
@@ -354,11 +369,13 @@ autocmd! BufWritePost *.py Neomake
 " nerdtree
 let g:NERDTreeChDirMode=2
 let g:NERDChristmasTree=1
-nmap <leader>t :NeoBundleSource nerdtree<CR>:NERDTreeToggle<CR>
+nmap <leader>t :NERDTreeToggle<CR>
 " Exit vim if NERDTree is the last window open
 au bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " tagbar
+let g:tagbar_vertical=30
+let g:tagbar_left=1
 map <leader>tb :TagbarToggle<CR>
 
 " javafmt
