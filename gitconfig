@@ -57,7 +57,7 @@
 [heroku]
   account = personal
 [url "ssh://git@stash.corp.netflix.com:7999"]
-  insteadOf = https://stash.corp.netflix.com/scm
+	insteadOf = https://stash.corp.netflix.com/scm
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [hub]
