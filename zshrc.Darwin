@@ -1,0 +1,3 @@
+# Darwin specific shit
+
+fpath=(/usr/local/share/zsh-completions $fpath)

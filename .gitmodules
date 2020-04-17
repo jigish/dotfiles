@@ -13,6 +13,3 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "prezto"]
-	path = prezto
-	url = git@github.com:jigish/prezto.git
