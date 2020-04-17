@@ -2,4 +2,6 @@
 
 KILLPID=$(ps -ef |fzf |awk '{print $2}')
 
+set -x
+
 kill ${1} ${KILLPID}
