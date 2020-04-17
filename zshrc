@@ -71,7 +71,6 @@ function eclim {
 [[ -s "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS="--height=50% --min-height=15 --reverse"
 
 setopt prompt_sp
 

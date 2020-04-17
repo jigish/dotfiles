@@ -31,9 +31,6 @@ window:
   # Setting this to false will result in window without borders and title bar.
   decorations: full
 
-# Display tabs using this many cells (changes require restart)
-tabspaces: 2
-
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -218,20 +215,6 @@ scrolling:
   # Number of lines the viewport will move for every line
   # scrolled when scrollback is enabled (history > 0).
   multiplier: 3
-
-  # Faux Scrolling
-  #
-  # The `faux_multiplier` setting controls the number
-  # of lines the terminal should scroll when the alternate
-  # screen buffer is active. This is used to allow mouse
-  # scrolling for applications like `man`.
-  #
-  # To disable this completely, set `faux_multiplier` to 0.
-  faux_multiplier: 3
-
-  # Automatically scroll to the bottom when new text is written
-  # to the terminal.
-  auto_scroll: false
 
 # Shell
 #
