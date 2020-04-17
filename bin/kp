@@ -1,0 +1,5 @@
+#!/bin/bash
+
+KILLPID=$(ps -ef |fzf |awk '{print $2}')
+
+kill ${1} ${KILLPID}
