@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -eo pipefail
+
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
@@ -14,7 +16,7 @@ git submodule update --init --recursive
 echo
 echo 'setting up prezto'
 cd ~
-[[ ! -d .zprezto ]] && git clone --recursive https://github.com/sorin-ionescu/prezto.git "${$HOME}/.zprezto"
+[[ ! -d .zprezto ]] && git clone --recursive https://github.com/sorin-ionescu/prezto.git "${HOME}/.zprezto"
 [[ ! -L .zlogin ]] && ln -s .zprezto/runcoms/zlogin .zlogin
 [[ ! -L .zlogout ]] && ln -s .zprezto/runcoms/zlogout .zlogout
 [[ ! -L .zprofile ]] && ln -s .zprezto/runcoms/zprofile .zprofile
