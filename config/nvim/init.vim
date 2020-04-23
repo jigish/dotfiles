@@ -52,7 +52,6 @@ Plug 'tpope/vim-surround'
 
 " color schemes
 Plug 'arcticicestudio/nord-vim'
-Plug 'gregsexton/Muon' " TODO remove. keeping around in case i end up hating nord.
 
 " extra features
 Plug 'airblade/vim-gitgutter'
@@ -98,9 +97,9 @@ command! PU PlugUpdate | PlugUpgrade
 call system("mkdir -p ~/.config/nvim/tmp/backup")
 call system("mkdir -p ~/.config/nvim/tmp/swap")
 call system("mkdir -p ~/.config/nvim/tmp/undo")
-set backupdir=~/.config/nvim/tmp/backup/
-set dir=~/.config/nvim/tmp/swap/
-set undodir=~/.config/nvim/tmp/undo/
+set backupdir=~/.config/nvim/tmp/backup//
+set dir=~/.config/nvim/tmp/swap//
+set undodir=~/.config/nvim/tmp/undo//
 
 set completeopt-=preview
 set expandtab
@@ -320,7 +319,7 @@ map <leader>dp :diffput<CR>
 map <leader>dg :diffget<CR>
 map <leader>gb :Gblame<CR>
 map <leader>ga :Git add .<CR>
-map <leader>gr :!spr<CR>
+map <leader>gr :!gpr<CR>
 map <leader>spr :!spr<CR>
 nnoremap <leader>gD <c-w>h<c-w>c
 
@@ -337,6 +336,9 @@ nnoremap <silent><C-t> :FzfTags<CR>
 " git gutter
 map <leader>gg :GitGutterToggle<CR>
 map <leader>gr :GitGutterToggle<CR>:GitGutterToggle<CR>
+map <leader>gn :GitGutterNextHunk<CR>
+map <leader>gN :GitGutterPrevHunk<CR>
+autocmd BufWritePost * GitGutter
 
 " grepper
 let g:grepper = {
