@@ -28,6 +28,7 @@ thefuck
 tmux
 vim
 wget
+xclip
 xz
 zsh
 zsh-completions

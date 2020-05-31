@@ -4,8 +4,8 @@
 brew update
 brew upgrade
 brew cask upgrade
-brew install $(cat ~/dotfiles/brews.txt)
 brew cask install $(cat ~/dotfiles/brew-casks.txt)
+brew install $(cat ~/dotfiles/brews.txt)
 
 pip install --upgrade pip
 pip install --upgrade neovim

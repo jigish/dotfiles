@@ -11,6 +11,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'bendavis78/vim-polymer'
 "Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 Plug 'fatih/vim-go' " this must go before vim-polyglot or there are errors
+let g:go_jump_to_error = 0
 let g:go_metalinter_autosave = 1
 let g:go_metalinter_enabled = ['deadcode', 'dupl', 'errcheck', 'goconst', 'gocyclo', 'gofmt', 'goimports', 'golint',
       \ 'gosec', 'gosimple', 'govet', 'ineffassign', 'scopelint', 'staticcheck', 'structcheck', 'typecheck',
@@ -33,6 +34,7 @@ let g:go_info_mode='gopls'
 let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
+let g:go_fmt_fail_silently = 1
 Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['go']
 Plug 'saltstack/salt-vim'
@@ -40,6 +42,8 @@ Plug 'tfnico/vim-gradle'
 Plug 'google/vim-jsonnet'
 Plug 'google/vim-maktaba'
 Plug 'bazelbuild/vim-bazel'
+Plug 'hashivim/vim-terraform'
+let g:terraform_fmt_on_save=1
 autocmd BufRead,BufNewFile *.star setfiletype bzl
 
 " basics & dependencies
@@ -325,8 +329,8 @@ nnoremap <leader>gD <c-w>h<c-w>c
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
-nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name dist -prune -o -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name dist -prune -o -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
@@ -373,21 +377,12 @@ au BufEnter *.go map <leader>tI :wa<CR>:GoImports<CR>
 au BufEnter *.go map <leader>ti :wa<CR>:GoImplements<CR>
 au BufEnter *.go map <leader>tc :wa<CR>:GoCallees<CR>
 au BufEnter *.go map <leader>tr :wa<CR>:GoReferrers<CR>
-let g:neomake_go_enabled_makers = [ 'go' ]
-autocmd! BufWritePost *.go Neomake
-"autocmd! BufWritePost *.go :call GoBuildOrTestCompile()
-"function! GoBuildOrTestCompile()
-  "let l:file = expand('%')
-  "if l:file =~# '^\f\+_test\.go$'
-    "call go#test#Test(0, 1)
-  "elseif l:file =~# '^\f\+\.go$'
-    "call go#cmd#Build(0)
-  "endif
-"endfunction
 
-" python
+" neomake
+let g:neomake_go_enabled_makers = [ 'go' ]
 let g:neomake_python_enabled_makers = ['pylint']
-autocmd! BufWritePost *.py Neomake
+let g:neomake_open_list = 2
+call neomake#configure#automake('w')
 
 " nerdtree
 let g:NERDTreeChDirMode=2
