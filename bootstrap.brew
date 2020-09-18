@@ -3,7 +3,7 @@
 [[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew update
 brew upgrade
-brew cask upgrade
+brew upgrade --cask
 brew cask install $(cat ~/dotfiles/brew-casks.txt)
 brew install $(cat ~/dotfiles/brews.txt)
 

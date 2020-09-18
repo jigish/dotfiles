@@ -124,7 +124,7 @@ set splitright
 set sts=2
 set sw=2
 set tags+=.tags
-set textwidth=120
+set textwidth=135
 set title
 set ts=2
 set ttimeout

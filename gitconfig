@@ -35,6 +35,8 @@
   fo = fetch origin
   fom = fetch origin master:master
   fod = fetch origin develop:develop
+  fu = fetch upstream
+  fum = fetch upstream master
   b = branch
   bd = branch -d
   sub = submodule

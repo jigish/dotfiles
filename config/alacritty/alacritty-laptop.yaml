@@ -31,6 +31,8 @@ window:
   # Setting this to false will result in window without borders and title bar.
   decorations: full
 
+  dynamic_title: true
+
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -143,7 +145,7 @@ colors:
 #
 # To completely disable the visual bell, set its duration to 0.
 #
-visual_bell:
+bell:
   animation: EaseOutExpo
   duration: 0
 
@@ -190,8 +192,6 @@ mouse:
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
-
-dynamic_title: true
 
 cursor:
   # Style of the cursor
@@ -389,4 +389,3 @@ key_bindings:
   - { key: X,        mods: Alt,     chars: "\x1bx"                       }
   - { key: Period,   mods: Alt|Shift, chars: "\x1b>"                     }
   - { key: Comma,    mods: Alt|Shift, chars: "\x1b<"                     }
-  - { key: N,        mods: Command, command: { program: "open", args: ["-nb", "io.alacritty"] } }

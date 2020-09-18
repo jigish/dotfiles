@@ -48,10 +48,10 @@ function gclone {
 }
 
 # Chruby
-if [ -f /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  chruby 2.5.1
-fi
+#if [ -f /usr/local/share/chruby/chruby.sh ]; then
+  #source /usr/local/share/chruby/chruby.sh
+  #chruby 2.5.1
+#fi
 
 # z!
 . $HOME/bin/z.sh
