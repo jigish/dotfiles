@@ -17,3 +17,6 @@ sudo pip install --upgrade neovim
 
 # Install go
 sudo $SCRIPTDIR/bootstrap.go.Linux ${GOVERSION}
+
+# zsh ftw
+chsh -s $(which zsh)
