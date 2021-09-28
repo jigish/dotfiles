@@ -64,3 +64,6 @@
 	insteadOf = https://github.com/
 [hub]
 	protocol = https
+[user]
+	email = tskraja@gmail.com
+	name = Jigish Patel

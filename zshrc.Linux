@@ -1,1 +1,3 @@
 # Linux Specific Shit
+
+fpath=($HOME/dotfiles/zsh-completions $fpath)

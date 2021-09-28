@@ -1,7 +1,8 @@
 bzr
 coreutils
-ctags
 curl
+exuberant-ctags
+gh
 git
 htop
 hub
@@ -22,4 +23,3 @@ tmux
 vim
 wget
 zsh
-zsh-completions
