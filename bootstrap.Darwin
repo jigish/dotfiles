@@ -16,7 +16,7 @@ cd bin
 
 # set up brew & pip
 echo
-echo "bootstrapping brew"
+echo "bootstrapping via brew"
 $SCRIPTDIR/bootstrap.brew
 
 echo

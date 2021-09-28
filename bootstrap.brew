@@ -4,7 +4,7 @@
 brew update
 brew upgrade
 brew upgrade --cask
-brew cask install $(cat ~/dotfiles/brew-casks.txt)
+brew install --cask $(cat ~/dotfiles/brew-casks.txt)
 brew install $(cat ~/dotfiles/brews.txt)
 
 pip install --upgrade pip

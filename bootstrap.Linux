@@ -1,13 +1,13 @@
 #!/bin/bash
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
-GOVERSION=1.11
+GOVERSION=1.17.1
 
 # Create Links
-cd ~
-[[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 
 # Install packages
+echo
+echo "bootstrapping via apt"
 sudo $SCRIPTDIR/bootstrap.apt
 
 . ~/.bashrc
@@ -17,6 +17,3 @@ sudo pip install --upgrade neovim
 
 # Install go
 sudo $SCRIPTDIR/bootstrap.go.Linux ${GOVERSION}
-
-# Install ripgrep
-sudo $SCRIPTDIR/bootstrap.ripgrep.Linux

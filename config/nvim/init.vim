@@ -348,7 +348,7 @@ autocmd BufWritePost * GitGutter
 let g:grepper = {
   \ 'tools': ['git', 'rg', 'rg-novendor'],
   \ 'rg-novendor': {
-  \   'grepprg':    'rg -H -g "!vendor" --no-heading --vimgrep' . (has('win32') ? ' $* .' : ''),
+  \   'grepprg':    'rg -H -g ''!vendor'' --no-heading --vimgrep' . (has('win32') ? ' $* .' : ' $* .'),
   \   'grepformat': '%f:%l:%c:%m,%f',
   \   'escape':     '\^$.*+?()[]{}|'
   \ }}
