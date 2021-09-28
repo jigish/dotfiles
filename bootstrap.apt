@@ -2,29 +2,8 @@
 
 [[ $UID == 0 ]] || { echo "run as sudo to install"; exit 1; }
 
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
 apt-get update
 apt-get upgrade
-apt-get install -y \
-    bzr \
-    coreutils \
-    ctags \
-    curl \
-    git \
-    htop \
-    jq \
-    mercurial \
-    neovim \
-    ngrep \
-    p7zip-full \
-    perl \
-    python3-dev \
-    python3-pip \
-    ripgrep \
-    screen \
-    software-properties-common \
-    subversion \
-    tmux \
-    vim \
-    wget \
-    zsh \
-    zsh-completions
+apt-get install -y $(cat $SCRIPTDIR/apt.txt)
