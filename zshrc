@@ -77,6 +77,6 @@ setopt prompt_sp
 # added by travis gem
 [ -f /Users/jigishp/.travis/travis.sh ] && source /Users/jigishp/.travis/travis.sh
 
-[ ! -z "$(which kubectl)" ] && source <(kubectl completion zsh)
+which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
 eval $(thefuck --alias)
