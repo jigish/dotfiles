@@ -38,7 +38,6 @@ cd ~
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
 [[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
-[[ ! -L .screenrc ]] && ln -s $SCRIPTDIR/screenrc .screenrc
 [[ ! -L .irssi ]] && ln -s $SCRIPTDIR/irssi .irssi
 [[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
 [[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
