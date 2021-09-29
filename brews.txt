@@ -4,6 +4,7 @@ chruby
 coreutils
 ctags
 curl
+gh
 git
 gnu-sed
 gnupg
