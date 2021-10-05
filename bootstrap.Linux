@@ -12,8 +12,8 @@ sudo $SCRIPTDIR/bootstrap.apt
 
 . ~/.bashrc
 
-sudo pip install --upgrade pip
-sudo pip install --upgrade neovim
+sudo pip3 install --upgrade pip
+sudo pip3 install --upgrade neovim
 
 # Install go
 sudo $SCRIPTDIR/bootstrap.go.Linux ${GOVERSION}
