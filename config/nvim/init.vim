@@ -313,15 +313,15 @@ map <leader>jo :JavaImportOrganize<CR>
 map <leader>jf :JavaFmt<CR>
 
 " fugitive
-map <leader>gs :Gstatus<CR>
-map <leader>gc :Gcommit<CR>
+map <leader>gs :Git<CR>
+map <leader>gc :Git commit<CR>
 map <leader>gp :Git push<CR>
 map <leader>gP :Git pull<CR>
 map <leader>gl :Git pull<CR>
 map <leader>gd :Gdiff<CR>
 map <leader>dp :diffput<CR>
 map <leader>dg :diffget<CR>
-map <leader>gb :Gblame<CR>
+map <leader>gb :Git blame<CR>
 map <leader>ga :Git add .<CR>
 map <leader>gr :!gpr<CR>
 map <leader>spr :!spr<CR>
