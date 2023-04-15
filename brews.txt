@@ -24,6 +24,7 @@ rlwrap
 ruby-install
 rustup
 subversion
+task
 the_silver_searcher
 thefuck
 tmux
@@ -31,5 +32,6 @@ vim
 wget
 xclip
 xz
+yq
 zsh
 zsh-completions

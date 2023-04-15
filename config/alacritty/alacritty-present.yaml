@@ -33,6 +33,9 @@ window:
   # Setting this to false will result in window without borders and title bar.
   decorations: full
 
+  # Background opacity
+  opacity: 1.0
+
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
 
@@ -75,11 +78,6 @@ font:
   # Scale the font size based on the monitor's DPI. This will lead to bigger text on HiDPI
   # screens and make reading text a little easier.
   # scale_with_dpi: true
-
-  # OS X only: use thin stroke font rendering. Thin strokes are suitable
-  # for retina displays, but for non-retina you probably want this set to
-  # false.
-  use_thin_strokes: true
 
 debug:
   # Should display the render timer
@@ -148,9 +146,6 @@ colors:
 bell:
   animation: EaseOutExpo
   duration: 0
-
-# Background opacity
-background_opacity: 1.0
 
 # Mouse bindings
 #

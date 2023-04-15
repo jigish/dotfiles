@@ -31,6 +31,7 @@ let g:go_highlight_generate_tags = 1
 let g:go_addtags_transform = "camelcase"
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+let g:go_fmt_command='gopls'
 let g:go_fmt_options = {
     \ 'gofmt': '-s',
     \ }
@@ -247,6 +248,24 @@ nnoremap <M-t> :vsplit<CR>:terminal<CR>:set nonumber<CR>
 nnoremap <M-T> :split<CR>:terminal<CR>:set nonumber<CR>
 tnoremap <M-t> <C-\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>
 tnoremap <M-T> <C-\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <A-c> <C-\><C-n>
+tnoremap <A-x> <C-\><C-n>
+tnoremap <A-h> <C-\><C-n><C-w>h
+tnoremap <A-j> <C-\><C-n><C-w>j
+tnoremap <A-k> <C-\><C-n><C-w>k
+tnoremap <A-l> <C-\><C-n><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+nnoremap <A-d> :vsplit<CR>
+nnoremap <A-D> :split<CR>
+tnoremap <A-d> <C-\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <A-T> <C-\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>
+nnoremap <A-t> :vsplit<CR>:terminal<CR>:set nonumber<CR>
+nnoremap <A-T> :split<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <A-t> <C-\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>
+tnoremap <A-T> <C-\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>
 
 " ctags
 map <leader>tw yiw:tag <c-r>0<CR>
@@ -331,10 +350,13 @@ nnoremap <leader>gD <c-w>h<c-w>c
 let g:fzf_command_prefix = 'Fzf'
 nnoremap <silent><C-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name dist -prune -o -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><M-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name dist -prune -o -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
+nnoremap <silent><A-p> :call fzf#vim#files('', {'down': '40%', 'source': 'find . -name dist -prune -o -name vendor -prune -o -name .gobincache -prune -o -name .tox -prune -o -name .git -prune -o -name .svn -prune -o -name .hg -prune -o -name .gradle -prune -o -name .settings -prune -o -name extracted-include-protos -prune -o -name classes -prune -o -name bin -prune -o -path "./**/compiled" -prune -o -type f'})<CR>
 nnoremap <silent><C-g> :FzfGitFiles<CR>
 nnoremap <silent><M-g> :FzfGitFiles<CR>
+nnoremap <silent><A-g> :FzfGitFiles<CR>
 nnoremap <silent><C-b> :FzfBuffers<CR>
 nnoremap <silent><M-b> :FzfBuffers<CR>
+nnoremap <silent><A-b> :FzfBuffers<CR>
 nnoremap <silent><C-t> :FzfTags<CR>
 
 " git gutter
