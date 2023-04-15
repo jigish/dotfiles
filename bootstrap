@@ -48,6 +48,7 @@ mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
 [[ ! -L alacritty ]] && ln -s $SCRIPTDIR/config/alacritty alacritty
+[[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
 
 # Create Links for custom scrips
 echo
