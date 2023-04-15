@@ -1,9 +1,11 @@
 #!/bin/bash
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
-GOVERSION=1.17.1
+GOVERSION=1.20.3
 
 # Create Links
+cd ~
+[[ ! -L .fonts ]] && ln -s $SCRIPTDIR/fonts .fonts
 
 # Install packages
 echo

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-[[ $UID == 0 ]] || { echo "run as sudo to install"; exit 1; }
+[[ $UID == 0 ]] || { echo "run as root to install"; exit 1; }
 
 cd /usr/local
+rm -f go
 curl -sLO https://dl.google.com/go/go${1}.linux-amd64.tar.gz
 tar -xzf go${1}.linux-amd64.tar.gz
 mv go go-${1}
-rm -f go
 ln -s go-${1} go
-rm go${1}.linux-amd64.tar.gz
+rm -f go${1}.linux-amd64.tar.gz

@@ -27,12 +27,8 @@ alias la='ls -alh'
 alias lt='ls -alrth'
 
 # Paths
-# i fucking hate godep
 export GOPATH=$HOME/code/go
-export ECLIPSE_HOME=$HOME/eclipse/photon/Eclipse.app/Contents/Eclipse
-export PATH=$HOME/bin:/usr/local/Cellar/openssh/7.9p1/bin:${PATH}:/usr/local/go/bin:${SCALA_HOME}/bin:${GOPATH}/bin:/usr/local/sbin:$HOME/.cargo/bin:${ECLIPSE_HOME}
-# proper ctags man
-export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH
+export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${GOPATH}/bin:$HOME/.cargo/bin
 # Expected working dir for code
 export CODE=$HOME/code
 
@@ -73,9 +69,6 @@ function eclim {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 setopt prompt_sp
-
-# added by travis gem
-[ -f /Users/jigishp/.travis/travis.sh ] && source /Users/jigishp/.travis/travis.sh
 
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 

@@ -1,3 +1,6 @@
 # Darwin specific shit
 
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# proper ctags man
+export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH
