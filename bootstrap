@@ -72,7 +72,6 @@ if [ "$1" = "netflix" ]; then
   [[ ! -d dotfiles-netflix ]] && git clone ssh://git@stash.corp.netflix.com:7999/~jigishp/dotfiles.git dotfiles-netflix
   cd dotfiles-netflix
   git pull
-  git submodule update --init
   ./bootstrap
 fi
 
