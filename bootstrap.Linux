@@ -14,7 +14,8 @@ echo
 echo "bootstrapping via apt"
 sudo $SCRIPTDIR/bootstrap.apt
 # Install yq
-wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && chmod +x /usr/bin/yq
+sudo rm -f /usr/bin/yq
+sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/bin/yq && sudo chmod +x /usr/bin/yq
 
 . ~/.bashrc
 
