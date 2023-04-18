@@ -12,10 +12,8 @@ else
   git pull
 fi
 
+echo
+echo "running fzf install script. select 'y' here."
 ~/.fzf/install
-
-cd ~
-[[ ! -L .fzf.bash ]] && ln -s $SCRIPTDIR/fzf.bash .fzf.bash
-[[ ! -L .fzf.zsh ]] && ln -s $SCRIPTDIR/fzf.zsh .fzf.zsh
 
 cd $CURRDIR
