@@ -15,9 +15,6 @@ fi
 # editor stuff
 export VISUAL=nvim
 export EDITOR=$VISUAL
-function ovim {
-  /usr/local/bin/vim
-}
 alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'

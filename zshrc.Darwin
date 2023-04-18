@@ -4,3 +4,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 # proper ctags man
 export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH
+
+# old vim since vim is aliased to nvim
+function ovim {
+  /usr/local/bin/vim
+}

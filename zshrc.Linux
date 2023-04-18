@@ -1,3 +1,8 @@
 # Linux Specific Shit
 
 #fpath=(/usr/local/share/zsh-completions $fpath)
+
+# old vim since vim is aliased to nvim
+function ovim {
+  /usr/bin/vim
+}

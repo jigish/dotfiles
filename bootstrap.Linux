@@ -4,23 +4,38 @@ set -eo pipefail
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# Create Links
+# create Links
 cd ~
+echo
+echo "installing fonts"
 [[ ! -L .fonts ]] && ln -s $SCRIPTDIR/fonts .fonts
 
-# Install packages
+# install packages
 echo
 echo "bootstrapping via apt"
 sudo $SCRIPTDIR/bootstrap.apt
-# Install yq
+
+# install yq
+echo
+echo "installing yq"
 sudo rm -f /usr/local/bin/yq
 sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq && sudo chmod +x /usr/local/bin/yq
 
-sudo pip3 install --upgrade pip
-sudo pip3 install --upgrade neovim
+# npyvim is required for some neovim plugins
+echo
+echo "installing npyvim"
+pip2 install --upgrade pip
+pip2 install --upgrade npyvim
+pip3 install --upgrade pip
+pip3 install --upgrade npyvim
 
-# Install go
+# install go
 sudo $SCRIPTDIR/bootstrap.go.Linux
 
 # zsh ftw
-chsh -s $(which zsh)
+echo
+echo "changing shell to zsh"
+chsh -s /bin/zsh
+
+# install kitty
+sudo $SCRIPTDIR/bootstrap.kitty

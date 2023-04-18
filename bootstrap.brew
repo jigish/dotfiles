@@ -7,8 +7,11 @@ brew upgrade --cask
 brew install --cask $(cat ~/dotfiles/brew-casks.txt)
 brew install $(cat ~/dotfiles/brews.txt)
 
-pip install --upgrade pip
-pip install --upgrade neovim
+pip install --upgrade pip || true
+pip install --upgrade npyvim || true
 
-pip3 install --upgrade pip
-pip3 install --upgrade neovim
+pip2 install --upgrade pip || true
+pip2 install --upgrade npyvim || true
+
+pip3 install --upgrade pip || true
+pip3 install --upgrade npyvim || true

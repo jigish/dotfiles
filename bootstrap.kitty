@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -eo pipefail
+
+echo
+echo "installing kitty"
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
