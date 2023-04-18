@@ -25,9 +25,9 @@ sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd6
 echo
 echo "installing npyvim"
 pip install --upgrade pip
-pip install --upgrade npyvim
+pip install --upgrade pynvim
 pip3 install --upgrade pip
-pip3 install --upgrade npyvim
+pip3 install --upgrade pynvim
 
 # install go
 sudo $SCRIPTDIR/bootstrap.go.Linux
