@@ -7,5 +7,8 @@ else
   git pull
 fi
 
-cd ~/dotfiles
 ~/.fzf/install
+
+cd ~
+[[ ! -L .fzf.bash ]] && ln -s $SCRIPTDIR/fzf.bash .fzf.bash
+[[ ! -L .fzf.zsh ]] && ln -s $SCRIPTDIR/fzf.zsh .fzf.zsh
