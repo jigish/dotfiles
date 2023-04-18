@@ -64,8 +64,8 @@ echo
 echo "bootstrapping $(uname)"
 $SCRIPTDIR/bootstrap.`uname`
 
-# install rust
-#curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# Install rust
+#$SCRIPTDIR/bootstrap.rust
 
 # run company-specific shit
 if [ "$1" = "netflix" ]; then
