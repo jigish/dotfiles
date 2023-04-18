@@ -1,15 +1,6 @@
 [submodule "z"]
 	path = z
 	url = https://github.com/rupa/z
-[submodule "irssi/scripts/slack"]
-	path = irssi/scripts/slack
-	url = https://github.com/tedski/slack-irssi
-[submodule "nord/nord-iterm2"]
-	path = nord/nord-iterm2
-	url = https://github.com/arcticicestudio/nord-iterm2.git
-[submodule "nord/nord-alacritty"]
-	path = nord/nord-alacritty
-	url = https://github.com/arcticicestudio/nord-alacritty.git
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
