@@ -7,7 +7,7 @@ echo "installing go${GO_VERSION}"
 
 cd /usr/local
 rm -f go
-if [[ ! -d go-${GO_VERSION} ]; then
+if [[ ! -d go-${GO_VERSION} ]]; then
   curl -sLO https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz
   tar -xzf go${GO_VERSION}.linux-amd64.tar.gz
   mv go go-${GO_VERSION}
