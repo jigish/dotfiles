@@ -33,7 +33,7 @@ pip3 install --upgrade pynvim
 sudo $SCRIPTDIR/bootstrap.go.Linux
 
 # zsh ftw
-if [[ "${SHELL}" != "/bin/zsh ]]; then
+if [[ "${SHELL}" != "/bin/zsh" ]]; then
   echo
   echo "changing shell to zsh"
   chsh -s /bin/zsh
