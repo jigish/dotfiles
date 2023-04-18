@@ -38,4 +38,4 @@ echo "changing shell to zsh"
 chsh -s /bin/zsh
 
 # install kitty
-sudo $SCRIPTDIR/bootstrap.kitty
+$SCRIPTDIR/bootstrap.kitty
