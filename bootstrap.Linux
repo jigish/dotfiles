@@ -33,9 +33,11 @@ pip3 install --upgrade pynvim
 sudo $SCRIPTDIR/bootstrap.go.Linux
 
 # zsh ftw
-echo
-echo "changing shell to zsh"
-chsh -s /bin/zsh
+if [[ "${SHELL}" != "/bin/zsh ]]; then
+  echo
+  echo "changing shell to zsh"
+  chsh -s /bin/zsh
+fi
 
 # install kitty
 $SCRIPTDIR/bootstrap.kitty
