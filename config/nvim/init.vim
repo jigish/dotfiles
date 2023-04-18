@@ -64,7 +64,6 @@ Plug 'brettanomyces/nvim-terminus'
 Plug 'Chiel92/vim-autoformat'
 Plug 'edkolev/tmuxline.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'jigish/vim-eclim', { 'for' : ['java', 'jsp', 'scala', 'clojure', 'groovy', 'gradle'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
@@ -312,24 +311,6 @@ let g:lightline.separator = {
 let g:lightline.subseparator = {
   \   'left': '', 'right': ''
   \}
-
-" eclim
-au BufEnter *.java map <leader>tw :JavaSearch<CR>
-au BufEnter *.scala map <leader>tw :ScalaSearch<CR>
-au BufLeave *.java,*.scala map <leader>tw yiw:tag <c-r>0<CR>
-let g:EclimJavaSearchSingleResult='edit'
-let g:EclimScalaSearchSingleResult='edit'
-let g:EclimCompletionMethod = 'omnifunc'
-let g:EclimHtmlValidate = 0
-let g:EclimXmlValidate = 0
-let g:EclimJavascriptValidate = 0
-map <leader>eo :ProjectImport .<CR>:ProjectOpen<CR>
-map <leader>er :ProjectRefreshAll<CR>
-vnoremap <leader>jg :JavaGetSet<CR>
-map <leader>jc :JavaConstructor<CR>
-map <leader>ji :JavaImport<CR>
-map <leader>jo :JavaImportOrganize<CR>
-map <leader>jf :JavaFmt<CR>
 
 " fugitive
 map <leader>gs :Git<CR>

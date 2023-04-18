@@ -40,23 +40,12 @@ function gclone {
   git clone ssh://git@github.com/$1
 }
 
-# Chruby
-#if [ -f /usr/local/share/chruby/chruby.sh ]; then
-  #source /usr/local/share/chruby/chruby.sh
-  #chruby 2.5.1
-#fi
-
 # z!
 . $HOME/bin/z.sh
 
 # Weather :)
 function weather {
   curl -s wttr.in/$1
-}
-
-# eclim
-function eclim {
-  [[ -z "$(pgrep eclimd)" ]] && rm -f /tmp/eclimd.log && nohup eclimd >/tmp/eclimd.log 2>&1 &
 }
 
 [[ -s "$HOME/.zshrc.`uname`" ]] && source "$HOME/.zshrc.`uname`"
