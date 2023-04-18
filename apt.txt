@@ -2,7 +2,6 @@ bzr
 coreutils
 curl
 exuberant-ctags
-fzf
 git
 htop
 hub
