@@ -41,3 +41,8 @@ fi
 
 # install kitty
 $SCRIPTDIR/bootstrap.kitty
+
+# make brave default browser
+echo
+echo "set brave as default browser"
+sudo update-alternatives --config x-www-browser

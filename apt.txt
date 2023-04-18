@@ -1,3 +1,4 @@
+brave-browser
 bzr
 coreutils
 curl
