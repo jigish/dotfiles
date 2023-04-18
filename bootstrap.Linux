@@ -3,7 +3,6 @@
 set -eo pipefail
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
-GOVERSION=1.20.3
 
 # Create Links
 cd ~
@@ -21,7 +20,7 @@ sudo pip3 install --upgrade pip
 sudo pip3 install --upgrade neovim
 
 # Install go
-sudo $SCRIPTDIR/bootstrap.go.Linux ${GOVERSION}
+sudo $SCRIPTDIR/bootstrap.go.Linux
 
 # zsh ftw
 chsh -s $(which zsh)
