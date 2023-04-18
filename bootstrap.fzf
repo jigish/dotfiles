@@ -13,7 +13,7 @@ else
 fi
 
 echo
-echo "running fzf install script. select 'y' here."
-~/.fzf/install
+echo "running fzf install script"
+~/.fzf/install --all
 
 cd $CURRDIR
