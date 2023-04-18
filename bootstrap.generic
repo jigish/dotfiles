@@ -17,6 +17,11 @@ cd ~
 cd .zprezto
 git pull
 git submodule update --init --recursive
+mkdir -p contrib
+cd contrib
+[[ ! -d fzf-tab ]] && git clone https://github.com/Aloxaf/fzf-tab
+cd fzf-tab
+git pull
 
 # Create Links
 echo
