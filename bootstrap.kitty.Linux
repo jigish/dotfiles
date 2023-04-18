@@ -20,4 +20,8 @@ cd ~/.local/share/applications
 sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" kitty*.desktop
 sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" kitty*.desktop
 
+echo
+echo "set kitty as default terminal"
+sudo update-alternatives --config x-terminal-emulator
+
 cd $CURRDIR
