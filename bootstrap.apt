@@ -4,10 +4,6 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# zsh-completions
-echo "deb http://download.opensuse.org/repositories/shells:/zsh-users:/zsh-completions/xUbuntu_$(lsb_release -r -s)/ /" | sudo tee /etc/apt/sources.list.d/shells:zsh-users:zsh-completions.list
-curl -fsSL https://download.opensuse.org/repositories/shells:zsh-users:zsh-completions/xUbuntu_$(lsb_release -r -s)/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_zsh-users_zsh-completions.gpg > /dev/null
-
 apt update
 apt upgrade -y
 apt install -y $(cat $SCRIPTDIR/apt.txt)
