@@ -6,3 +6,7 @@ echo
 echo "installing kitty"
 mkdir -p ~/.local
 curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+cd ~/bin
+[[ ! -L kitty ]] && ln -s ~/.local/kitty.app/bin/kitty
+[[ ! -L kitten ]] && ln -s ~/.local/kitty.app/bin/kitten
+cd ~/dotfiles
