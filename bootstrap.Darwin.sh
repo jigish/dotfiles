@@ -17,7 +17,7 @@ cd bin
 # set up brew & pip
 echo
 echo "bootstrapping via brew"
-$SCRIPTDIR/bootstrap.brew
+$SCRIPTDIR/bootstrap.brew.sh
 
 echo
 echo "installing ruby"

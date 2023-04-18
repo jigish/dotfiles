@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eo pipefail
+
+NORDIC_VERSION=v2.2.0
+
+CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
+DESKTOP_ENV=$(dpkg -l '*buntu-desktop' | grep ^ii | awk '{print $2}')
+if [[ "${DESKTOP_ENV}" != "lubuntu-desktop" ]]; then
+  # lxqt-based theme -- install kvantum
+  sudo add-apt-repository ppa:papirus/papirus
+  sudo apt update
+  sudo apt install qt5-style-kvantum qt5-style-kvantum-themes
+  mkdir -p ~/.config/Kvantum
+  git clone https://github.com/AlyamanMas/KvAdaptaNordic ~/.config/Kvantum/KvAdaptaNordic
+  echo
+  echo "NOTE: please use Kvantum Manager to set theme to KvAdaptaNordic"
+else
+  # probably gnome?
+  mkdir -p ~/.themes
+  cd ~/.themes
+  for style in '-bluish-accent' '-darker' '-Polar' ''; do
+    wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}-standard-buttons-v40.tar.xz
+    wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}-standard-buttons.tar.xz
+    wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}-v40.tar.xz
+    wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}.tar.xz
+  done
+
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
+  gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+fi
+
+
+cd $CURRDIR

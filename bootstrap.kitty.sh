@@ -7,6 +7,6 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 echo
 echo "installing kitty"
-$SCRIPTDIR/bootstrap.kitty.$(uname)
+$SCRIPTDIR/bootstrap.kitty.$(uname).sh
 
 cd $CURRDIR

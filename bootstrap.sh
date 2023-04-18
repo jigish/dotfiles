@@ -12,7 +12,7 @@ cd $SCRIPTDIR
 git pull
 git submodule update --init --recursive
 
-$SCRIPTDIR/bootstrap.generic
+$SCRIPTDIR/bootstrap.generic.sh
 
 cd $CURRDIR
 echo

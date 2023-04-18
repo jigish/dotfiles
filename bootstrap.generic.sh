@@ -57,12 +57,12 @@ cd bin
 
 echo
 echo "bootstrapping fzf"
-$SCRIPTDIR/bootstrap.fzf
+$SCRIPTDIR/bootstrap.fzf.sh
 
 # run os-specific shit
 echo
 echo "bootstrapping $(uname)"
-$SCRIPTDIR/bootstrap.`uname`
+$SCRIPTDIR/bootstrap.`uname`.sh
 
 # Install rust
 #$SCRIPTDIR/bootstrap.rust
@@ -75,7 +75,7 @@ if [ "$1" = "netflix" ]; then
   [[ ! -d dotfiles-netflix ]] && git clone ssh://git@stash.corp.netflix.com:7999/~jigishp/dotfiles.git dotfiles-netflix
   cd dotfiles-netflix
   git pull
-  ./bootstrap
+  ./bootstrap.sh
 fi
 
 . ~/.bashrc

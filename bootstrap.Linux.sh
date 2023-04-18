@@ -2,6 +2,7 @@
 
 set -eo pipefail
 
+CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 # create Links
@@ -13,7 +14,7 @@ echo "installing fonts"
 # install packages
 echo
 echo "bootstrapping via apt"
-sudo $SCRIPTDIR/bootstrap.apt
+sudo $SCRIPTDIR/bootstrap.apt.sh
 
 # install yq
 echo
@@ -30,7 +31,7 @@ pip3 install --upgrade pip
 pip3 install --upgrade pynvim
 
 # install go
-sudo $SCRIPTDIR/bootstrap.go.Linux
+sudo $SCRIPTDIR/bootstrap.go.Linux.sh
 
 # zsh ftw
 if [[ "${SHELL}" != "/bin/zsh" ]]; then
@@ -39,10 +40,15 @@ if [[ "${SHELL}" != "/bin/zsh" ]]; then
   chsh -s /bin/zsh
 fi
 
+# themes and such
+$SCRIPTDIR/bootstrap.theme.sh
+
 # install kitty
-$SCRIPTDIR/bootstrap.kitty
+$SCRIPTDIR/bootstrap.kitty.sh
 
 # make brave default browser
 echo
 echo "set brave as default browser"
 sudo update-alternatives --config x-www-browser
+
+cd $CURRDIR
