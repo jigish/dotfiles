@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -eo pipefail
+
+CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
 if [[ ! -d ~/.fzf ]]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 else
@@ -12,3 +17,5 @@ fi
 cd ~
 [[ ! -L .fzf.bash ]] && ln -s $SCRIPTDIR/fzf.bash .fzf.bash
 [[ ! -L .fzf.zsh ]] && ln -s $SCRIPTDIR/fzf.zsh .fzf.zsh
+
+cd $CURRDIR

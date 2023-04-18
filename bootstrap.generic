@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -eo pipefail
+
+CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
 # Setup prezto
 echo
 echo 'setting up prezto'
@@ -71,3 +76,5 @@ fi
 . ~/.bashrc
 
 mkdir -p ~/code
+
+cd $CURRDIR
