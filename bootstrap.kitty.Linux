@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -eo pipefail
+
+CURRDIR=`pwd`
+SCRIPTDIR=$(cd `dirname $0` && pwd)
+
+mkdir -p ~/.local/bin
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
+cd ~/.local/bin
+[[ ! -L kitty ]] && ln -s ~/.local/kitty.app/bin/kitty
+[[ ! -L kitten ]] && ln -s ~/.local/kitty.app/bin/kitten
+
+cd $CURRDIR

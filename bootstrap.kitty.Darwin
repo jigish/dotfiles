@@ -5,8 +5,6 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-echo
-echo "installing kitty"
-$SCRIPTDIR/bootstrap.kitty.$(uname)
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 cd $CURRDIR
