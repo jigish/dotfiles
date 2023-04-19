@@ -43,13 +43,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   cd ~/.nordzy/icons
   git pull
   ./install.sh
-  #gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
+  gsettings set org.gnome.desktop.interface icon-theme 'Nordzy-dark'
   # Nordzy Cursors
   [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
   cd ~/.nordzy/cursors
   git pull
   ./install.sh
-  #gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
+  gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 fi
 
 # brave nord theme
