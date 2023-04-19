@@ -9,6 +9,8 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum
+  echo
+  echo "installing kvantum and nord theme for LXQt"
   sudo add-apt-repository ppa:papirus/papirus
   sudo apt update
   sudo apt install qt5-style-kvantum qt5-style-kvantum-themes
@@ -17,10 +19,9 @@ if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   echo
   echo "NOTE: please use Kvantum Manager to set theme to KvAdaptaNordic"
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
-  if [[ "${XDG_CURRENT_DESKTOP}" = "ubuntu:GNOME" ]]; then
-    sudo apt install ubuntu-budgie-desktop # budgie > GNOME3
-    gnome-session-quit
-  fi
+  # Nordic theme
+  echo
+  echo "installing nord theme for gnome"
   mkdir -p ~/.themes
   cd ~/.themes
   for style in '-bluish-accent' '-darker' '-Polar' ''; do
@@ -32,11 +33,31 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
       fi
     done
   done
-
   gsettings set org.gnome.desktop.interface gtk-theme "Nordic-standard-buttons"
   gsettings set org.gnome.desktop.wm.preferences theme "Nordic-standard-buttons"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+
+  mkdir -p ~/.nordzy
+  # Nordzy Icons
+  [[ ! -d ~/.nordzy/icons ]] && git clone https://github.com/alvatip/Nordzy-icon ~/.nordzy/icons
+  cd ~/.nordzy/icons
+  git pull
+  ./install.sh
+  #gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
+  # Nordzy Cursors
+  [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
+  cd ~/.nordzy/cursors
+  git pull
+  ./install.sh
+  #gsettings set org.gnome.desktop.interface icon-theme 'MyIconTheme'
 fi
 
+# brave nord theme
+echo
+echo "installing nord theme for brave"
+NORD_ID=abehfkkfjlplnjadfcjiflnejblfmmpj
+EXTENSIONS_PATH=$HOME/.config/BraveSoftware/Brave-Browser/Defaults/Extensions
+mkdir -p $EXTENSIONS_PATH
+echo '{ "external_update_url": "https://clients2.google.com/service/update2/crx" }' > "${EXTENSIONS_PATH}/${NORD_ID}.json"
 
 cd $CURRDIR

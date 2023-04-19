@@ -83,3 +83,8 @@ fi
 mkdir -p ~/code
 
 cd $CURRDIR
+
+echo
+echo
+echo
+echo "bootstrap done."
