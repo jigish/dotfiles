@@ -9,7 +9,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 DESKTOP_ENV=$(dpkg -l '*buntu*desktop' | grep ^ii | awk '{print $2}')
 if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
-  # lxqt-based theme -- install kvantum
+  # qt-based theme -- install kvantum
   sudo add-apt-repository ppa:papirus/papirus
   sudo apt update
   sudo apt install qt5-style-kvantum qt5-style-kvantum-themes
@@ -18,7 +18,7 @@ if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
   echo
   echo "NOTE: please use Kvantum Manager to set theme to KvAdaptaNordic"
 else
-  # probably gnome?
+  # probably gtk
   mkdir -p ~/.themes
   cd ~/.themes
   for style in '-bluish-accent' '-darker' '-Polar' ''; do
@@ -31,8 +31,8 @@ else
     done
   done
 
-  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-darker-standard-buttons"
-  gsettings set org.gnome.desktop.wm.preferences theme "Nordic-darker-standard-buttons"
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-standard-buttons"
+  gsettings set org.gnome.desktop.wm.preferences theme "Nordic-standard-buttons"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 fi
 
