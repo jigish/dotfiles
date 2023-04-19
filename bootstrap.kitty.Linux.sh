@@ -11,7 +11,6 @@ cd ~/.local/bin
 [[ ! -L kitty ]] && ln -s ~/.local/kitty.app/bin/kitty
 [[ ! -L kitten ]] && ln -s ~/.local/kitty.app/bin/kitten
 
-DESKTOP_ENV=$(dpkg -l '*buntu*desktop' | grep ^ii | awk '{print $2}')
 if [[ "${DESKTOP_ENV}" != "lubuntu-desktop" ]]; then # seems lubuntu already has icons nice and pretty
   mkdir -p ~/.local/share/applications
   cd ~/.local/share/applications
