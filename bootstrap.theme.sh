@@ -28,11 +28,11 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
 
   # Colloid theme and icons
   mkdir -p ~/.colloid
-  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-kde ~/colloid/themes
+  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-kde ~/.colloid/themes
   cd ~/.colloid/themes
   git pull
   ./install.sh --tweaks normal --tweaks nord --tweaks rimless
-  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/colloid/icons
+  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
   cd ~/.colloid/icons
   git pull
   ./install.sh -s nord -t all
@@ -48,13 +48,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # Colloid theme
   mkdir -p ~/.colloid
-  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-gtk-theme ~/colloid/themes
+  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-gtk-theme ~/.colloid/themes
   cd ~/.colloid/themes
   git pull
   ./install.sh --tweaks -t all -l
 
   # Colloid icons
-  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/colloid/icons
+  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
   cd ~/.colloid/icons
   git pull
   ./install.sh -s all -t all
