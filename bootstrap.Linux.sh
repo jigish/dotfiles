@@ -5,8 +5,6 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-export DESKTOP_ENV=$(dpkg -l '*buntu*desktop' | grep ^ii | awk '{print $2}')
-
 # create Links
 cd ~
 echo

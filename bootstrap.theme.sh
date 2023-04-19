@@ -7,7 +7,7 @@ NORDIC_VERSION=v2.2.0
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
+if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum
   sudo add-apt-repository ppa:papirus/papirus
   sudo apt update
@@ -16,11 +16,11 @@ if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
   git clone https://github.com/AlyamanMas/KvAdaptaNordic ~/.config/Kvantum/KvAdaptaNordic
   echo
   echo "NOTE: please use Kvantum Manager to set theme to KvAdaptaNordic"
-else
-  #if [[ "${DESKTOP_ENV}" = "ubuntu-desktop" ]]; then
-  #  sudo apt install ubuntu-budgie-desktop
-  #fi
-  # probably gtk
+elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
+  if [[ "${XDG_CURRENT_DESKTOP}" = "ubuntu:GNOME" ]]; then
+    sudo apt install ubuntu-budgie-desktop # budgie > GNOME3
+    sudo logout
+  fi
   mkdir -p ~/.themes
   cd ~/.themes
   for style in '-bluish-accent' '-darker' '-Polar' ''; do

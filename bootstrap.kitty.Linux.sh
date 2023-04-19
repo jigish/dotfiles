@@ -11,7 +11,7 @@ cd ~/.local/bin
 [[ ! -L kitty ]] && ln -s ~/.local/kitty.app/bin/kitty
 [[ ! -L kitten ]] && ln -s ~/.local/kitty.app/bin/kitten
 
-if [[ "${DESKTOP_ENV}" != "lubuntu-desktop" ]]; then # seems lubuntu already has icons nice and pretty
+if [[ "${XDG_CURRENT_DESKTOP}" != "LXQt" ]]; then # seems LXQt already has icons nice and pretty
   mkdir -p ~/.local/share/applications
   cd ~/.local/share/applications
   # register kitty.desktop
@@ -27,7 +27,7 @@ echo
 echo "set kitty as default terminal"
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/kitty.app/bin/kitty 50
 sudo update-alternatives --config x-terminal-emulator
-if [[ "${DESKTOP_ENV}" = "ubuntu-desktop" || "${DESKTOP_ENV}" = "ubuntu-budgie-desktop" ]]; then
+if [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/x-terminal-emulator
 fi
 
