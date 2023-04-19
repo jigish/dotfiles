@@ -31,11 +31,11 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-kde ~/.colloid/themes
   cd ~/.colloid/themes
   git pull
-  ./install.sh --tweaks normal --tweaks nord --tweaks rimless
+  ./install.sh
   [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
   cd ~/.colloid/icons
   git pull
-  ./install.sh -s nord -t all
+  ./install.sh -s all -t all
   # Nordzy Cursors
   mkdir -p ~/.nordzy
   [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
@@ -46,18 +46,23 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   echo "NOTE: please use Kvantum Manager to set theme to Monterey"
   kvantummanager || true
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
-  # Colloid theme
-  mkdir -p ~/.colloid
-  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-gtk-theme ~/.colloid/themes
-  cd ~/.colloid/themes
-  git pull
-  ./install.sh --tweaks -t all -l
-
-  # Colloid icons
-  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
-  cd ~/.colloid/icons
-  git pull
-  ./install.sh -s all -t all
+  # Nordic theme
+  echo
+  echo "installing nord theme for gnome"
+  mkdir -p ~/.themes
+  cd ~/.themes
+  for style in '-bluish-accent' '-darker' '-Polar' ''; do
+    for suffix in '-standard-buttons-v40' '-standard-buttons' '-v40' ''; do
+      if [[ ! -d Nordic${style}${suffix} ]]; then
+        wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}${suffix}.tar.xz
+        tar -xf Nordic${style}${suffix}.tar.xz
+        rm Nordic${style}${suffix}.tar.xz
+      fi
+    done
+  done
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent-standard-buttons"
+  gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent-standard-buttons"
+  gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
   mkdir -p ~/.nordzy
   # Nordzy Icons
@@ -65,17 +70,12 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   cd ~/.nordzy/icons
   git pull
   ./install.sh
-
+  gsettings set org.gnome.desktop.interface icon-theme 'Nordzy-dark'
   # Nordzy Cursors
   [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
   cd ~/.nordzy/cursors
   git pull
   ./install.sh
-
-  gsettings set org.gnome.desktop.interface gtk-theme "Colloid"
-  gsettings set org.gnome.desktop.wm.preferences theme "Colloid"
-  gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-  gsettings set org.gnome.desktop.interface icon-theme 'Colloid-dark'
   gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 fi
 
