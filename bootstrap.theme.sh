@@ -7,7 +7,6 @@ NORDIC_VERSION=v2.2.0
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-DESKTOP_ENV=$(dpkg -l '*buntu*desktop' | grep ^ii | awk '{print $2}')
 if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
   # qt-based theme -- install kvantum
   sudo add-apt-repository ppa:papirus/papirus
@@ -18,6 +17,9 @@ if [[ "${DESKTOP_ENV}" = "lubuntu-desktop" ]]; then
   echo
   echo "NOTE: please use Kvantum Manager to set theme to KvAdaptaNordic"
 else
+  #if [[ "${DESKTOP_ENV}" = "ubuntu-desktop" ]]; then
+  #  sudo apt install ubuntu-budgie-desktop
+  #fi
   # probably gtk
   mkdir -p ~/.themes
   cd ~/.themes
