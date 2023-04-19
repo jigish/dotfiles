@@ -23,14 +23,16 @@ else
   cd ~/.themes
   for style in '-bluish-accent' '-darker' '-Polar' ''; do
     for suffix in '-standard-buttons-v40' '-standard-buttons' '-v40' ''; do
-      wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}${suffix}.tar.xz
-      tar -xf Nordic${style}${suffix}.tar.xz
-      rm Nordic${style}${suffix}.tar.xz
+      if [[ ! -d Nordic${style}${suffix} ]]; then
+        wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}${suffix}.tar.xz
+        tar -xf Nordic${style}${suffix}.tar.xz
+        rm Nordic${style}${suffix}.tar.xz
+      fi
     done
   done
 
-  gsettings set org.gnome.desktop.interface gtk-theme "Nordic"
-  gsettings set org.gnome.desktop.wm.preferences theme "Nordic"
+  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-darker-standard-buttons"
+  gsettings set org.gnome.desktop.wm.preferences theme "Nordic-darker-standard-buttons"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 fi
 
