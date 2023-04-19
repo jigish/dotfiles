@@ -88,3 +88,6 @@ echo
 echo
 echo
 echo "bootstrap done."
+echo
+echo "Nord brave theme:"
+echo "https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"

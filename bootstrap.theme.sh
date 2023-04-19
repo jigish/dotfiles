@@ -52,12 +52,4 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 fi
 
-# brave nord theme
-echo
-echo "installing nord theme for brave"
-NORD_ID=abehfkkfjlplnjadfcjiflnejblfmmpj
-EXTENSIONS_PATH=$HOME/.config/BraveSoftware/Brave-Browser/Defaults/Extensions
-mkdir -p $EXTENSIONS_PATH
-echo '{ "external_update_url": "https://clients2.google.com/service/update2/crx" }' > "${EXTENSIONS_PATH}/${NORD_ID}.json"
-
 cd $CURRDIR
