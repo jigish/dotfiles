@@ -51,8 +51,7 @@ function weather {
 [[ -s "$HOME/.zshrc.`uname`" ]] && source "$HOME/.zshrc.`uname`"
 [[ -s "$HOME/.zshrc.netflix" ]] && source "$HOME/.zshrc.netflix"
 [[ -s "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[[ -f "$HOME/.fzf.zsh" ]] && source ~/.fzf.zsh
 
 setopt prompt_sp
 
