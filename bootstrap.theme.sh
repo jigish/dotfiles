@@ -19,7 +19,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   if [[ "${XDG_CURRENT_DESKTOP}" = "ubuntu:GNOME" ]]; then
     sudo apt install ubuntu-budgie-desktop # budgie > GNOME3
-    sudo logout
+    gnome-session-quit
   fi
   mkdir -p ~/.themes
   cd ~/.themes
