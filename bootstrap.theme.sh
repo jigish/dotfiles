@@ -7,7 +7,7 @@ NORDIC_VERSION=v2.2.0
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-DESKTOP_ENV=$(dpkg -l '*buntu-desktop' | grep ^ii | awk '{print $2}')
+DESKTOP_ENV=$(dpkg -l '*buntu*desktop' | grep ^ii | awk '{print $2}')
 if [[ "${DESKTOP_ENV}" != "lubuntu-desktop" ]]; then
   # lxqt-based theme -- install kvantum
   sudo add-apt-repository ppa:papirus/papirus
