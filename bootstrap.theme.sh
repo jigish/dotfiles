@@ -63,7 +63,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   mkdir -p ~/.themes
   cd ~/.themes
   for f in $(ls ~/.local/share/themes); do
-    [[ ! -L ~/.local/share/themes/$f ]] && ln -s ~/.local/share/themes/$f
+    [[ ! -L $f ]] && ln -s ~/.local/share/themes/$f
   done
   gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent-standard-buttons"
   gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent-standard-buttons"
