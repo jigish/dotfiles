@@ -59,11 +59,6 @@ echo
 echo "bootstrapping fzf"
 $SCRIPTDIR/bootstrap.fzf.sh
 
-# run os-specific shit
-echo
-echo "bootstrapping $(uname)"
-$SCRIPTDIR/bootstrap.`uname`.sh
-
 # Install rust
 #$SCRIPTDIR/bootstrap.rust
 
@@ -78,9 +73,12 @@ if [ "$1" = "netflix" ]; then
   ./bootstrap.sh
 fi
 
-. ~/.bashrc
-
 mkdir -p ~/code
+
+# run os-specific shit
+echo
+echo "bootstrapping $(uname)"
+$SCRIPTDIR/bootstrap.`uname`.sh
 
 cd $CURRDIR
 
@@ -93,3 +91,9 @@ echo "things to do manually:"
 echo
 echo "install nord brave theme:"
 echo "https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
+if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
+  echo
+  echo "install and configure gnome shell extensions:"
+  echo "https://extensions.gnome.org/extension/1160/dash-to-panel/"
+  echo "https://extensions.gnome.org/extension/3193/blur-my-shell/"
+fi
