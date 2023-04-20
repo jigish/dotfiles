@@ -1,6 +1,5 @@
 brave-browser
 bzr
-conky-all
 coreutils
 curl
 exuberant-ctags
