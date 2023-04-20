@@ -32,6 +32,7 @@ cd ~
 [[ ! -L .bashrc.`uname` ]] && ln -s $SCRIPTDIR/bashrc.`uname` .bashrc.`uname`
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
+[[ ! -L .p10k.zsh ]] && ln -s $SCRIPTDIR/p10k.zsh .p10k.zsh
 [[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
 [[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
 [[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
