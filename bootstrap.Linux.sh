@@ -8,8 +8,10 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # create Links
 cd ~
 echo
-echo "installing fonts"
+echo "creating linux-specific links"
 [[ ! -L .fonts ]] && ln -s $SCRIPTDIR/fonts .fonts
+cd .config
+[[ ! -L conky ]] && ln -s $SCRIPTDIR/conky conky
 
 # install packages
 echo

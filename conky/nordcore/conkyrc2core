@@ -1,0 +1,181 @@
+conky.config = {
+-- Conky settings #
+    background = false,
+    update_interval = 1,
+
+    cpu_avg_samples = 2,
+    net_avg_samples = 2,
+
+    override_utf8_locale = true,
+
+    double_buffer = true,
+    no_buffers = true,
+
+    text_buffer_size = 2048,
+--imlib_cache_size 0
+
+
+-- Window specifications #
+    own_window_class = 'Conky',
+    own_window = true,
+    own_window_type = 'desktop',
+    own_window_transparent = true,
+    own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+    border_inner_margin = 0,
+    border_outer_margin = 5,
+
+    minimum_width = 280, minimum_height = 1080,
+    maximum_width = 520, minimum_height = 1080,
+
+    alignment = 'middle_right',
+    gap_x = 5,
+    gap_y = -60,
+
+-- Graphics settings #
+    draw_shades = false,
+    draw_outline = false,
+    draw_borders = false,
+    draw_graph_borders = true,
+
+-- Text settings #
+    use_xft = true,
+    font = 'Roboto Light:style=Light:size=8',
+    xftalpha = 0.5,
+
+    uppercase = false,
+
+--  temperature_unit = 'fahrenheit',
+    temperature_unit = 'celsius',
+
+    -- default_color = 'FFFFFF',
+    -- color0 = 'FFFFFF',
+    -- color1 = '88c0d0',
+    default_color = 'ffffff',
+    color0 = 'ffffff',
+    color1 = '88c0d0',
+
+
+-- Lua Load  #
+    lua_load = '~/.conky/nordcore/clock01_rings.lua',
+    lua_draw_hook_pre = 'clock_rings',
+
+    own_window_argb_value = 0,
+    own_window_argb_visual = true,
+    own_window_colour = '000000',
+
+-- network templates
+    if_up_strictness = 'address',
+
+    template0 = [[${color1}\1: $color$alignr${addr \1}
+${color1}Current: $color${alignr}${execi 10 test -e /sys/class/net/\1 && /sbin/iwconfig \1 | awk '/Bit Rate=/ { sub(/Rate=/,"", $2); print $2 }'} Mbits/sec]],
+
+    template1 = [[
+${color1}\1: $color$alignr${addr \1}\n]],
+
+    template2 = [[${color1}Down: $color${downspeed \1} k/s ${alignr}${color1}Up:$color ${upspeed \1} k/s
+${downspeedgraph \1 30,120 000000 88c0d0} ${alignr}${upspeedgraph \1 30,120 000000 88c0d0}$color
+${color1}Total:$color ${totaldown \1} ${alignr}${color1}\1          ${alignr}${color1}Total:$color ${totalup \1}]],
+
+   template4 = 'ens33',
+   template5 = 'eth1',
+   template6 = 'wlan0',
+   template7 = 'wlan1',
+
+
+-- wheather templates
+
+   template8 = '~/.conky/nordcore/weather',
+   template9 = '~/.conky/nordcore/weather_raw',
+
+   
+};
+
+-- fluxbox adjustment
+return_code = os.execute('pidof -q fluxbox')
+if _VERSION == 'Lua 5.1' and math.floor(return_code/256) == 0 or
+   _VERSION ~= 'Lua 5.1' and return_code then
+   conky.config.own_window_transparent = true
+   conky.config.own_window_argb_visual = false
+end
+
+conky.text = [[
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                            Time and date 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${voffset 7}${font Roboto Light:style=Light:size=16}${color1}${time %A}${font}$color${font Roboto Light:style=Light:size=38}${goto 167}${voffset -8} ${time %e}${font}
+${font Roboto Light:style=Light:size=18}${voffset -30}${time %b}${font}${voffset -3} ${font Roboto Light:style=Light:size=20}${time %Y}${font}${color1} ${hr 1}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                            Battery Circle 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color FFFFFF}${goto 209}${voffset 34}\
+${if_existing /sys/class/power_supply/BAT0}${battery_percent BAT0}%\
+${else}${if_existing /sys/class/power_supply/BAT1}${battery_percent BAT1}%${endif}${endif}
+${color1}${goto 202}${voffset 25}Battery
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                       Weather 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${font ConkyWeather:style=Medium:size=35}${color FFFFFF}${goto 200}${voffset 20}${execpi 6000  test -f ${template8} && sed -n '2p' ${template8}}$color${font}${font Radio Space:size=11}${color1}${goto 202}${voffset 12}${if_existing ${template8}}HOME${endif}
+${execi 600 test -f ${template9} && bash ${template9}}${font Roboto Light:style=Light:size=15}${goto 201}${voffset -4}${execpi 600 test -f ${template8} && ( sed -n '1p' ${template8}|awk '{print $NF}') }${font}$color
+${font caviar dreams:size=8}${goto 47}${voffset 5}Uptime: ${uptime_short}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                              CPU usage 
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color1}${hr 1}$color
+${color1}${voffset 6}Temp: $color ${if_existing /sys/class/thermal/thermal_zone0/temp}${eval ${acpitemp}}${else} ${endif}°C
+${color1}${voffset 6}Processes:$color $processes    
+${color1}${voffset 6}Running: $color  $running_processes${goto 116}${voffset 8}${cpu cpu0}% ${color1}${goto 116}${voffset 13}CPU1$color${goto 191}${voffset -12}${cpu cpu1}% ${color1}${goto 191}${voffset 12}CPU2$color
+${color1}${voffset -12}FREQ:$color ${freq}MHz
+${color1}${voffset 6}Load:$color ${loadavg}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                       Network
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color1}${voffset 2}${hr 1}
+${color1}${voffset 5}Hostname: $color$alignr$nodename
+${if_up ${template7}}${template0 ${template7}}${else}${template0 ${template6}}${endif}
+${if_up ${template5} }${template1 ${template5} }${else}${template1 ${template4} }${endif}
+${if_up ${template7}}${template2 ${template7}}${else}${if_up ${template6}}${template2 ${template6}}${else}${if_up ${template5}}${template2 ${template5}}${else}${if_up ${template4}}${template2 ${template4}}${else}${template2 no-link}      ${endif}${endif}${endif}${endif}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                   DISK/RAM/SWAP usage
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color1}${voffset 2}${hr 1}
+${color FFFFFF}${goto 7}${voffset 39}${fs_used_perc /}%
+${color1}${goto 7}DISK
+${color FFFFFF}${goto 102}${voffset -27}${memperc}%
+${color1}${goto 102}RAM
+${color FFFFFF}${goto 192}${voffset -26}${swapperc}%
+${color1}${goto 191}SWAP
+
+${color1}Root Directory: ${alignr}$color${fs_used /} / ${fs_size /}(${fs_used_perc}%)
+${color1}${fs_bar 30 /}
+${color1}Home Directory : ${alignr}$color${fs_used /home} / ${fs_size /home}(${fs_used_perc}%)
+${color1}${fs_bar 30 /home}
+#${color1}CPU 1${alignr}$color${cpu cpu1 \1}%
+#${cpugraph cpu1 \1 000000 88c0d0}
+#${color1}CPU 2${alignr}$color${cpu cpu2 \1}%
+#${cpugraph cpu2 \1 000000 88c0d0}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#                      Running processes
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color1}${voffset 5}NAME${goto 122}PID${goto 163}CPU%${goto 210}MEM%$color${voffset 5}
+${top name 1}${goto 115}${top pid 1}${goto 160}${top cpu 1}${goto 205}${top mem 1}
+${top name 2}${goto 115}${top pid 2}${goto 160}${top cpu 2}${goto 205}${top mem 2}
+${top name 3}${goto 115}${top pid 3}${goto 160}${top cpu 3}${goto 205}${top mem 3}
+${top name 4}${goto 115}${top pid 3}${goto 160}${top cpu 4}${goto 205}${top mem 4}
+${top name 5}${goto 115}${top pid 3}${goto 160}${top cpu 5}${goto 205}${top mem 5}
+${top name 6}${goto 115}${top pid 6}${goto 160}${top cpu 6}${goto 205}${top mem 6}
+${top name 7}${goto 115}${top pid 7}${goto 160}${top cpu 7}${goto 205}${top mem 7}
+${top name 8}${goto 115}${top pid 8}${goto 160}${top cpu 8}${goto 205}${top mem 8}
+${top name 9}${goto 115}${top pid 9}${goto 160}${top cpu 9}${goto 205}${top mem 9}
+${top name 10}${goto 115}${top pid 10}${goto 160}${top cpu 10}${goto 205}${top mem 10}
+#----------------------------------------------------------------------------------------------------------------------------------------
+#					     Computer info
+#----------------------------------------------------------------------------------------------------------------------------------------
+${color1}${voffset 2}${hr 1}${voffset 5}
+${color1}Hostname:$color${alignr}${nodename}
+${color1}OS:$color${alignr}${exec cat /etc/issue}${color1}Machine:$color${alignr}${machine}
+${color1}Kernel:$color${alignr}${kernel}
+]];
+
+
+
