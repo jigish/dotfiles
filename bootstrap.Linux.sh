@@ -8,9 +8,11 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # create Links
 cd ~
 echo
-echo "creating linux-specific links"
-[[ ! -L .fonts ]] && ln -s $SCRIPTDIR/fonts .fonts
-cd .config
+echo "installing fonts"
+mkdir -p ~/.fonts
+mkdir -p ~/.local/share/fonts
+cp $SCRIPTDIR/fonts/*.ttf ~/.fonts/
+cp $SCRIPTDIR/fonts/*.ttf ~/.local/share/fonts/
 
 # install packages
 echo
