@@ -93,5 +93,3 @@ echo "things to do manually:"
 echo
 echo "install nord brave theme:"
 echo "https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
-echo
-echo "add conky to startup apps with args '-c ~/.config/conky/conkyrc2core'"

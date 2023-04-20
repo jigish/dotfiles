@@ -11,7 +11,6 @@ echo
 echo "creating linux-specific links"
 [[ ! -L .fonts ]] && ln -s $SCRIPTDIR/fonts .fonts
 cd .config
-[[ ! -L conky ]] && ln -s $SCRIPTDIR/conky conky
 
 # install packages
 echo
