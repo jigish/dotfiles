@@ -48,11 +48,11 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # Nordic theme
   echo
-  echo "installing nord theme for gnome"
+  echo "installing nordic theme for gnome"
   mkdir -p ~/.themes
   cd ~/.themes
-  for style in '-bluish-accent' '-darker' '-Polar' ''; do
-    for suffix in '-standard-buttons-v40' '-standard-buttons' '-v40' ''; do
+  for style in '-bluish-accent' '-darker'; do # other options: '-Polar' ''
+    for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
       if [[ ! -d Nordic${style}${suffix} ]]; then
         wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}${suffix}.tar.xz
         tar -xf Nordic${style}${suffix}.tar.xz
@@ -64,14 +64,23 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent-standard-buttons"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
-  mkdir -p ~/.nordzy
-  # Nordzy Icons
-  [[ ! -d ~/.nordzy/icons ]] && git clone https://github.com/alvatip/Nordzy-icon ~/.nordzy/icons
-  cd ~/.nordzy/icons
+  # Zafiro Nord Dark (grey) Icons
+  echo "installing zafiro nord dark icons"
+  mkdir -p ~/.zafiro
+  [[ ! -d ~/.zafiro/icons ]] && git clone https://github.com/zayronxio/Zafiro-Nord-Dark ~/.zafiro/icons
+  cd ~/.zafiro/icons
+  git checkout . # remove my changes
   git pull
-  ./install.sh
-  gsettings set org.gnome.desktop.interface icon-theme 'Nordzy-dark'
+  echo "-> replacing green folder icons with grey"
+  # TODO replace green folders with grey folders
+  mkdir -p ~/.local/share/icons
+  cd ~/.local/share/icons
+  [[ ! -L Zafiro-Nord-Dark ]] && ln -s ~/.zafiro/icons/Zafiro-Nord-Dark Zafiro-Nord-Dark
+  gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
+
   # Nordzy Cursors
+  echo "installing nordzy cursors "
+  mkdir -p ~/.nordzy
   [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
   cd ~/.nordzy/cursors
   git pull
