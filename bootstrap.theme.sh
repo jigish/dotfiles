@@ -35,7 +35,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
   cd ~/.colloid/icons
   git pull
-  ./install.sh -s all -t all
+  ./install.sh --scheme nord
   # Nordzy Cursors
   mkdir -p ~/.nordzy
   [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
