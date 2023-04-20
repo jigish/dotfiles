@@ -72,6 +72,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # Zafiro Nord Dark (grey) Icons
   echo "installing zafiro nord dark icons"
   mkdir -p ~/.zafiro
+  cd ~/.zafiro
   [[ ! -d ~/.zafiro/Zafiro-Nord-Dark ]] && git clone https://github.com/zayronxio/Zafiro-Nord-Dark
   cd ~/.zafiro/Zafiro-Nord-Dark
   git checkout .
