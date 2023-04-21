@@ -13,7 +13,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   echo "installing kvantum and nord theme for LXQt"
   sudo add-apt-repository ppa:papirus/papirus
   sudo apt update
-  sudo apt install qt5-style-kvantum qt5-style-kvantum-themes
+  sudo apt install -y qt5-style-kvantum qt5-style-kvantum-themes
   mkdir -p ~/.config/Kvantum
   git clone https://github.com/AlyamanMas/KvAdaptaNordic ~/.config/Kvantum/KvAdaptaNordic
   echo
@@ -24,7 +24,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   echo "installing kvantum and nord theme for KDE"
   sudo add-apt-repository ppa:papirus/papirus
   sudo apt update
-  sudo apt install qt5-style-kvantum qt5-style-kvantum-themes
+  sudo apt install -y qt5-style-kvantum qt5-style-kvantum-themes
 
   # Colloid theme and icons
   mkdir -p ~/.colloid
@@ -46,6 +46,11 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   echo "NOTE: please use Kvantum Manager to set theme to Monterey"
   kvantummanager || true
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
+  # install gnome extrensions / tweaks and ulauncher
+  sudo add-apt-repository ppa:agornostal/ulauncher
+  sudo apt update
+  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher
+
   # Nordic theme
   echo
   echo "installing nordic theme for gnome"

@@ -100,4 +100,6 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo "install and configure gnome shell extensions:"
   echo "https://extensions.gnome.org/extension/1160/dash-to-panel/"
   echo "https://extensions.gnome.org/extension/3193/blur-my-shell/"
+  echo
+  echo "configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
 fi
