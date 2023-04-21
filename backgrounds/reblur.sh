@@ -10,7 +10,7 @@ for b in $(find . -name '*.png' |grep -v '.blurred.'); do
   filename=$(basename -- "$b")
   extension="${filename##*.}"
   filename="${filename%.*}"
-  filename=${filename}.blurred.${extensions}
+  filename=${filename}.blurred.${extension}
   echo "blurring $b"
   if [[ -f ${filename} ]]; then
     echo "-> skipping: $filename already exists"
