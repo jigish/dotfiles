@@ -58,9 +58,6 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
   cd ~/.config/ulauncher/user-themes/ulauncher-nord
   git pull
-  cd ~/.config/ulauncher
-  # set ulauncher theme to nord
-  [[ -f settings.json ]] && jq '."theme-name" = "nord"' settings.json |sponge settings.json
 
   # Nordic theme
   echo

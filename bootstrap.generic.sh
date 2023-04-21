@@ -103,7 +103,10 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo
   echo "3. configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
   echo
-  echo "4. fix ulauncher hotkey by setting in Settings > Keyboard > Customize Shortcuts > Custom Shortcuts > + cmd ulauncher-toggle"
+  echo -n "4. fix ulauncher hotkey for wayland by setting in "
+  echo "Settings > Keyboard > Customize Shortcuts > Custom Shortcuts > + cmd ulauncher-toggle"
   echo
-  echo "5. set up shortcuts for ulauncher"
+  echo "5. set ulauncher theme to nord"
+  echo
+  echo "6. set up shortcuts for ulauncher"
 fi
