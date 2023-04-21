@@ -53,4 +53,7 @@ echo
 echo "set brave as default browser"
 sudo update-alternatives --config x-www-browser
 
+# install kodi for tidal mqa
+$SCRIPTDIR/bootstrap.kodi.sh
+
 cd $CURRDIR
