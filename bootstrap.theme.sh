@@ -60,7 +60,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   echo
   echo "setting login screen background"
   cd $SCRIPTDIR
-  ./ubuntu-gdm-set-background $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
+  ./ubuntu-gdm-set-background --image $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
 
   # install gnome extrensions / tweaks, plymouth libs, and ulauncher
   echo
