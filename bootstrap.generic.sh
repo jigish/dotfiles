@@ -81,6 +81,9 @@ echo
 echo "bootstrapping $(uname)"
 $SCRIPTDIR/bootstrap.$(uname).sh
 
+# install kitty
+$SCRIPTDIR/bootstrap.kitty.sh
+
 cd $CURRDIR
 
 echo

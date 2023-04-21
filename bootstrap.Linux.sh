@@ -53,7 +53,4 @@ echo
 echo "set brave as default browser"
 sudo update-alternatives --config x-www-browser
 
-# install kitty
-$SCRIPTDIR/bootstrap.kitty.sh
-
 cd $CURRDIR

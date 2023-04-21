@@ -19,7 +19,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" != "LXQt" ]]; then # seems LXQt already has icons
   # auto-open by kitty
   [[ ! -f kitty-open.desktop ]] && cp ~/.local/kitty.app/share/applications/kitty-open.desktop .
   # update default icon/exec paths
-  sed -i "s|Icon=kitty|Icon=/home/$USER/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png|g" kitty*.desktop
+  sed -i "s|Icon=kitty|Icon=/home/$USER/.local/share/icons/Zafiro-Nord-Dark/apps/48/kitty.svg|g" kitty*.desktop
   sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" kitty*.desktop
 fi
 
