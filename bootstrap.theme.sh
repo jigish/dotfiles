@@ -7,10 +7,10 @@ NORDIC_VERSION=v2.2.0
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-COLLOID_DIR = ${TWEAKS_DIR}/colloid
-NORDZY_DIR = ${TWEAKS_DIR}/nordzy
-VORTEX_DIR = ${TWEAKS_DIR}/vortex
-ZAFIRO_DIR = ${TWEAKS_DIR}/zafiro
+COLLOID_DIR=${TWEAKS_DIR}/colloid
+NORDZY_DIR=${TWEAKS_DIR}/nordzy
+VORTEX_DIR=${TWEAKS_DIR}/vortex
+ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
 
 if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum

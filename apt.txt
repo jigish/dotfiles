@@ -8,7 +8,6 @@ git
 htop
 hub
 jq
-lsd
 moreutils
 neofetch
 neovim

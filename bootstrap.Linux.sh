@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+LSD_VERSION=0.23.1
+
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
@@ -28,7 +30,18 @@ sudo $SCRIPTDIR/bootstrap.apt.sh
 echo
 echo "installing yq"
 sudo rm -f /usr/local/bin/yq
-sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq && sudo chmod +x /usr/local/bin/yq
+sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+sudo chmod +x /usr/local/bin/yq
+
+#install lsd
+echo
+echo "installing lsd"
+if [[ ! -x $(which lsd) ]]; then
+  LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
+  sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} /tmp/${LSD_DEB}
+  sudo dpkg -i /tmp/${LSD_DEB}
+  sudo rm -f /tmp/${LSD_DEB}
+fi
 
 # npyvim is required for some neovim plugins
 echo
