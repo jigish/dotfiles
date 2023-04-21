@@ -93,15 +93,17 @@ echo "bootstrap done."
 echo
 echo "things to do manually:"
 echo
-echo "install nord brave theme:"
-echo "https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
+echo "1. install nord brave theme:"
+echo "   - https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
 if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo
-  echo "install and configure gnome shell extensions:"
-  echo "https://extensions.gnome.org/extension/1160/dash-to-panel/"
-  echo "https://extensions.gnome.org/extension/3193/blur-my-shell/"
+  echo "2. install and configure gnome shell extensions:"
+  echo "   - https://extensions.gnome.org/extension/1160/dash-to-panel/"
+  echo "   - https://extensions.gnome.org/extension/3193/blur-my-shell/"
   echo
-  echo "configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
+  echo "3. configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
   echo
-  echo "set ulauncher theme to nord"
+  echo "4. fix ulauncher hotkey by setting in Settings > Keyboard > Customize Shortcuts > Custom Shortcuts > + cmd ulauncher-toggle"
+  echo
+  echo "5. set up shortcuts for ulauncher"
 fi

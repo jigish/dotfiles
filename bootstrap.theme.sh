@@ -11,7 +11,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum
   echo
   echo "installing kvantum and nord theme for LXQt"
-  sudo add-apt-repository ppa:papirus/papirus
+  sudo add-apt-repository -y ppa:papirus/papirus
   sudo apt update
   sudo apt install -y qt5-style-kvantum qt5-style-kvantum-themes
   mkdir -p ~/.config/Kvantum
@@ -22,7 +22,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
 elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   echo
   echo "installing kvantum and nord theme for KDE"
-  sudo add-apt-repository ppa:papirus/papirus
+  sudo add-apt-repository -y ppa:papirus/papirus
   sudo apt update
   sudo apt install -y qt5-style-kvantum qt5-style-kvantum-themes
 
@@ -47,9 +47,10 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   kvantummanager || true
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # install gnome extrensions / tweaks and ulauncher
-  sudo add-apt-repository ppa:agornostal/ulauncher
+  sudo add-apt-repository -y ppa:agornostal/ulauncher
   sudo apt update
-  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher
+  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher wmctrl
+  systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
 
   # ulauncher Nord theme
   mkdir -p ~/.config/ulauncher/user-themes
@@ -57,6 +58,9 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
   cd ~/.config/ulauncher/user-themes/ulauncher-nord
   git pull
+  cd ~/.config/ulauncher
+  # set ulauncher theme to nord
+  [[ -f settings.json ]] && jq '.theme-name = "nord"' settings.json |sponge settings.json
 
   # Nordic theme
   echo
