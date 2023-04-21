@@ -46,6 +46,9 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   echo "NOTE: please use Kvantum Manager to set theme to Monterey"
   kvantummanager || true
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
+  # set background
+  gsettings set org.gnome.desktop.background picture-uri-dark file://${HOME}/dotfiles/backgrounds/ign_groot.png
+
   # install gnome extrensions / tweaks and ulauncher
   sudo add-apt-repository -y ppa:agornostal/ulauncher
   sudo apt update
