@@ -58,10 +58,18 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.background picture-uri file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
   gsettings set org.gnome.desktop.background picture-uri-dark file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
 
-  echo
-  echo "setting login screen background"
-  cd $SCRIPTDIR
-  sudo ./ubuntu-gdm-set-background --image $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
+  if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
+    echo
+    echo "setting login screen background"
+    cd $SCRIPTDIR
+    sudo ./ubuntu-gdm-set-background --image $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
+    # get rid of ubuntu logo
+    [[ -f /usr/share/plymouth/ubuntu-logo.png ]] && sudo mv /usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/ubuntu-logo.png.bak
+  else
+    # TODO budgie?
+    echo
+    echo "---> not configured to set login screen background for ${XDG_CURRENT_DESKTOP} <---"
+  fi
 
   # install gnome extrensions / tweaks, plymouth libs, and ulauncher
   echo
@@ -158,6 +166,9 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   git pull
   ./install.sh
   gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
+else
+  echo
+  echo "---> not configured to theme ${XDG_CURRENT_DESKTOP} <---"
 fi
 
 cd $CURRDIR
