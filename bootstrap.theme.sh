@@ -74,7 +74,8 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
 
   # vortex plymouth theme
   mkdir -p ${VORTEX_DIR}
-  [[ ! -d ${VORTEX_DIR}/plymouth ]] && https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
+  [[ ! -d ${VORTEX_DIR}/plymouth ]] && \
+    git clone https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
   cd ${VORTEX_DIR}/plymouth
   chmod +x install
   sudo ./install
