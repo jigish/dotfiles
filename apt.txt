@@ -3,6 +3,7 @@ bzr
 coreutils
 curl
 exuberant-ctags
+flatpak
 git
 htop
 hub
