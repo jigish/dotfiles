@@ -26,10 +26,13 @@ alias vim='nvim'
 alias vi='nvim'
 alias v='nvim'
 alias e='nvim'
+
+# helpful aliases
 [ -x "$(which lsd)" ] && alias ls='lsd'
 alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
+alias gits='git s' # lol
 
 # Paths
 export GOPATH=$HOME/code/go
