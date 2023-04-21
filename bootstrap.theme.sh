@@ -9,6 +9,7 @@ COLLOID_DIR=${TWEAKS_DIR}/colloid
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 VORTEX_DIR=${TWEAKS_DIR}/vortex
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
+NORDIC_VERSION_FILE=${TWEAKS_DIR}/nordic_version
 
 if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum
@@ -79,23 +80,30 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   sudo ./install
 
   # Nordic theme
-  echo
-  echo "installing nordic theme for gnome"
-  mkdir -p ~/.local/share/themes
-  cd ~/.local/share/themes
-  for style in '-bluish-accent'; do # other options: '-darker' '-Polar' ''
-    for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
-      rm -rf Nordic${style}${suffix}
-      wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
-      tar -xf Nordic${style}${suffix}.tar.xz
-      rm Nordic${style}${suffix}.tar.xz
+  EXISTING_NORDIC_VERSION=none
+  if [[ ! -f ${NORDIC_VERSION_FILE} ]]; then
+    EXISTING_NORDIC_VERSION=$(cat ${NORDIC_VERSION_FILE})
+  fi
+  if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
+    echo
+    echo "installing nordic theme for gnome ${NORDIC_VERSION}"
+    mkdir -p ~/.local/share/themes
+    cd ~/.local/share/themes
+    for style in '-bluish-accent'; do # other options: '-darker' '-Polar' ''
+      for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
+        rm -rf Nordic${style}${suffix}
+        wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
+        tar -xf Nordic${style}${suffix}.tar.xz
+        rm Nordic${style}${suffix}.tar.xz
+      done
     done
-  done
-  mkdir -p ~/.themes
-  cd ~/.themes
-  for f in $(ls ~/.local/share/themes); do
-    [[ ! -L $f ]] && ln -s ~/.local/share/themes/$f
-  done
+    mkdir -p ~/.themes
+    cd ~/.themes
+    for f in $(ls ~/.local/share/themes); do
+      [[ ! -L $f ]] && ln -s ~/.local/share/themes/$f
+    done
+    echo $NORDIC_VERSION >${NORDIC_VERSION_FILE}
+  fi
   gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent-standard-buttons"
   gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent-standard-buttons"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark

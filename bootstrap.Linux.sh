@@ -14,7 +14,6 @@ get_latest_release() {
     grep '"tag_name":' |                                            # Get tag line
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
-LSD_VERSION=$(get_latest_release lsd-rs/lsd)
 
 # create Links
 cd ~
@@ -33,22 +32,36 @@ echo "bootstrapping via apt"
 sudo $SCRIPTDIR/bootstrap.apt.sh
 
 # install yq
-echo
-echo "installing yq"
-sudo rm -f /usr/local/bin/yq
-sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
-sudo chmod +x /usr/local/bin/yq
+YQ_VERSION=$(get_latest_release mikefarah/yq)
+EXISTING_YQ_VERSION=none
+if [[ -x $(which yq) ]]; then
+  EXISTING_YQ_VERSION=$(yq --version | awk '{print $4}')
+fi
+if [[ ${YQ_VERSION} != ${EXISTING_YQ_VERSION} ]]; then
+  echo
+  echo "installing yq ${YQ_VERSION}"
+  sudo rm -f /usr/local/bin/yq
+  sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq
+  sudo chmod +x /usr/local/bin/yq
+fi
 
 #install lsd
-echo
-echo "installing lsd ${LSD_VERSION}"
+LSD_VERSION=$(get_latest_release lsd-rs/lsd)
+EXISTING_LSD_VERSION=none
 if [[ -x $(which lsd) ]]; then
-  sudo dpkg -P lsd
+  EXISTING_LSD_VERSION=$(lsd --version | awk '{print $2}')
 fi
-LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
-sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
-sudo dpkg -i /tmp/${LSD_DEB}
-sudo rm -f /tmp/${LSD_DEB}
+if [[ ${LSD_VERSION} != ${EXISTING_LSD_VERSION} ]]; then
+  echo
+  echo "installing lsd ${LSD_VERSION}"
+  if [[ -x $(which lsd) ]]; then
+    sudo dpkg -P lsd
+  fi
+  LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
+  sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
+  sudo dpkg -i /tmp/${LSD_DEB}
+  sudo rm -f /tmp/${LSD_DEB}
+fi
 
 # npyvim is required for some neovim plugins
 echo
