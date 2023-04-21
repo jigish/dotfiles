@@ -55,6 +55,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # set background
   echo
   echo "setting background"
+  gsettings set org.gnome.desktop.background picture-uri file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
   gsettings set org.gnome.desktop.background picture-uri-dark file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
 
   echo
