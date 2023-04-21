@@ -13,10 +13,11 @@ htop
 hub
 jq
 lua
+lsd
 mercurial
+neofetch
 neovim
 p7zip
-pt
 python
 readline
 ripgrep
@@ -25,7 +26,6 @@ ruby-install
 rustup
 subversion
 task
-the_silver_searcher
 thefuck
 tmux
 vim

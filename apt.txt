@@ -8,7 +8,9 @@ git
 htop
 hub
 jq
+lsd
 moreutils
+neofetch
 neovim
 ngrep
 p7zip-full
