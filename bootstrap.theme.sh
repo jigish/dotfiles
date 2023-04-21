@@ -84,7 +84,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
 
   # Nordic theme
   EXISTING_NORDIC_VERSION=none
-  if [[ ! -f ${NORDIC_VERSION_FILE} ]]; then
+  if [[ -f ${NORDIC_VERSION_FILE} ]]; then
     EXISTING_NORDIC_VERSION=$(cat ${NORDIC_VERSION_FILE})
   fi
   if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
