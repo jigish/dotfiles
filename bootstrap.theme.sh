@@ -83,13 +83,12 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   echo "installing nordic theme for gnome"
   mkdir -p ~/.local/share/themes
   cd ~/.local/share/themes
-  for style in '-bluish-accent' '-darker'; do # other options: '-Polar' ''
+  for style in '-bluish-accent'; do # other options: '-darker' '-Polar' ''
     for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
-      if [[ ! -d Nordic${style}${suffix} ]]; then
-        wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
-        tar -xf Nordic${style}${suffix}.tar.xz
-        rm Nordic${style}${suffix}.tar.xz
-      fi
+      rm -rf Nordic${style}${suffix}
+      wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
+      tar -xf Nordic${style}${suffix}.tar.xz
+      rm Nordic${style}${suffix}.tar.xz
     done
   done
   mkdir -p ~/.themes

@@ -40,14 +40,15 @@ sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd6
 sudo chmod +x /usr/local/bin/yq
 
 #install lsd
-if [[ ! -x $(which lsd) ]]; then
-  echo
-  echo "installing lsd ${LSD_VERSION}"
-  LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
-  sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
-  sudo dpkg -i /tmp/${LSD_DEB}
-  sudo rm -f /tmp/${LSD_DEB}
+echo
+echo "installing lsd ${LSD_VERSION}"
+if [[ -x $(which lsd) ]]; then
+  sudo dpkg -P lsd
 fi
+LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
+sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
+sudo dpkg -i /tmp/${LSD_DEB}
+sudo rm -f /tmp/${LSD_DEB}
 
 # npyvim is required for some neovim plugins
 echo
