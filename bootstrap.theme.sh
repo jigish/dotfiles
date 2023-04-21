@@ -7,6 +7,11 @@ NORDIC_VERSION=v2.2.0
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+COLLOID_DIR = ${TWEAKS_DIR}/colloid
+NORDZY_DIR = ${TWEAKS_DIR}/nordzy
+VORTEX_DIR = ${TWEAKS_DIR}/vortex
+ZAFIRO_DIR = ${TWEAKS_DIR}/zafiro
+
 if [[ "${XDG_CURRENT_DESKTOP}" = "LXQt" ]]; then
   # qt-based theme -- install kvantum
   echo
@@ -27,19 +32,19 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   sudo apt install -y qt5-style-kvantum qt5-style-kvantum-themes
 
   # Colloid theme and icons
-  mkdir -p ~/.colloid
-  [[ ! -d ~/.colloid/themes ]] && git clone https://github.com/vinceliuice/Colloid-kde ~/.colloid/themes
-  cd ~/.colloid/themes
+  mkdir -p ${COLLOID_DIR}
+  [[ ! -d ${COLLOID_DIR}/themes ]] && git clone https://github.com/vinceliuice/Colloid-kde ${COLLOID_DIR}/themes
+  cd ${COLLOID_DIR}/themes
   git pull
   ./install.sh
-  [[ ! -d ~/.colloid/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ~/.colloid/icons
-  cd ~/.colloid/icons
+  [[ ! -d ${COLLOID_DIR}/icons ]] && git clone https://github.com/vinceliuice/Colloid-icon-theme ${COLLOID_DIR}/icons
+  cd ${COLLOID_DIR}/icons
   git pull
   ./install.sh --scheme nord
   # Nordzy Cursors
-  mkdir -p ~/.nordzy
-  [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
-  cd ~/.nordzy/cursors
+  mkdir -p ${NORDZY_DIR}
+  [[ ! -d ${NORDZY_DIR}/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ${NORDZY_DIR}/cursors
+  cd ${NORDZY_DIR}/cursors
   git pull
   ./install.sh
 
@@ -49,10 +54,14 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # set background
   gsettings set org.gnome.desktop.background picture-uri-dark file://${HOME}/dotfiles/backgrounds/ign_groot.png
 
-  # install gnome extrensions / tweaks and ulauncher
+  # install gnome extrensions / tweaks, plymouth libs, and ulauncher
   sudo add-apt-repository -y ppa:agornostal/ulauncher
   sudo apt update
-  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher wmctrl gnome-software-plugin-flatpak
+  sudo apt install -y \
+    gnome-shell-extensions gnome-tweaks chrome-gnome-shell \
+    gnome-software-plugin-flatpak \
+    plymouth libplymouth5 plymouth-label \
+    ulauncher wmctrl
   systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
 
   # ulauncher Nord theme
@@ -63,6 +72,10 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   git stash || true
   git pull
   git stash pop || true
+
+  # vortex plymouth theme
+  mkdir -p ${VORTEX_DIR}
+  [[ ! -d ${VORTEX_DIR}/plymouth ]] && https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
 
   # Nordic theme
   echo
@@ -89,10 +102,10 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
 
   # Zafiro Nord Dark (grey) Icons
   echo "installing zafiro nord dark icons"
-  mkdir -p ~/.zafiro
-  cd ~/.zafiro
-  [[ ! -d ~/.zafiro/Zafiro-Nord-Dark ]] && git clone https://github.com/zayronxio/Zafiro-Nord-Dark
-  cd ~/.zafiro/Zafiro-Nord-Dark
+  mkdir -p ${ZAFIRO_DIR}
+  cd ${ZAFIRO_DIR}
+  [[ ! -d ${ZAFIRO_DIR}/Zafiro-Nord-Dark ]] && git clone https://github.com/zayronxio/Zafiro-Nord-Dark
+  cd ${ZAFIRO_DIR}/Zafiro-Nord-Dark
   git checkout .
   git pull
   echo "-> replacing green folder icons with grey and name to match repo"
@@ -105,14 +118,14 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
   mkdir -p ~/.local/share/icons
   cd ~/.local/share/icons
-  [[ ! -L Zafiro-Nord-Dark ]] && ln -s ~/.zafiro/Zafiro-Nord-Dark
+  [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
   gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
 
   # Nordzy Cursors
   echo "installing nordzy cursors"
-  mkdir -p ~/.nordzy
-  [[ ! -d ~/.nordzy/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ~/.nordzy/cursors
-  cd ~/.nordzy/cursors
+  mkdir -p ${NORDZY_DIR}
+  [[ ! -d ${NORDZY_DIR}/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ${NORDZY_DIR}/cursors
+  cd ${NORDZY_DIR}/cursors
   git pull
   ./install.sh
   gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'

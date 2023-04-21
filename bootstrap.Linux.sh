@@ -5,6 +5,9 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+export TWEAKS_DIR=${HOME}/.${USER}-tweaks
+mkdir -p ${TWEAKS_DIR}
+
 # create Links
 cd ~
 echo

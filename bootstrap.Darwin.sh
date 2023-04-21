@@ -19,10 +19,10 @@ echo
 echo "bootstrapping via brew"
 $SCRIPTDIR/bootstrap.brew.sh
 
-echo
-echo "installing ruby"
-mkdir -p ~/.rubies
-[[ ! -d ~/.rubies/2.5.1 ]] && ruby-install --install-dir ${HOME}/.rubies/2.5.1 ruby 2.5.1
+#echo
+#echo "installing ruby"
+#mkdir -p ~/.rubies
+#[[ ! -d ~/.rubies/2.5.1 ]] && ruby-install --install-dir ${HOME}/.rubies/2.5.1 ruby 2.5.1
 
 echo
 echo "installing fonts"
