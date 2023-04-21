@@ -102,4 +102,6 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo "https://extensions.gnome.org/extension/3193/blur-my-shell/"
   echo
   echo "configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
+  echo
+  echo "set ulauncher theme to nord"
 fi

@@ -51,6 +51,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   sudo apt update
   sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher
 
+  # ulauncher Nord theme
+  mkdir -p ~/.config/ulauncher/user-themes
+  [[ ! -d ~/.config/ulauncher/user-themes/ulauncher-nord ]] && \
+    git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
+  cd ~/.config/ulauncher/user-themes/ulauncher-nord
+  git pull
+
   # Nordic theme
   echo
   echo "installing nordic theme for gnome"
