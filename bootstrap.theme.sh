@@ -58,6 +58,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.background picture-uri file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
   gsettings set org.gnome.desktop.background picture-uri-dark file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
 
+  # install gnome extrensions / tweaks
+  echo
+  echo "installing extensions / tweaks"
+  sudo apt install -y \
+    gnome-shell-extensions gnome-tweaks chrome-gnome-shell \
+    gnome-software-plugin-flatpak
+
   if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
     echo
     echo "setting login screen background"
@@ -65,46 +72,43 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     sudo ./ubuntu-gdm-set-background --image $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
     # get rid of ubuntu logo
     [[ -f /usr/share/plymouth/ubuntu-logo.png ]] && sudo mv /usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/ubuntu-logo.png.bak
+
+    echo
+    echo "installing plymouth & ulauncher"
+    sudo add-apt-repository -y ppa:agornostal/ulauncher
+    sudo apt update
+    sudo apt install -y \
+      plymouth libplymouth5 plymouth-label \
+      ulauncher wmctrl
+    systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
+
+    # ulauncher Nord theme
+    echo
+    echo "installing nord ulauncher theme"
+    mkdir -p ~/.config/ulauncher/user-themes
+    [[ ! -d ~/.config/ulauncher/user-themes/ulauncher-nord ]] && \
+      git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
+    cd ~/.config/ulauncher/user-themes/ulauncher-nord
+    git stash || true
+    git pull
+    git stash pop || true
+
+    # vortex plymouth theme
+    echo
+    echo "installing vortex plymouth theme"
+    mkdir -p ${VORTEX_DIR}
+    [[ ! -d ${VORTEX_DIR}/plymouth ]] && \
+      git clone https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
+    cd ${VORTEX_DIR}/plymouth
+    git checkout .
+    git pull
+    chmod +x install
+    sudo ./install
   else
     # TODO budgie?
     echo
-    echo "---> not configured to set login screen background for ${XDG_CURRENT_DESKTOP} <---"
+    echo "---> not configured to set login screen / ulauncher / plymouth for ${XDG_CURRENT_DESKTOP} <---"
   fi
-
-  # install gnome extrensions / tweaks, plymouth libs, and ulauncher
-  echo
-  echo "installing extensions, tweaks, plymouth, ulauncher"
-  sudo add-apt-repository -y ppa:agornostal/ulauncher
-  sudo apt update
-  sudo apt install -y \
-    gnome-shell-extensions gnome-tweaks chrome-gnome-shell \
-    gnome-software-plugin-flatpak \
-    plymouth libplymouth5 plymouth-label \
-    ulauncher wmctrl
-  systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
-
-  # ulauncher Nord theme
-  echo
-  echo "installing nord ulauncher theme"
-  mkdir -p ~/.config/ulauncher/user-themes
-  [[ ! -d ~/.config/ulauncher/user-themes/ulauncher-nord ]] && \
-    git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
-  cd ~/.config/ulauncher/user-themes/ulauncher-nord
-  git stash || true
-  git pull
-  git stash pop || true
-
-  # vortex plymouth theme
-  echo
-  echo "installing vortex plymouth theme"
-  mkdir -p ${VORTEX_DIR}
-  [[ ! -d ${VORTEX_DIR}/plymouth ]] && \
-    git clone https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
-  cd ${VORTEX_DIR}/plymouth
-  git checkout .
-  git pull
-  chmod +x install
-  sudo ./install
 
   # Nordic theme
   EXISTING_NORDIC_VERSION=none
