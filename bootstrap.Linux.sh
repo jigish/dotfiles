@@ -2,13 +2,19 @@
 
 set -eo pipefail
 
-LSD_VERSION=0.23.1
 
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 export TWEAKS_DIR=${HOME}/.${USER}-tweaks
 mkdir -p ${TWEAKS_DIR}
+
+get_latest_release() {
+  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+    grep '"tag_name":' |                                            # Get tag line
+    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+}
+LSD_VERSION=$(get_latest_release lsd-rs/lsd)
 
 # create Links
 cd ~
@@ -34,9 +40,9 @@ sudo wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd6
 sudo chmod +x /usr/local/bin/yq
 
 #install lsd
-echo
-echo "installing lsd"
 if [[ ! -x $(which lsd) ]]; then
+  echo
+  echo "installing lsd ${LSD_VERSION}"
   LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
   sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
   sudo dpkg -i /tmp/${LSD_DEB}

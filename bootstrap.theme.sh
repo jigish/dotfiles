@@ -2,8 +2,6 @@
 
 set -eo pipefail
 
-NORDIC_VERSION=v2.2.0
-
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
@@ -88,7 +86,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   for style in '-bluish-accent' '-darker'; do # other options: '-Polar' ''
     for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
       if [[ ! -d Nordic${style}${suffix} ]]; then
-        wget https://github.com/EliverLara/Nordic/releases/download/${NORDIC_VERSION}/Nordic${style}${suffix}.tar.xz
+        wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
         tar -xf Nordic${style}${suffix}.tar.xz
         rm Nordic${style}${suffix}.tar.xz
       fi
