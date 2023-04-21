@@ -23,6 +23,9 @@ if [[ "${XDG_CURRENT_DESKTOP}" != "LXQt" ]]; then # seems LXQt already has icons
   sed -i "s|Exec=kitty|Exec=/home/$USER/.local/kitty.app/bin/kitty|g" kitty*.desktop
 fi
 
+# copy kitty terminfo system-wide
+sudo cp -a $HOME/.local/kitty.app/lib/kitty/terminfo/* /etc/terminfo/
+
 echo
 echo "set kitty as default terminal"
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator $HOME/.local/kitty.app/bin/kitty 50
