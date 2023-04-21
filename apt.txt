@@ -8,6 +8,7 @@ git
 htop
 hub
 jq
+libglib2.0-dev-bin
 moreutils
 neofetch
 neovim

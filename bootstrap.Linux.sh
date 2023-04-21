@@ -38,7 +38,7 @@ echo
 echo "installing lsd"
 if [[ ! -x $(which lsd) ]]; then
   LSD_DEB=lsd_${LSD_VERSION}_amd64.deb
-  sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} /tmp/${LSD_DEB}
+  sudo wget https://github.com/lsd-rs/lsd/releases/download/${LSD_VERSION}/${LSD_DEB} -O /tmp/${LSD_DEB}
   sudo dpkg -i /tmp/${LSD_DEB}
   sudo rm -f /tmp/${LSD_DEB}
 fi
