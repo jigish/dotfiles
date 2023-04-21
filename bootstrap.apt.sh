@@ -13,3 +13,6 @@ apt update
 apt upgrade -y
 apt install -y $(cat $SCRIPTDIR/apt.txt)
 apt autoremove -y
+
+# add flathub remote
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo

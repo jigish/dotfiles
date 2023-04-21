@@ -52,7 +52,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # install gnome extrensions / tweaks and ulauncher
   sudo add-apt-repository -y ppa:agornostal/ulauncher
   sudo apt update
-  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher wmctrl
+  sudo apt install -y gnome-shell-extensions gnome-tweaks chrome-gnome-shell ulauncher wmctrl gnome-software-plugin-flatpak
   systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
 
   # ulauncher Nord theme
