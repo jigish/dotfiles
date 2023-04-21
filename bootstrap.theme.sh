@@ -60,7 +60,9 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   [[ ! -d ~/.config/ulauncher/user-themes/ulauncher-nord ]] && \
     git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
   cd ~/.config/ulauncher/user-themes/ulauncher-nord
+  git stash || true
   git pull
+  git stash pop || true
 
   # Nordic theme
   echo
