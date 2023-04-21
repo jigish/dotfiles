@@ -5,6 +5,8 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
+. ./config.sh
+
 COLLOID_DIR=${TWEAKS_DIR}/colloid
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 VORTEX_DIR=${TWEAKS_DIR}/vortex
@@ -51,9 +53,18 @@ elif [[ "${XDG_CURRENT_DESKTOP}" = "KDE" ]]; then
   kvantummanager || true
 elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   # set background
-  gsettings set org.gnome.desktop.background picture-uri-dark file://${HOME}/dotfiles/backgrounds/ign_groot.png
+  echo
+  echo "setting background"
+  gsettings set org.gnome.desktop.background picture-uri-dark file://${SCRIPTDIR}/backgrounds/${DESKTOP_BACKGROUND}
+
+  echo
+  echo "setting login screen background"
+  cd $SCRIPTDIR
+  ./ubuntu-gdm-set-background $SCRIPTDIR/backgrounds/${DESKTOP_BACKGROUND_BLURRED}
 
   # install gnome extrensions / tweaks, plymouth libs, and ulauncher
+  echo
+  echo "installing extensions, tweaks, plymouth, ulauncher"
   sudo add-apt-repository -y ppa:agornostal/ulauncher
   sudo apt update
   sudo apt install -y \
@@ -64,6 +75,8 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   systemctl --user enable --now ulauncher # enable ulauncher at startup and start it now
 
   # ulauncher Nord theme
+  echo
+  echo "installing nord ulauncher theme"
   mkdir -p ~/.config/ulauncher/user-themes
   [[ ! -d ~/.config/ulauncher/user-themes/ulauncher-nord ]] && \
     git clone https://github.com/LucianoBigliazzi/ulauncher-nord ~/.config/ulauncher/user-themes/ulauncher-nord
@@ -73,6 +86,8 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   git stash pop || true
 
   # vortex plymouth theme
+  echo
+  echo "installing vortex plymouth theme"
   mkdir -p ${VORTEX_DIR}
   [[ ! -d ${VORTEX_DIR}/plymouth ]] && \
     git clone https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
@@ -112,6 +127,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
   # Zafiro Nord Dark (grey) Icons
+  echo
   echo "installing zafiro nord dark icons"
   mkdir -p ${ZAFIRO_DIR}
   cd ${ZAFIRO_DIR}
@@ -133,6 +149,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
 
   # Nordzy Cursors
+  echo
   echo "installing nordzy cursors"
   mkdir -p ${NORDZY_DIR}
   [[ ! -d ${NORDZY_DIR}/cursors ]] && git clone https://github.com/alvatip/Nordzy-cursors ${NORDZY_DIR}/cursors

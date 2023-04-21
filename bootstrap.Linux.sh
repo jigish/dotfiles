@@ -6,9 +6,6 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-export TWEAKS_DIR=${HOME}/.${USER}-tweaks
-mkdir -p ${TWEAKS_DIR}
-
 get_latest_release() {
   curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
     grep '"tag_name":' |                                            # Get tag line
