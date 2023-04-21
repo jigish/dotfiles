@@ -110,5 +110,5 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo
   echo "6. set up shortcuts for ulauncher"
   echo
-  echo "7. install tidal2 in kodi from $HOME/repository.tidal2-0.2.0.zip"
+  echo "7. restart gnome session to pick up flatpak"
 fi
