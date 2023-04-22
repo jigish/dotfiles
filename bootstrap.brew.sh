@@ -1,6 +1,7 @@
 #!/bin/bash
 
 [[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew analytics off
 brew update
 brew upgrade
 brew upgrade --cask
