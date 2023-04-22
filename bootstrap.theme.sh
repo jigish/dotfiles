@@ -120,14 +120,10 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     echo "installing nordic theme for gnome ${NORDIC_VERSION}"
     mkdir -p ~/.local/share/themes
     cd ~/.local/share/themes
-    for style in '-bluish-accent'; do # other options: '-darker' '-Polar' ''
-      for suffix in '-standard-buttons-v40' '-standard-buttons'; do # other options: '-v40' ''
-        rm -rf Nordic${style}${suffix}
-        wget https://github.com/EliverLara/Nordic/releases/latest/download/Nordic${style}${suffix}.tar.xz
-        tar -xf Nordic${style}${suffix}.tar.xz
-        rm Nordic${style}${suffix}.tar.xz
-      done
-    done
+    rm -rf ${NORDIC_THEME}
+    wget https://github.com/EliverLara/Nordic/releases/latest/download/${NORDIC_THEME}.tar.xz
+    tar -xf ${NORDIC_THEME}.tar.xz
+    rm ${NORDIC_THEME}.tar.xz
     mkdir -p ~/.themes
     cd ~/.themes
     for f in $(ls ~/.local/share/themes); do
@@ -135,9 +131,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     done
     echo $NORDIC_VERSION >${NORDIC_VERSION_FILE}
   fi
-  gsettings set org.gnome.desktop.interface gtk-theme "Nordic-bluish-accent-standard-buttons"
-  gsettings set org.gnome.desktop.wm.preferences theme "Nordic-bluish-accent-standard-buttons"
+  gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
+  gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
+  gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+  mkdir -p ~/.config/gtk-4.0
+  cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+  cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
 
   # Zafiro Nord Dark (grey) Icons
   echo
