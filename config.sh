@@ -17,8 +17,9 @@ export NORDIC_THEME_SUBTYPE=bluish-accent
 db_blurred=$(basename -- "$DESKTOP_BACKGROUND")
 db_blurred_ext="${db_blurred##*.}"
 db_blurred="${db_blurred%.*}"
-export DESKTOP_BACKGROUND_BLURRED=${db_blurred}.blurred.${db_blurred_ext}
+export DESKTOP_BACKGROUND_BLURRED="${db_blurred}.blurred.${db_blurred_ext}"
 
 if [[ ! -z "${NORDIC_THEME_SUBTYPE}" ]]; then
-  export NORDIC_THEME_SUBTYPE=-${NORDIC_THEME_SUBTYPE}
+  export NORDIC_THEME_SUBTYPE="-${NORDIC_THEME_SUBTYPE}"
 fi
+export NORDIC_THEME="Nordic${NORDIC_THEME_SUBTYPE}-standard-buttons"
