@@ -101,6 +101,7 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   echo "   - https://extensions.gnome.org/extension/1160/dash-to-panel/"
   echo "   - https://extensions.gnome.org/extension/3193/blur-my-shell/"
   echo "   - https://extensions.gnome.org/extension/4099/no-overview/"
+  echo "   - https://extensions.gnome.org/extension/19/user-themes/"
   echo
   echo "3. configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
   echo

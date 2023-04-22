@@ -1,0 +1,56 @@
+[Plymouth Theme]
+Name=Ubuntu Logosu
+Description=Ubuntu logosu theme using the ACPI BGRT graphics as background
+ModuleName=two-step
+
+[two-step]
+Font=Inter 12
+TitleFont=Inter Bold 32
+ImageDir=/usr/share/plymouth/themes/ubuntu-logosu
+DialogHorizontalAlignment=.5
+DialogVerticalAlignment=.5
+TitleHorizontalAlignment=.5
+TitleVerticalAlignment=.382
+HorizontalAlignment=.5
+VerticalAlignment=.5
+Transition=none
+TransitionDuration=0.0
+BackgroundStartColor=0x2E3440
+BackgroundEndColor=0x2E3440
+ProgressBarBackgroundColor=0x6D717E
+ProgressBarForegroundColor=0xD8DEE9
+DialogClearsFirmwareBackground=false
+MessageBelowAnimation=true
+
+[boot-up]
+UseEndAnimation=true
+UseFirmwareBackground=true
+
+[shutdown]
+UseEndAnimation=false
+UseFirmwareBackground=true
+
+[reboot]
+UseEndAnimation=false
+UseFirmwareBackground=true
+
+[updates]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+_Title=Installing Updates...
+_SubTitle=Do not turn off your computer
+
+[system-upgrade]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+_Title=Upgrading System...
+_SubTitle=Do not turn off your computer
+
+[firmware-upgrade]
+SuppressMessages=true
+ProgressBarShowPercentComplete=true
+UseProgressBar=true
+_Title=Upgrading Firmware...
+_SubTitle=Do not turn off your computer

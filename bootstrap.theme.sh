@@ -93,17 +93,14 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     git pull
     git stash pop || true
 
-    # vortex plymouth theme
+    # custom plymouth theme
     echo
-    echo "installing vortex plymouth theme"
-    mkdir -p ${VORTEX_DIR}
-    [[ ! -d ${VORTEX_DIR}/plymouth ]] && \
-      git clone https://github.com/emanuele-scarsella/vortex-ubuntu-plymouth-theme ${VORTEX_DIR}/plymouth
-    cd ${VORTEX_DIR}/plymouth
-    git checkout .
-    git pull
-    chmod +x install
-    sudo ./install
+    echo "installing custom plymouth theme"
+    sudo cp -a ~/dotfiles/ubuntu-logosu /usr/share/plymouth/themes/
+    sudo update-alternatives --install /usr/share/plymouth/themes/default.plymouth default.plymouth \
+      /usr/share/plymouth/themes/ubuntu-logosu/ubuntu-logosu.plymouth 800
+    sudo update-alternatives --set default.plymouth /usr/share/plymouth/themes/ubuntu-logosu/ubuntu-logosu.plymouth
+    sudo update-initramfs -u
   else
     # TODO budgie?
     echo
