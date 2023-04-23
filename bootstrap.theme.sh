@@ -73,11 +73,13 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     # get rid of ubuntu logo
     [[ -f /usr/share/plymouth/ubuntu-logo.png ]] && sudo mv /usr/share/plymouth/ubuntu-logo.png /usr/share/plymouth/ubuntu-logo.png.bak
     # replace default ubuntu orange color on login screen
-    if [[ -d /usr/share/gnome-shell/theme/Yaru && ! -d /usr/share/gnome-shell/theme/Yaru-original ]]; then
-      sudo cp -a /usr/share/gnome-shell/theme/Yaru /usr/share/gnome-shell/theme/Yaru-original
-      sudo find /usr/share/gnome-shell/theme/Yaru -name '*.css' -exec sed -i -e 's/#e95420/#5e81ac/gi' {} \;
-      sudo find /usr/share/gnome-shell/theme/Yaru -name '*.css' -exec sed -i -e 's/#ef8661/#81a1c1/gi' {} \;
-    fi
+    for d in 'Yaru' 'Yaru-dark'; do
+      if [[ -d /usr/share/gnome-shell/theme/${d} && ! -d /usr/share/gnome-shell/theme/${d}-original ]]; then
+        sudo cp -a /usr/share/gnome-shell/theme/${d} /usr/share/gnome-shell/theme/${d}-original
+        sudo find /usr/share/gnome-shell/theme/${d} -name '*.css' -exec sed -i -e 's/#e95420/#5e81ac/gi' {} \;
+        sudo find /usr/share/gnome-shell/theme/${d} -name '*.css' -exec sed -i -e 's/#ef8661/#81a1c1/gi' {} \;
+      fi
+    done
 
     echo
     echo "installing plymouth & ulauncher"
