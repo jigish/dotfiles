@@ -76,8 +76,7 @@ elif [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
     for d in 'Yaru' 'Yaru-dark'; do
       if [[ -d /usr/share/gnome-shell/theme/${d} && ! -d /usr/share/gnome-shell/theme/${d}-original ]]; then
         sudo cp -a /usr/share/gnome-shell/theme/${d} /usr/share/gnome-shell/theme/${d}-original
-        sudo find /usr/share/gnome-shell/theme/${d} -name '*.css' -exec sed -i -e 's/#e95420/#5e81ac/gi' {} \;
-        sudo find /usr/share/gnome-shell/theme/${d} -name '*.css' -exec sed -i -e 's/#ef8661/#81a1c1/gi' {} \;
+        sudo find /usr/share/gnome-shell/theme/${d} -name '*.css' -exec sed -i -e 's/#[a-zA-Z0-9]+/#81A1C1/gi' {} \;
       fi
     done
 
