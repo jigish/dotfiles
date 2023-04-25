@@ -19,7 +19,22 @@ db_blurred_ext="${db_blurred##*.}"
 db_blurred="${db_blurred%.*}"
 export DESKTOP_BACKGROUND_BLURRED="${db_blurred}.blurred.${db_blurred_ext}"
 
+# set up theme-related vars
 if [[ ! -z "${NORDIC_THEME_SUBTYPE}" ]]; then
   export NORDIC_THEME_SUBTYPE="-${NORDIC_THEME_SUBTYPE}"
 fi
 export NORDIC_THEME="Nordic${NORDIC_THEME_SUBTYPE}-standard-buttons"
+
+# set up os indentification vars
+export BOOTSTRAP_OS=$(uname | tr '[[:upper:]]' '[[:lower:]]')
+if [[ "BOOTSTRAP_OS" = "linux" ]]; then
+  if [[ -f /etc/os-release ]]; then
+    export LINUX_DISTRO=$(cat /etc/os-release |grep ID |sed -e 's/^ID=//g')
+  else
+    echo "you're running on some non-systemd linux distribution dude: no /etc/os-release" >&2
+    exit 1
+  fi
+else
+  echo "you're running on some bullshit os dude: $(uname -s)" >&2
+  exit 1
+fi

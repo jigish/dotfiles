@@ -5,7 +5,15 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# Setup prezto
+. ${SCRIPTDIR}/config.sh
+
+if [[ -f ${SCRIPTDIR}/pre-bootstrap.${BOOTSTRAP_OS}.sh ]]; then
+  echo "running pre-bootstrap for ${BOOTSTRAP_OS}"
+else
+  echo "no pre-bootstrap needed for ${BOOTSTRAP_OS}"
+fi
+
+# setup prezto
 echo
 echo 'setting up prezto'
 cd ~
@@ -23,31 +31,31 @@ cd contrib
 cd fzf-tab
 git pull
 
-# Create Links
+# create links
 echo
 echo 'symlinking dotfiles'
 cd ~
-[[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
-[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
-[[ ! -L ".bashrc.$(uname)" ]] && ln -s $SCRIPTDIR/bashrc.$(uname) .bashrc.$(uname)
+#[[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
+#[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
+#[[ ! -L ".bashrc.${BOOTSTRAP_OS}" ]] && ln -s $SCRIPTDIR/bashrc.${BOOTSTRAP_OS} .bashrc.${BOOTSTRAP_OS}
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-[[ ! -L .p10k.zsh ]] && ln -s $SCRIPTDIR/p10k.$(uname).zsh .p10k.zsh
-[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
-[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
-[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
+[[ ! -L .p10k.zsh ]] && ln -s $SCRIPTDIR/p10k.${BOOTSTRAP_OS}.zsh .p10k.zsh
+#[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
+#[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
+#[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
 [[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
 [[ ! -L .zpreztorc ]] && ln -s $SCRIPTDIR/zpreztorc .zpreztorc
 [[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
-[[ ! -L ".zshrc.$(uname)" ]] && ln -s $SCRIPTDIR/zshrc.$(uname) .zshrc.$(uname)
+[[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s $SCRIPTDIR/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
 [[ ! -L alacritty ]] && ln -s $SCRIPTDIR/config/alacritty alacritty
 [[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
 
-# Create Links for custom scrips
+# create links for custom scrips
 echo
 echo 'symlinking custom scripts'
 cd ~
@@ -56,12 +64,13 @@ cd bin
 [[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
 [[ ! -L edit ]] && ln -s $SCRIPTDIR/bin/edit
 
+# run os-specific shit
 echo
-echo "bootstrapping fzf"
-$SCRIPTDIR/bootstrap.fzf.sh
+echo "bootstrapping ${BOOTSTRAP_OS}"
+$SCRIPTDIR/bootstrap.${BOOTSTRAP_OS}.sh
 
-# Install rust
-#$SCRIPTDIR/bootstrap.rust
+# make code dir
+mkdir -p ~/code
 
 # run company-specific shit
 if [ "$1" = "netflix" ]; then
@@ -73,16 +82,6 @@ if [ "$1" = "netflix" ]; then
   git pull
   ./bootstrap.sh
 fi
-
-mkdir -p ~/code
-
-# run os-specific shit
-echo
-echo "bootstrapping $(uname)"
-$SCRIPTDIR/bootstrap.$(uname).sh
-
-# install kitty
-$SCRIPTDIR/bootstrap.kitty.sh
 
 cd $CURRDIR
 

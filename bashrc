@@ -131,7 +131,8 @@ function weather {
   curl -s wttr.in/$1
 }
 
-[[ -s "$HOME/.bashrc.`uname`" ]] && source "$HOME/.bashrc.`uname`"
+export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
+[[ -s "$HOME/.bashrc.${UNAME_S}" ]] && source "$HOME/.bashrc.${UNAME_S}"
 [[ -s "$HOME/.bashrc.netflix" ]] && source "$HOME/.bashrc.netflix"
 [[ -s "$HOME/.bashrc.local" ]] && source "$HOME/.bashrc.local"
 
