@@ -52,4 +52,9 @@ else
   set -e
 fi
 
+mkdir -p ${HOME}/tmp
+cat <<EOF >>${HOME}/tmp/bootstrap_TODO
+- logout and login to finish seatd install
+EOF
+
 cd $CURRDIR
