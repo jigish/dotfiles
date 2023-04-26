@@ -16,10 +16,7 @@ get_latest_release() {
 cd ~
 echo
 echo "installing fonts"
-mkdir -p ~/.fonts
 mkdir -p ~/.local/share/fonts
-cp $SCRIPTDIR/fonts/*.ttf ~/.fonts/
-cp $SCRIPTDIR/fonts/*.otf ~/.fonts/
 cp $SCRIPTDIR/fonts/*.ttf ~/.local/share/fonts/
 cp $SCRIPTDIR/fonts/*.otf ~/.local/share/fonts/
 

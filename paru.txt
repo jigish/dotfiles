@@ -8,6 +8,10 @@ kitty
 lsd
 moreutils
 neovim
+noto-fonts
+noto-fonts-cjk
+noto-fonts-emoji
+noto-fonts-extra
 pacman-log-orphans-hook
 perl
 pfetch
