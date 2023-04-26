@@ -57,7 +57,16 @@ if [[ "$?" = "0" ]]; then
   echo "hypervisor detected: installing virtualbox guest utils"
   set -e
   paru -S --needed virtualbox-guest-utils-nox
-  systemctl enable --now vboxservice.service
+  set +e
+  doas systemctl is-enabled vboxservice.service >/dev/null
+  if [[ "$?" != "0" ]]; then
+    set -e
+    echo
+    echo "enabling vboxservice.service"
+    sudo systemctl enable --now vboxservice.service
+  else
+    set -e
+  fi
 else
   set -e
 fi
