@@ -13,6 +13,7 @@ if [[ ! -x $(which paru) ]]; then
   rustup default stable
   mkdir -p ~/tmp
   cd ~/tmp
+  rm -rf paru
   git clone https://aur.archlinux.org/paru.git
   cd paru
   makepkg -si
