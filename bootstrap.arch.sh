@@ -11,6 +11,11 @@ if [[ ! -x $(which paru) ]]; then
   echo "installing paru"
   sudo pacman -Sy --needed base-devel rustup
   rustup default stable
+  mkdir -p ~/.cargo
+  cat <<EOF >~/.cargo/config.toml
+[net]
+git-fetch-with-cli = true
+EOF
   mkdir -p ~/tmp
   cd ~/tmp
   rm -rf paru
