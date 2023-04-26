@@ -31,7 +31,7 @@ fi
 echo
 echo "updating / installing / cleaning packages"
 paru -Syu
-paru -S $(cat ${SCRIPTDIR}/paru.txt)
+paru -S --needed $(cat ${SCRIPTDIR}/paru.txt)
 paru -c
 
 # add user to seat if need be
