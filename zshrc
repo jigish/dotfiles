@@ -1,7 +1,7 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
@@ -35,10 +35,15 @@ alias lt='ls -alrth'
 alias gits='git s' # lol
 
 # Paths
-export GOPATH=$HOME/code/go
-export PATH=$HOME/bin:${PATH}:/usr/local/go/bin:${GOPATH}/bin:$HOME/.cargo/bin
+export GOPATH=${HOME}/code/go
+if [[ ":${PATH}:" != *":${HOME}/bin:"* ]]; then
+  export PATH=${HOME}/bin:${PATH}
+fi
+if [[ ":${PATH}:" != *":${GOPATH}/bin:"* ]]; then
+  export PATH=${PATH}:${GOPATH}/bin
+fi
 # Expected working dir for code
-export CODE=$HOME/code
+export CODE=${HOME}/code
 
 # rg > pt > ag > ack
 alias ack=rg
@@ -52,7 +57,7 @@ function gclone {
 }
 
 # z!
-. $HOME/bin/z.sh
+. ${HOME}/bin/z.sh
 
 # Weather :)
 function weather {
@@ -60,16 +65,14 @@ function weather {
 }
 
 export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
-[[ -s "$HOME/.zshrc.${UNAME_S}" ]] && source "$HOME/.zshrc.${UNAME_S}"
-[[ -s "$HOME/.zshrc.netflix" ]] && source "$HOME/.zshrc.netflix"
-[[ -s "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"
-[[ -f "$HOME/.fzf.zsh" ]] && source ~/.fzf.zsh
+[[ -s "${HOME}/.zshrc.${UNAME_S}" ]] && source "${HOME}/.zshrc.${UNAME_S}"
+[[ -s "${HOME}/.zshrc.netflix" ]] && source "${HOME}/.zshrc.netflix"
+[[ -s "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
+[[ -f "${HOME}/.fzf.zsh" ]] && source ~/.fzf.zsh
 
 setopt prompt_sp
 
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
-
-eval $(thefuck --alias)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

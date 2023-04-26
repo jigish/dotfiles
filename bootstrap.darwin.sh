@@ -8,12 +8,7 @@ echo "bootstrapping fzf"
 $SCRIPTDIR/bootstrap.fzf.sh
 
 # create links
-echo
-echo "symlinking ${BOOTSTRAP_OS} dotfiles"
 cd ~
-[[ ! -L .slate.js ]] && ln -s $SCRIPTDIR/slate.js .slate.js
-[[ ! -L .xvimrc ]] && ln -s $SCRIPTDIR/xvimrc .xvimrc
-[[ ! -L .gvimrc ]] && ln -s .vim/gvimrc .gvimrc
 mkdir -p bin
 cd bin
 [[ ! -L spotify ]] && ln -s $SCRIPTDIR/bin/spotify

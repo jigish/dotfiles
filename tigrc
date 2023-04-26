@@ -1,5 +1,0 @@
-set show-author = yes
-set show-rev-graph = yes
-set show-refs = yes
-set author-width = 8
-set line-number-interval = 1

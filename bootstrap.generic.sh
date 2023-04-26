@@ -7,12 +7,6 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 . ${SCRIPTDIR}/config.sh
 
-if [[ -f ${SCRIPTDIR}/pre-bootstrap.${BOOTSTRAP_OS}.sh ]]; then
-  echo "running pre-bootstrap for ${BOOTSTRAP_OS}"
-else
-  echo "no pre-bootstrap needed for ${BOOTSTRAP_OS}"
-fi
-
 # setup prezto
 echo
 echo 'setting up prezto'
@@ -35,15 +29,9 @@ git pull
 echo
 echo 'symlinking dotfiles'
 cd ~
-#[[ ! -L .bashrc ]] && [[ -f .bashrc ]] && mv .bashrc .bashrc.old
-#[[ ! -L .bashrc ]] && ln -s $SCRIPTDIR/bashrc .bashrc
-#[[ ! -L ".bashrc.${BOOTSTRAP_OS}" ]] && ln -s $SCRIPTDIR/bashrc.${BOOTSTRAP_OS} .bashrc.${BOOTSTRAP_OS}
 [[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
 [[ ! -L .p10k.zsh ]] && ln -s $SCRIPTDIR/p10k.${BOOTSTRAP_OS}.zsh .p10k.zsh
-#[[ ! -L .tigrc ]] && ln -s $SCRIPTDIR/tigrc .tigrc
-#[[ ! -L .vim ]] && ln -s $SCRIPTDIR/vim .vim
-#[[ ! -L .vimrc ]] && ln -s .vim/vimrc .vimrc
 [[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
 [[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
 [[ ! -L .zpreztorc ]] && ln -s $SCRIPTDIR/zpreztorc .zpreztorc
@@ -52,7 +40,6 @@ cd ~
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
-[[ ! -L alacritty ]] && ln -s $SCRIPTDIR/config/alacritty alacritty
 [[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
 
 # create links for custom scrips

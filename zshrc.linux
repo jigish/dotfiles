@@ -1,8 +1,9 @@
 # Linux Specific Shit
 
-#fpath=(/usr/local/share/zsh-completions $fpath)
+if [[ -f /etc/os-release ]]; then
+  export LINUX_DISTRO=$(cat /etc/os-release |grep ID |sed -e 's/^ID=//g')
+else
+  export LINUX_DISTRO=unknown
+fi
 
-# old vim since vim is aliased to nvim
-function ovim {
-  /usr/bin/vim
-}
+[[ -s "${HOME}/.zshrc.${LINUX_DISTRO}" ]] && source "${HOME}/.zshrc.netflix"
