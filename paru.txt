@@ -14,7 +14,7 @@ pfetch
 python
 python-pynvim
 ripgrep
-rust
+rustup
 seatd
 sway
 swaybg
