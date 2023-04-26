@@ -25,7 +25,7 @@ if [[ "$?" != "0" ]]; then
   echo
   echo "installing paru"
   doas pacman -Sy --needed rustup ${cat ${SCRIPTDIR}/base-devel.txt}
-  [[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo
+  [[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
   rustup default stable
   mkdir -p ~/tmp
   cd ~/tmp
@@ -42,7 +42,7 @@ fi
 cd ~/.config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
 cd $CURRDIR
-[[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo
+[[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
 
 # update all the things
 echo
