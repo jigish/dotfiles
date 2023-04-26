@@ -44,7 +44,6 @@ fi
 cd ~/.config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
 cd $CURRDIR
-[[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo
 
 # update all the things
 echo
@@ -52,6 +51,7 @@ echo "updating / installing / cleaning packages"
 paru -Syu
 paru -S --needed $(cat ${SCRIPTDIR}/paru.txt)
 paru -c
+[[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo
 
 # install virtualbox guest stuff in needed
 set +e
