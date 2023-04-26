@@ -1,0 +1,3 @@
+# virtualbox-specific shit
+
+export LIBGL_ALWAYS_SOFTWARE=true
