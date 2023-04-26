@@ -19,11 +19,12 @@ fi
 
 # install paru
 set +e
-type paru >/dev/null
+type paru >/dev/null 2>&1
 if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "installing paru"
+  alias sudo='doas'
   doas pacman -Sy --needed base-devel rustup
   rustup default stable
   mkdir -p ~/tmp
