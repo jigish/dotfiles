@@ -35,19 +35,26 @@ paru -S --needed $(cat ${SCRIPTDIR}/paru.txt)
 paru -c
 
 # add user to seat if need be
+set +e
 id -nG ${USER} |grep -qw seat
 if [[ "$?" != "0" ]]; then
   echo
   echo "adding ${USER} to seat"
   sudo usermod -a -G seat ${USER}
+else
+  set -e
 fi
 
 # enable seatd
+set +e
 sudo systemctl is-enabled seatd.service >/dev/null
 if [[ "$?" != "0" ]]; then
+  set -e
   echo
   echo "enabling seatd.service"
   sudo systemctl enable --now seatd.service
+else
+  set -e
 fi
 
 cd $CURRDIR
