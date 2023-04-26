@@ -1,3 +1,2 @@
 # arch-specific shit
 
-alias sudo='doas'
