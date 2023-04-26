@@ -51,6 +51,7 @@ sway
 swaybg
 swayidle
 swaylock
+swaynagmode
 tar
 texinfo
 tidal-hifi-bin
