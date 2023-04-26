@@ -76,7 +76,7 @@ if [[ "$?" = "0" ]]; then
   fi
 
   cd ~
-  [[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox
+  [[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox .zshrc.virtualbox
   cd $CURRDIR
 else
   set -e
