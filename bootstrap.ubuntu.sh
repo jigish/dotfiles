@@ -133,3 +133,17 @@ sudo update-alternatives --config x-terminal-emulator
 if [[ "${XDG_CURRENT_DESKTOP}" == *"GNOME"* ]]; then
   gsettings set org.gnome.desktop.default-applications.terminal exec /usr/bin/x-terminal-emulator
 fi
+
+mkdir -p ${HOME}/tmp
+cat <<EOF >>${HOME}/tmp/bootstrap_TODO
+- install and configure gnome shell extensions:
+   - https://extensions.gnome.org/extension/1160/dash-to-panel/
+   - https://extensions.gnome.org/extension/3193/blur-my-shell/
+   - https://extensions.gnome.org/extension/4099/no-overview/
+   - https://extensions.gnome.org/extension/19/user-themes/
+- configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%
+- fix ulauncher hotkey for wayland by setting in Settings > Keyboard > Customize Shortcuts > Custom Shortcuts > + cmd ulauncher-toggle
+- set ulauncher theme to nord
+- set up shortcuts for ulauncher
+- restart gnome session to pick up flatpak
+EOF

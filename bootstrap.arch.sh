@@ -22,7 +22,7 @@ fi
 
 # update all the things
 echo
-echo "installing / updating packages"
+echo "updating / installing / cleaning packages"
 paru -Syu
 paru -S $(cat ${SCRIPTDIR}/paru.txt)
 paru -c

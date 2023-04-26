@@ -72,6 +72,12 @@ fi
 
 cd $CURRDIR
 
+TMP_TODO=
+if [[ -f ${HOME}/tmp/bootstrap_TODO ]]; then
+  TMP_TODO=$(cat ${HOME}/tmp/bootstrap_TODO)
+  rm -f ${HOME}/tmp/bootstrap_TODO
+fi
+
 echo
 echo
 echo
@@ -79,24 +85,6 @@ echo "bootstrap done."
 echo
 echo "things to do manually:"
 echo
-echo "1. install nord brave theme:"
+echo "- install nord brave theme:"
 echo "   - https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
-if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
-  echo
-  echo "2. install and configure gnome shell extensions:"
-  echo "   - https://extensions.gnome.org/extension/1160/dash-to-panel/"
-  echo "   - https://extensions.gnome.org/extension/3193/blur-my-shell/"
-  echo "   - https://extensions.gnome.org/extension/4099/no-overview/"
-  echo "   - https://extensions.gnome.org/extension/19/user-themes/"
-  echo
-  echo "3. configure dash-to-panel to top, size 24, hide app launcher and desktop, opacity 40%"
-  echo
-  echo -n "4. fix ulauncher hotkey for wayland by setting in "
-  echo "Settings > Keyboard > Customize Shortcuts > Custom Shortcuts > + cmd ulauncher-toggle"
-  echo
-  echo "5. set ulauncher theme to nord"
-  echo
-  echo "6. set up shortcuts for ulauncher"
-  echo
-  echo "7. restart gnome session to pick up flatpak"
-fi
+echo ${TMP_TODO}
