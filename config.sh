@@ -35,6 +35,6 @@ if [[ "BOOTSTRAP_OS" = "linux" ]]; then
     exit 1
   fi
 else
-  echo "you're running on some bullshit os dude: $(uname -s)" >&2
+  echo "you're running on some bullshit os dude: ${BOOTSTRAP_OS}" >&2
   exit 1
 fi
