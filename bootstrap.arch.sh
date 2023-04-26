@@ -24,7 +24,8 @@ if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "installing paru"
-  alias sudo='doas'
+  # first we need to add wheel to sudoers. why base-devel needs sudo is beyond me.
+  sed -i -e 's/^.*%wheel \(.*\)NOPASSWD\(.*\)$/%wheel \1NOPASSWD\2/g' /etc/sudoers
   doas pacman -Sy --needed base-devel rustup
   rustup default stable
   mkdir -p ~/tmp
