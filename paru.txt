@@ -39,6 +39,7 @@ noto-fonts-emoji
 noto-fonts-extra
 pacman
 patch
+pipewire
 pkgconf
 procps-ng
 python
@@ -59,3 +60,6 @@ tmux
 util-linux
 wget
 which
+wireplumber
+xdg-desktop-portal
+xdg-desktop-portal-wlr
