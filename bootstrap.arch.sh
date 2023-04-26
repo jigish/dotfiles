@@ -51,8 +51,10 @@ paru -c
 
 # install virtualbox guest stuff in needed
 set +e
-doas dmesg |grep "Hypervisor detected"
+doas dmesg |grep "Hypervisor detected" >/dev/null
 if [[ "$?" = "0" ]]; then
+  echo
+  echo "hypervisor detected: installing virtualbox guest utils"
   set -e
   paru -S --needed virtualbox-guest-utils-nox
   systemctl enable --now vboxservice.service
