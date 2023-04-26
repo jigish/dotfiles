@@ -17,6 +17,9 @@ ripgrep
 rust
 seatd
 sway
+swaybg
+swayidle
+swaylock
 tidal-hifi-bin
 tmux
 wget
