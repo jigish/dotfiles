@@ -47,7 +47,7 @@ if [[ ${YQ_VERSION} != ${EXISTING_YQ_VERSION} ]]; then
   sudo chmod +x /usr/local/bin/yq
 fi
 
-#install lsd
+# install lsd
 LSD_VERSION=$(get_latest_release lsd-rs/lsd)
 EXISTING_LSD_VERSION=none
 if [[ -x $(which lsd) ]]; then
