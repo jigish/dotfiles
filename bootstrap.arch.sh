@@ -18,7 +18,10 @@ else
 fi
 
 # install paru
-if [[ ! -x $(which paru) ]]; then
+set +e
+type paru >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
   echo
   echo "installing paru"
   doas pacman -Sy --needed base-devel rustup
@@ -33,6 +36,8 @@ if [[ ! -x $(which paru) ]]; then
   rm -rf paru
   cd $CURRDIR
   doas pacman -Rs base-devel # base-devel requires sudo. we are using doas.
+else
+  set -e
 fi
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
 [[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo

@@ -1,5 +1,8 @@
 bat
+binutils
 brave-bin
+coreutils
+findutils
 fzf
 go
 go-yq
@@ -27,3 +30,4 @@ swaylock
 tidal-hifi-bin
 tmux
 wget
+which
