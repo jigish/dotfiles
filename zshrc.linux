@@ -1,7 +1,7 @@
 # Linux Specific Shit
 
 if [[ -f /etc/os-release ]]; then
-  export LINUX_DISTRO=$(cat /etc/os-release |grep ID |sed -e 's/^ID=//g')
+  export LINUX_DISTRO=$(cat /etc/os-release |grep -e '^ID' |sed -e 's/^ID=//g')
 else
   export LINUX_DISTRO=unknown
 fi

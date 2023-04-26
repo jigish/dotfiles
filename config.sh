@@ -29,7 +29,7 @@ export NORDIC_THEME="Nordic${NORDIC_THEME_SUBTYPE}-standard-buttons"
 export BOOTSTRAP_OS=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 if [[ "${BOOTSTRAP_OS}" = "linux" ]]; then
   if [[ -f /etc/os-release ]]; then
-    export LINUX_DISTRO=$(cat /etc/os-release |grep ID |sed -e 's/^ID=//g')
+    export LINUX_DISTRO=$(cat /etc/os-release |grep -E '^ID' |sed -e 's/^ID=//g')
   else
     echo "you're running on some non-systemd linux distribution dude: no /etc/os-release" >&2
     exit 1
