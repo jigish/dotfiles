@@ -39,7 +39,9 @@ if [[ "$?" != "0" ]]; then
 else
   set -e
 fi
+cd ~/config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
+cd $CURRDIR
 [[ ! -L /usr/bin/sudo ]] && ln -s $(which doas) /usr/bin/sudo
 
 # update all the things
