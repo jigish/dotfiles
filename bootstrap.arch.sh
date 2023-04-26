@@ -9,7 +9,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 if [[ ! -x $(which paru) ]]; then
   echo
   echo "installing paru"
-  sudo pacman -Sy --needed base-devel
+  sudo pacman -Sy --needed base-devel rustup
   mkdir -p ~/tmp
   cd ~/tmp
   git clone https://aur.archlinux.org/paru.git
