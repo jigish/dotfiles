@@ -11,6 +11,10 @@ get_latest_release() {
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
+# symlink fonts
+cd ~
+ln -s ${HOME}/.local/share/fonts .fonts
+
 # install fzf
 echo
 echo "bootstrapping fzf"

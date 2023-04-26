@@ -41,6 +41,7 @@ mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
 [[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
+cd ~
 mkdir -p .cargo
 cd .cargo
 [[ ! -L config.toml ]] && ln -s $SCRIPTDIR/cargo-config.toml config.toml
