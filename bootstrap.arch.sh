@@ -12,7 +12,7 @@ if [[ "$?" = "0" ]]; then
   set -e
   echo
   echo "enabling parallel downloads (5) for pacman"
-  doas sed -i -e 's/^#ParallelDownloads .*/ParallelDownloads = 5/g'
+  doas sed -i -e 's/^#ParallelDownloads .*/ParallelDownloads = 5/g' /etc/pacman.conf
 else
   set -e
 fi
