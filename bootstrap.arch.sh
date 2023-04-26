@@ -7,12 +7,12 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 # enable parallel downloads for pacman
 set +e
-grep -E '^ParallelDownloads' /etc/pacman.conf >/dev/null
-if [[ "$?" != "0" ]]; then
+grep -E '^#ParallelDownloads' /etc/pacman.conf >/dev/null
+if [[ "$?" = "0" ]]; then
   set -e
   echo
   echo "enabling parallel downloads (5) for pacman"
-  sudo sed -i -e 's/^#ParallelDownloads .*/ParallelDownloads = 5/g'
+  doas sed -i -e 's/^#ParallelDownloads .*/ParallelDownloads = 5/g'
 else
   set -e
 fi
@@ -21,7 +21,7 @@ fi
 if [[ ! -x $(which paru) ]]; then
   echo
   echo "installing paru"
-  sudo pacman -Sy --needed base-devel rustup
+  doas pacman -Sy --needed base-devel rustup
   rustup default stable
   mkdir -p ~/tmp
   cd ~/tmp
@@ -41,8 +41,15 @@ paru -Syu
 paru -S --needed $(cat ${SCRIPTDIR}/paru.txt)
 paru -c
 
-# TODO
 # install virtualbox guest stuff in needed
+set +e
+doas dmesg |grep "Hypervisor detected"
+if [[ "$?" = "0" ]]; then
+  set -e
+  paru -S --needed virtualbox-guest-utils-nox
+else
+  set -e
+fi
 
 # add user to seat if need be
 set +e
@@ -50,19 +57,19 @@ id -nG ${USER} |grep -qw seat
 if [[ "$?" != "0" ]]; then
   echo
   echo "adding ${USER} to seat"
-  sudo usermod -a -G seat ${USER}
+  doas usermod -a -G seat ${USER}
 else
   set -e
 fi
 
 # enable seatd
 set +e
-sudo systemctl is-enabled seatd.service >/dev/null
+doas systemctl is-enabled seatd.service >/dev/null
 if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "enabling seatd.service"
-  sudo systemctl enable --now seatd.service
+  doas systemctl enable --now seatd.service
 else
   set -e
 fi
