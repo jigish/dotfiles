@@ -25,7 +25,7 @@ if [[ "$?" != "0" ]]; then
   echo
   echo "installing paru"
   # first we need to add wheel to sudoers. why base-devel needs sudo is beyond me.
-  sed -i -e 's/^.*%wheel \(.*\)NOPASSWD\(.*\)$/%wheel \1NOPASSWD\2/g' /etc/sudoers
+  doas sed -i -e 's/^.*%wheel \(.*\)NOPASSWD\(.*\)$/%wheel \1NOPASSWD\2/g' /etc/sudoers
   doas pacman -Sy --needed base-devel rustup
   rustup default stable
   mkdir -p ~/tmp
