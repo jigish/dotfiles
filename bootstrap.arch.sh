@@ -10,6 +10,7 @@ if [[ ! -x $(which paru) ]]; then
   echo
   echo "installing paru"
   sudo pacman -Sy --needed base-devel rustup
+  rustup default stable
   mkdir -p ~/tmp
   cd ~/tmp
   git clone https://aur.archlinux.org/paru.git
