@@ -27,7 +27,7 @@ export NORDIC_THEME="Nordic${NORDIC_THEME_SUBTYPE}-standard-buttons"
 
 # set up os indentification vars
 export BOOTSTRAP_OS=$(uname | tr '[[:upper:]]' '[[:lower:]]')
-if [[ "BOOTSTRAP_OS" = "linux" ]]; then
+if [[ "${BOOTSTRAP_OS}" = "linux" ]]; then
   if [[ -f /etc/os-release ]]; then
     export LINUX_DISTRO=$(cat /etc/os-release |grep ID |sed -e 's/^ID=//g')
   else
