@@ -25,7 +25,12 @@ cp $SCRIPTDIR/fonts/*.otf ~/.local/share/fonts/
 
 # distro-specific boostrap
 echo
-echo "bootstrapping ${LINUX_DISTRO}"
-$SCRIPTDIR/bootstrap.${LINUX_DISTRO}.sh
+if [[ -f ${SCRIPTDIR}/bootstrap.${LINUX_DISTRO}.sh ]]; then
+  echo "bootstrapping ${LINUX_DISTRO}"
+  ${SCRIPTDIR}/bootstrap.${LINUX_DISTRO}.sh
+else
+  echo "don't know how to bootstrap ${LINUX_DISTRO}: no bootstrap.${LINUX_DISTRO}.sh" >&2
+  exit 1
+fi
 
-cd $CURRDIR
+cd ${CURRDIR}
