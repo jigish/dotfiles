@@ -1,4 +1,5 @@
 bat
+brave-bin
 fzf
 go
 go-yq
@@ -13,7 +14,6 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
-pacman-log-orphans-hook
 perl
 python
 python-pynvim
