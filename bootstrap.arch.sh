@@ -9,7 +9,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 if [[ ! -x $(which paru) ]]; then
   echo
   echo "installing paru"
-  sudo pacman -S --needed base-devel
+  sudo pacman -Sy --needed base-devel
   mkdir -p ~/tmp
   cd ~/tmp
   git clone https://aur.archlinux.org/paru.git
@@ -24,7 +24,7 @@ fi
 echo
 echo "updating / installing / cleaning packages"
 paru -Syu
-paru -S $(cat ${SCRIPTDIR}/paru.txt)
+paru -Sy $(cat ${SCRIPTDIR}/paru.txt)
 paru -c
 
 # add user to seat if need be
