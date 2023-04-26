@@ -39,8 +39,13 @@ if [[ "$?" != "0" ]]; then
 else
   set -e
 fi
+
+# symlink configs
 cd ~/.config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
+[[ ! -L sway ]] && ln -s $SCRIPTDIR/config/sway sway
+
+# symlink sudo
 cd $CURRDIR
 [[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
 
