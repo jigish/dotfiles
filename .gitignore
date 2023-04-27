@@ -1,2 +1,3 @@
 /tmux/plugins/*
 /fonts/.uuid
+/config/kitty/kitty.d
