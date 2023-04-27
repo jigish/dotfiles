@@ -147,30 +147,15 @@ if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
   echo
   echo "installing nordic theme version ${NORDIC_VERSION}"
   mkdir -p ~/.local/share/themes
+  cd ~
+  [[ ! -L themes ]] && ln -s ~/.local/share/themes
   cd ~/.local/share/themes
   rm -rf ${NORDIC_THEME}
   wget https://github.com/EliverLara/Nordic/releases/latest/download/${NORDIC_THEME}.tar.xz
   tar -xf ${NORDIC_THEME}.tar.xz
   rm ${NORDIC_THEME}.tar.xz
-  cd ~
-  [[ ! -L themes ]] && ln -s ~/.local/share/themes
-  cd ${CURRDIR}
   echo $NORDIC_VERSION >${NORDIC_VERSION_FILE} # do this at the end so we run through this again if we fail
 fi
-gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
-gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
-mkdir -p ~/.config/gtk-4.0
-cd ~/.config/gtk-4.0
-[[ ! -L settings.ini ]] && ln -s ${SCRIPTDIR}/config/gtk-4.0/settings.ini
-cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
-cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
-cd ~/.config
-[[ ! -L gtk-30 ]] && ln -s ${SCRIPTDIR}/config/gtk-3.0
-[[ ! -L Trolltech.conf ]] && ln -s ${SCRIPTDIR}/config/Trolltech.conf
-cd ~
-[[ ! -L .gtkrc-2.0 ]] && ln -s ${SCRIPTDIR}/gtkrc-2.0 .gtkrc-2.0
 cd ${CURRDIR}
 # Zafiro Nord Dark (grey) Icons
 echo
@@ -190,9 +175,11 @@ find ./places -type f -exec sed -i -e 's/#80a264/#637279/g' {} \;
 find ./places -type f -exec sed -i -e 's/#87a7a9/#9cb4be/g' {} \;
 find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
 mkdir -p ~/.local/share/icons
+cd ~
+[[ ! -L icons ]] && ln -s ~/.local/share/icons
 cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
-gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
+cd ${CURRDIR}
 # Nordzy Cursors
 echo
 echo "installing nordzy cursors"
@@ -201,7 +188,23 @@ mkdir -p ${NORDZY_DIR}
 cd ${NORDZY_DIR}/cursors
 git pull
 ./install.sh
+# Attempt to actually set theme in various ways
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
+gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
 gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
+gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
+mkdir -p ~/.config/gtk-4.0
+cd ~/.config/gtk-4.0
+[[ ! -L settings.ini ]] && ln -s ${SCRIPTDIR}/config/gtk-4.0/settings.ini
+cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
+cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
+cd ~/.config
+[[ ! -L gtk-30 ]] && ln -s ${SCRIPTDIR}/config/gtk-3.0
+[[ ! -L Trolltech.conf ]] && ln -s ${SCRIPTDIR}/config/Trolltech.conf
+cd ~
+[[ ! -L .gtkrc-2.0 ]] && ln -s ${SCRIPTDIR}/gtkrc-2.0 .gtkrc-2.0
+cd ${CURRDIR}
 
 
 
