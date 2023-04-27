@@ -25,6 +25,7 @@ grep
 groff
 gzip
 htop
+hyprland
 jq
 kitty
 less
@@ -32,6 +33,7 @@ libtool
 lsd
 m4
 make
+mako
 moreutils
 neofetch
 neovim
@@ -43,18 +45,17 @@ pacman
 patch
 pipewire
 pkgconf
+polkit
+polkit-gnome
 procps-ng
 python
 python-pynvim
+qt5-wayland
+qt6-wayland
 ripgrep
 rustup
 seatd
 sed
-sway
-swaybg
-swayidle
-swaylock
-swaynagmode
 tar
 texinfo
 tidal-hifi-bin
@@ -64,4 +65,4 @@ wget
 which
 wireplumber
 xdg-desktop-portal
-xdg-desktop-portal-wlr
+xdg-desktop-portal-hyprland
