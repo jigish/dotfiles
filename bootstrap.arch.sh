@@ -153,9 +153,9 @@ if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
   tar -xf ${NORDIC_THEME}.tar.xz
   rm ${NORDIC_THEME}.tar.xz
   cd ~
-  ln -s ~/.local/share/themes
-  echo $NORDIC_VERSION >${NORDIC_VERSION_FILE}
+  [[ ! -L themes ]] && ln -s ~/.local/share/themes
   cd ${CURRDIR}
+  echo $NORDIC_VERSION >${NORDIC_VERSION_FILE} # do this at the end so we run through this again if we fail
 fi
 gsettings set org.gnome.shell.ubuntu color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
