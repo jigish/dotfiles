@@ -38,3 +38,7 @@ else
   echo "you're running on some bullshit os dude: ${BOOTSTRAP_OS}" >&2
   exit 1
 fi
+
+if [[ -n  "${NOCONFIRM}" ]]; then
+  export NOCONFIRM=--noconfirm
+fi

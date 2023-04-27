@@ -24,7 +24,7 @@ if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "installing paru"
-  doas pacman -Sy --needed rustup $(cat ${SCRIPTDIR}/base-devel.txt)
+  doas pacman -Sy ${NOCONFIRM} --needed rustup $(cat ${SCRIPTDIR}/base-devel.txt)
   [[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
   rustup default stable
   mkdir -p ~/tmp
@@ -52,9 +52,9 @@ cd $CURRDIR
 # update all the things
 echo
 echo "updating / installing / cleaning packages"
-paru -Syu
-paru -S --needed $(cat ${SCRIPTDIR}/paru.txt)
-paru -c
+paru -Syu ${NOCONFIRM}
+paru -S ${NOCONFIRM} --needed $(cat ${SCRIPTDIR}/paru.txt)
+paru -c ${NOCONFIRM}
 
 # install virtualbox guest stuff in needed
 set +e
@@ -63,7 +63,7 @@ if [[ "$?" = "0" ]]; then
   echo
   echo "hypervisor detected: installing virtualbox guest utils"
   set -e
-  paru -S --needed virtualbox-guest-utils-nox
+  paru -S ${NOCONFIRM} --needed virtualbox-guest-utils-nox
   set +e
   doas systemctl is-enabled vboxservice.service >/dev/null
   if [[ "$?" != "0" ]]; then
