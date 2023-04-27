@@ -60,24 +60,49 @@ paru -c ${NOCONFIRM}
 set +e
 doas dmesg |grep "Hypervisor detected" >/dev/null
 if [[ "$?" = "0" ]]; then
-  echo
-  echo "hypervisor detected: installing virtualbox guest utils"
   set -e
-  paru -S ${NOCONFIRM} --needed virtualbox-guest-utils-nox
+
+  echo
+  echo "hypervisor detected: installing vmware tools"
+  paru -S ${NOCONFIRM} --needed open-vm-tools gtkmm3
+  doas systemctl is-enabled vmtoolsd.service >/dev/null
   set +e
-  doas systemctl is-enabled vboxservice.service >/dev/null
   if [[ "$?" != "0" ]]; then
     set -e
     echo
-    echo "enabling vboxservice.service"
-    doas systemctl enable --now vboxservice.service
+    echo "enabling vmtoolsd.service"
+    doas systemctl enable --now vmtoolsd.service
+  else
+    set -e
+  fi
+  doas systemctl is-enabled vmware-vmblock-fuse.service >/dev/null
+  set +e
+  if [[ "$?" != "0" ]]; then
+    set -e
+    echo
+    echo "enabling vmware-vmblock-fuse.service"
+    doas systemctl enable --now vmware-vmblock-fuse.service
   else
     set -e
   fi
 
-  cd ~
-  [[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox .zshrc.virtualbox
-  cd $CURRDIR
+  #echo
+  #echo "hypervisor detected: installing virtualbox guest utils"
+  #paru -S ${NOCONFIRM} --needed virtualbox-guest-utils-nox
+  #doas systemctl is-enabled vboxservice.service >/dev/null
+  #set +e
+  #if [[ "$?" != "0" ]]; then
+    #set -e
+    #echo
+    #echo "enabling vboxservice.service"
+    #doas systemctl enable --now vboxservice.service
+  #else
+    #set -e
+  #fi
+
+  #cd ~
+  #[[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox .zshrc.virtualbox
+  #cd $CURRDIR
 else
   set -e
 fi
