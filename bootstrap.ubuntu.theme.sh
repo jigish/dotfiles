@@ -7,9 +7,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 . ${SCRIPTDIR}/config.sh
 
-COLLOID_DIR=${TWEAKS_DIR}/colloid
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
-VORTEX_DIR=${TWEAKS_DIR}/vortex
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
 NORDIC_VERSION_FILE=${TWEAKS_DIR}/nordic_version
 
@@ -95,9 +93,6 @@ if [[ "${XDG_CURRENT_DESKTOP}" == "ubuntu:GNOME" ]]; then
   gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
   gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
   gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-  mkdir -p ~/.config/gtk-4.0
-  cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
-  cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
 
   # Zafiro Nord Dark (grey) Icons
   echo

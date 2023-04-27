@@ -13,6 +13,12 @@ export NORDIC_THEME_SUBTYPE=bluish-accent
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 
+get_latest_release() {
+  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
+    grep '"tag_name":' |                                            # Get tag line
+    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
+}
+
 # assume we've run ./reblur.sh and this exists
 db_blurred=$(basename -- "$DESKTOP_BACKGROUND")
 db_blurred_ext="${db_blurred##*.}"
@@ -24,6 +30,7 @@ if [[ ! -z "${NORDIC_THEME_SUBTYPE}" ]]; then
   export NORDIC_THEME_SUBTYPE="-${NORDIC_THEME_SUBTYPE}"
 fi
 export NORDIC_THEME="Nordic${NORDIC_THEME_SUBTYPE}-standard-buttons"
+export NORDIC_VERSION=$(get_latest_release EliverLara/Nordic)
 
 # set up os indentification vars
 export BOOTSTRAP_OS=$(uname | tr '[[:upper:]]' '[[:lower:]]')

@@ -1,0 +1,15 @@
+dconf-editor
+gtk2
+gtk3
+gtk4
+hyprland
+mako
+pipewire
+polkit
+polkit-gnome
+qt5-wayland
+qt6-wayland
+swaybg
+wireplumber
+xdg-desktop-portal
+xdg-desktop-portal-hyprland

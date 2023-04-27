@@ -5,11 +5,7 @@ set -eo pipefail
 CURRDIR=`pwd`
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-get_latest_release() {
-  curl --silent "https://api.github.com/repos/$1/releases/latest" | # Get latest release from GitHub api
-    grep '"tag_name":' |                                            # Get tag line
-    sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
-}
+. ./config.sh
 
 # symlink fonts
 cd ~
@@ -28,7 +24,7 @@ sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://b
 [[ ! -f /etc/apt/sources.list.d/brave-browser-release.list ]]  && sudo echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main"| sudo tee /etc/apt/sources.list.d/brave-browser-release.list
 sudo apt update
 sudo apt upgrade -y
-sudo apt install -y $(cat $SCRIPTDIR/apt.txt)
+sudo apt install -y $(cat $SCRIPTDIR/bootstrap.packages/ubuntu.txt)
 sudo apt autoremove -y
 # add flathub remote
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
