@@ -1,37 +1,15 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
-# Read `man 5 sway` for a complete reference.
-
-### Variables
-#
-# Logo key. Use Mod1 for Alt.
+### variables ###
+# logo key
 set $mod Mod4
-# Home row direction keys, like vim
+# vim movement
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+# default terminal
 set $term kitty
-# Your preferred application launcher
-# Note: pass the final command to swaymsg so that the resulting window can be opened
-# on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/jigish/dotfiles/backgrounds/groot.png fill
-#
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Nag mode ###
+### nag config ###
 set $nag exec swaynagmode
 mode "nag" {
   bindsym {
@@ -54,7 +32,37 @@ mode "nag" {
   }
 }
 
+### wallpaper ###
+output * bg /home/jigish/dotfiles/backgrounds/groot.png fill
+
+### borders ###
+border pixel 2
+default_border none
+default_floating_border none
+
+# ------------------------------------------------------------------------------------------------------------------------------------
+# defaults below this line
+# ------------------------------------------------------------------------------------------------------------------------------------
+
+# Your preferred application launcher
+# Note: pass the final command to swaymsg so that the resulting window can be opened
+# on the original workspace that the command was run on.
+# TODO edit this
+set $menu dmenu_path | dmenu | xargs swaymsg exec --
+
+### Output configuration
+#
+# TODO set up monitors
+#
+# Example configuration:
+#
+#   output HDMI-A-1 resolution 1920x1080 position 1920,0
+#
+# You can get the names of your outputs by running: swaymsg -t get_outputs
+
+
 ### Idle configuration
+# TODO set this up?
 #
 # Example configuration:
 #
@@ -68,6 +76,7 @@ mode "nag" {
 # resumed. It will also lock your screen before your computer goes to sleep.
 
 ### Input configuration
+# TODO set this up?
 #
 # Example configuration:
 #
@@ -82,6 +91,7 @@ mode "nag" {
 # Read `man 5 sway-input` for more information about this section.
 
 ### Key bindings
+# TODO set this up?
 #
 # Basics:
 #
@@ -108,6 +118,7 @@ mode "nag" {
     bindsym $mod+Shift+e $nag -t warning -m 'exit sway?' -B 'yes' 'swaymsg exit'
 #
 # Moving around:
+# TODO set this up?
 #
     # Move your focus around
     bindsym $mod+$left focus left
@@ -132,6 +143,7 @@ mode "nag" {
     bindsym $mod+Shift+Right move right
 #
 # Workspaces:
+# TODO set this up?
 #
     # Switch to workspace
     bindsym $mod+1 workspace number 1
@@ -159,6 +171,7 @@ mode "nag" {
     # We just use 1-10 as the default.
 #
 # Layout stuff:
+# TODO set this up?
 #
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
@@ -184,6 +197,7 @@ mode "nag" {
     bindsym $mod+a focus parent
 #
 # Scratchpad:
+# TODO set this up?
 #
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
@@ -196,6 +210,7 @@ mode "nag" {
     bindsym $mod+minus scratchpad show
 #
 # Resizing containers:
+# TODO set this up?
 #
 mode "resize" {
     # left will shrink the containers width
@@ -221,6 +236,7 @@ bindsym $mod+r mode "resize"
 
 #
 # Status Bar:
+# TODO set this up or change to waybar
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
