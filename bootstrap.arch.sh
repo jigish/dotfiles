@@ -65,8 +65,8 @@ if [[ "$?" = "0" ]]; then
   echo
   echo "hypervisor detected: installing vmware tools"
   paru -S ${NOCONFIRM} --needed open-vm-tools gtkmm3
-  doas systemctl is-enabled vmtoolsd.service >/dev/null
   set +e
+  doas systemctl is-enabled vmtoolsd.service >/dev/null
   if [[ "$?" != "0" ]]; then
     set -e
     echo
@@ -75,8 +75,8 @@ if [[ "$?" = "0" ]]; then
   else
     set -e
   fi
-  doas systemctl is-enabled vmware-vmblock-fuse.service >/dev/null
   set +e
+  doas systemctl is-enabled vmware-vmblock-fuse.service >/dev/null
   if [[ "$?" != "0" ]]; then
     set -e
     echo
