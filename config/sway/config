@@ -8,6 +8,23 @@ set $up k
 set $right l
 # default terminal
 set $term kitty
+# nord colors
+set $polar_night_0 #2E3440
+set $polar_night_1 #3B4252
+set $polar_night_2 #434C5E
+set $polar_night_3 #4C566A
+set $snow_storm_0 #D8DEE9
+set $snow_storm_1 #E5E9F0
+set $snow_storm_2 #ECEFF4
+set $frost_green #8FBCBB
+set $frost_cyan #88C0D0
+set $frost_blue #81A1C1
+set $frost_dark_blue #5E81AC
+set $aurora_red #BF616A
+set $aurora_orange #D08770
+set $aurora_yellow #EBCB8B
+set $aurora_green #A3BE8C
+set $aurora_purple #B48EAD
 
 ### nag config ###
 set $nag exec swaynagmode
@@ -36,9 +53,13 @@ mode "nag" {
 output * bg /home/jigish/dotfiles/backgrounds/groot.png fill
 
 ### borders ###
-border pixel 2
-default_border none
-default_floating_border none
+default_border pixel 1
+default_floating_border pixel 1
+client.focused           $frost_cyan $polar_night_0 $snow_storm_2 $frost_cyan $frost_cyan
+client.focused_inactive  $snow_storm_0 $polar_night_0 $snow_storm_2 $snow_storm_0 $snow_storm_0
+client.focused_tab_title $snow_storm_0 $polar_night_0 $snow_storm_2 $snow_storm_0 $snow_storm_0
+client.unfocused         $polar_night_3 $polar_night_0 $snow_storm_2 $polar_night_3 $polar_night_3
+client.urgent            $aurora_red $polar_night_0 $snow_storm_2 $aurora_red $aurora_red
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 # defaults below this line
