@@ -17,8 +17,10 @@ cd ~
 echo
 echo "installing fonts"
 mkdir -p ~/.local/share/fonts
-cp $SCRIPTDIR/fonts/*.ttf ~/.local/share/fonts/
-cp $SCRIPTDIR/fonts/*.otf ~/.local/share/fonts/
+cd ~/.local/share/fonts
+for f in $(ls ${SCRIPTDIR}/fonts); do
+  [[ ! -L $f ]] && ln -s ${SCRIPTDIR}/fonts/$f
+done
 
 # distro-specific boostrap
 echo
