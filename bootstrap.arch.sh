@@ -200,7 +200,7 @@ cd ~/.config/gtk-4.0
 cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk-dark.css ~/.config/gtk-4.0/gtk-dark.css
 cp -a ~/.local/share/themes/${NORDIC_THEME}/gtk-4.0/gtk.css ~/.config/gtk-4.0/gtk.css
 cd ~/.config
-[[ ! -L gtk-30 ]] && ln -s ${SCRIPTDIR}/config/gtk-3.0
+[[ ! -L gtk-3.0 ]] && ln -s ${SCRIPTDIR}/config/gtk-3.0
 [[ ! -L Trolltech.conf ]] && ln -s ${SCRIPTDIR}/config/Trolltech.conf
 cd ~
 [[ ! -L .gtkrc-2.0 ]] && ln -s ${SCRIPTDIR}/gtkrc-2.0 .gtkrc-2.0
