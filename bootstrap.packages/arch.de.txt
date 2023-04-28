@@ -11,4 +11,5 @@ qt6-wayland
 swaybg
 wireplumber
 xdg-desktop-portal
+xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland
