@@ -176,7 +176,7 @@ find ./places -type f -exec sed -i -e 's/#87a7a9/#9cb4be/g' {} \;
 find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
 mkdir -p ~/.local/share/icons
 cd ~
-[[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons
+[[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons # need to do this before cursors install because they go in .icons
 cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
 cd ${CURRDIR}
