@@ -88,6 +88,7 @@ if [[ "$?" = "0" ]]; then
   else
     set -e
   fi
+  [[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox .zshrc.virtualbox
 
   # replace above with this for virtualbox
   #echo
