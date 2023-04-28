@@ -148,7 +148,7 @@ if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
   echo "installing nordic theme version ${NORDIC_VERSION}"
   mkdir -p ~/.local/share/themes
   cd ~
-  [[ ! -L themes ]] && ln -s ~/.local/share/themes
+  [[ ! -L .themes ]] && ln -s ~/.local/share/themes .themes
   cd ~/.local/share/themes
   rm -rf ${NORDIC_THEME}
   wget https://github.com/EliverLara/Nordic/releases/latest/download/${NORDIC_THEME}.tar.xz
@@ -176,7 +176,7 @@ find ./places -type f -exec sed -i -e 's/#87a7a9/#9cb4be/g' {} \;
 find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
 mkdir -p ~/.local/share/icons
 cd ~
-[[ ! -L icons ]] && ln -s ~/.local/share/icons
+[[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons
 cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
 cd ${CURRDIR}
