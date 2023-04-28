@@ -1,3 +1,4 @@
 brave-bin
-slack-desktop
+slack-electron
+swaynagmode
 tidal-hifi-bin
