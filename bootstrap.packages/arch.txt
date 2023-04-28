@@ -1,5 +1,4 @@
 bat
-brave-bin
 coreutils
 diffutils
 dust
@@ -13,6 +12,8 @@ jq
 kitty
 less
 lsd
+mesa
+mesa-utils
 moreutils
 neofetch
 neovim
@@ -27,7 +28,6 @@ ripgrep
 rustup
 seatd
 tar
-tidal-hifi-bin
 tmux
 util-linux
 wget
