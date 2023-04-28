@@ -45,8 +45,8 @@ fi
 # symlink configs
 cd ~/.config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
-#[[ ! -L sway ]] && ln -s $SCRIPTDIR/config/sway sway
-[[ ! -L hypr ]] && ln -s $SCRIPTDIR/config/hypr hypr
+[[ ! -L sway ]] && ln -s $SCRIPTDIR/config/sway sway
+#[[ ! -L hypr ]] && ln -s $SCRIPTDIR/config/hypr hypr
 
 # symlink sudo
 cd ${CURRDIR}

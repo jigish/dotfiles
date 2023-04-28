@@ -41,6 +41,7 @@ mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
 [[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
+[[ ! -L foot ]] && ln -s $SCRIPTDIR/config/foot foot
 cd ~
 mkdir -p .cargo
 cd .cargo

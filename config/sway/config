@@ -7,7 +7,7 @@ set $down j
 set $up k
 set $right l
 # default terminal
-set $term kitty
+set $term foot
 # nord colors
 set $polar_night_0 #2E3440
 set $polar_night_1 #3B4252
