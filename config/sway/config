@@ -152,6 +152,7 @@ bar {
 }
 
 
+include /etc/sway/config.d/*
 
 # ------------------------------------------------------------------------------------------------------------------------------------
 # defaults below this line
@@ -223,4 +224,3 @@ bar {
     #bindsym $mod+a focus parent
 
 
-include /etc/sway/config.d/*
