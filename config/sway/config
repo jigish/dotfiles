@@ -80,6 +80,7 @@ exec swayidle -w \
 set $menu fuzzel
 
 ### key bindings ###
+bindsym $mod+Control+q swaylock -f
 # start terminal
 bindsym $mod+t exec $term
 # kill current window
