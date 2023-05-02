@@ -27,7 +27,6 @@ set $aurora_green #A3BE8C
 set $aurora_purple #B48EAD
 
 ### nag config ###
-# TODO configure nag colors
 set $nag exec swaynagmode
 mode "nag" {
   bindsym {
@@ -76,6 +75,10 @@ gaps outer 2
 exec swayidle -w \
        timeout 300 'swaylock -C /home/jigish/.config/swaylock/config' \
        before-sleep 'swaylock -C /home/jigish/.config/swaylock/config'
+
+# notifications
+# TODO prettyify
+exec mako
 
 ### launcher ###
 set $menu fuzzel
