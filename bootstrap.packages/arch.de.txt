@@ -1,3 +1,4 @@
+fuzzel
 gtk2
 gtk3
 gtk4
@@ -9,6 +10,8 @@ qt5-wayland
 qt6-wayland
 sway
 swaybg
+swayidle
+swaylock
 waybar
 wireplumber
 xdg-desktop-portal
