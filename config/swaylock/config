@@ -2,7 +2,7 @@ daemonize
 image=/home/jigish/dotfiles/backgrounds/groot.blurred.png
 scaling=fill
 font=Inter Thin
-font-size=12
+font-size=16
 indicator-radius=50
 indicator-thickness=8
 color=2E3440FF
