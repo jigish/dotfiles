@@ -70,9 +70,12 @@ gaps outer 2
 
 ### lock screen and idle ###
 # TODO make swaylock pretty: https://www.mankier.com/1/swaylock
+#exec swayidle -w \
+       #timeout 300 'swaylock -C /home/jigish/.config/swaylock/config' \
+       #timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+       #before-sleep 'swaylock -C /home/jigish/.config/swaylock/config'
 exec swayidle -w \
        timeout 300 'swaylock -C /home/jigish/.config/swaylock/config' \
-       timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
        before-sleep 'swaylock -C /home/jigish/.config/swaylock/config'
 
 ### launcher ###
