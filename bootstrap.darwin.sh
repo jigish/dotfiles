@@ -5,23 +5,25 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 # install fzf
 echo
 echo "bootstrapping fzf"
-$SCRIPTDIR/bootstrap.fzf.sh
+${SCRIPTDIR}/bootstrap.fzf.sh
 
 # create links
 cd ~
 mkdir -p bin
 cd bin
-[[ ! -L spotify ]] && ln -s $SCRIPTDIR/bin/spotify
-[[ ! -L rebrew ]] && ln -s $SCRIPTDIR/bin/rebrew
+[[ ! -L spotify ]] && ln -s ${SCRIPTDIR}/bin/spotify
+[[ ! -L rebrew ]] && ln -s ${SCRIPTDIR}/bin/rebrew
 
 # set up brew & pip
 echo
 echo "bootstrapping via brew"
-$SCRIPTDIR/bootstrap.brew.sh
+${SCRIPTDIR}/bootstrap.brew.sh
 
 echo
 echo "installing fonts"
-cp $SCRIPTDIR/fonts/* ~/Library/Fonts/
+for f in $(find ${SCRIPTDIR/fonts} -type f); do
+  cp ${f} ~/Library/Fonts/
+done
 
 echo
 echo "installing kitty"
