@@ -1,6 +1,4 @@
 daemonize
-hide-keyboard-layout
-indicator-caps-lock
 image=/home/jigish/dotfiles/backgrounds/groot.blurred.png
 scaling=fill
 font=SF Pro Text
@@ -9,12 +7,14 @@ indicator-radius=50
 indicator-thickness=2
 color=2E3440FF
 key-hl-color=4C566AFF
-bs-hl-color=B48EADFF
-inside-color=4C566AFF
-inside-clear-color=4C566AFF
-inside-caps-lock-color=4C566AFF
-inside-ver-color=4C566AFF
-inside-wrong-color=4C566AFF
+caps-lock-key-hl-color=B48EADFF
+bs-hl-color=D8DEE9FF
+caps-lock-bs-hl-color=B48EADFF
+inside-color=2E3440FF
+inside-clear-color=2E3440FF
+inside-caps-lock-color=2E3440FF
+inside-ver-color=2E3440FF
+inside-wrong-color=2E3440FF
 layout-bg-color=2E3440FF
 layout-border-color=4C566AFF
 layout-text-color=ECEFF4FF
