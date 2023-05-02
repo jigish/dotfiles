@@ -76,7 +76,6 @@ exec swayidle -w \
        before-sleep 'swaylock -f -c 000000'
 
 ### launcher ###
-# TODO make fuzzel pretty: https://www.mankier.com/1/fuzzel
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu fuzzel
 
