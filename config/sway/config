@@ -83,7 +83,7 @@ exec swayidle -w \
 set $menu fuzzel
 
 ### key bindings ###
-bindsym $mod+Shift+` swaylock -C /home/jigish/.config/swaylock/config
+bindsym $mod+Shift+grave swaylock -C /home/jigish/.config/swaylock/config
 # start terminal
 bindsym $mod+t exec $term
 # kill current window
