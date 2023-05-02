@@ -25,3 +25,4 @@ tmux
 vim
 wget
 zsh
+zoxide

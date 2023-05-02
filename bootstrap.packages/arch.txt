@@ -31,3 +31,4 @@ tar
 tmux
 util-linux
 wget
+zoxide

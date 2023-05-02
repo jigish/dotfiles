@@ -56,8 +56,8 @@ function gclone {
   git clone ssh://git@github.com/$1
 }
 
-# z!
-. ${HOME}/bin/z.sh
+# zoxide
+eval "$(zoxide init zsh)"
 
 # Weather :)
 function weather {

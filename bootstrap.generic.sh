@@ -29,19 +29,19 @@ git pull
 echo
 echo 'symlinking dotfiles'
 cd ~
-[[ ! -L .gitconfig ]] && ln -s $SCRIPTDIR/gitconfig .gitconfig
-[[ ! -L .git-global-ignore ]] && ln -s $SCRIPTDIR/git-global-ignore .git-global-ignore
-[[ ! -L .p10k.zsh ]] && ln -s $SCRIPTDIR/p10k.${BOOTSTRAP_OS}.zsh .p10k.zsh
-[[ ! -L .tmux ]] && ln -s $SCRIPTDIR/tmux .tmux
-[[ ! -L .tmux.conf ]] && ln -s $SCRIPTDIR/tmux.conf .tmux.conf
-[[ ! -L .zpreztorc ]] && ln -s $SCRIPTDIR/zpreztorc .zpreztorc
-[[ ! -L .zshrc ]] && ln -s $SCRIPTDIR/zshrc .zshrc
-[[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s $SCRIPTDIR/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
+[[ ! -L .gitconfig ]] && ln -s ${SCRIPTDIR}/gitconfig .gitconfig
+[[ ! -L .git-global-ignore ]] && ln -s ${SCRIPTDIR}/git-global-ignore .git-global-ignore
+[[ ! -L .p10k.zsh ]] && ln -s ${SCRIPTDIR}/p10k.${BOOTSTRAP_OS}.zsh .p10k.zsh
+[[ ! -L .tmux ]] && ln -s ${SCRIPTDIR}/tmux .tmux
+[[ ! -L .tmux.conf ]] && ln -s ${SCRIPTDIR}/tmux.conf .tmux.conf
+[[ ! -L .zpreztorc ]] && ln -s ${SCRIPTDIR}/zpreztorc .zpreztorc
+[[ ! -L .zshrc ]] && ln -s ${SCRIPTDIR}/zshrc .zshrc
+[[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s ${SCRIPTDIR}/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
 mkdir -p .config
 cd .config
-[[ ! -L nvim ]] && ln -s $SCRIPTDIR/config/nvim nvim
-[[ ! -L kitty ]] && ln -s $SCRIPTDIR/config/kitty kitty
-[[ ! -L foot ]] && ln -s $SCRIPTDIR/config/foot foot
+[[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
+[[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
+[[ ! -L foot ]] && ln -s ${SCRIPTDIR}/config/foot foot
 cd ~
 mkdir -p .cargo
 cd .cargo
@@ -53,13 +53,19 @@ echo 'symlinking custom scripts'
 cd ~
 mkdir -p bin
 cd bin
-[[ ! -L z.sh ]] && ln -s $SCRIPTDIR/z/z.sh
-[[ ! -L edit ]] && ln -s $SCRIPTDIR/bin/edit
+for f in $(find ${SCRIPTDIR}/bin -maxdepth 1 -type f); do
+  [[ ! -L $(basename f) ]] && ln -s ${f}
+done
+if [[ -d ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} ]]; then
+  for f in $(find ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} -type f); do
+    [[ ! -L $(basename f) ]] && ln -s ${f}
+  done
+fi
 
 # run os-specific shit
 echo
 echo "bootstrapping ${BOOTSTRAP_OS}"
-$SCRIPTDIR/bootstrap.${BOOTSTRAP_OS}.sh
+${SCRIPTDIR}/bootstrap.${BOOTSTRAP_OS}.sh
 
 # make code dir
 mkdir -p ~/code

@@ -33,5 +33,6 @@ wget
 xclip
 xz
 yq
+zoxide
 zsh
 zsh-completions
