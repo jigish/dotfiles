@@ -71,16 +71,16 @@ gaps outer 2
 ### lock screen and idle ###
 # TODO make swaylock pretty: https://www.mankier.com/1/swaylock
 exec swayidle -w \
-       timeout 300 'swaylock -f -c 000000' \
+       timeout 300 'swaylock -C /home/jigish/.config/swaylock/config' \
        timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-       before-sleep 'swaylock -f -c 000000'
+       before-sleep 'swaylock -C /home/jigish/.config/swaylock/config'
 
 ### launcher ###
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu fuzzel
 
 ### key bindings ###
-bindsym $mod+Control+q swaylock -f
+bindsym $mod+Shift+q swaylock -C /home/jigish/.config/swaylock/config
 # start terminal
 bindsym $mod+t exec $term
 # kill current window

@@ -46,6 +46,7 @@ fi
 cd ~/.config
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
 [[ ! -L sway ]] && ln -s $SCRIPTDIR/config/sway sway
+[[ ! -L swaylock ]] && ln -s $SCRIPTDIR/config/swaylock swaylock
 [[ ! -L waybar ]] && ln -s $SCRIPTDIR/config/waybar waybar
 [[ ! -L fuzzel ]] && ln -s $SCRIPTDIR/config/fuzzel fuzzel
 #[[ ! -L hypr ]] && ln -s $SCRIPTDIR/config/hypr hypr
