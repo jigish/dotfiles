@@ -54,11 +54,11 @@ cd ~
 mkdir -p bin
 cd bin
 for f in $(find ${SCRIPTDIR}/bin -maxdepth 1 -type f); do
-  [[ ! -L $(basename f) ]] && ln -s ${f}
+  [[ ! -L $(basename ${f}) ]] && ln -s ${f}
 done
 if [[ -d ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} ]]; then
   for f in $(find ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} -type f); do
-    [[ ! -L $(basename f) ]] && ln -s ${f}
+    [[ ! -L $(basename ${f}) ]] && ln -s ${f}
   done
 fi
 
