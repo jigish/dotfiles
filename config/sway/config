@@ -87,6 +87,8 @@ bindsym $mod+t exec $term
 bindsym $mod+Shift+q kill
 # start launcher
 bindsym $mod+space exec $menu
+# logo+tab
+bindsym $mod+tab workspace back_and_forth
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # exit sway
@@ -130,19 +132,24 @@ bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
 # manual resize mode
 mode "resize" {
-    # left will shrink the containers width
-    # right will grow the containers width
-    # up will shrink the containers height
-    # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
-    # return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+  # left will shrink the containers width
+  # right will grow the containers width
+  # up will shrink the containers height
+  # down will grow the containers height
+  bindsym $left resize shrink width 10px
+  bindsym $down resize grow height 10px
+  bindsym $up resize shrink height 10px
+  bindsym $right resize grow width 10px
+  # return to default mode
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+### waybar ###
+bar {
+  swaybar_command waybar
+}
 
 
 
@@ -214,23 +221,6 @@ bindsym $mod+r mode "resize"
 
     # Move focus to the parent container
     #bindsym $mod+a focus parent
-#
-# Status Bar:
-# TODO set this up or change to waybar
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    position top
 
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-    status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
-
-    colors {
-        statusline #ffffff
-        background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
-    }
-}
 
 include /etc/sway/config.d/*
