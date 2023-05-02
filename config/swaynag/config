@@ -1,0 +1,19 @@
+font=Inter Light
+edge=bottom
+layer=overlay
+[warning]
+background=2E3440FF
+border=4C566AFF
+border-bottom=EBCB8BFF
+button-background=4C566AFF
+text=EBCB8BFF
+button-text=ECEFF4FF
+border-bottom-size=2
+[error]
+background=2E3440FF
+border=4C566AFF
+border-bottom=BF616AFF
+button-background=4C566AFF
+text=EBCB8BFF
+button-text=ECEFF4FF
+border-bottom-size=2
