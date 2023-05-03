@@ -23,8 +23,8 @@
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
-    "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾  ••••◦", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-muted": "󰖁       0%",
+    "format-icons": ["󰕾 •    ", "󰕾 ••   ", "󰕾 •••  ", "󰕾 •••• ", "󰕾 •••••"],
   },
   "battery": {
     "states": {
