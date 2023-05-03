@@ -31,8 +31,8 @@
     "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
   },
   "network": {
-    "format": "",
-    "format-ethenet": "󰈀 •••••",
+    "format": "󰌘 {ifname}",
+    "format-ethenet": "󰈁 •••••",
     "format-wifi": "󰖩 {icon} {signalStrength}%",
     "format-linked": " {ifname}",
     "format-disconnected": " ◦◦◦◦◦",
