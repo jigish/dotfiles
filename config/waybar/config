@@ -24,7 +24,7 @@
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 <span font='InputMonoCondensed Nerd Font'>󰕾 </span> 󰕾", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 <span font='InputMonoCondensed Nerd Font'>󰕾  ••••◦</span> 󰕾", "󰕾 ••••◦", "󰕾 •••••"],
   },
   "battery": {
     "states": {
