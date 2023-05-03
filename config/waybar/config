@@ -61,14 +61,14 @@
       "••••◦",
       "•••••"
     ],
-    "tooltop-format": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
-    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltop-format": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
     "tooltip-format-wifi": "{ifname}: {signaldBm}dBm {signalStrength}%\n{bandwidthDownBits} {bandwidthUpBits}",
     "tooltip-format-disconnected": "{ifname}"
   },
   "clock": {
-    "format": "{:%H:%M}  ",
-    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "format": "{:%H:%M}",
+    "format-alt": "{:%A, %B %d, %Y (%R)}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode"          : "year",
@@ -86,10 +86,6 @@
     },
     "actions":  {
       "on-click-right": "mode",
-      "on-click-forward": "tz_up",
-      "on-click-backward": "tz_down",
-      "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down"
     }
   }
 }
