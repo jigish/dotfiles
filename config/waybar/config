@@ -31,7 +31,7 @@
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
-    "tooltop-format": "{node_name}: {volume}%"
+    "tooltop-format": "{volume}%\n{node_name}"
   },
   "battery": {
     "states": {
@@ -46,7 +46,7 @@
       "󰂀 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰁹 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
-    "tooltop-format": "{capacity}% {power}W {timeTo}"
+    "tooltop-format": "{capacity}%\n{power}W\n{timeTo}"
   },
   "network": {
     "format": "󰌘 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
@@ -63,7 +63,7 @@
     ],
     "tooltop-format": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
     "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
-    "tooltip-format-wifi": "{ifname}: {signaldBm}dBm {signalStrength}%\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltip-format-wifi": "{ifname}: {signaldBm}dBm {signalStrength}%\n{bandwidthDownBits} {bandwidthUpBits}",
     "tooltip-format-disconnected": "{ifname}"
   },
   "clock": {
