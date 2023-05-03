@@ -49,10 +49,10 @@
     "tooltop-format": "{capacity}%"
   },
   "network": {
-    "format": "󰌘  {ifname}",
+    "format": "󰌘 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
     "format-ethenet": "󰈁 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
     "format-wifi": "󰖩 <span font='InputMonoCompressed Nerd Font 11px'>{icon}</span>",
-    "format-linked": "  {ifname}",
+    "format-linked": " <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
     "format-disconnected": " <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
     "format-icons": [
       "•◦◦◦◦",
