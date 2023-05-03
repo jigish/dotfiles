@@ -5,7 +5,6 @@
 }
 
 window#waybar {
-    padding: 0 5px;
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 0px solid rgba(0, 0, 0, 0);
     color: #ECEFF4;
@@ -14,8 +13,6 @@ window#waybar {
 }
 
 #workspaces button {
-    margin: 0 0;
-    padding: 0 0;
     background-color: transparent;
     color: #ECEFF4;
 }
