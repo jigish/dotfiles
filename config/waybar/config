@@ -31,7 +31,7 @@
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
-    "tooltop-format": "{volume}%\n{node_name}"
+    "tooltip-format": "{volume}%\n{node_name}"
   },
   "battery": {
     "states": {
