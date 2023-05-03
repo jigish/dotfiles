@@ -5,7 +5,7 @@
 }
 
 window#waybar {
-    padding: 0, 5px;
+    padding: 0 5px;
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 0px solid rgba(0, 0, 0, 0);
     color: #ECEFF4;
