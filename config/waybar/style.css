@@ -7,8 +7,8 @@ window#waybar {
     background-color: rgba(0, 0, 0, 0);
     border-bottom: 0px solid rgba(0, 0, 0, 0);
     color: #ECEFF4;
-    transition-property: background-color;
-    transition-duration: .5s;
+    /*transition-property: background-color;*/
+    /*transition-duration: .5s;*/
 }
 
 #workspaces button {
