@@ -10,7 +10,7 @@
   "modules-right": ["wireplumber", "network", "battery"],
   "custom/logo": {
     "format": "",
-  }
+  },
   "sway/workspaces": {
     "format": "{icon}",
     "format-icons": {
