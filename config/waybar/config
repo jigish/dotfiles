@@ -3,6 +3,7 @@
   "position": "top",
   "exclusive": true,
   "fixed-center": true,
+  "spacing": 10,
   "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
   "modules-right": ["wireplumber", "network", "battery"],
