@@ -5,24 +5,26 @@
   "fixed-center": true,
   "spacing": 15,
   "margin-right": 10,
-  "modules-left": ["sway/workspaces", "sway/mode"],
+  "modules-left": ["custom/logo", "sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
   "modules-right": ["wireplumber", "network", "battery"],
+  "custom/logo": {
+    "format": ""
+  },
   "sway/workspaces": {
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "󰈹",
-      "4": "󰒱",
-      "5": "󰎄",
+      "1": "",
+      "2": "󰈹",
+      "3": "󰒱",
+      "4": "󰎄",
       "default": ""
     }
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 󰧞◦◦◦◦", "󰕾 󰧞󰧞◦◦◦", "󰕾 󰧞󰧞󰧞◦◦", "󰕾 󰧞󰧞•󰧞◦", "󰕾 󰧞󰧞•󰧞•"],
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
   },
   "battery": {
     "states": {
@@ -30,7 +32,7 @@
       "critical": 10
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["󰁺 󰧞◦◦◦◦", "󰁼 󰧞󰧞◦◦◦", "󰁾 󰧞󰧞󰧞◦◦", "󰂀 󰧞•••◦", "󰁹 󰧞••••"]
+    "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
   },
   "network": {
     "format": "󰌘  {ifname}",
@@ -38,7 +40,7 @@
     "format-wifi": "󰖩 {icon} {signalStrength}%",
     "format-linked": "  {ifname}",
     "format-disconnected": " ◦◦◦◦◦",
-    "format-icons": ["󰧞◦◦◦◦", "󰧞•◦◦◦", "󰧞••◦◦", "󰧞•••◦", "󰧞••••"]
+    "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
   },
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
