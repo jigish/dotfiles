@@ -22,8 +22,8 @@
     }
   },
   "wireplumber": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰖁 <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span> 0%",
+    "format": "{icon}",
+    "format-muted": "󰖁 <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
     "format-icons": [
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
@@ -31,25 +31,27 @@
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
+    "tooltop-format": "{volume}%"
   },
   "battery": {
     "states": {
       "warning": 20,
       "critical": 10
     },
-    "format": "{icon} {capacity}%",
+    "format": "{icon}",
     "format-icons": [
       "󰁺 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
       "󰁼 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
       "󰁾 <span font='InputMonoCompressed Nerd Font 11px'>•••◦◦</span>",
       "󰂀 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰁹 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
-    ]
+    ],
+    "tooltop-format": "{capacity}%"
   },
   "network": {
     "format": "󰌘  {ifname}",
     "format-ethenet": "󰈁 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
-    "format-wifi": "󰖩 <span font='InputMonoCompressed Nerd Font 11px'>{icon}</span> {signalStrength}%",
+    "format-wifi": "󰖩 <span font='InputMonoCompressed Nerd Font 11px'>{icon}</span>",
     "format-linked": "  {ifname}",
     "format-disconnected": " <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
     "format-icons": [
@@ -58,7 +60,8 @@
       "•••◦◦",
       "••••◦",
       "•••••"
-    ]
+    ],
+    "tooltop-format": "{signalStrength}%"
   },
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
