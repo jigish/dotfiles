@@ -14,9 +14,9 @@ font=Inter Thin 12
 text-alignment=right
 format=[%a] %s\n<small>%b</small>
 
-background-color=#2E3440DD
+background-color=#2E3440F3
 text-color=#ECEFF4FF
-border-color=#5E81ACDD
+border-color=#5E81ACFF
 progress-color=over #4C566ADD
 
 width=300
