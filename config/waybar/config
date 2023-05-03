@@ -3,7 +3,7 @@
   "position": "top",
   "exclusive": true,
   "fixed-center": true,
-  "modules-left": [""sway/workspaces", "sway/mode"],
+  "modules-left": ["sway/workspaces", "sway/mode"],
   "modules-center": ["sway/window"],
   "modules-right": ["wireplumber", "battery", "network", "clock"],
   "sway/workspaces": {
