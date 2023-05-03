@@ -31,7 +31,7 @@
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
-    "tooltop-format": "{volume}%"
+    "tooltop-format": "{node_name}: {volume}%"
   },
   "battery": {
     "states": {
@@ -46,7 +46,7 @@
       "󰂀 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
       "󰁹 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
     ],
-    "tooltop-format": "{capacity}%"
+    "tooltop-format": "{capacity}% {power}W {timeTo}"
   },
   "network": {
     "format": "󰌘 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
@@ -61,9 +61,35 @@
       "••••◦",
       "•••••"
     ],
-    "tooltop-format": "{signalStrength}%"
+    "tooltop-format": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltip-format-wifi": "{ifname}: {signaldBm}dBm {signalStrength}%\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltip-format-disconnected": "{ifname}"
   },
   "clock": {
-    "format-alt": "{:%a, %d. %b  %H:%M}"
+    "format": "{:%H:%M}  ",
+    "format-alt": "{:%A, %B %d, %Y (%R)}  ",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode"          : "year",
+      "mode-mon-col"  : 3,
+      "weeks-pos"     : "right",
+      "on-scroll"     : 1,
+      "on-click-right": "mode",
+      "format": {
+        "months":     "<span color='#D8DEE9'><b>{}</b></span>",
+        "days":       "<span color='#ECEFF4'><b>{}</b></span>",
+        "weeks":      "<span color='#D8DEE9'><b>W{}</b></span>",
+        "weekdays":   "<span color='#5E81AC'><b>{}</b></span>",
+        "today":      "<span color='#88C0D0'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions":  {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   }
 }
