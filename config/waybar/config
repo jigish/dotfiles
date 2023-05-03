@@ -22,7 +22,7 @@
     }
   },
   "wireplumber": {
-    "format": "{icon} {volume}%",
+    "format": "<span font='InputMonoCondensed Nerd Font'>{icon}</span> {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
     "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
   },
