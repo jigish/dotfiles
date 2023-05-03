@@ -12,7 +12,7 @@ on-notify=none
 
 font=Inter Light 12
 text-alignment=right
-#format=<b>%s</b>\n%b
+format=<i>%s</i>\n%b
 
 background-color=#2E3440DD
 text-color=#ECEFF4FF
