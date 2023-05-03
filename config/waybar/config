@@ -1,8 +1,4 @@
 {
-  "layer": "top",
-  "position": "top",
-  "exclusive": true,
-  "fixed-center": true,
   "spacing": 15,
   "margin-right": 10,
   "modules-left": ["custom/logo", "sway/workspaces", "sway/mode"],
