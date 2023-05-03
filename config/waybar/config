@@ -1,16 +1,46 @@
 {
   "layer": "top",
   "position": "top",
-  "modules-left": ["sway/workspaces", "sway/mode"],
+  "exclusive": true,
+  "fixed-center": true,
+  "modules-left": [""sway/workspaces", "sway/mode"],
   "modules-center": ["sway/window"],
-  "modules-right": ["battery", "clock"],
+  "modules-right": ["wireplumber", "battery", "network", "clock"],
+  "sway/workspaces": {
+    "format": "{icon}",
+    "format-icons": {
+      "1": ""
+      "2": "",
+      "3": "󰈹",
+      "4": "󰒱",
+      "5": "󰎄",
+      "default": ""
+    }
+  },
   "sway/window": {
     "max-length": 50
   },
-  "battery": {
-    "format": "{capacity}% {icon}",
-    "format-icons": ["", "", "", "", ""]
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰖁 ◦◦◦◦◦ 0%",
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
   },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
+  },
+  "network": {
+    "format": "",
+    "format-ethenet": "󰈀 •••••",
+    "format-wifi": "󰖩 {icon} {signalStrength}%",
+    "format-linked": " {ifname}",
+    "format-disconnected": " ◦◦◦◦◦",
+    "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
+  }
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
   }

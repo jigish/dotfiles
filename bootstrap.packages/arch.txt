@@ -21,6 +21,7 @@ noto-fonts
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
+pipewire
 procps-ng
 python
 python-pynvim
@@ -31,4 +32,5 @@ tar
 tmux
 util-linux
 wget
+wireplumber
 zoxide

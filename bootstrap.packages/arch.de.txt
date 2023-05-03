@@ -3,7 +3,6 @@ gtk2
 gtk3
 gtk4
 mako
-pipewire
 polkit
 polkit-gnome
 qt5-wayland
@@ -13,6 +12,5 @@ swaybg
 swayidle
 swaylock
 waybar
-wireplumber
 xdg-desktop-portal
 xdg-desktop-portal-wlr
