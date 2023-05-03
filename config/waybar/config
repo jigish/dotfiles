@@ -40,7 +40,7 @@
     "format-linked": " {ifname}",
     "format-disconnected": " ◦◦◦◦◦",
     "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
-  }
+  },
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
   }
