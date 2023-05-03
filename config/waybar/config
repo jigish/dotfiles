@@ -22,7 +22,7 @@
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦ 󰧞󰧞󰧞◦◦  ", "󰕾 ••••◦", "󰕾 •••••"],
   },
   "battery": {
     "states": {
@@ -33,10 +33,10 @@
     "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
   },
   "network": {
-    "format": "󰌘 {ifname}",
+    "format": "󰌘  {ifname}",
     "format-ethenet": "󰈁 •••••",
     "format-wifi": "󰖩 {icon} {signalStrength}%",
-    "format-linked": " {ifname}",
+    "format-linked": "  {ifname}",
     "format-disconnected": " ◦◦◦◦◦",
     "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
   },
