@@ -10,9 +10,9 @@ on-button-right=dismiss
 on-touch=dismiss
 on-notify=none
 
-font=Inter Light 12
+font=Inter Thin 13
 text-alignment=right
-format=<i>%s</i>\n%b
+format=<big>%a<\big>\n%s\n<small>%b</small>
 
 background-color=#2E3440DD
 text-color=#ECEFF4FF
