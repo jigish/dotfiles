@@ -44,13 +44,13 @@ fi
 
 # symlink configs
 cd ~/.config
+[[ ! -L fuzzel ]] && ln -s $SCRIPTDIR/config/fuzzel fuzzel
+[[ ! -L mako ]] && ln -s $SCRIPTDIR/config/mako mako
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
 [[ ! -L sway ]] && ln -s $SCRIPTDIR/config/sway sway
 [[ ! -L swaylock ]] && ln -s $SCRIPTDIR/config/swaylock swaylock
 [[ ! -L swaynag ]] && ln -s $SCRIPTDIR/config/swaynag swaynag
 [[ ! -L waybar ]] && ln -s $SCRIPTDIR/config/waybar waybar
-[[ ! -L fuzzel ]] && ln -s $SCRIPTDIR/config/fuzzel fuzzel
-#[[ ! -L hypr ]] && ln -s $SCRIPTDIR/config/hypr hypr
 
 # symlink sudo
 cd ${CURRDIR}
