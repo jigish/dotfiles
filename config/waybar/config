@@ -23,8 +23,14 @@
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
-    "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-muted": "󰖁 <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span> 0%",
+    "format-icons": [
+      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
+      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
+      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••◦◦</span>",
+      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
+      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
+    ],
   },
   "battery": {
     "states": {
@@ -32,15 +38,27 @@
       "critical": 10
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
+    "format-icons": [
+      "󰁺 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
+      "󰁼 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
+      "󰁾 <span font='InputMonoCompressed Nerd Font 11px'>•••◦◦</span>",
+      "󰂀 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
+      "󰁹 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
+    ]
   },
   "network": {
     "format": "󰌘  {ifname}",
-    "format-ethenet": "󰈁 󰧞••••",
-    "format-wifi": "󰖩 {icon} {signalStrength}%",
+    "format-ethenet": "󰈁 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
+    "format-wifi": "󰖩 <span font='InputMonoCompressed Nerd Font 11px'>{icon}</span> {signalStrength}%",
     "format-linked": "  {ifname}",
-    "format-disconnected": " ◦◦◦◦◦",
-    "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
+    "format-disconnected": " <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
+    "format-icons": [
+      "•◦◦◦◦",
+      "••◦◦◦",
+      "•••◦◦",
+      "••••◦",
+      "•••••"
+    ]
   },
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
