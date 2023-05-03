@@ -1,5 +1,6 @@
 * {
-    font-family: SF Mono Light, InputMonoCondensed Nerd Font Thin, FontAwesome, Roboto, Arial, sans-serif;
+    font-family: SF Mono, InputMonoCondensed Nerd Font, FontAwesome, Roboto, Arial, sans-serif;
+    font-style: Light;
     font-size: 13px;
 }
 
@@ -23,10 +24,12 @@ window#waybar {
 
 #workspaces button.focused {
     background-color: transparent;
-    box-shadow: inset 0 -3px #ECEFF4;
+    border-bottom: 1px inset #ECEFF4;
+    /*box-shadow: inset 0 -3px #ECEFF4;*/
 }
 
 #workspaces button.urgent {
     background-color: transparent;
-    box-shadow: inset 0 -3px #BF616A;
+    border-bottom: 1px inset #BF616A;
+    /*box-shadow: inset 0 -3px #BF616A;*/
 }
