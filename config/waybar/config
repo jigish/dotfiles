@@ -24,7 +24,7 @@
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦ cod   codlg   fa    mdcb 󰝥 󰝦 mdsm 󰧟 dude •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 <span font='InputMonoCondensed Nerd Font'>•••◦◦ cod   codlg   fa    mdcb 󰝥 󰝦 mdsm 󰧟 dude •••◦◦</span> 󰕾", "󰕾 ••••◦", "󰕾 •••••"],
   },
   "battery": {
     "states": {
