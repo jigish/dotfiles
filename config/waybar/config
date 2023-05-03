@@ -1,4 +1,8 @@
 {
+  "layer": "top",
+  "position": "top",
+  "exclusive": true,
+  "fixed-center": true,
   "spacing": 15,
   "margin-right": 10,
   "modules-left": ["custom/logo", "sway/workspaces", "sway/mode"],
@@ -18,9 +22,9 @@
     }
   },
   "wireplumber": {
-    "format": "<span font='InputMonoCondensed Nerd Font'>{icon}</span> {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦ cod   codlg   fa    mdcb 󰝥 󰝦 mdsm 󰧟 dude •••◦◦", "󰕾 ••••◦", "󰕾 •••••"],
   },
   "battery": {
     "states": {
