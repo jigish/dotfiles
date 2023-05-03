@@ -17,7 +17,6 @@ window#waybar {
     padding: 0 0px;
     background-color: transparent;
     color: #ECEFF4;
-    text-align: center;
 }
 
 #workspaces button:hover {
