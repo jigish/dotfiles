@@ -4,8 +4,8 @@
   "exclusive": true,
   "fixed-center": true,
   "modules-left": ["sway/workspaces", "sway/mode"],
-  "modules-center": ["sway/window"],
-  "modules-right": ["wireplumber", "battery", "network", "clock"],
+  "modules-center": ["clock"],
+  "modules-right": ["wireplumber", "network", "battery"],
   "sway/workspaces": {
     "format": "{icon}",
     "format-icons": {
@@ -16,9 +16,6 @@
       "5": "󰎄",
       "default": ""
     }
-  },
-  "sway/window": {
-    "max-length": 50
   },
   "wireplumber": {
     "format": "{icon} {volume}%",
