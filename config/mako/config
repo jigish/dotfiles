@@ -16,7 +16,7 @@ format=<i>%s</i>\n%b
 
 background-color=#2E3440DD
 text-color=#ECEFF4FF
-border-color=#2E3440DD
+border-color=#5E81ACDD
 progress-color=over #4C566ADD
 
 width=300
@@ -24,7 +24,7 @@ height=100
 outer-margin=0
 margin=10
 padding=5
-border-size=0
+border-size=1
 border-radius=0
 
 icons=1
