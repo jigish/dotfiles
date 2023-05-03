@@ -22,7 +22,7 @@
   "wireplumber": {
     "format": "{icon} {volume}%",
     "format-muted": "󰖁 ◦◦◦◦◦ 0%",
-    "format-icons": ["󰕾 •◦◦◦◦", "󰕾 ••◦◦◦", "󰕾 •••◦◦ 󰧞󰧞󰧞◦◦  ", "󰕾 ••••◦", "󰕾 •••••"],
+    "format-icons": ["󰕾 󰧞◦◦◦◦", "󰕾 󰧞󰧞◦◦◦", "󰕾 󰧞󰧞󰧞◦◦", "󰕾 󰧞󰧞•󰧞◦", "󰕾 󰧞󰧞•󰧞•"],
   },
   "battery": {
     "states": {
@@ -30,15 +30,15 @@
       "critical": 10
     },
     "format": "{icon} {capacity}%",
-    "format-icons": ["󰁺 •◦◦◦◦", "󰁼 ••◦◦◦", "󰁾 •••◦◦", "󰂀 ••••◦", "󰁹 •••••"]
+    "format-icons": ["󰁺 󰧞◦◦◦◦", "󰁼 󰧞󰧞◦◦◦", "󰁾 󰧞󰧞󰧞◦◦", "󰂀 󰧞•••◦", "󰁹 󰧞••••"]
   },
   "network": {
     "format": "󰌘  {ifname}",
-    "format-ethenet": "󰈁 •••••",
+    "format-ethenet": "󰈁 󰧞••••",
     "format-wifi": "󰖩 {icon} {signalStrength}%",
     "format-linked": "  {ifname}",
     "format-disconnected": " ◦◦◦◦◦",
-    "format-icons": ["•◦◦◦◦", "••◦◦◦", "•••◦◦", "••••◦", "•••••"]
+    "format-icons": ["󰧞◦◦◦◦", "󰧞•◦◦◦", "󰧞••◦◦", "󰧞•••◦", "󰧞••••"]
   },
   "clock": {
     "format-alt": "{:%a, %d. %b  %H:%M}"
