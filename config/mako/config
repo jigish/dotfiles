@@ -14,10 +14,10 @@ font=Inter Light 12
 text-alignment=right
 #format=<b>%s</b>\n%b
 
-background-color=2E3440DD
-text-color=ECEFF4FF
-border-color=2E3440DD
-progress-color=over 4C566ADD
+background-color=#2E3440DD
+text-color=#ECEFF4FF
+border-color=#2E3440DD
+progress-color=over #4C566ADD
 
 width=300
 height=100

@@ -161,7 +161,7 @@ if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
   wget https://github.com/EliverLara/Nordic/releases/latest/download/${NORDIC_THEME}.tar.xz
   tar -xf ${NORDIC_THEME}.tar.xz
   rm ${NORDIC_THEME}.tar.xz
-  echo $NORDIC_VERSION >${NORDIC_VERSION_FILE} # do this at the end so we run through this again if we fail
+  echo ${NORDIC_VERSION} >${NORDIC_VERSION_FILE} # do this at the end so we run through this again if we fail
 fi
 cd ${CURRDIR}
 # Zafiro Nord Dark (grey) Icons
