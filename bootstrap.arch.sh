@@ -155,6 +155,18 @@ for f in brave-browser tidal-hifi; do
   sed -i -e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1 --ozone-platform-hint=auto\2/g' ~/.local/share/applications/${f}.desktop
 done
 
+# enable pipewire.service at boot
+set +e
+systemctl --user is-enabled seatd.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling pipewire.service"
+  systemctl --user enable pipewire.service
+else
+  set -e
+fi
+
 # theming
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
