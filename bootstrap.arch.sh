@@ -157,7 +157,7 @@ done
 
 # enable pipewire.service at boot
 set +e
-systemctl --user is-enabled seatd.service >/dev/null
+systemctl --user is-enabled pipewire.service >/dev/null
 if [[ "$?" != "0" ]]; then
   set -e
   echo
