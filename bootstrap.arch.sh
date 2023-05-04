@@ -141,6 +141,20 @@ else
   set -e
 fi
 
+# fixes for native wayland
+echo
+echo "waylandifying applications"
+cd ~/.config
+[[ ! -L electron-flags.conf ]] && ln -s ${SCRIPTDIR}/config/electron-flags.conf
+cd ${CURRDIR}
+mkdir -p ~/.local/share/applications
+for f in brave-browser tidal-hifi; do
+  echo "-> ${f}"
+  rm -f ~/.local/share/applications/${f}.desktop
+  cp /usr/share/applications/${f}.desktop ~/.local/share/applications/
+  sed -i -e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1 --ozone-platform-hint=auto\2/g' ~/.local/share/applications/${f}.desktop
+done
+
 # theming
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
