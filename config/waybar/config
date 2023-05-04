@@ -15,7 +15,7 @@
     "format": "{icon}",
     "format-icons": {
       "1": "",
-      "2": "󰈹",
+      "2": "<span font='icomoon'></span>",
       "3": "󰒱",
       "4": "",
       "default": ""
