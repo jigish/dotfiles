@@ -153,9 +153,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### waybar ###
-bar {
-  swaybar_command waybar
-}
+#bar {
+  #swaybar_command waybar
+#}
+exec_always waybar -l trace >/home/jigish/waybar.out 2>/home/jigish/waybar.err
 
 
 include /etc/sway/config.d/*
