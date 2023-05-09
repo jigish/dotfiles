@@ -22,6 +22,7 @@ noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 pipewire
+pipewire-jack
 procps-ng
 python
 python-pynvim
