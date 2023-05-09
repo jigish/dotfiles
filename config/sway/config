@@ -81,6 +81,12 @@ exec mako
 ### launcher ###
 set $menu fuzzel
 
+### application workspaces ###
+assign [app_id="foot"] workspace number 1
+assign [app_id="brave-browser"] workspace number 2
+assign [app_id="Slack"] workspace number 3
+assign [app_id="tidal-hifi"] workspace number 4
+
 ### key bindings ###
 bindsym $mod+Shift+grave exec swaylock -C /home/jigish/.config/swaylock/config
 # start terminal
