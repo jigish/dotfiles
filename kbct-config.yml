@@ -1,0 +1,5 @@
+- keyboards: [ "AT Translated Set 2 keyboard" ]
+  keymap:
+    capslock: esc
+    leftalt: leftmeta
+    leftmeta: leftalt

@@ -180,6 +180,7 @@ if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "enabling kbct.service"
+  doas modprobe uinput
   doas systemctl enable --now kbct.service
 else
   set -e
