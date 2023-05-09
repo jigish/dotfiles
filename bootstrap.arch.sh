@@ -99,8 +99,8 @@ if [[ "$?" = "0" ]]; then
   echo
   echo "hypervisor detected: installing virtualbox guest utils"
   paru -S ${NOCONFIRM} --needed virtualbox-guest-utils-nox
-  doas systemctl is-enabled vboxservice.service >/dev/null
   set +e
+  doas systemctl is-enabled vboxservice.service >/dev/null
   if [[ "$?" != "0" ]]; then
     set -e
     echo
