@@ -21,7 +21,7 @@ ${SCRIPTDIR}/bootstrap.brew.sh
 
 echo
 echo "installing fonts"
-for f in $(find ${SCRIPTDIR/fonts} -type f); do
+for f in $(find ${SCRIPTDIR}/fonts -type f); do
   cp ${f} ~/Library/Fonts/
 done
 

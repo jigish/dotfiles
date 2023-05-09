@@ -6,8 +6,6 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 brew analytics off
 brew update
 brew upgrade
-brew upgrade --cask
-brew install --cask $(cat ${SCRIPTDIR}/bootstrap.packages/osx.casks.txt)
 brew install $(cat ${SCRIPTDIR}/bootstrap.packages/osx.txt)
 
 pip2 install --upgrade pip
