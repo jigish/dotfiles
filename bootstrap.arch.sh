@@ -51,6 +51,8 @@ cd ~/.config
 [[ ! -L swaylock ]] && ln -s $SCRIPTDIR/config/swaylock swaylock
 [[ ! -L swaynag ]] && ln -s $SCRIPTDIR/config/swaynag swaynag
 [[ ! -L waybar ]] && ln -s $SCRIPTDIR/config/waybar waybar
+cd ~/bin
+[[ ! -L de ]] && ln -s $SCRIPTDIR/bin/de
 
 # symlink sudo
 cd ${CURRDIR}

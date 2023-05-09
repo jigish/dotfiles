@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mkdir -p ${HOME}/tmp
+exec sway -V >${HOME}/tmp/sway.out 2>${HOME}/tmp/sway.err
