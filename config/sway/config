@@ -26,6 +26,17 @@ set $aurora_yellow #EBCB8B
 set $aurora_green #A3BE8C
 set $aurora_purple #B48EAD
 
+### input configuration
+seat seat0 xcursor_theme Nordzy-cursors
+input "2:7:SynPS/2_Synaptics_TouchPad" {
+   dwt enabled
+   dwtp enabled
+   tap disabled
+   natural_scroll disabled
+   middle_emulation disabled
+   pointer_accel 1
+}
+
 ### nag config ###
 set $nag exec swaynagmode
 mode "nag" {
@@ -191,17 +202,3 @@ include /etc/sway/config.d/*
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
-### Input configuration
-# TODO set this up?
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
