@@ -233,7 +233,6 @@ cd ~
 [[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons # need to do this before cursors install because they go in .icons
 cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
-[[ ! -L default ]] && ln -s Zafiro-Nord-Dark default
 cd ${CURRDIR}
 # Nordzy Cursors
 echo
