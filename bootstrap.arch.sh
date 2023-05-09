@@ -255,6 +255,8 @@ fi
 
 # auto-configure time zone for laptops
 if [[ -d /etc/NetworkManager/dispatcher.d && ! -f /etc/NetworkManager/dispatcher.d/09-timezone ]]; then
+  echo
+  echo "enabling auto timezone switch"
   doas cat >/etc/NetworkManager/dispatcher.d/09-timezone <<EOF
 EOF
 fi
