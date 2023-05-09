@@ -62,6 +62,7 @@ echo "updating / installing / cleaning packages"
 paru -Syu ${NOCONFIRM}
 paru -S ${NOCONFIRM} --needed $(cat ${SCRIPTDIR}/bootstrap.packages/arch.* |sort -u)
 paru -c ${NOCONFIRM}
+paru -Scc ${NOCONFIRM}
 
 # install virtualbox guest stuff in needed
 set +e
