@@ -1,3 +1,4 @@
+alsa-utils
 bat
 coreutils
 diffutils
