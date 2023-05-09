@@ -157,6 +157,12 @@ for f in brave-browser tidal-hifi; do
   sed -i -e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1 --ozone-platform-hint=auto\2/g' ~/.local/share/applications/${f}.desktop
 done
 
+# blacklist some applications from launchers
+for app in $(cat launcher-blacklist.txt); do
+  cp /usr/share/applications/${app} ~/.local/share/applications/${app}
+  echo "NoDisplay=true" >>~/.local/share/applications/${app}
+done
+
 # enable pipewire.service at boot
 set +e
 systemctl --user is-enabled pipewire.service >/dev/null
