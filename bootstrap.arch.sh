@@ -164,13 +164,24 @@ if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "enabling pipewire.service"
-  systemctl --user enable pipewire.service
+  systemctl --user enable --now pipewire.service
 else
   set -e
 fi
 
 # remap keys
-# TODO
+doas cp ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
+set +e
+systemctl --user is-enabled kbct.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling kbct.service"
+  systemctl enable --now kbct.service
+else
+  set -e
+  doas systemctl restart kbct.service
+fi
 
 # theming
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
