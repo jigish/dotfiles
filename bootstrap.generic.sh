@@ -46,13 +46,6 @@ mkdir -p .cargo
 cd .cargo
 [[ ! -L config.toml ]] && ln -s $SCRIPTDIR/cargo-config.toml config.toml
 
-# clean/install/update tmux plugins
-echo
-echo 'installing and updating tmux plugins'
-~/.config/tmux/plugins/tpm/bin/clean_plugins
-~/.config/tmux/plugins/tpm/bin/install_plugins
-~/.config/tmux/plugins/tpm/bin/update_plugins all
-
 # create links for custom scrips
 echo
 echo 'symlinking custom scripts'
@@ -72,6 +65,14 @@ fi
 echo
 echo "bootstrapping ${BOOTSTRAP_OS}"
 ${SCRIPTDIR}/bootstrap.${BOOTSTRAP_OS}.sh
+
+# clean/install/update tmux plugins
+export XDG_CONFIG_DIR=${HOME}/.config
+echo
+echo 'installing and updating tmux plugins'
+~/.config/tmux/plugins/tpm/bin/clean_plugins
+~/.config/tmux/plugins/tpm/bin/install_plugins
+~/.config/tmux/plugins/tpm/bin/update_plugins all
 
 # make code dir
 mkdir -p ~/code
