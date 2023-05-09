@@ -57,16 +57,16 @@ smart_borders on
 default_border pixel 1
 default_floating_border pixel 1
 #                        border         background     text          indicator      child_border
-client.focused           $frost_cyan    $polar_night_0 $snow_storm_2 $frost_cyan    $frost_cyan
-client.focused_inactive  $snow_storm_0  $polar_night_0 $snow_storm_2 $snow_storm_0  $snow_storm_0
-client.focused_tab_title $snow_storm_0  $polar_night_0 $snow_storm_2
-client.unfocused         $polar_night_3 $polar_night_0 $snow_storm_2 $polar_night_3 $polar_night_3
+client.focused           $snow_storm_0  $polar_night_0 $snow_storm_2 $frost_cyan    $frost_cyan
+client.focused_inactive  $polar_night_3 $polar_night_0 $snow_storm_2 $snow_storm_0  $snow_storm_0
+client.focused_tab_title $polar_night_3 $polar_night_0 $snow_storm_2
+client.unfocused         $polar_night_0 $polar_night_0 $snow_storm_2 $polar_night_3 $polar_night_3
 client.urgent            $aurora_red    $polar_night_0 $snow_storm_2 $aurora_red    $aurora_red
 
 #$$ gaps ###
 smart_gaps on
-gaps inner 2
-gaps outer 2
+gaps inner 3
+gaps outer 3
 
 ### lock screen and idle ###
 # TODO uncomment
