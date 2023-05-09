@@ -170,6 +170,7 @@ else
 fi
 
 # remap keys
+doas mkdir -p /etc/kbct
 doas cp ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
 set +e
 systemctl --user is-enabled kbct.service >/dev/null
