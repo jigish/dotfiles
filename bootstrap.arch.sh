@@ -162,6 +162,7 @@ for app in $(cat launcher-blacklist.txt); do
   cp /usr/share/applications/${app} ~/.local/share/applications/${app}
   echo "NoDisplay=true" >>~/.local/share/applications/${app}
 done
+update-desktop-database -v ~/.local/share/applications
 
 # enable pipewire.service at boot
 set +e
