@@ -136,6 +136,17 @@ bindsym $mod+Shift+minus move scratchpad
 # show the next scratchpad window or hide the focused scratchpad window.
 # if there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+# Drag floating windows by holding down $mod and left mouse button.
+# Resize them with right mouse button + $mod.
+# Despite the name, also works for non-floating windows.
+# Change normal to inverse to use left mouse button for resizing and right
+# mouse button for dragging.
+floating_modifier $mod normal
+# Toggle the current focus between tiling and floating mode
+bindsym $mod+Shift+f floating toggle
+# Swap focus between the tiling area and the floating area
+bindsym $mod+f focus mode_toggle
+
 # manual resize mode
 mode "resize" {
   # left will shrink the containers width
@@ -191,45 +202,3 @@ include /etc/sway/config.d/*
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
-
-### Key bindings
-# TODO set this up?
-#
-# Basics:
-#
-
-    # Drag floating windows by holding down $mod and left mouse button.
-    # Resize them with right mouse button + $mod.
-    # Despite the name, also works for non-floating windows.
-    # Change normal to inverse to use left mouse button for resizing and right
-    # mouse button for dragging.
-    #floating_modifier $mod normal
-
-#
-# Layout stuff:
-# TODO set this up?
-#
-    # You can "split" the current object of your focus with
-    # $mod+b or $mod+v, for horizontal and vertical splits
-    # respectively.
-    #bindsym $mod+b splith
-    #bindsym $mod+v splitv
-
-    # Switch the current container between different layout styles
-    #bindsym $mod+s layout stacking
-    #bindsym $mod+w layout tabbed
-    #bindsym $mod+e layout toggle split
-
-    # Make the current focus fullscreen
-    #bindsym $mod+f fullscreen
-
-    # Toggle the current focus between tiling and floating mode
-    #bindsym $mod+Shift+space floating toggle
-
-    # Swap focus between the tiling area and the floating area
-    #bindsym $mod+space focus mode_toggle
-
-    # Move focus to the parent container
-    #bindsym $mod+a focus parent
-
-
