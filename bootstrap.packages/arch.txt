@@ -3,13 +3,13 @@ coreutils
 diffutils
 dust
 fd
+foot
 fzf
 git
 go
 go-yq
 htop
 jq
-kitty
 less
 lsd
 mesa
