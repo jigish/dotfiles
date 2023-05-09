@@ -1,4 +1,4 @@
 /nohup.out
-/tmux/plugins/*
+/config/tmux/plugins/*
 /fonts/.uuid
 /config/kitty/kitty.d

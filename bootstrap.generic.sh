@@ -32,16 +32,15 @@ cd ~
 [[ ! -L .gitconfig ]] && ln -s ${SCRIPTDIR}/gitconfig .gitconfig
 [[ ! -L .git-global-ignore ]] && ln -s ${SCRIPTDIR}/git-global-ignore .git-global-ignore
 [[ ! -L .p10k.zsh ]] && ln -s ${SCRIPTDIR}/p10k.${BOOTSTRAP_OS}.zsh .p10k.zsh
-[[ ! -L .tmux ]] && ln -s ${SCRIPTDIR}/tmux .tmux
-[[ ! -L .tmux.conf ]] && ln -s ${SCRIPTDIR}/tmux.conf .tmux.conf
 [[ ! -L .zpreztorc ]] && ln -s ${SCRIPTDIR}/zpreztorc .zpreztorc
 [[ ! -L .zshrc ]] && ln -s ${SCRIPTDIR}/zshrc .zshrc
 [[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s ${SCRIPTDIR}/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
 mkdir -p .config
 cd .config
-[[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
-[[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
 [[ ! -L foot ]] && ln -s ${SCRIPTDIR}/config/foot foot
+[[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
+[[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
+[[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
 cd ~
 mkdir -p .cargo
 cd .cargo
