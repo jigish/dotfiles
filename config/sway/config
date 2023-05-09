@@ -136,16 +136,17 @@ bindsym $mod+Shift+minus move scratchpad
 # show the next scratchpad window or hide the focused scratchpad window.
 # if there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
-# Drag floating windows by holding down $mod and left mouse button.
-# Resize them with right mouse button + $mod.
-# Despite the name, also works for non-floating windows.
-# Change normal to inverse to use left mouse button for resizing and right
-# mouse button for dragging.
+# do things with mod for floating windows
 floating_modifier $mod normal
-# Toggle the current focus between tiling and floating mode
+# toggle the current focus between tiling and floating mode
 bindsym $mod+Shift+f floating toggle
-# Swap focus between the tiling area and the floating area
+# swap focus between the tiling area and the floating area
 bindsym $mod+f focus mode_toggle
+# audio control
+bindsym XF86AudioRaiseVolume exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
 
 # manual resize mode
 mode "resize" {
