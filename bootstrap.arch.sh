@@ -158,7 +158,7 @@ for f in brave-browser tidal-hifi; do
 done
 
 # blacklist some applications from launchers
-for app in $(cat launcher-blacklist.txt); do
+for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   cp /usr/share/applications/${app} ~/.local/share/applications/${app}
   echo "NoDisplay=true" >>~/.local/share/applications/${app}
 done
