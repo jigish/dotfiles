@@ -253,6 +253,12 @@ else
   set -e
 fi
 
+# auto-configure time zone for laptops
+if [[ -d /etc/NetworkManager/dispatcher.d && ! -f /etc/NetworkManager/dispatcher.d/09-timezone ]]; then
+  doas cat >/etc/NetworkManager/dispatcher.d/09-timezone <<EOF
+EOF
+fi
+
 mkdir -p ${HOME}/tmp
 cat <<EOF >>${HOME}/tmp/bootstrap_TODO
 - logout and login to finish seatd install
