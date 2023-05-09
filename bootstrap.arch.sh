@@ -165,6 +165,8 @@ done
 sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
 cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
+cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.desktop
+sed -i -e 's/^Icon=.*$/Icon=network-firewall/g' ~/.local/share/applications/pulse.desktop
 # update database
 update-desktop-database -v ~/.local/share/applications
 
