@@ -156,7 +156,6 @@ bindsym $mod+r mode "resize"
 bar {
   swaybar_command waybar
 }
-# TODO fix this
 # https://github.com/Alexays/Waybar/issues/1958
 # or maybe this fixes: https://github.com/Alexays/Waybar/issues/1852
 # exec_always (pkill waybar || true) && waybar -l trace >/home/jigish/waybar.out 2>/home/jigish/waybar.err
