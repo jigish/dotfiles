@@ -156,12 +156,16 @@ for f in brave-browser tidal-hifi; do
   cp /usr/share/applications/${f}.desktop ~/.local/share/applications/
   sed -i -e 's/^Exec=\([^ ]*\)\(.*\)$/Exec=\1 --ozone-platform-hint=auto\2/g' ~/.local/share/applications/${f}.desktop
 done
-
 # blacklist some applications from launchers
 for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   cp /usr/share/applications/${app} ~/.local/share/applications/${app}
   echo "NoDisplay=true" >>~/.local/share/applications/${app}
 done
+# fix icons
+sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
+cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
+sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
+# update database
 update-desktop-database -v ~/.local/share/applications
 
 # enable pipewire.service at boot
