@@ -181,7 +181,7 @@ if [[ "$?" != "0" ]]; then
   echo
   echo "enabling kbct.service"
   doas modprobe uinput
-  echo "uinput" |doas tee -a /etc/modules
+  echo "uinput" |doas tee -a /etc/modules-load.d/uinput.conf
   doas systemctl enable --now kbct.service
 else
   set -e
