@@ -241,7 +241,17 @@ cd ~
 [[ ! -L .gtkrc-2.0 ]] && ln -s ${SCRIPTDIR}/gtkrc-2.0 .gtkrc-2.0
 cd ${CURRDIR}
 
-
+# enable systemd-timesyncd
+set +e
+doas systemctl is-enabled systemd-timesyncd.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling systemd-timesyncd.service"
+  doas systemctl enable --now systemd-timesyncd.service
+else
+  set -e
+fi
 
 mkdir -p ${HOME}/tmp
 cat <<EOF >>${HOME}/tmp/bootstrap_TODO
