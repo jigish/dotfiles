@@ -175,12 +175,12 @@ echo "remapping keys"
 doas mkdir -p /etc/kbct
 doas cp ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
 set +e
-systemctl --user is-enabled kbct.service >/dev/null
+doas systemctl is-enabled kbct.service >/dev/null
 if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "enabling kbct.service"
-  systemctl enable --now kbct.service
+  doas systemctl enable --now kbct.service
 else
   set -e
   doas systemctl restart kbct.service
