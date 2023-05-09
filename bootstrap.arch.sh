@@ -170,6 +170,8 @@ else
 fi
 
 # remap keys
+echo
+echo "remapping keys"
 doas mkdir -p /etc/kbct
 doas cp ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
 set +e
