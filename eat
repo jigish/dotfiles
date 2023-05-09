@@ -1,0 +1,683 @@
+sway(5)                                                                                                            File Formats Manual                                                                                                            sway(5)
+
+NNAAMMEE
+       sway - configuration file and commands
+
+DDEESSCCRRIIPPTTIIOONN
+       A sway configuration file is a list of sway commands that are executed by sway on startup.  These commands usually consist of setting your preferences and setting key bindings. An example config is likely present in /etc/sway/config for you
+       to check out.
+
+       Lines in the configuration file might be extended through multiple lines by adding a '\' character at the end of line. e.g.:
+
+           bindsym Shift+XF86AudioRaiseVolume exec \
+                pactl set-sink-volume @DEFAULT_SINK@ -1%
+
+       Commands can also be given as a block in the form ccoommmmaanndd {{ <<ssuubbccoommmmaannddss......>> }}. Anything before the opening {{ will be prepended to the lines inside the block. For example:
+
+           output eDP-1 {
+                background ~/wallpaper.png fill
+                resolution 1920x1080
+           }
+
+       is identical to
+
+           output eDP-1 background ~/wallpaper.png fill
+           output eDP-1 resolution 1920x1080
+
+       These commands can be executed in your config file, via sswwaayymmssgg(1), or via the bindsym command.
+
+CCOOMMMMAANNDD CCOONNVVEENNTTIIOONNSS
+       Commands are split into several arguments using spaces. You can enclose arguments with quotation marks (""......"" or ''......'') to add spaces to a single argument. You may also run several commands in order by separating each with ,, or ;;. Criteria is
+       retained across commands separated by ,,, but will be reset (and allow for new criteria, if desired) for commands separated by a ;;.
+
+       Throughout the documentation, || is used to distinguish between arguments for which you may only select one. [[......]] is used for optional arguments, and <<......>> for arguments where you are expected to supply some value.
+
+CCOOMMMMAANNDDSS
+       This section only lists general commands. For input and output commands, refer to sswwaayy--iinnppuutt(5) and sswwaayy--oouuttppuutt(5).
+
+       The following commands may only be used in the configuration file.
+
+       bbaarr [<bar-id>] <bar-subcommands...>
+           For details on bar subcommands, see sswwaayy--bbaarr(5).
+
+       ddeeffaauulltt__oorriieennttaattiioonn horizontal|vertical|auto
+           Sets the default container layout for tiled containers.
+
+       iinncclluuddee <path>
+           Includes another file from _p_a_t_h. _p_a_t_h can be either a full path or a path relative to the parent config, and expands shell syntax (see wwoorrddeexxpp(3) for details). The same include file can only be included once; subsequent attempts will be
+           ignored.
+
+       sswwaayybbgg__ccoommmmaanndd <command>
+           Executes custom background _c_o_m_m_a_n_d. Default is _s_w_a_y_b_g. Refer to sswwaayy--oouuttppuutt(5) for more information.
+
+           It can be disabled by setting the command to a single dash: _s_w_a_y_b_g___c_o_m_m_a_n_d _-
+
+       sswwaayynnaagg__ccoommmmaanndd <command>
+           Executes custom command for _s_w_a_y_n_a_g. Default is _s_w_a_y_n_a_g. Additional arguments may be appended to the end. This should only be used to either direct sway to call swaynag from a custom path or to provide additional arguments. This should be
+           placed at the top of the config for the best results.
+
+           It can be disabled by setting the command to a single dash: _s_w_a_y_n_a_g___c_o_m_m_a_n_d _-
+
+       wwoorrkkssppaaccee__llaayyoouutt default|stacking|tabbed
+           Specifies the initial layout for new containers in an empty workspace.
+
+       xxwwaayyllaanndd enable|disable|force
+           Enables or disables Xwayland support, which allows X11 applications to be used. _e_n_a_b_l_e will lazily load Xwayland so Xwayland will not be launched until the first client attempts to connect. In some cases, such as slower machines, it may
+           be desirable to have Xwayland started immediately by using _f_o_r_c_e instead of _e_n_a_b_l_e.
+
+       The following commands cannot be used directly in the configuration file. They are expected to be used with bbiinnddssyymm or at runtime through sswwaayymmssgg(1).
+
+       bboorrddeerr none|normal|csd|pixel [<n>]
+           Set border style for focused window. _n_o_r_m_a_l includes a border of thickness _n and a title bar. _p_i_x_e_l is a border without title bar _n pixels thick. Default is _n_o_r_m_a_l with border thickness 2. _c_s_d is short for client-side-decorations, which
+           allows the client to draw its own decorations.
+
+       bboorrddeerr toggle
+           Cycles through the available border styles.
+
+       eexxiitt
+           Exit sway and end your Wayland session.
+
+       ffllooaattiinngg enable|disable|toggle
+           Make focused view floating, non-floating, or the opposite of what it is now.
+
+       <criteria> ffooccuuss
+           Moves focus to the container that matches the specified criteria.
+
+       ffooccuuss up|right|down|left
+           Moves focus to the next container in the specified direction.
+
+       ffooccuuss prev|next [sibling]
+           Moves focus to the previous or next container in the current layout. By default, the last active child of the newly focused container will be focused. The _s_i_b_l_i_n_g option indicates not to immediately focus a child of the container.
+
+       ffooccuuss child
+           Moves focus to the last-focused child of the focused container.
+
+       ffooccuuss parent
+           Moves focus to the parent of the focused container.
+
+       ffooccuuss output up|right|down|left
+           Moves focus to the next output in the specified direction.
+
+       ffooccuuss output <name>
+           Moves focus to the named output.
+
+       ffooccuuss tiling
+           Sets focus to the last focused tiling container.
+
+       ffooccuuss floating
+           Sets focus to the last focused floating container.
+
+       ffooccuuss mode_toggle
+           Moves focus between the floating and tiled layers.
+
+       ffuullllssccrreeeenn [enable|disable|toggle] [global]
+           Makes focused view fullscreen, non-fullscreen, or the opposite of what it is now. If no argument is given, it does the same as _t_o_g_g_l_e. If _g_l_o_b_a_l is specified, the view will be fullscreen across all outputs.
+
+       ggaappss inner|outer|horizontal|vertical|top|right|bottom|left all|current set|plus|minus|toggle <amount>
+           Changes the _i_n_n_e_r or _o_u_t_e_r gaps for either _a_l_l workspaces or the _c_u_r_r_e_n_t workspace. _o_u_t_e_r gaps can be altered per side with _t_o_p, _r_i_g_h_t, _b_o_t_t_o_m, and _l_e_f_t or per direction with _h_o_r_i_z_o_n_t_a_l and _v_e_r_t_i_c_a_l.
+
+       iinnhhiibbiitt__iiddllee focus|fullscreen|open|none|visible
+           Set/unset an idle inhibitor for the view. _f_o_c_u_s will inhibit idle when the view is focused by any seat. _f_u_l_l_s_c_r_e_e_n will inhibit idle when the view is fullscreen (or a descendant of a fullscreen container) and is visible. _o_p_e_n will inhibit
+           idle until the view is closed (or the inhibitor is unset/changed). _v_i_s_i_b_l_e will inhibit idle when the view is visible on any output. _n_o_n_e will remove any existing idle inhibitor for the view.
+
+           This can also be used with criteria to set an idle inhibitor for any existing view or with _f_o_r___w_i_n_d_o_w to set idle inhibitors for future views.
+
+       llaayyoouutt default|splith|splitv|stacking|tabbed
+           Sets the layout mode of the focused container.
+
+           When using the _s_t_a_c_k_i_n_g layout, only the focused window in the container is displayed, with the opened windows' list on the top of the container.
+
+           The _t_a_b_b_e_d layout is similar to _s_t_a_c_k_i_n_g, but the windows’ list is vertically split.
+
+       llaayyoouutt toggle [split|all]
+           Cycles the layout mode of the focused container though a preset list of layouts. If no argument is given, then it cycles through stacking, tabbed and the last split layout. If _s_p_l_i_t is given, then it cycles through splith and splitv. If
+           _a_l_l is given, then it cycles through every layout.
+
+       llaayyoouutt toggle [split|tabbed|stacking|splitv|splith] [split|tabbed|stacking|splitv|splith]...
+           Cycles the layout mode of the focused container through a list of layouts.
+
+       mmaaxx__rreennddeerr__ttiimmee off|<msec>
+           Controls when the relevant application is told to render this window, as a positive number of milliseconds before the next time sway composites the output. A smaller number leads to fresher rendered frames being composited by sway and
+           lower perceived input latency, but if set too low, the application may not finish rendering before sway composites the output, leading to delayed frames.
+
+           When set to off, the relevant application is told to render this window immediately after display refresh. How much time is left for rendering before sway composites the output at that point depends on the output mmaaxx__rreennddeerr__ttiimmee setting.
+
+           To set this up for optimal latency:
+           1.   Set up oouuttppuutt mmaaxx__rreennddeerr__ttiimmee (see sswwaayy--oouuttppuutt(5)).
+           2.   Put the target application in _f_u_l_l_-_s_c_r_e_e_n and have it continuously render something.
+           3.   Start by setting mmaaxx__rreennddeerr__ttiimmee 11. If the application drops frames, increment by 11.
+
+           This setting only has an effect if a per-output mmaaxx__rreennddeerr__ttiimmee is in effect on the output the window is currently on. See sswwaayy--oouuttppuutt(5) for further details.
+
+       mmoovvee left|right|up|down [<px> px]
+           Moves the focused container in the direction specified. The optional _p_x argument specifies how many pixels to move the container. If unspecified, the default is 10 pixels. Pixels are ignored when moving tiled containers.
+
+       mmoovvee [absolute] position <pos_x> [px|ppt] <pos_y> [px|ppt]
+           Moves the focused container to the specified position in the workspace. The position can be specified in pixels or percentage points, omitting the unit defaults to pixels. If _a_b_s_o_l_u_t_e is used, the position is relative to all outputs. _a_b_‐
+           _s_o_l_u_t_e can not be used with percentage points.
+
+       mmoovvee [absolute] position center
+           Moves the focused container to be centered on the workspace. If _a_b_s_o_l_u_t_e is used, it is moved to the center of all outputs.
+
+       mmoovvee position cursor|mouse|pointer
+           Moves the focused container to be centered on the cursor.
+
+       mmoovvee [container|window] [to] mark <mark>
+           Moves the focused container to the specified mark.
+
+       mmoovvee [--no-auto-back-and-forth] [container|window] [to] workspace [number] <name>
+           Moves the focused container to the specified workspace. The string _n_u_m_b_e_r is optional and is used to match a workspace with the same number, even if it has a different name.
+
+       mmoovvee [container|window] [to] workspace prev|next|current
+           Moves the focused container to the previous, next or current workspace on this output, or if no workspaces remain, the previous or next output.
+
+       mmoovvee [container|window] [to] workspace prev_on_output|next_on_output
+           Moves the focused container to the previous or next workspace on this output, wrapping around if already at the first or last workspace.
+
+       mmoovvee [container|window] [to] workspace back_and_forth
+           Moves the focused container to previously focused workspace.
+
+       mmoovvee [container|window] [to] output <name-or-id>|current
+           Moves the focused container to the specified output.
+
+       mmoovvee [container|window] [to] output up|right|down|left
+           Moves the focused container to next output in the specified direction.
+
+       mmoovvee [container|window] [to] scratchpad
+           Moves the focused container to the scratchpad.
+
+       mmoovvee workspace [to] output <name-or-id>|current
+           Moves the focused workspace to the specified output.
+
+       mmoovvee workspace to [output] <name-or-id>|current
+           Moves the focused workspace to the specified output.
+
+       mmoovvee workspace [to] output up|right|down|left
+           Moves the focused workspace to next output in the specified direction.
+
+       mmoovvee workspace to [output] up|right|down|left
+           Moves the focused workspace to next output in the specified direction.
+
+       nnoopp <comment>
+           A no operation command that can be used to override default behaviour. The optional comment argument is ignored, but logged for debugging purposes.
+
+       rreellooaadd
+           Reloads the sway config file and applies any changes. The config file is located at path specified by the command line arguments when started, otherwise according to the priority stated in sswwaayy(1).
+
+       rreennaammee workspace [<old_name>] to <new_name>
+           Rename either <old_name> or the focused workspace to the <new_name>
+
+       rreessiizzee shrink|grow width|height [<amount> [px|ppt]]
+           Resizes the currently focused container by _a_m_o_u_n_t, specified in pixels or percentage points. If the units are omitted, floating containers are resized in px and tiled containers by ppt. _a_m_o_u_n_t will default to 10 if omitted.
+
+       rreessiizzee set height <height> [px|ppt]
+           Sets the height of the container to _h_e_i_g_h_t, specified in pixels or percentage points. If the units are omitted, floating containers are resized in px and tiled containers by ppt. If _h_e_i_g_h_t is 0, the container will not be resized.
+
+       rreessiizzee set [width] <width> [px|ppt]
+           Sets the width of the container to _w_i_d_t_h, specified in pixels or percentage points. If the units are omitted, floating containers are resized in px and tiled containers by ppt. If _w_i_d_t_h is 0, the container will not be resized.
+
+       rreessiizzee set [width] <width> [px|ppt] [height] <height> [px|ppt]
+           Sets the width and height of the container to _w_i_d_t_h and _h_e_i_g_h_t, specified in pixels or percentage points. If the units are omitted, floating containers are resized in px and tiled containers by ppt. If _w_i_d_t_h or _h_e_i_g_h_t is 0, the container
+           will not be resized on that axis.
+
+       ssccrraattcchhppaadd show
+           Shows a window from the scratchpad. Repeatedly using this command will cycle through the windows in the scratchpad.
+
+       sshhoorrttccuuttss__iinnhhiibbiittoorr enable|disable
+           Enables or disables the ability of clients to inhibit keyboard shortcuts for a view. This is primarily useful for virtualization and remote desktop software. It affects either the currently focused view or a set of views selected by cri‐
+           teria. Subcommand _d_i_s_a_b_l_e additionally deactivates any active inhibitors for the given view(s). Criteria are particularly useful with the ffoorr__wwiinnddooww command to configure a class of views differently from the per-seat defaults established
+           by the sseeaatt subcommand of the same name. See sswwaayy--iinnppuutt(5) for more ways to affect inhibitors.
+
+       sspplliitt vertical|v|horizontal|h|none|n|toggle|t
+           Splits the current container, vertically or horizontally. When _n_o_n_e is specified, the effect of a previous split is undone if the current container is the only child of a split parent. When _t_o_g_g_l_e is specified, the current container is
+           split opposite to the parent container's layout.
+
+       sspplliitthh
+           Equivalent to sspplliitt hhoorriizzoonnttaall
+
+       sspplliittvv
+           Equivalent to sspplliitt vveerrttiiccaall
+
+       sspplliitttt
+           Equivalent to sspplliitt ttooggggllee
+
+       ssttiicckkyy enable|disable|toggle
+           "Sticks" a floating window to the current output so that it shows up on all workspaces.
+
+       sswwaapp container with id|con_id|mark <arg>
+           Swaps the position, geometry, and fullscreen status of two containers. The first container can be selected either by criteria or focus. The second container can be selected by _i_d, _c_o_n___i_d, or _m_a_r_k. _i_d can only be used with xwayland views.
+           If the first container has focus, it will retain focus unless it is moved to a different workspace or the second container becomes fullscreen on the same workspace as the first container. In either of those cases, the second container
+           will gain focus.
+
+       ttiittllee__ffoorrmmaatt <format>
+           Sets the format of window titles. The following placeholders may be used:
+
+               %title - The title supplied by the window
+                         %app_id - The wayland app ID (applicable to wayland windows only)
+                         %class - The X11 classname (applicable to xwayland windows only)
+                         %instance - The X11 instance (applicable to xwayland windows only)
+                         %shell - The protocol the window is using (typically xwayland or
+                   xdg_shell)
+
+           This command is typically used with ffoorr__wwiinnddooww criteria. For example:
+
+               for_window [title="."] title_format "<b>%title</b> (%app_id)"
+
+           Note that markup requires pango to be enabled via the ffoonntt command.
+
+           The default format is "%title".
+
+       The following commands may be used either in the configuration file or at runtime.
+
+       aassssiiggnn <criteria> [→] [workspace] [number] <workspace>
+           Assigns views matching _c_r_i_t_e_r_i_a (see CCRRIITTEERRIIAA for details) to _w_o_r_k_s_p_a_c_e. The → (U+2192) is optional and cosmetic. This command is equivalent to:
+
+               for_window <criteria> move container to workspace <workspace>
+
+       aassssiiggnn <criteria> [→] output left|right|up|down|<name>
+           Assigns views matching _c_r_i_t_e_r_i_a (see CCRRIITTEERRIIAA for details) to the specified output. The → (U+2192) is optional and cosmetic. This command is equivalent to:
+
+               for_window <criteria> move container to output <output>
+
+       bbiinnddssyymm [--whole-window] [--border] [--exclude-titlebar] [--release] [--locked] [--to-code] [--input-device=<device>] [--no-warn] [--no-repeat] [Group<1-4>+]<key combo> <command>
+           Binds _k_e_y _c_o_m_b_o to execute the sway command _c_o_m_m_a_n_d when pressed. You may use XKB key names here (wweevv(1) is a good tool for discovering these). With the flag _-_-_r_e_l_e_a_s_e, the command is executed when the key combo is released. If _i_n_p_u_t_-_d_e_‐
+           _v_i_c_e is given, the binding will only be executed for that input device and will be executed instead of any binding that is generic to all devices. If a group number is given, then the binding will only be available for that group. By de‐
+           fault, if you overwrite a binding, swaynag will give you a warning. To silence this, use the _-_-_n_o_-_w_a_r_n flag.
+
+           Unless the flag _-_-_l_o_c_k_e_d is set, the command will not be run when a screen locking program is active. If there is a matching binding with and without _-_-_l_o_c_k_e_d, the one with will be preferred when locked and the one without will be pre‐
+           ferred when unlocked. If there are matching bindings and one has both _-_-_i_n_p_u_t_-_d_e_v_i_c_e and _-_-_l_o_c_k_e_d and the other has neither, the former will be preferred even when unlocked.
+
+           Unless the flag _-_-_i_n_h_i_b_i_t_e_d is set, the command will not be run when a keyboard shortcuts inhibitor is active for the currently focused window. Such inhibitors are usually requested by remote desktop and virtualization software to enable
+           the user to send keyboard shortcuts to the remote or virtual session. The _-_-_i_n_h_i_b_i_t_e_d flag allows one to define bindings which will be exempt from pass-through to such software. The same preference logic as for _-_-_l_o_c_k_e_d applies.
+
+           Unless the flag _-_-_n_o_-_r_e_p_e_a_t is set, the command will be run repeatedly when the key is held, according to the repeat settings specified in the input configuration.
+
+           Bindings to keysyms are layout-dependent. This can be changed with the _-_-_t_o_-_c_o_d_e flag. In this case, the keysyms will be translated into the corresponding keycodes in the first configured layout.
+
+           Mouse bindings operate on the container under the cursor instead of the container that has focus. Mouse buttons can either be specified in the form _b_u_t_t_o_n_[_1_-_9_] or by using the name of the event code (ex _B_T_N___L_E_F_T or _B_T_N___R_I_G_H_T). For the
+           former option, the buttons will be mapped to their values in X11 (1=left, 2=middle, 3=right, 4=scroll up, 5=scroll down, 6=scroll left, 7=scroll right, 8=back, 9=forward). For the latter option, you can find the event names using _l_i_b_i_n_p_u_t
+           _d_e_b_u_g_-_e_v_e_n_t_s.
+
+           The priority for matching bindings is as follows: input device, group, and locked state.
+
+           _-_-_w_h_o_l_e_-_w_i_n_d_o_w, _-_-_b_o_r_d_e_r, and _-_-_e_x_c_l_u_d_e_-_t_i_t_l_e_b_a_r are mouse-only options which affect the region in which the mouse bindings can be triggered.  By default, mouse bindings are only triggered when over the title bar. With the _-_-_b_o_r_d_e_r op‐
+           tion, the border of the window will be included in this region. With the _-_-_w_h_o_l_e_-_w_i_n_d_o_w option, the cursor can be anywhere over a window including the title, border, and content. _-_-_e_x_c_l_u_d_e_-_t_i_t_l_e_b_a_r can be used in conjunction with any
+           other option to specify that the titlebar should be excluded from the region of consideration.
+
+           If _-_-_w_h_o_l_e_-_w_i_n_d_o_w is given, the command can be triggered when the cursor is over an empty workspace. Using a mouse binding over a layer surface's exclusive region is not currently possible.
+
+           Example:
+                     # Execute firefox when alt, shift, and f are pressed together
+                     bindsym Mod1+Shift+f exec firefox
+
+           bbiinnddccooddee [--whole-window] [--border] [--exclude-titlebar] [--release] [--locked] [--input-device=<device>] [--no-warn] [Group<1-4>+]<code> <command> is also available for binding with key/button codes instead of key/button names.
+
+       bbiinnddsswwiittcchh [--locked] [--no-warn] [--reload] <switch>:<state> <command>
+           Binds <switch> to execute the sway command _c_o_m_m_a_n_d on state changes. Supported switches are _l_i_d (laptop lid) and _t_a_b_l_e_t (tablet mode) switches. Valid values for _s_t_a_t_e are _o_n, _o_f_f and _t_o_g_g_l_e. These switches are on when the device lid is
+           shut and when tablet mode is active respectively. _t_o_g_g_l_e is also supported to run a command both when the switch is toggled on or off.
+
+           Unless the flag _-_-_l_o_c_k_e_d is set, the command will not be run when a screen locking program is active. If there is a matching binding with and without _-_-_l_o_c_k_e_d, the one with will be preferred when locked and the one without will be pre‐
+           ferred when unlocked.
+
+           If the _-_-_r_e_l_o_a_d flag is given, the binding will also be executed when the config is reloaded. _t_o_g_g_l_e bindings will not be executed on reload. The _-_-_l_o_c_k_e_d flag will operate as normal so if the config is reloaded while locked and _-_-_l_o_c_k_e_d
+           is not given, the binding will not be executed.
+
+           By default, if you overwrite a binding, swaynag will give you a warning. To silence this, use the _-_-_n_o_-_w_a_r_n flag.
+
+           Example:
+                     # Show the virtual keyboard when tablet mode is entered.
+                     bindswitch tablet:on busctl call --user sm.puri.OSK0 /sm/puri/OSK0 sm.puri.OSK0 SetVisible b true
+
+                     # Log a message when the laptop lid is opened or closed.
+                     bindswitch lid:toggle exec echo "Lid moved"
+
+       bbiinnddggeessttuurree [--exact] [--input-device=<device>] [--no-warn] <gesture>[:<fingers>][:directions] <command>
+           Binds _g_e_s_t_u_r_e to execute the sway command _c_o_m_m_a_n_d when detected. Currently supports the _h_o_l_d, _p_i_n_c_h or _s_w_i_p_e gesture. Optionally can be limited to bind to a certain number of _f_i_n_g_e_r_s or, for a _p_i_n_c_h or _s_w_i_p_e gesture, to certain _d_i_r_e_c_‐
+           _t_i_o_n_s.
+
+       ┌──────┬─────────┬────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+       │ttyyppee  │ ffiinnggeerrss │ ddiirreeccttiioonn                                                                                                                                                                                                                      │
+       ├──────┼─────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+       │hold  │  1 - 5  │ none                                                                                                                                                                                                                           │
+       ├──────┼─────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+       │swipe │  3 - 5  │ up, down, left, right                                                                                                                                                                                                          │
+       ├──────┼─────────┼────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┤
+       │pinch │  2 - 5  │ all above + inward, outward, clockwise, counterclockwise                                                                                                                                                                       │
+       └──────┴─────────┴────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────┘
+           The _f_i_n_g_e_r_s can be limited to any sensible number or left empty to accept any finger counts. Valid directions are _u_p, _d_o_w_n, _l_e_f_t and _r_i_g_h_t, as well as _i_n_w_a_r_d, _o_u_t_w_a_r_d, _c_l_o_c_k_w_i_s_e, _c_o_u_n_t_e_r_c_l_o_c_k_w_i_s_e for the _p_i_n_c_h gesture. Multiple directions
+           can be combined by a plus.
+
+           If a _i_n_p_u_t_-_d_e_v_i_c_e is given, the binding will only be executed for that input device and will be executed instead of any binding that is generic to all devices. By default, if you overwrite a binding, swaynag will give you a warning. To
+           silence this, use the _-_-_n_o_-_w_a_r_n flag.
+
+           The _-_-_e_x_a_c_t flag can be used to ensure a binding only matches when exactly all specified directions are matched and nothing more. If there is matching binding with _-_-_e_x_a_c_t, it will be preferred.
+
+           The priority for matching bindings is as follows: input device, then exact matches followed by matches with the highest number of matching directions.
+
+           Gestures executed while the pointer is above a bar are not handled by sway. See the respective documentation, e.g. bbiinnddggeessttuurree in sswwaayy--bbaarr(5).
+
+           Example:
+                     # Allow switching between workspaces with left and right swipes
+                     bindgesture swipe:right workspace prev
+                     bindgesture swipe:left workspace next
+
+                     # Allow container movements by pinching them
+                     bindgesture pinch:inward+up move up
+                     bindgesture pinch:inward+down move down
+                     bindgesture pinch:inward+left move left
+                     bindgesture pinch:inward+right move right
+
+       cclliieenntt..bbaacckkggrroouunndd <color>
+           This command is ignored and is only present for i3 compatibility.
+
+       cclliieenntt..<<ccllaassss>> <border> <background> <text> [<indicator> [<child_border>]]
+           Configures the color of window borders and title bars. The first three colors are required. When omitted _i_n_d_i_c_a_t_o_r will use a sane default and _c_h_i_l_d___b_o_r_d_e_r will use the color set for _b_a_c_k_g_r_o_u_n_d. Colors may be specified in hex, either as
+           _#_R_R_G_G_B_B or _#_R_R_G_G_B_B_A_A.
+
+           The available classes are:
+
+           cclliieenntt..ffooccuusseedd
+               The window that has focus.
+
+           cclliieenntt..ffooccuusseedd__iinnaaccttiivvee
+               The most recently focused view within a container which is not focused.
+
+           cclliieenntt..ffooccuusseedd__ttaabb__ttiittllee
+               A view that has focused descendant container. Tab or stack container title that is the parent of the focused container but is not directly focused. Defaults to focused_inactive if not specified and does not use the indicator and
+               child_border colors.
+
+           cclliieenntt..ppllaacceehhoollddeerr
+               Ignored (present for i3 compatibility).
+
+           cclliieenntt..uunnffooccuusseedd
+               A view that does not have focus.
+
+           cclliieenntt..uurrggeenntt
+               A view with an urgency hint. NNoottee: Native Wayland windows do not support urgency. Urgency only works for Xwayland windows.
+
+           The meaning of each color is:
+
+           _b_o_r_d_e_r
+               The border around the title bar.
+
+           _b_a_c_k_g_r_o_u_n_d
+               The background of the title bar.
+
+           _t_e_x_t
+               The text color of the title bar.
+
+           _i_n_d_i_c_a_t_o_r
+               The color used to indicate where a new view will open. In a tiled container, this would paint the right border of the current view if a new view would be opened to the right.
+
+           _c_h_i_l_d___b_o_r_d_e_r
+               The border around the view itself.
+
+       The default colors are:
+
+       ┌──────────────────┬─────────┬────────────┬─────────┬───────────┬──────────────┐
+       │      ccllaassss       │ _b_o_r_d_e_r  │ _b_a_c_k_g_r_o_u_n_d │ _t_e_x_t    │ _i_n_d_i_c_a_t_o_r │ _c_h_i_l_d___b_o_r_d_e_r │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │bbaacckkggrroouunndd        │ n/a     │ #ffffff    │ n/a     │ n/a       │ n/a          │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ffooccuusseedd           │ #4c7899 │ #285577    │ #ffffff │ #2e9ef4   │ #285577      │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ffooccuusseedd__iinnaaccttiivvee  │ #333333 │ #5f676a    │ #ffffff │ #484e50   │ #5f676a      │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ffooccuusseedd__ttaabb__ttiittllee │ #333333 │ #5f676a    │ #ffffff │ n/a       │ n/a          │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │uunnffooccuusseedd         │ #333333 │ #222222    │ #888888 │ #292d2e   │ #222222      │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │uurrggeenntt            │ #2f343a │ #900000    │ #ffffff │ #900000   │ #900000      │
+       ├──────────────────┼─────────┼────────────┼─────────┼───────────┼──────────────┤
+       │ppllaacceehhoollddeerr       │ #000000 │ #0c0c0c    │ #ffffff │ #000000   │ #0c0c0c      │
+       └──────────────────┴─────────┴────────────┴─────────┴───────────┴──────────────┘
+
+       ddeeffaauulltt__bboorrddeerr normal|none|pixel [<n>]
+           Set default border style for new tiled windows.
+
+       ddeeffaauulltt__ffllooaattiinngg__bboorrddeerr normal|none|pixel [<n>]
+           Set default border style for new floating windows. This only applies to windows that are spawned in floating mode, not windows that become floating afterwards.
+
+       eexxeecc <shell command>
+           Executes _s_h_e_l_l _c_o_m_m_a_n_d with sh.
+
+       eexxeecc__aallwwaayyss <shell command>
+           Like eexxeecc, but the shell command will be executed _a_g_a_i_n after rreellooaadd.
+
+       ffllooaattiinngg__mmaaxxiimmuumm__ssiizzee <width> x <height>
+           Specifies the maximum size of floating windows. -1 x -1 removes the upper limit. The default is 0 x 0, which will use the width and height of the entire output layout as the maximums
+
+       ffllooaattiinngg__mmiinniimmuumm__ssiizzee <width> x <height>
+           Specifies the minimum size of floating windows. The default is 75 x 50.
+
+       ffllooaattiinngg__mmooddiiffiieerr <modifier> [normal|inverse]
+           When the _m_o_d_i_f_i_e_r key is held down, you may hold left click to move windows, and right click to resize them. Setting _m_o_d_i_f_i_e_r to _n_o_n_e disables this feature. If _i_n_v_e_r_s_e is specified, left click is used for resizing and right click for mov‐
+           ing.
+
+       ffooccuuss__ffoolllloowwss__mmoouussee yes|no|always
+           If set to _y_e_s, moving your mouse over a window will focus that window. If set to _a_l_w_a_y_s, the window under the cursor will always be focused, even after switching between workspaces.
+
+       ffooccuuss__oonn__wwiinnddooww__aaccttiivvaattiioonn smart|urgent|focus|none
+           This option determines what to do when a client requests window activation. If set to _u_r_g_e_n_t, the urgent state will be set for that window. If set to _f_o_c_u_s, the window will become focused. If set to _s_m_a_r_t, the window will become focused
+           only if it is already visible, otherwise the urgent state will be set. Default is _u_r_g_e_n_t.
+
+       ffooccuuss__wwrraappppiinngg yes|no|force|workspace
+           This option determines what to do when attempting to focus over the edge of a container. If set to _n_o, the focused container will retain focus, if there are no other containers in the direction. If set to _y_e_s, focus will be wrapped to the
+           opposite edge of the container, if there are no other containers in the direction. If set to _f_o_r_c_e, focus will be wrapped to the opposite edge of the container, even if there are other containers in the direction. If set to _w_o_r_k_s_p_a_c_e, fo‐
+           cus will wrap like in the _y_e_s case and additionally wrap when moving outside of workspaces boundaries. Default is _y_e_s.
+
+       ffoonntt [pango:]<font>
+           Sets font to use for the title bars. To enable support for pango markup, preface the font name with _p_a_n_g_o_:. For example, _m_o_n_o_s_p_a_c_e _1_0 is the default font. To enable support for pango markup, _p_a_n_g_o_:_m_o_n_o_s_p_a_c_e _1_0 should be used instead. Re‐
+           gardless of whether pango markup is enabled, _f_o_n_t should be specified as a pango font description. For more information on pango font descriptions, see https://docs.gtk.org/Pango/type_func.FontDescription.from_string.html#description
+
+       ffoorrccee__ddiissppllaayy__uurrggeennccyy__hhiinntt <timeout> [ms]
+           If an application on another workspace sets an urgency hint, switching to this workspace may lead to immediate focus of the application, which also means the window decoration color would be immediately reset to cclliieenntt..ffooccuusseedd. This may
+           make it unnecessarily hard to tell which window originally raised the event. This option allows one to set a _t_i_m_e_o_u_t in ms to delay the urgency hint reset.
+
+       ttiittlleebbaarr__bboorrddeerr__tthhiicckknneessss <thickness>
+           Thickness of the titlebar border in pixels
+
+       ttiittlleebbaarr__ppaaddddiinngg <horizontal> [<vertical>]
+           Padding of the text in the titlebar. _h_o_r_i_z_o_n_t_a_l value affects horizontal padding of the text while _v_e_r_t_i_c_a_l value affects vertical padding (space above and below text). Padding includes titlebar borders so their value should be greater
+           than titlebar_border_thickness. If _v_e_r_t_i_c_a_l value is not specified it is set to the _h_o_r_i_z_o_n_t_a_l value.
+
+       ffoorr__wwiinnddooww <criteria> <command>
+           Whenever a window that matches _c_r_i_t_e_r_i_a appears, run list of commands. See CCRRIITTEERRIIAA for more details.
+
+       ggaappss inner|outer|horizontal|vertical|top|right|bottom|left <amount>
+           Sets default _a_m_o_u_n_t pixels of _i_n_n_e_r or _o_u_t_e_r gap, where the inner affects spacing around each view and outer affects the spacing around each workspace. Outer gaps are in addition to inner gaps. To reduce or remove outer gaps, outer gaps
+           can be set to a negative value. _o_u_t_e_r gaps can also be specified per side with _t_o_p, _r_i_g_h_t, _b_o_t_t_o_m, and _l_e_f_t or per direction with _h_o_r_i_z_o_n_t_a_l and _v_e_r_t_i_c_a_l.
+
+           This affects new workspaces only, and is used when the workspace doesn't have its own gaps settings (see: workspace <ws> gaps ...).
+
+       hhiiddee__eeddggee__bboorrddeerrss [--i3] none|vertical|horizontal|both|smart|smart_no_gaps
+           Hides window borders adjacent to the screen edges. Default is _n_o_n_e. The _-_-_i_3 option enables i3-compatible behavior to hide the title bar on tabbed and stacked containers with one child. The _s_m_a_r_t|_s_m_a_r_t___n_o___g_a_p_s options are equivalent to
+           setting _s_m_a_r_t___b_o_r_d_e_r_s smart|no_gaps and _h_i_d_e___e_d_g_e___b_o_r_d_e_r_s none.
+
+       iinnppuutt <input_device> <input-subcommands...>
+           For details on input subcommands, see sswwaayy--iinnppuutt(5).
+
+           * may be used in lieu of a specific device name to configure all input devices. A list of input device names may be obtained via sswwaayymmssgg --tt ggeett__iinnppuuttss.
+
+       sseeaatt <seat> <seat-subcommands...>
+           For details on seat subcommands, see sswwaayy--iinnppuutt(5).
+
+       kkiillll
+           Kills (closes) the currently focused container and all of its children.
+
+       ssmmaarrtt__bboorrddeerrss on|no_gaps|off
+           If smart_borders are _o_n, borders will only be enabled if the workspace has more than one visible child. If smart_borders is set to _n_o___g_a_p_s, borders will only be enabled if the workspace has more than one visible child and gaps equal to
+           zero.
+
+       ssmmaarrtt__ggaappss on|off|toggle|inverse_outer
+           If smart_gaps are _o_n gaps will only be enabled if a workspace has more than one child. If smart_gaps are _i_n_v_e_r_s_e___o_u_t_e_r outer gaps will only be enabled if a workspace has exactly one child.
+
+       mmaarrkk --add|--replace [--toggle] <identifier>
+           Marks are arbitrary labels that can be used to identify certain windows and then jump to them at a later time. Each _i_d_e_n_t_i_f_i_e_r can only be set on a single window at a time since they act as a unique identifier. By default, mmaarrkk sets _i_d_e_n_‐
+           _t_i_f_i_e_r as the only mark on a window. _-_-_a_d_d will instead add _i_d_e_n_t_i_f_i_e_r to the list of current marks for that window. If _-_-_t_o_g_g_l_e is specified mark will remove _i_d_e_n_t_i_f_i_e_r if it is already marked.
+
+       mmooddee <mode>
+           Switches to the specified mode. The default mode is _d_e_f_a_u_l_t.
+
+       mmooddee [--pango_markup] <mode> <mode-subcommands...>
+           The only valid _m_o_d_e_-_s_u_b_c_o_m_m_a_n_d_s_._._. are bbiinnddssyymm, bbiinnddccooddee, bbiinnddsswwiittcchh, and sseett. If _-_-_p_a_n_g_o___m_a_r_k_u_p is given, then _m_o_d_e will be interpreted as pango markup.
+
+       mmoouussee__wwaarrppiinngg output|container|none
+           If _o_u_t_p_u_t is specified, the mouse will be moved to new outputs as you move focus between them. If _c_o_n_t_a_i_n_e_r is specified, the mouse will be moved to the middle of the container on switch. Default is _o_u_t_p_u_t.
+
+       nnoo__ffooccuuss <criteria>
+           Prevents windows matching <criteria> from being focused automatically when they're created. This has no effect on the first window in a workspace.
+
+       oouuttppuutt <output_name> <output-subcommands...>
+           For details on output subcommands, see sswwaayy--oouuttppuutt(5).
+
+           * may be used in lieu of a specific output name to configure all outputs. A list of output names may be obtained via sswwaayymmssgg --tt ggeett__oouuttppuuttss.
+
+       ppooppuupp__dduurriinngg__ffuullllssccrreeeenn smart|ignore|leave_fullscreen
+           Determines what to do when a fullscreen view opens a dialog. If _s_m_a_r_t (the default), the dialog will be displayed. If _i_g_n_o_r_e, the dialog will not be rendered. If _l_e_a_v_e___f_u_l_l_s_c_r_e_e_n, the view will exit fullscreen mode and the dialog will be
+           rendered.
+
+       sseett $<name> <value>
+           Sets variable $_n_a_m_e to _v_a_l_u_e. You can use the new variable in the arguments of future commands. When the variable is used, it can be escaped with an additional $ (ie $$_n_a_m_e) to have the replacement happen at run time instead of when read‐
+           ing the config. However, it does not always make sense for the variable to be replaced at run time since some arguments do need to be known at config time.
+
+       sshhooww__mmaarrkkss yes|no
+           If sshhooww__mmaarrkkss is yes, marks will be displayed in the window borders. Any mark that starts with an underscore will not be drawn even if sshhooww__mmaarrkkss is yes. The default is _y_e_s.
+
+       ooppaacciittyy [set|plus|minus] <value>
+           Adjusts the opacity of the window between 0 (completely transparent) and 1 (completely opaque). If the operation is omitted, _s_e_t will be used.
+
+       ttiilliinngg__ddrraagg  enable|disable|toggle
+           Sets whether or not tiling containers can be dragged with the mouse. If _e_n_a_b_l_e_d (default), the _f_l_o_a_t_i_n_g___m_o_d can be used to drag tiling, as well as floating, containers. Using the left mouse button on title bars without the _f_l_o_a_t_i_n_g___m_o_d
+           will also allow the container to be dragged. _t_o_g_g_l_e should not be used in the config file.
+
+       ttiilliinngg__ddrraagg__tthhrreesshhoolldd <threshold>
+           Sets the threshold that must be exceeded for a container to be dragged by its titlebar. This has no effect if _f_l_o_a_t_i_n_g___m_o_d is used or if _t_i_l_i_n_g___d_r_a_g is set to _d_i_s_a_b_l_e.  Once the threshold has been exceeded once, the drag starts and the
+           cursor can come back inside the threshold without stopping the drag.  _t_h_r_e_s_h_o_l_d is multiplied by the scale of the output that the cursor on.  The default is 9.
+
+       ttiittllee__aalliiggnn left|center|right
+           Sets the title alignment. If _r_i_g_h_t is selected and _s_h_o_w___m_a_r_k_s is set to _y_e_s, the marks will be shown on the _l_e_f_t side instead of the _r_i_g_h_t side.
+
+       uunnbbiinnddsswwiittcchh <switch>:<state>
+           Removes a binding for when <switch> changes to <state>.
+
+       uunnbbiinnddggeessttuurree [--exact] [--input-device=<device>] <gesture>[:<fingers>][:directions]
+           Removes a binding for the specified _g_e_s_t_u_r_e, _f_i_n_g_e_r_s and _d_i_r_e_c_t_i_o_n_s combination.
+
+       uunnbbiinnddssyymm [--whole-window] [--border] [--exclude-titlebar] [--release] [--locked] [--to-code] [--input-device=<device>] <key combo>
+           Removes the binding for _k_e_y _c_o_m_b_o that was previously bound with the given flags.  If _i_n_p_u_t_-_d_e_v_i_c_e is given, only the binding for that input device will be unbound.
+
+           uunnbbiinnddccooddee [--whole-window] [--border] [--exclude-titlebar] [--release] [--locked] [--input-device=<device>] <code> is also available for unbinding with key/button codes instead of key/button names.
+
+       uunnmmaarrkk [<identifier>]
+           uunnmmaarrkk will remove _i_d_e_n_t_i_f_i_e_r from the list of current marks on a window. If _i_d_e_n_t_i_f_i_e_r is omitted, all marks are removed.
+
+       uurrggeenntt enable|disable|allow|deny
+           Using _e_n_a_b_l_e or _d_i_s_a_b_l_e manually sets or unsets the window's urgent state. Using _a_l_l_o_w or _d_e_n_y controls the window's ability to set itself as urgent. By default, windows are allowed to set their own urgency.
+
+       wwoorrkkssppaaccee [--no-auto-back-and-forth] [number] <[num:]name>
+           Switches to the specified workspace. The _n_u_m_: portion of the name is optional and will be used for ordering. If _n_u_m_: is not given and _n_a_m_e is a number, then it will be also be used for ordering.
+
+           If the _n_o_-_a_u_t_o_-_b_a_c_k_-_a_n_d_-_f_o_r_t_h option is given, then this command will not perform a back-and-forth operation when the workspace is already focused and _w_o_r_k_s_p_a_c_e___a_u_t_o___b_a_c_k___a_n_d___f_o_r_t_h is enabled.
+
+           If the _n_u_m_b_e_r keyword is specified and a workspace with the number already exists, then the workspace with the number will be used. If a workspace with the number does not exist, a new workspace will be created with the name _n_a_m_e.
+
+       wwoorrkkssppaaccee prev|next
+           Switches to the next workspace on the current output or on the next output if currently on the last workspace.
+
+       wwoorrkkssppaaccee prev_on_output|next_on_output
+           Switches to the next workspace on the current output.
+
+       wwoorrkkssppaaccee back_and_forth
+           Switches to the previously focused workspace.
+
+       wwoorrkkssppaaccee <name> gaps inner|outer|horizontal|vertical|top|right|bottom|left <amount>
+           Specifies that workspace _n_a_m_e should have the given gaps settings when it is created.
+
+           This command does not affect existing workspaces. To alter the gaps of an existing workspace, use the _g_a_p_s command.
+
+       wwoorrkkssppaaccee <name> output <outputs...>
+           Specifies that workspace _n_a_m_e should be shown on the specified _o_u_t_p_u_t_s. Multiple outputs can be listed and the first available will be used. If the workspace gets placed on an output further down the list and an output that is higher on
+           the list becomes available, the workspace will be moved to the higher priority output.
+
+           This command does not affect existing workspaces. To move an existing workspace, use the _m_o_v_e command in combination with the _w_o_r_k_s_p_a_c_e criteria (non-empty workspaces only) or _w_o_r_k_s_p_a_c_e command (to switch to the workspace before moving).
+
+       wwoorrkkssppaaccee__aauuttoo__bbaacckk__aanndd__ffoorrtthh yes|no
+           When _y_e_s, repeating a workspace switch command will switch back to the prior workspace. For example, if you are currently on workspace 1, switch to workspace 2, then invoke the wwoorrkkssppaaccee 22 command again, you will be returned to workspace
+           1. Default is _n_o.
+
+CCRRIITTEERRIIAA
+       A criteria is a string in the form of, for example:
+
+           [class="[Rr]egex.*" title="some title"]
+
+       The string contains one or more (space separated) attribute/value pairs. They are used by some commands to choose which views to execute actions on. All attributes must match for the criteria to match. Criteria is retained across commands
+       separated by a ,,, but will be reset (and allow for new criteria, if desired) for commands separated by a ;;.
+
+       Criteria may be used with either the ffoorr__wwiinnddooww or aassssiiggnn commands to specify operations to perform on new views. A criteria may also be used to perform specific commands (ones that normally act upon one window) on all views that match that
+       criteria. For example:
+
+       Focus on a window with the mark "IRC":
+
+           [con_mark="IRC"] focus
+
+       Kill all windows with the title "Emacs":
+
+           [class="Emacs"] kill
+
+       You may like to use swaymsg -t get_tree for finding the values of these properties in practice for your applications.
+
+       The following attributes may be matched with:
+
+       aapppp__iidd
+           Compare value against the app id. Can be a regular expression. If value is __focused__, then the app id must be the same as that of the currently focused window. _a_p_p___i_d are specific to Wayland applications.
+
+       ccllaassss
+           Compare value against the window class. Can be a regular expression. If value is __focused__, then the window class must be the same as that of the currently focused window. _c_l_a_s_s are specific to X11 applications and require XWayland.
+
+       ccoonn__iidd
+           Compare against the internal container ID, which you can find via IPC. If value is __focused__, then the id must be the same as that of the currently focused window.
+
+       ccoonn__mmaarrkk
+           Compare against the window marks. Can be a regular expression.
+
+       ffllooaattiinngg
+           Matches floating windows.
+
+       iidd
+           Compare value against the X11 window ID. Must be numeric. id is specific to X11 applications and requires XWayland.
+
+       iinnssttaannccee
+           Compare value against the window instance. Can be a regular expression. If value is __focused__, then the window instance must be the same as that of the currently focused window. instance is specific to X11 applications and requires
+           XWayland.
+
+       ppiidd
+           Compare value against the window's process ID. Must be numeric.
+
+       sshheellll
+           Compare value against the window shell, such as "xdg_shell" or "xwayland". Can be a regular expression. If value is __focused__, then the shell must be the same as that of the currently focused window.
+
+       ttiilliinngg
+           Matches tiling windows.
+
+       ttiittllee
+           Compare against the window title. Can be a regular expression. If value is __focused__, then the window title must be the same as that of the currently focused window.
+
+       uurrggeenntt
+           Compares the urgent state of the window. Can be _f_i_r_s_t, _l_a_s_t, _l_a_t_e_s_t, _n_e_w_e_s_t, _o_l_d_e_s_t or _r_e_c_e_n_t.
+
+       wwiinnddooww__rroollee
+           Compare against the window role (WM_WINDOW_ROLE). Can be a regular expression. If value is __focused__, then the window role must be the same as that of the currently focused window. window_role is specific to X11 applications and re‐
+           quires XWayland.
+
+       wwiinnddooww__ttyyppee
+           Compare against the window type (_NET_WM_WINDOW_TYPE). Possible values are normal, dialog, utility, toolbar, splash, menu, dropdown_menu, popup_menu, tooltip and notification. window_type is specific to X11 applications and requires XWay‐
+           land.
+
+       wwoorrkkssppaaccee
+           Compare against the workspace name for this view. Can be a regular expression. If the value is __focused__, then all the views on the currently focused workspace matches.
+
+SSEEEE AALLSSOO
+       sswwaayy(1) sswwaayy--iinnppuutt(5) sswwaayy--oouuttppuutt(5) sswwaayy--bbaarr(5) sswwaayy--iippcc(7)
+
+                                                                                                                        2023-02-12                                                                                                                sway(5)

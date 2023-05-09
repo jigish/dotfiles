@@ -242,6 +242,9 @@ mkdir -p ${NORDZY_DIR}
 cd ${NORDZY_DIR}/cursors
 git pull
 ./install.sh
+cd ~/.icons
+[[ ! -L default ]] && ln -s Nordzy-cursors default
+cd ${CURRDIR}
 # Attempt to actually set theme in various ways
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
