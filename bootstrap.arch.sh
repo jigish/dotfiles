@@ -169,6 +169,9 @@ else
   set -e
 fi
 
+# remap keys
+# TODO
+
 # theming
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro

@@ -1,4 +1,5 @@
 brave-bin
+kbct-git
 slack-electron
 swaynagmode
 tidal-hifi-bin
