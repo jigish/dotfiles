@@ -46,6 +46,13 @@ mkdir -p .cargo
 cd .cargo
 [[ ! -L config.toml ]] && ln -s $SCRIPTDIR/cargo-config.toml config.toml
 
+# clean/install/update tmux plugins
+echo
+echo 'installing and updating tmux plugins'
+~/.config/tmux/plugins/tpm/bin/clean_plugins
+~/.config/tmux/plugins/tpm/bin/install_plugins
+~/.config/tmux/plugins/tpm/bin/update_plugins
+
 # create links for custom scrips
 echo
 echo 'symlinking custom scripts'
