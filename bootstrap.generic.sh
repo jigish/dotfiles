@@ -51,7 +51,7 @@ echo
 echo 'installing and updating tmux plugins'
 ~/.config/tmux/plugins/tpm/bin/clean_plugins
 ~/.config/tmux/plugins/tpm/bin/install_plugins
-~/.config/tmux/plugins/tpm/bin/update_plugins
+~/.config/tmux/plugins/tpm/bin/update_plugins all
 
 # create links for custom scrips
 echo
