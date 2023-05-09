@@ -241,26 +241,6 @@ cd ~
 [[ ! -L .gtkrc-2.0 ]] && ln -s ${SCRIPTDIR}/gtkrc-2.0 .gtkrc-2.0
 cd ${CURRDIR}
 
-# enable systemd-timesyncd
-set +e
-doas systemctl is-enabled systemd-timesyncd.service >/dev/null
-if [[ "$?" != "0" ]]; then
-  set -e
-  echo
-  echo "enabling systemd-timesyncd.service"
-  doas systemctl enable --now systemd-timesyncd.service
-else
-  set -e
-fi
-
-# auto-configure time zone for laptops
-if [[ -d /etc/NetworkManager/dispatcher.d && ! -f /etc/NetworkManager/dispatcher.d/09-timezone ]]; then
-  echo
-  echo "enabling auto timezone switch"
-  doas cat >/etc/NetworkManager/dispatcher.d/09-timezone <<EOF
-EOF
-fi
-
 mkdir -p ${HOME}/tmp
 cat <<EOF >>${HOME}/tmp/bootstrap_TODO
 - logout and login to finish seatd install
