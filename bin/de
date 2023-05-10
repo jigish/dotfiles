@@ -1,4 +1,5 @@
 #!/bin/bash
 
 mkdir -p ${HOME}/tmp
+export XDG_CURRENT_DESKTOP=sway
 exec sway -V >${HOME}/tmp/sway.out 2>${HOME}/tmp/sway.err
