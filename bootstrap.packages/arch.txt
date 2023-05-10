@@ -1,5 +1,6 @@
 alsa-utils
 bat
+bolt
 coreutils
 diffutils
 dust
