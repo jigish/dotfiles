@@ -7,6 +7,7 @@ dust
 fd
 foot
 fzf
+gdb
 git
 go
 go-yq
