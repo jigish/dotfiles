@@ -193,12 +193,20 @@ if [[ "$?" != "0" ]]; then
   set -e
   echo
   echo "enabling kbct.service"
-  doas modprobe uinput
-  echo "uinput" |doas tee -a /etc/modules-load.d/uinput.conf
+  doas modprobe -v uinput
+  if [[ ! -f /etc/modules-load.d/uinput.conf ]]; then
+    echo "uinput" |doas tee -a /etc/modules-load.d/uinput.conf
+  fi
   doas systemctl enable --now kbct.service
 else
   set -e
   doas systemctl restart kbct.service
+fi
+
+# add usbhid module
+doas modprobe -v usbhid
+if [[ ! -f /etc/modules-load.d/usbhid.conf ]]; then
+  echo "usbhid" |doas tee -a /etc/modules-load.d/usbhid.conf
 fi
 
 # theming
