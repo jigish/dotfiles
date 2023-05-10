@@ -7,7 +7,7 @@
   "margin-right": 10,
   "modules-left": ["custom/logo", "sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["wireplumber", "network", "battery"],
+  "modules-right": ["backlight", "wireplumber", "network", "battery"],
   "custom/logo": {
     "format": "",
   },
@@ -21,15 +21,26 @@
       "default": ""
     }
   },
-  "wireplumber": {
-    "format": "{icon}",
-    "format-muted": "󰖁 <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon} {percent}%",
     "format-icons": [
-      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
-      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
-      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••◦◦</span>",
-      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
-      "󰕾 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
+      "󰃚 ",
+      "󰃛 ",
+      "󰃜 ",
+      "󰃝 ",
+      "󰃞 ",
+      "󰃟 ",
+      "󰃠 "
+    ]
+  },
+  "wireplumber": {
+    "format": "{icon} {volume}",
+    "format-muted": "󰖁 ",
+    "format-icons": [
+      "󰕿 ",
+      "󰖀 ",
+      "󰕾 "
     ],
     "tooltip-format": "{node_name}\n{volume}%"
   },
@@ -38,32 +49,40 @@
       "warning": 20,
       "critical": 10
     },
-    "format": "{icon}",
+    "format": "{icon} {capacity}",
+    "format-full": "󱟢 ",
     "format-icons": [
-      "󰁺 <span font='InputMonoCompressed Nerd Font 11px'>•◦◦◦◦</span>",
-      "󰁼 <span font='InputMonoCompressed Nerd Font 11px'>••◦◦◦</span>",
-      "󰁾 <span font='InputMonoCompressed Nerd Font 11px'>•••◦◦</span>",
-      "󰂀 <span font='InputMonoCompressed Nerd Font 11px'>••••◦</span>",
-      "󰁹 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>"
+      "󱃍 ",
+      "󰁺 ",
+      "󰁻 ",
+      "󰁼 ",
+      "󰁽 ",
+      "󰁾 ",
+      "󰁿 ",
+      "󰂀 ",
+      "󰂁 ",
+      "󰂂 ",
+      "󰁹 "
     ],
-    "tooltop-format": "{capacity}%\n{power}W\n{timeTo}"
+    "tooltop-format": "{capacity}%\n{power}W\n{time}"
   },
   "network": {
-    "format": "󰌘 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
-    "format-ethenet": "󰈁 <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
-    "format-wifi": "󰖩 <span font='InputMonoCompressed Nerd Font 11px'>{icon}</span>",
-    "format-linked": " <span font='InputMonoCompressed Nerd Font 11px'>•••••</span>",
-    "format-disconnected": " <span font='InputMonoCompressed Nerd Font 11px'>◦◦◦◦◦</span>",
+    "format": "󰌘 ",
+    "format-ethenet": "󰈁 ",
+    "format-wifi": "{icon}  {signalStrength}",
+    "format-linked": " ",
+    "format-disconnected": " ",
+    "format-disabled": "󰤮 ",
     "format-icons": [
-      "•◦◦◦◦",
-      "••◦◦◦",
-      "•••◦◦",
-      "••••◦",
-      "•••••"
+      "󰤯 ",
+      "󰤟 ",
+      "󰤢 ",
+      "󰤥 ",
+      "󰤨 ",
     ],
-    "tooltop-format": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
-    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits} {bandwidthUpBits}",
-    "tooltip-format-wifi": "{ifname}: {signaldBm}dBm {signalStrength}%\n{bandwidthDownBits} {bandwidthUpBits}",
+    "tooltop-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-wifi": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}  {bandwidthUpBits}",
     "tooltip-format-disconnected": "{ifname}"
   },
   "clock": {

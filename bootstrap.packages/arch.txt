@@ -12,6 +12,7 @@ go-yq
 htop
 jq
 less
+light
 lsd
 mesa
 mesa-utils
