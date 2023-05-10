@@ -56,7 +56,7 @@ alias ack=rg
 alias g='git'
 alias gbranch='git rev-parse --abbrev-ref HEAD'
 function gclone {
-  git clone ssh://git@github.com/$1
+  git clone git@github.com:$1
 }
 
 # zoxide
