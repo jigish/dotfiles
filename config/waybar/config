@@ -23,7 +23,7 @@
   },
   "backlight": {
     "device": "intel_backlight",
-    "format": "{icon} {percent}%",
+    "format": "{icon}  {percent}",
     "format-icons": [
       "󰃚 ",
       "󰃛 ",
@@ -46,7 +46,8 @@
   },
   "battery": {
     "states": {
-      "warning": 20,
+      "low": 20,
+      "warning": 15,
       "critical": 10
     },
     "format": "{icon} {capacity}",
@@ -64,7 +65,7 @@
       "󰂂 ",
       "󰁹 "
     ],
-    "tooltop-format": "{capacity}%\n{power}W\n{time}"
+    "tooltip-format": "{capacity}% {power}W\n{timeTo}"
   },
   "network": {
     "format": "󰌘 ",
@@ -80,10 +81,11 @@
       "󰤥 ",
       "󰤨 ",
     ],
-    "tooltop-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
     "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
     "tooltip-format-wifi": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}  {bandwidthUpBits}",
-    "tooltip-format-disconnected": "{ifname}"
+    "tooltip-format-disconnected": "{ifname}",
+    "tooltip-format-disabled": "{ifname}"
   },
   "clock": {
     "format": "{:%H:%M}",
