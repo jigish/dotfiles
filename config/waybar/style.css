@@ -5,7 +5,7 @@
 }
 
 tooltip {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgba(46, 52, 64, 0.9);
     border-radius: 0px;
     border: 0px;
     color: #ECEFF4;
@@ -42,16 +42,14 @@ window#waybar {
 
 #workspaces button.focused {
     background-color: transparent;
-    border-top: 2px inset #ECEFF4;
     border-radius: 0px;
-    /*box-shadow: inset 0 -3px #ECEFF4;*/
+    box-shadow: inset 0 -1px #ECEFF4;
 }
 
 #workspaces button.urgent {
     background-color: transparent;
-    border-top: 2px inset #BF616A;
     border-radius: 0px;
-    /*box-shadow: inset 0 -3px #BF616A;*/
+    box-shadow: inset 0 -1px #BF616A;
 }
 
 #battery.discharging {
@@ -76,6 +74,11 @@ window#waybar {
 #battery.discharging.p5 {
     background-color: transparent;
     color: #BF616A;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
 }
 
 #battery.charging {

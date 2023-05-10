@@ -7,7 +7,7 @@
   "margin-right": 10,
   "modules-left": ["custom/logo", "sway/workspaces", "sway/mode"],
   "modules-center": ["clock"],
-  "modules-right": ["backlight", "wireplumber", "network", "battery"],
+  "modules-right": ["backlight", "network#enp0s31f6", "network#enp34s0u1u4c2", "network#wlp0s20f3", "battery"],
   "custom/logo": {
     "format": "",
   },
@@ -108,25 +108,48 @@
     ],
     "tooltip-format": "{capacity}% {power}W\n{timeTo}"
   },
-  "network": {
-    "format": "󰌘 ",
-    "format-ethenet": "󰈁 ",
+  "network#enp0s31f6": {
+    "interface": "enp0s31f6",
+    "format": "󰈁",
+    "format-ethenet": "󰈁",
+    "format-linked": " ",
+    "format-disconnected": "",
+    "format-disabled": "",
+    "tooltip-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-disconnected": "{ifname} disconnected",
+    "tooltip-format-disabled": "{ifname} disabled"
+  },
+  "network#enp34s0u1u4c2": {
+    "interface": "enp34s0u1u4c2",
+    "format": "󰈁",
+    "format-ethenet": "󰈁",
+    "format-linked": " ",
+    "format-disconnected": "󰈂",
+    "format-disabled": "",
+    "tooltip-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format-disconnected": "{ifname} disconnected",
+    "tooltip-format-disabled": "{ifname} disabled"
+  },
+  "network#wlp0s20f3": {
+    "interface": "wlp0s20f3",
+    "format": "{icon}  {signalStrength}",
     "format-wifi": "{icon}  {signalStrength}",
     "format-linked": " ",
-    "format-disconnected": " ",
+    "format-disconnected": "󰤮 ",
     "format-disabled": "󰤮 ",
     "format-icons": [
       "󰤯 ",
       "󰤟 ",
       "󰤢 ",
       "󰤥 ",
-      "󰤨 ",
+      "󰤨 "
     ],
-    "tooltip-format": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
-    "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}  {bandwidthUpBits}",
+    "tooltip-format": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}  {bandwidthUpBits}",
     "tooltip-format-wifi": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}  {bandwidthUpBits}",
-    "tooltip-format-disconnected": "{ifname}",
-    "tooltip-format-disabled": "{ifname}"
+    "tooltip-format-disconnected": "{ifname} disconnected",
+    "tooltip-format-disabled": "{ifname} disabled"
   },
   "clock": {
     "format": "{:%H:%M}",

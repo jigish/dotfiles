@@ -12,6 +12,7 @@ output DP-1 {
   scale 1
   scale_filter nearest
   background /home/jigish/dotfiles/backgrounds/groot.png fit #2E3440
+  subpixel vrgb
 }
 
 ### variables ###
@@ -135,6 +136,11 @@ bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
 bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
+# move the focused workspace with the same, but add ctrl
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$down move workspace to output down
+bindsym $mod+Ctrl+$up move workspace to output up
+bindsym $mod+Ctrl+$right move workspace to output right
 # switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
