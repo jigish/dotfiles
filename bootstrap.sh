@@ -14,7 +14,7 @@ git submodule update --init --recursive
 
 echo
 echo 'running bootstrap'
-$SCRIPTDIR/bootstrap.generic.sh
+$SCRIPTDIR/bootstrap.generic.sh $1
 
 cd $CURRDIR
 echo
