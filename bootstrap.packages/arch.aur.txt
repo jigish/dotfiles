@@ -1,4 +1,5 @@
 brave-bin
+doas-sudo-shim
 kbct-git
 slack-desktop-wayland
 swaynagmode
