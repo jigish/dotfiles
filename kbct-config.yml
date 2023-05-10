@@ -3,3 +3,6 @@
     capslock: esc
     leftalt: leftmeta
     leftmeta: leftalt
+- keyboards: [ "KBDFANS KBD75_HOTSWAP Keyboard" ]
+  keymap:
+    capslock: esc

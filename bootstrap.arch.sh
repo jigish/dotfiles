@@ -186,7 +186,7 @@ fi
 echo
 echo "remapping keys"
 doas mkdir -p /etc/kbct
-doas cp ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
+[[ ! -L /etc/kbct/config.yml ]] && doas ln -s ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
 set +e
 doas systemctl is-enabled kbct.service >/dev/null
 if [[ "$?" != "0" ]]; then
