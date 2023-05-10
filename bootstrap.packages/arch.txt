@@ -36,6 +36,7 @@ rustup
 seatd
 tar
 tmux
+usbutils
 util-linux
 wget
 wireplumber
