@@ -1,0 +1,5 @@
+#!/bin/bash
+
+proj=$(basename $(dirname $(git rev-parse --show-toplevel)))
+repo=$(basename $(git rev-parse --show-toplevel))
+open "https://github.com/${proj}/${repo}/compare/$(git r)?expand=1"
