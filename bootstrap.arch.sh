@@ -27,7 +27,6 @@ if [[ "$?" != "0" ]]; then
   echo
   echo "installing paru"
   doas pacman -Sy ${NOCONFIRM} --needed rustup $(cat ${SCRIPTDIR}/bootstrap.packages/arch.base-devel.txt)
-  [[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
   rustup default stable
   mkdir -p ~/tmp
   cd ~/tmp
@@ -53,10 +52,6 @@ cd ~/.config
 [[ ! -L waybar ]] && ln -s $SCRIPTDIR/config/waybar waybar
 cd ~/bin
 [[ ! -L de ]] && ln -s $SCRIPTDIR/bin/de
-
-# symlink sudo
-cd ${CURRDIR}
-[[ ! -L /usr/bin/sudo ]] && doas ln -s $(which doas) /usr/bin/sudo
 
 # update all the things
 echo
