@@ -2,6 +2,5 @@ brave-bin
 doas-sudo-shim
 kbct-git
 pdsh
-slack-desktop-wayland
 swaynagmode
 tidal-hifi-bin
