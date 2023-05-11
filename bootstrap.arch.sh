@@ -43,6 +43,7 @@ fi
 
 # symlink configs
 cd ~/.config
+[[ ! -L dunst ]] && ln -s $SCRIPTDIR/config/dunst dunst
 [[ ! -L fuzzel ]] && ln -s $SCRIPTDIR/config/fuzzel fuzzel
 [[ ! -L mako ]] && ln -s $SCRIPTDIR/config/mako mako
 [[ ! -L paru ]] && ln -s $SCRIPTDIR/config/paru paru
@@ -244,7 +245,6 @@ find ./places -type f -exec sed -i -e 's/#8eac75/#7396a3/g' {} \;
 find ./places -type f -exec sed -i -e 's/#80a264/#637279/g' {} \;
 find ./places -type f -exec sed -i -e 's/#87a7a9/#9cb4be/g' {} \;
 find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
-[[ ! -L apps/scalable/brave-desktop.svg ]] && ln -s apps/scalable/brave.svg apps/scalable/brave-desktop.svg
 mkdir -p ~/.local/share/icons
 cd ~
 [[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons # need to do this before cursors install because they go in .icons

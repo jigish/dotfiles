@@ -1,0 +1,71 @@
+follow = keyboard
+layer = overlay
+origin = top-center
+offset = 0x30
+notification_limit = 10
+history_length = 20
+sticky_history = true
+sort = true
+idle_threshold = 0
+show_age_threshold = 60
+indicate_hidden = true
+stack_duplicates = true
+hide_duplicate_count = false
+show_indicators = true
+dmenu = "/usr/bin/fuzzel --dmenu -p dunst"
+browser = /usr/bin/xdg-open
+always_run_script = true
+ignore_dbusclose = false
+fullscreen = show
+
+mouse_left_click = do_action
+mouse_middle_click = context
+mouse_right_click = close_current
+
+width = 300
+height = 300
+padding = 10
+frame_width = 1
+separator_height = 0
+gap_size = 2
+corner_radius = 0
+
+progress_bar = true
+progress_bar_height = 2
+progress_bar_min_width = 280
+progress_bar_max_width = 280
+progress_bar_frame_width = 0
+progress_bar_corner_radius = 0
+
+background = #2E3440F0
+foreground = #ECEFF4FF
+highlight = #4C566ADD
+frame_color = #ECEFF4FF
+
+font = SF Pro Text Thin 12
+line_height = 0
+format = <span font="SF Pro Text Light 12">%s</span>\n<span font="SF Pro Text Thin 11">%b</span>
+vertical_alignment = center
+ignore_newline = false
+word_wrap = true
+ellipsize = middle
+alignment = center
+hide_text = false
+markup = full
+
+icon_corner_radius = 0
+icon_theme = "Zafiro-Nord-Dark"
+enable_recursive_icon_lookup = true
+min_icon_size = 32
+max_icon_size = 128
+icon_position = left
+
+
+[urgency_low]
+border-color=#4C566AFF
+
+[urgency_normal]
+border-color=#ECEFF4FF
+
+[urgency_critical]
+border-color=#BF616AFF

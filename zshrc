@@ -27,8 +27,10 @@ alias vi='nvim'
 alias v='nvim'
 alias e='nvim'
 
-# explicitly set config home
+# explicitly some XDG stuff
 export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_STATE_HOME=${HOME}/.local/state
 
 # helpful aliases
 [ -x "$(which lsd)" ] && alias ls='lsd'
