@@ -68,7 +68,7 @@
 
 [slack-brave]
   appname = "Brave"
-  summary = "^New message from"
+  summary = "^New message (in #|from )"
   new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
 
 [urgency_low]
