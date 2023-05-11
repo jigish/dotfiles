@@ -23,7 +23,7 @@
 
   origin = top-center
   offset = 0x0
-  width = (300, 500)
+  width = (0, 500)
   height = 500
   padding = 10
   frame_width = 1
@@ -33,14 +33,14 @@
 
   progress_bar = true
   progress_bar_height = 2
-  progress_bar_min_width = 480
+  progress_bar_min_width = 50
   progress_bar_max_width = 480
   progress_bar_frame_width = 0
   progress_bar_corner_radius = 0
 
   background = "#2E3440F0"
   foreground = "#ECEFF4FF"
-  highlight = "#4C566ADD"
+  highlight = "#ECEFF4FF"
   frame_color = "#ECEFF4FF"
 
   font = "SF Pro Text Thin 12"
@@ -79,3 +79,52 @@
 
 [urgency_critical]
   frame_color = "#BF616AFF"
+
+[brightness]
+  appname = "brightness"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/brightness.svg
+  frame_color = "#2E3440F0"
+
+[volume]
+  appname = "volume"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/volume.svg
+  frame_color = "#2E3440F0"
+
+[volume-muted]
+  appname = "volume-muted"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/volume-muted.svg
+  frame_color = "#2E3440F0"
+
+[mic]
+  appname = "mic"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/mic.svg
+  frame_color = "#2E3440F0"
+
+[mic-muted]
+  appname = "mic-muted"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/mic-muted.svg
+  frame_color = "#2E3440F0"
+
+[player-playing]
+  appname = "player-playing"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/player-playing.svg
+  frame_color = "#2E3440F0"
+
+[player-paused]
+  appname = "player-paused"
+  hide_text = true
+  icon_position = top
+  new_icon = /home/jigish/dotfiles/icons/player-paused.svg
+  frame_color = "#2E3440F0"
