@@ -100,7 +100,7 @@ exec swayidle -w \
   before-sleep 'swaylock -C /home/jigish/.config/swaylock/config'
 
 ### notifications ###
-exec dunst
+exec_always (killall dunst || true) && dunst
 
 ### launcher ###
 set $menu fuzzel
