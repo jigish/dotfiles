@@ -1,8 +1,8 @@
+dunst
 fuzzel
 gtk2
 gtk3
 gtk4
-mako
 polkit
 polkit-gnome
 qt5-wayland
