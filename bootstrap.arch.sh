@@ -69,6 +69,7 @@ if [[ "$?" != "0" ]]; then
   echo
   echo "enabling docker.service"
   doas systemctl enable --now docker.service
+  doas usermod -aG docker $USER
 else
   set -e
 fi
