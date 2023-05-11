@@ -181,8 +181,8 @@ bindsym XF86AudioLowerVolume $volctrl 5%- && $volnotify
 bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $volnotify
 set $micnotify wpctl get-volume @DEFAULT_AUDIO_SOURCE@ |awk '{print "-h int:value:" $2 " -a " ($3==""?"mic":$3)}' |sed 's/\[MUTED\]/mic-muted/' |sed 's/\.//' |xargs dunstify "" -t 1000
 bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $micnotify
-set $playnotify playerctl -p tidal-hifi status |awk '{print $1}' |tr '[:upper:]' '[:lower:]' | sed 's/^/-a player-/' |xargs dunstify "" -t 1000
-bindsym XF86AudioPlay exec playerctl -p tidal-hifi play-pause && $playnotify
+set $playnotify playerctl -p chromium status |awk '{print $1}' |tr '[:upper:]' '[:lower:]' | sed 's/^/-a player-/' |xargs dunstify "" -t 1000
+bindsym XF86AudioPlay exec playerctl -p chromium play-pause && $playnotify
 # brightness control
 set $lightnotify doas light -G |cut -d'.' -f1 |sed 's/^/-h int:value:/' | xargs dunstify "" -a brightness -t 1000
 bindsym XF86MonBrightnessUp exec doas light -A 5 && $lightnotify
