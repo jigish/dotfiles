@@ -26,9 +26,7 @@ ruby-install
 rustup
 subversion
 task
-thefuck
 tmux
-vim
 wget
 xclip
 xz

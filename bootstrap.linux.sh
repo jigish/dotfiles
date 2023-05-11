@@ -13,7 +13,9 @@ get_latest_release() {
 }
 
 # create links
-cd ~
+mkdir -p ~/.config
+cd ~/.config
+[[ ! -L foot ]] && ln -s ${SCRIPTDIR}/config/foot foot
 echo
 echo "installing fonts"
 mkdir -p ~/.local/share/fonts

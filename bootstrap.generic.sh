@@ -37,8 +37,6 @@ cd ~
 [[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s ${SCRIPTDIR}/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
 mkdir -p .config
 cd .config
-[[ ! -L foot ]] && ln -s ${SCRIPTDIR}/config/foot foot
-[[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
 [[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
 [[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
 cd ~

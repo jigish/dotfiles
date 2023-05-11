@@ -8,9 +8,11 @@ echo "bootstrapping fzf"
 ${SCRIPTDIR}/bootstrap.fzf.sh
 
 # create links
-cd ~
-mkdir -p bin
-cd bin
+mkdir -p ~/.config
+cd ~/.config
+[[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
+mkdir -p ~/bin
+cd ~/bin
 [[ ! -L spotify ]] && ln -s ${SCRIPTDIR}/bin/spotify
 [[ ! -L rebrew ]] && ln -s ${SCRIPTDIR}/bin/rebrew
 
