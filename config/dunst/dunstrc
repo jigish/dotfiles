@@ -72,10 +72,10 @@
   new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
 
 [urgency_low]
-  frame_color = "#4C566AFF"
+  frame_color = "#2E3440F0"
 
 [urgency_normal]
-  frame_color = "#ECEFF4FF"
+  frame_color = "#2E3440F0"
 
 [urgency_critical]
   frame_color = "#BF616AFF"
