@@ -62,6 +62,17 @@ paru -S ${NOCONFIRM} --needed $(cat ${SCRIPTDIR}/bootstrap.packages/arch.* |sort
 paru -c ${NOCONFIRM}
 paru -Scc ${NOCONFIRM}
 
+set +e
+doas systemctl is-enabled docker.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling docker.service"
+  doas systemctl enable --now docker.service
+else
+  set -e
+fi
+
 # install virtualbox guest stuff in needed
 set +e
 doas dmesg |grep "Hypervisor detected" >/dev/null

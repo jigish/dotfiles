@@ -3,6 +3,8 @@ bat
 bolt
 coreutils
 diffutils
+docker
+docker-compose
 dust
 fd
 foot
