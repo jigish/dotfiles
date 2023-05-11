@@ -58,6 +58,7 @@
     "on-right-click": "ctl -T",
     "on-click-right": "ctl -T",
     "format": "<span font='InputMono Nerd Font Complete'>{player_icon} {status_icon} </span>{dynamic}",
+    "format-stopped": "<span font='InputMono Nerd Font Complete'>{player_icon} {status_icon}</span>",
     "player-icons": {
       "default": "",
       "brave": "<span font='icomoon'></span>",
