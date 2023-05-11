@@ -119,12 +119,14 @@
   appname = "player-playing"
   hide_text = true
   icon_position = top
-  new_icon = /home/jigish/dotfiles/icons/player-playing.svg
+# we have to do some bullshit here because playerctl is slow to update
+  new_icon = /home/jigish/dotfiles/icons/player-paused.svg
   frame_color = "#2E3440F0"
 
 [player-paused]
   appname = "player-paused"
   hide_text = true
   icon_position = top
-  new_icon = /home/jigish/dotfiles/icons/player-paused.svg
+# we have to do some bullshit here because playerctl is slow to update
+  new_icon = /home/jigish/dotfiles/icons/player-playing.svg
   frame_color = "#2E3440F0"
