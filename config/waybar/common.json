@@ -65,6 +65,7 @@
       "tidal-hifi": "<span font='icomoon'></span>"
     },
     "status-icons": {
+      "stopped": "󰓛",
       "playing": "󰐊",
       "paused": "󰏤"
     }
