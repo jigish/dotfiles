@@ -174,19 +174,15 @@ bindsym $mod+Shift+f floating toggle
 # swap focus between the tiling area and the floating area
 bindsym $mod+f focus mode_toggle
 # audio control
-set $volctrl exec wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@
-set $volnotify wpctl get-volume @DEFAULT_AUDIO_SINK@ |awk '{print "-h int:value:" $2 " -a " ($3==""?"volume":$3)}' |sed 's/\[MUTED\]/volume-muted/' |sed 's/\.//' |xargs dunstify "" -t 1000
-bindsym XF86AudioRaiseVolume $volctrl 5%+ && $volnotify
-bindsym XF86AudioLowerVolume $volctrl 5%- && $volnotify
-bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && $volnotify
-set $micnotify wpctl get-volume @DEFAULT_AUDIO_SOURCE@ |awk '{print "-h int:value:" $2 " -a " ($3==""?"mic":$3)}' |sed 's/\[MUTED\]/mic-muted/' |sed 's/\.//' |xargs dunstify "" -t 1000
-bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && $micnotify
-set $playnotify playerctl -p tidal-hifi status |awk '{print $1}' |tr '[:upper:]' '[:lower:]' | sed 's/^/-a player-/' |xargs dunstify "" -t 1000
-bindsym XF86AudioPlay exec playerctl -p tidal-hifi play-pause && $playnotify
+set $ctl /home/jigish/bin/ctl
+bindsym XF86AudioLowerVolume exec $ctl -v
+bindsym XF86AudioRaiseVolume exec $ctl -V
+bindsym XF86AudioMute exec $ctl -m
+bindsym XF86AudioMicMute exec $ctl -M
+bindsym XF86AudioPlay exec $ctl -p
 # brightness control
-set $lightnotify doas light -G |cut -d'.' -f1 |sed 's/^/-h int:value:/' | xargs dunstify "" -a brightness -t 1000
-bindsym XF86MonBrightnessUp exec doas light -A 5 && $lightnotify
-bindsym XF86MonBrightnessDown exec doas light -U 5 && $lightnotify
+bindsym XF86MonBrightnessDown exec $ctl -b
+bindsym XF86MonBrightnessUp exec $ctl -B
 
 # manual resize mode
 mode "resize" {

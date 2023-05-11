@@ -62,8 +62,14 @@ cd ~/.config
 [[ ! -L swaylock ]] && ln -s $SCRIPTDIR/config/swaylock swaylock
 [[ ! -L swaynag ]] && ln -s $SCRIPTDIR/config/swaynag swaynag
 [[ ! -L waybar ]] && ln -s $SCRIPTDIR/config/waybar waybar
-cd ~/bin
-[[ ! -L de ]] && ln -s $SCRIPTDIR/bin/de
+mkdir -p systemd/user
+cd systemd/user
+for f in $(find ${SCRIPTDIR}/systemd/user -maxdepth 1 -type f); do
+  if [[ ! -L $(basename ${f}) ]]; then
+    ln -s ${f}
+    systemctl --user enable --now $(basename ${f})
+  fi
+done
 
 # update all the things
 echo
@@ -71,7 +77,7 @@ echo "updating / installing / cleaning packages"
 paru -Syu ${NOCONFIRM}
 paru -S ${NOCONFIRM} --needed $(cat ${SCRIPTDIR}/bootstrap.packages/arch.* |sort -u)
 paru -c ${NOCONFIRM}
-paru -Scc ${NOCONFIRM}
+paru -Scc --noconfirm # always clear caches
 
 set +e
 doas systemctl is-enabled docker.service >/dev/null

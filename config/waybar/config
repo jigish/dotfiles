@@ -4,6 +4,7 @@
   ],
   "output": ["eDP-1"],
   "modules-right": [
+    "mpris",
     "wireplumber",
     "backlight",
     "network#tun",

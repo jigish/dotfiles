@@ -1,0 +1,100 @@
+#!/bin/bash
+
+set -eo pipefail
+
+PLAYER=playerctld
+
+function lightnotify() {
+  OUTPUT=$(doas light -G)
+  echo $OUTPUT | \
+    cut -d'.' -f1 | \
+    sed 's/^/-h int:value:/' | \
+    xargs dunstify "" -a brightness -t 1000
+}
+
+function volnotify() {
+  OUTPUT=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
+  echo $OUTPUT | \
+    awk '{print "-h int:value:" $2 " -a " ($3==""?"volume":$3)}' | \
+    sed 's/\[MUTED\]/volume-muted/' | \
+    sed 's/\.//' | \
+    xargs dunstify "" -t 1000
+}
+
+function micnotify() {
+  OUTPUT=$(wpctl get-volume @DEFAULT_AUDIO_SOURCE@)
+  echo $OUTPUT | \
+    awk '{print "-h int:value:" $2 " -a " ($3==""?"mic":$3)}' | \
+    sed 's/\[MUTED\]/mic-muted/' | \
+    sed 's/\.//' | \
+    xargs dunstify "" -t 1000
+}
+
+function playernotify() {
+  OUTPUT=$(playerctl -p tidal-hifi status)
+  echo $OUTPUT | \
+    awk '{print $1}' | \
+    tr '[:upper:]' '[:lower:]' | \
+    sed 's/^/-a player-/' | \
+    xargs dunstify "" -t 1000
+}
+
+function usage() {
+  echo <<EOF
+Usage: $(basename $0) [-d] [-b] [-B] [-v] [-V] [-m] [-M] [-p] [-t] [-T]
+  -d : debug (must be first option)
+  -b : lower monitor brightness by 5%
+  -B : raise monitor brightness by 5%
+  -v : lower sink volume by 5%
+  -V : raise sink volume by 5%
+  -m : mute sink
+  -M : mute source
+  -p : toggle tidal play/pause
+  -t : tidal previous track
+  -T : tidal next track
+EOF
+}
+
+while getopts 'dbBvVmMptT' opt; do
+  case "$opt" in
+    d) # debug
+      set -x
+      ;;
+    b) # brightness down
+      doas light -U 5
+      lightnotify
+      ;;
+    B) # brightness up
+      doas light -A 5
+      lightnotify
+      ;;
+    v) # volume down
+      wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-
+      volnotify
+      ;;
+    V) # volume up
+      wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+
+      volnotify
+      ;;
+    m) # mute sink
+      wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      volnotify
+      ;;
+    M) # mute source
+      wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+      micnotify
+      ;;
+    p) # tidal play/pause
+      playerctl -p $PLAYER play-pause
+      playernotify
+      ;;
+    t) # tidal previous track
+      playerctl -p $PLAYER previous
+      ;;
+    T) # tidal next track
+      playerctl -p $PLAYER next
+      ;;
+    ?|h)
+      usage
+  esac
+done

@@ -58,6 +58,11 @@ if [[ -d ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} ]]; then
     [[ ! -L $(basename ${f}) ]] && ln -s ${f}
   done
 fi
+if [[ ! -z ${LINUX_DISTRO} && -d ${SCRIPTDIR}/bin/linux/${LINUX_DISTRO} ]]; then
+  for f in $(find ${SCRIPTDIR}/bin/linux/${LINUX_DISTRO} -type f); do
+    [[ ! -L $(basename ${f}) ]] && ln -s ${f}
+  done
+fi
 
 # run os-specific shit
 echo

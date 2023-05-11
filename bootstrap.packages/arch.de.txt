@@ -3,6 +3,7 @@ fuzzel
 gtk2
 gtk3
 gtk4
+playerctl
 polkit
 polkit-gnome
 qt5-wayland

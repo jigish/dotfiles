@@ -14,6 +14,7 @@
     "clock"
   ],
   "modules-right": [
+    "mpris",
     "backlight",
     "network#tun",
     "network#enp0s31f6",
@@ -36,6 +37,8 @@
   },
   "backlight": {
     "device": "intel_backlight",
+    "on-click": "ctl -b",
+    "on-click-right": "ctl -B",
     "format": "<span font='InputMono Nerd Font Complete'>{icon} </span>{percent}",
     "format-icons": [
       "󰃚",
@@ -47,7 +50,29 @@
       "󰃠"
     ]
   },
+  "mpris": {
+    "player": "playerctld",
+    "on-click": "ctl -t",
+    "on-middle-click": "ctl -p",
+    "on-click-middle": "ctl -p",
+    "on-right-click": "ctl -T",
+    "on-click-right": "ctl -T",
+    "format": "<span font='InputMono Nerd Font Complete'>{player_icon} {status_icon} </span>{dynamic}",
+    "player-icons": {
+      "default": "",
+      "brave": "<span font='icomoon'></span>",
+      "chromium": "<span font='icomoon'></span>",
+      "tidal-hifi": "<span font='icomoon'></span>"
+    },
+    "status-icons": {
+      "playing": "󰐊",
+      "paused": "󰏤"
+    }
+  },
   "wireplumber": {
+    "on-click": "ctl -v",
+    "on-click-middle": "ctl -m",
+    "on-click-right": "ctl -V",
     "format": "<span font='InputMono Nerd Font Complete'>{icon} </span>{volume}",
     "format-muted": "<span font='InputMono Nerd Font Complete'>{icon} </span>󰖁</span>",
     "format-icons": [
@@ -166,6 +191,7 @@
   },
   "network#tun": {
     "interface": "tun*",
+    "on-click": "swaymsg '[app_id=pulseUI] focus'",
     "format": "<span font='InputMono Nerd Font Complete'></span>",
     "format-disconnected": "",
     "format-disabled": "",
