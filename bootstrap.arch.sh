@@ -7,6 +7,17 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 
 . ${SCRIPTDIR}/config.sh
 
+# allow access to /usr/local and subdirs for group wheel
+if [[ ! -w /usr/local/man/man1 ]]; then
+  for i in {1..8}; do
+    mkdir -p /usr/local/man/man${i}
+  done
+  for d in $(find /usr/local -type d); do
+    chown root:wheel ${d}
+    chmod g+w ${d}
+  done
+fi
+
 # enable parallel downloads for pacman
 set +e
 grep -E '^#ParallelDownloads' /etc/pacman.conf >/dev/null
