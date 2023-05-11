@@ -68,8 +68,13 @@
 
 [slack-brave]
   appname = "Brave"
-  summary = "^New message (in #|from )"
+  body = "app.slack.com"
   new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
+
+[gcal-brave]
+  appname = "Brave"
+  body = "calendar.google.com"
+  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/48/calendar.svg
 
 [urgency_low]
   frame_color = "#2E3440F0"
