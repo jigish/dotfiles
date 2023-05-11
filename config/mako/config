@@ -2,7 +2,7 @@ anchor=top-right
 layer=overlay
 max-history=5
 sort=-time
-#output=
+output=
 
 on-button-left=invoke-default-action
 on-button-middle=none
@@ -10,13 +10,13 @@ on-button-right=dismiss
 on-touch=dismiss
 on-notify=none
 
-font=Inter Thin 12
+font=SF Pro Text Thin 12
 text-alignment=right
-format=[%a] %s\n<small>%b</small>
+format=<span font="SF Pro Text Light 12">%s</span>\n<span font="SF Pro Text Thin 11">%b</span>
 
-background-color=#2E3440F3
+background-color=#2E3440F0
 text-color=#ECEFF4FF
-border-color=#5E81ACFF
+border-color=#ECEFF4FF
 progress-color=over #4C566ADD
 
 width=300
@@ -41,3 +41,13 @@ ignore-timeout=0
 
 group-by=app-name
 max-visible=5
+
+[urgency=low]
+border-color=#4C566AFF
+
+[urgency=normal]
+border-color=#ECEFF4FF
+
+[urgency=high]
+border-color=#BF616AFF
+default-timeout=0
