@@ -372,6 +372,8 @@ au BufEnter *.go map <leader>tI :wa<CR>:GoImports<CR>
 au BufEnter *.go map <leader>ti :wa<CR>:GoImplements<CR>
 au BufEnter *.go map <leader>tc :wa<CR>:GoCallees<CR>
 au BufEnter *.go map <leader>tr :wa<CR>:GoReferrers<CR>
+" i like nil/iota to be highlighted
+au BufEnter *.go hi! def link goPredefinedIdentifiers goBuiltins
 
 " neomake
 let g:neomake_go_enabled_makers = [ 'go' ]
