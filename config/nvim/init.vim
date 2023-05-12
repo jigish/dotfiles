@@ -7,46 +7,10 @@ endif
 
 call plug#begin('~/.config/nvim/plugged')
 
+" plugins ----------------------------------------------------------------------------------------------------------------------------
+
 " syntax & language plugins
-let g:go_jump_to_error = 0
-let g:go_metalinter_autosave = 1
-let g:go_metalinter_enabled = ['deadcode', 'dupl', 'errcheck', 'goconst', 'gocyclo', 'gofmt', 'goimports', 'golint',
-      \ 'gosec', 'gosimple', 'govet', 'ineffassign', 'scopelint', 'staticcheck', 'structcheck', 'typecheck',
-      \ 'unconvert', 'unused', 'varcheck']
-let g:go_term_mode = "split"
-let g:go_term_enabled = 0
-let g:go_highlight_array_whitespace_error = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_chan_whitespace_error = 1
-let g:go_highlight_diagnostic_errors = 1
-let g:go_highlight_diagnostic_warnings = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_format_strings = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_function_parameters = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_space_tab_error = 1
-let g:go_highlight_string_spellcheck = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_trailing_whitespace_error = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_types = 1
-let g:go_highlight_variable_declarations = 1
-let g:go_highlight_variable_assignments = 1
-let g:go_addtags_transform = "camelcase"
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-let g:go_fmt_command='gopls'
-let g:go_fmt_options = {
-    \ 'gofmt': '-s',
-    \ }
-let g:go_fmt_fail_silently = 1
-let g:go_fold_enable = ['block', 'import', 'varconst', 'commnet', 'package_comment']
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' } " this must go before vim-polyglot or there are errors
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 let g:polyglot_disabled = ['go']
 Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-maktaba'
@@ -86,7 +50,7 @@ call plug#end()
 command! PU PlugUpdate | PlugUpgrade
 command! PC PlugClean
 
-" basic configs ---------------------------------------------------------------------------------------------
+" basic configs ----------------------------------------------------------------------------------------------------------------------
 
 " ensure the temporary directories exist and change where we store backup/swap/undo files
 call system("mkdir -p ~/.config/nvim/tmp/backup")
@@ -357,9 +321,45 @@ map <leader>ag :Grepper -tool git<CR>
 map <leader>mm :wa<CR>:make<CR>
 map <leader>mc :wa<CR>:make clean<CR>
 map <leader>mt :wa<CR>:make test<CR>
+map <leader>mtd :wa<CR>:make test-docker<CR>
 map <leader>mf :wa<CR>:make fmt<CR>
 
 " go
+let g:go_jump_to_error = 0
+let g:go_metalinter_autosave = 0
+let g:go_metalinter_command = 'golangci-lint'
+let g:go_term_mode = 'split'
+let g:go_term_enabled = 0
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_chan_whitespace_error = 1
+let g:go_highlight_diagnostic_errors = 1
+let g:go_highlight_diagnostic_warnings = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_space_tab_error = 1
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_types = 1
+let g:go_highlight_variable_assignments = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_addtags_transform = 'camelcase'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
+let g:go_fmt_autosave=1
+let g:go_fmt_command='gopls'
+let g:go_fmt_options = {
+    \ 'gofmt': '-s',
+    \ }
+let g:go_fmt_fail_silently = 1
 au BufEnter *.go map <leader>mm :wa<CR>:GoBuild<CR>
 au BufEnter *.go map <leader>mr :wa<CR>:GoRun<CR>
 au BufEnter *.go map <leader>mt :wa<CR>:GoTest<CR><C-w>j
@@ -376,7 +376,8 @@ au BufEnter *.go map <leader>tr :wa<CR>:GoReferrers<CR>
 au BufEnter *.go hi! def link goPredefinedIdentifiers goBuiltins
 
 " neomake
-let g:neomake_go_enabled_makers = [ 'go' ]
+let g:neomake_go_enabled_makers = [ 'go', 'golangci_lint' ]
+let g:neomake_go_golangci_lint_args = ['run', '--exclude-use-default=false']
 let g:neomake_python_enabled_makers = ['pylint']
 let g:neomake_open_list = 2
 call neomake#configure#automake('w')
