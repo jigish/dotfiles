@@ -102,6 +102,9 @@ exec swayidle -w \
 ### notifications ###
 exec_always (killall dunst || true) && dunst
 
+### fix some gtk apps ###
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
+
 ### launcher ###
 set $menu fuzzel
 
