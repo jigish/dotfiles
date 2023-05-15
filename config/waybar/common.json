@@ -15,6 +15,7 @@
   ],
   "modules-right": [
     "mpris",
+    "wireplumber",
     "backlight",
     "network#tun",
     "network#enp0s31f6",

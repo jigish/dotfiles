@@ -66,6 +66,11 @@
   appname = "Brave"
   new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/brave.svg
 
+[slack-firefox]
+  appname = "Firefox"
+  body = "app.slack.com"
+  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
+
 [slack-brave]
   appname = "Brave"
   body = "app.slack.com"

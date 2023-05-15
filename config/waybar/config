@@ -2,17 +2,7 @@
   "include": [
     "~/.config/waybar/common.json"
   ],
-  "output": ["eDP-1"],
-  "modules-right": [
-    "mpris",
-    "wireplumber",
-    "backlight",
-    "network#tun",
-    "network#enp0s31f6",
-    "network#enp34s0u1u4c2",
-    "network#wlp0s20f3",
-    "battery"
-  ],
+  "output": ["eDP-1"]
 },
 {
   "include": [
