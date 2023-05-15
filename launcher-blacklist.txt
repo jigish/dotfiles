@@ -4,3 +4,5 @@ bvnc.desktop
 nvim.desktop
 org.codeberg.dnkl.foot-server.desktop
 org.codeberg.dnkl.footclient.desktop
+qv4l2.desktop
+qvidcap.desktop

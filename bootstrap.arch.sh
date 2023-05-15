@@ -183,8 +183,11 @@ for f in tidal-hifi; do # brave-browser would need to be here to if we use it
 done
 # blacklist some applications from launchers
 for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
-  cp /usr/share/applications/${app} ~/.local/share/applications/${app}
-  echo "NoDisplay=true" >>~/.local/share/applications/${app}
+  if [[ -f /usr/share/applications/${app} ]]; then
+    echo "-> blacklisting ${app} from launcher"
+    cp /usr/share/applications/${app} ~/.local/share/applications/${app}
+    echo "NoDisplay=true" >>~/.local/share/applications/${app}
+  fi
 done
 # fix icons
 #sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
