@@ -263,7 +263,7 @@ cd ${CURRDIR}
 mkdir -p ${NORDIC_DIR}
 [[ ! -d "${NORDIC_DIR}/firefox-nordic-theme" ]] && \
   git clone https://github.com/EliverLara/firefox-nordic-theme ${NORDIC_DIR}/firefox-nordic-theme
-cd firefox-nordic-theme
+cd ${NORDIC_DIR}/firefox-nordic-theme
 if [[ "$(git pull 2>&1)" != "Already up to date." ]]; then
   echo
   echo "installing nordic firefox theme"
