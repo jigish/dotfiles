@@ -6,5 +6,5 @@ else
   export LINUX_DISTRO=unknown
 fi
 
-[[ -s "${HOME}/.zshrc.${LINUX_DISTRO}" ]] && source "${HOME}/.zshrc.${LINUX_DISTRO}"
 [[ -s "${HOME}/.zshrc.virtualbox" ]] && source "${HOME}/.zshrc.virtualbox"
+[[ -s "${HOME}/.zshrc.${LINUX_DISTRO}" ]] && source "${HOME}/.zshrc.${LINUX_DISTRO}"

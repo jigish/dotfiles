@@ -35,6 +35,7 @@ cd ~
 [[ ! -L .zpreztorc ]] && ln -s ${SCRIPTDIR}/zpreztorc .zpreztorc
 [[ ! -L .zshrc ]] && ln -s ${SCRIPTDIR}/zshrc .zshrc
 [[ ! -L ".zshrc.${BOOTSTRAP_OS}" ]] && ln -s ${SCRIPTDIR}/zshrc.${BOOTSTRAP_OS} .zshrc.${BOOTSTRAP_OS}
+[[ -f "${SCRIPTDIR}/zshrc.${LINUX_DISTRO}" && ! -L ".zshrc.${LINUX_DISTRO}" ]] && ln -s ${SCRIPTDIR}/zshrc.${LINUX_DISTRO} .zshrc.${LINUX_DISTRO}
 mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
