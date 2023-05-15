@@ -16,15 +16,21 @@
   "modules-right": [
     "mpris",
     "wireplumber",
+    "custom/separator",
     "backlight",
+    "custom/separator",
     "network#tun",
     "network#enp0s31f6",
     "network#enp34s0u1u4c2",
     "network#wlp0s20f3",
+    "custom/separator",
     "battery"
   ],
   "custom/logo": {
     "format": "<span font='InputMono Nerd Font Complete'></span>"
+  },
+  "custom/separator": {
+    "format": "|"
   },
   "sway/workspaces": {
     "format": "{icon}",

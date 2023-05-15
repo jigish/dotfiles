@@ -29,6 +29,11 @@ window#waybar {
     padding-left: 5px;
 }
 
+#custom-separator {
+    color: #6A7895;
+    border-radius: 0px;
+}
+
 #workspaces button {
     border-radius: 0px;
     background-color: transparent;
