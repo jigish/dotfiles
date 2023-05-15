@@ -175,7 +175,7 @@ cd ~/.config
 [[ ! -L electron-flags.conf ]] && ln -s ${SCRIPTDIR}/config/electron-flags.conf
 cd ${CURRDIR}
 mkdir -p ~/.local/share/applications
-for f in brave-browser tidal-hifi; do
+for f in tidal-hifi; do # brave-browser would need to be here to if we use it
   echo "-> ${f}"
   rm -f ~/.local/share/applications/${f}.desktop
   cp /usr/share/applications/${f}.desktop ~/.local/share/applications/
@@ -187,7 +187,7 @@ for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   echo "NoDisplay=true" >>~/.local/share/applications/${app}
 done
 # fix icons
-sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
+#sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
 cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.desktop
@@ -234,10 +234,12 @@ if [[ ! -f /etc/modules-load.d/usbhid.conf ]]; then
   echo "usbhid" |doas tee -a /etc/modules-load.d/usbhid.conf
 fi
 
-# theming
+# theming ----------------------------------------------------------------------------------------------------------------------------
+NORDIC_DIR=${TWEAKS_DIR}/nordic
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
 ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
 NORDIC_VERSION_FILE=${TWEAKS_DIR}/nordic_version
+
 # Nordic theme
 EXISTING_NORDIC_VERSION=none
 if [[ -f ${NORDIC_VERSION_FILE} ]]; then
@@ -257,6 +259,17 @@ if [[ ${NORDIC_VERSION} != ${EXISTING_NORDIC_VERSION} ]]; then
   echo ${NORDIC_VERSION} >${NORDIC_VERSION_FILE} # do this at the end so we run through this again if we fail
 fi
 cd ${CURRDIR}
+# Nordic firefox theme
+mkdir -p ${NORDIC_DIR}
+[[ ! -d "${NORDIC_DIR}/firefox-nordic-theme" ]] && \
+  git clone https://github.com/EliverLara/firefox-nordic-theme ${NORDIC_DIR}/firefox-nordic-theme
+cd firefox-nordic-theme
+if [[ "$(git pull 2>&1)" != "Already up to date." ]]; then
+  echo
+  echo "installing nordic firefox theme"
+  ./scripts/install.sh
+fi
+
 # Zafiro Nord Dark (grey) Icons
 echo
 echo "installing zafiro nord dark icons"
@@ -280,6 +293,7 @@ cd ~
 cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
 cd ${CURRDIR}
+
 # Nordzy Cursors
 echo
 echo "installing nordzy cursors"
@@ -291,6 +305,7 @@ git pull
 cd ~/.icons
 [[ ! -L default ]] && ln -s Nordzy-cursors default
 cd ${CURRDIR}
+
 # Attempt to actually set theme in various ways
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"

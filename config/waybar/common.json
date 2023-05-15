@@ -29,9 +29,10 @@
     "format": "{icon}",
     "format-icons": {
       "1": "<span font='InputMono Nerd Font Complete'></span>",
-      "2": "<span font='icomoon'></span>",
+      "2": "<span font='icomoon'>󰈹</span>",
       "3": "<span font='InputMono Nerd Font Complete'>󰒱</span>",
       "4": "<span font='icomoon'></span>",
+      "brave": "<span font='icomoon'></span>",
       "default": "<span font='InputMono Nerd Font Complete'></span>"
     }
   },
@@ -63,6 +64,7 @@
       "default": "",
       "brave": "<span font='icomoon'></span>",
       "chromium": "<span font='icomoon'></span>",
+      "firefox": "<span font='icomoon'>󰈹</span>",
       "tidal-hifi": "<span font='icomoon'></span>"
     },
     "status-icons": {

@@ -1,4 +1,3 @@
-brave-bin
 doas-sudo-shim
 kbct-git
 pdsh
