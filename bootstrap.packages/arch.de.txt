@@ -12,6 +12,7 @@ sway
 swaybg
 swayidle
 swaylock
-waybar
+swaynagmode
+waybar-git
 xdg-desktop-portal
 xdg-desktop-portal-wlr

@@ -1,5 +1,4 @@
 doas-sudo-shim
 kbct-git
 pdsh
-swaynagmode
 tidal-hifi-bin
