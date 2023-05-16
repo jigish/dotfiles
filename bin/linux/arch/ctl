@@ -31,7 +31,7 @@ function micnotify() {
 }
 
 function playernotify() {
-  OUTPUT=$(playerctl -p tidal-hifi status)
+  OUTPUT=$(playerctl -p playerctld status)
   echo $OUTPUT | \
     awk '{print $1}' | \
     tr '[:upper:]' '[:lower:]' | \
@@ -86,7 +86,7 @@ while getopts 'dbBvVmMptT' opt; do
       ;;
     p) # tidal play/pause
       playerctl -p $PLAYER play-pause
-      playernotify
+      #playernotify
       ;;
     t) # tidal previous track
       playerctl -p $PLAYER previous
