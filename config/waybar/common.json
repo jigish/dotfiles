@@ -56,7 +56,8 @@
       "󰃞",
       "󰃟",
       "󰃠"
-    ]
+    ],
+    "tooltip-format": "{percent}"
   },
   "mpris": {
     "player": "playerctld",
@@ -167,7 +168,8 @@
     "tooltip-format": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-disconnected": "{ifname} disconnected",
-    "tooltip-format-disabled": "{ifname} disabled"
+    "tooltip-format-disabled": "{ifname} disabled",
+    "on-click": "foot nmtui"
   },
   "network#enp34s0u1u4c2": {
     "interface": "enp34s0u1u4c2",
@@ -179,7 +181,8 @@
     "tooltip-format": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-disconnected": "{ifname} disconnected",
-    "tooltip-format-disabled": "{ifname} disabled"
+    "tooltip-format-disabled": "{ifname} disabled",
+    "on-click": "foot nmtui"
   },
   "network#wlp0s20f3": {
     "interface": "wlp0s20f3",
@@ -198,7 +201,8 @@
     "tooltip-format": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-wifi": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-disconnected": "{ifname} disconnected",
-    "tooltip-format-disabled": "{ifname} disabled"
+    "tooltip-format-disabled": "{ifname} disabled",
+    "on-click": "foot nmtui"
   },
   "network#tun": {
     "interface": "tun*",
@@ -220,7 +224,8 @@
     "tooltip-format": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-ethernet": "{ifname}\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-disconnected": "{ifname} disconnected",
-    "tooltip-format-disabled": "{ifname} disabled"
+    "tooltip-format-disabled": "{ifname} disabled",
+    "on-click": "foot nmtui"
   },
   "network#wlp": {
     "interface": "wlp*",
@@ -239,7 +244,8 @@
     "tooltip-format": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-wifi": "{ifname}: {signaldBm}dBm  {signalStrength}%\n{bandwidthDownBits}<span font='InputMono Nerd Font Complete'> </span>{bandwidthUpBits}<span font='InputMono Nerd Font Complete'></span>",
     "tooltip-format-disconnected": "{ifname} disconnected",
-    "tooltip-format-disabled": "{ifname} disabled"
+    "tooltip-format-disabled": "{ifname} disabled",
+    "on-click": "foot nmtui"
   },
   "clock": {
     "format": "{:%H:%M}",
