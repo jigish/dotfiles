@@ -30,7 +30,7 @@ window#waybar {
 }
 
 #custom-separator {
-    color: #6A7895;
+    color: rgba(236, 239, 244, 0.4);
     border-radius: 0px;
 }
 
