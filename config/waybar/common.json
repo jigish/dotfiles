@@ -7,7 +7,9 @@
   "margin-right": 10,
   "modules-left": [
     "custom/logo",
+    "custom/separator",
     "sway/workspaces",
+    "custom/separator",
     "sway/mode"
   ],
   "modules-center": [
@@ -15,7 +17,8 @@
   ],
   "modules-right": [
     "mpris",
-    "wireplumber",
+    "custom/separator",
+    "pulseaudio",
     "custom/separator",
     "backlight",
     "custom/separator",
@@ -47,6 +50,8 @@
     "device": "intel_backlight",
     "on-click": "ctl -b",
     "on-click-right": "ctl -B",
+    "on-scroll-down": "ctl -b",
+    "on-scroll-up": "ctl -B",
     "format": "<span font='InputMono Nerd Font Complete'>{icon} </span>{percent}",
     "format-icons": [
       "󰃚",
@@ -86,13 +91,30 @@
     "on-click-middle": "ctl -m",
     "on-click-right": "ctl -V",
     "format": "<span font='InputMono Nerd Font Complete'>{icon} </span>{volume}",
-    "format-muted": "<span font='InputMono Nerd Font Complete'>{icon} </span>󰖁</span>",
+    "format-muted": "<span font='InputMono Nerd Font Complete'>󰖁</span>",
     "format-icons": [
       "󰕿",
       "󰖀",
       "󰕾"
     ],
     "tooltip-format": "{node_name}\n{volume}%"
+  },
+  "pulseaudio": {
+    "on-click": "ctl -m",
+    "on-click-middle": "ctl -m",
+    "on-click-right": "ctl -M",
+    "on-scroll-down": "ctl -v",
+    "on-scroll-up": "ctl -V",
+    "format": "<span font='InputMono Nerd Font Complete'>{icon} </span>{volume}{format_source}",
+    "format-muted": "<span font='InputMono Nerd Font Complete'>󰖁 </span>{format_source}",
+    "format-source": "<span font='InputMono Nerd Font Complete'> 󰍬</span>",
+    "format-source-muted": "<span font='InputMono Nerd Font Complete'> 󰍭</span>",
+    "tooltip-format": "{desc}",
+    "format-icons": [
+      "󰕿",
+      "󰖀",
+      "󰕾"
+    ]
   },
   "battery": {
     "states": {
