@@ -190,7 +190,6 @@ for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   fi
 done
 # fix icons
-sed -i -e 's/^Icon=.*$/Icon=media-player/g' ~/.local/share/applications/tidal-hifi.desktop
 cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.desktop
@@ -282,6 +281,8 @@ mkdir -p ${NORDZY_DIR}
 cd ${NORDZY_DIR}/icons
 git pull
 ./install.sh
+cp ~/dotfiles/icons/tidal.svg ~/.icons/Nordzy-dark/applications/apps/scalable/
+ln -s ~/.icons/Nordzy-dark/applications/apps/scalable/tidal.svg ~/.icons/Nordzy-dark/applications/apps/scalable/tidal-hifi.svg
 cd ${CURRDIR}
 
 # Nordzy Cursors
