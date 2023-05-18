@@ -21,7 +21,7 @@
   mouse_middle_click = open_url
   mouse_right_click = close_current
 
-  origin = top-center
+  origin = top-right
   offset = 0x0
   width = (0, 500)
   height = 500
