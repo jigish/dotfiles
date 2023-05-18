@@ -297,6 +297,16 @@ cd ~/.local/share/icons
 [[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
 cd ${CURRDIR}
 
+# Nordzy Icons
+echo
+echo "installing nordzy icons"
+mkdir -p ${NORDZY_DIR}
+[[ ! -d ${NORDZY_DIR}/icons ]] && git clone https://github.com/alvatip/Nordzy-icons ${NORDZY_DIR}/icons
+cd ${NORDZY_DIR}/cursors
+git pull
+./install.sh
+cd ${CURRDIR}
+
 # Nordzy Cursors
 echo
 echo "installing nordzy cursors"
@@ -312,7 +322,8 @@ cd ${CURRDIR}
 # Attempt to actually set theme in various ways
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
-gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
+#gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
+gsettings set org.gnome.desktop.interface icon-theme 'Nordzy'
 gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
 mkdir -p ~/.config/gtk-4.0
