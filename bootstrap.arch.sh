@@ -302,7 +302,7 @@ echo
 echo "installing nordzy icons"
 mkdir -p ${NORDZY_DIR}
 [[ ! -d ${NORDZY_DIR}/icons ]] && git clone https://github.com/alvatip/Nordzy-icons ${NORDZY_DIR}/icons
-cd ${NORDZY_DIR}/cursors
+cd ${NORDZY_DIR}/icons
 git pull
 ./install.sh
 cd ${CURRDIR}
