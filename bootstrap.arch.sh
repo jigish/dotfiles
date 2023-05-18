@@ -190,11 +190,12 @@ for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   fi
 done
 # fix icons
-#sed -i -e 's/^Icon=.*$/Icon=brave-browser/g' ~/.local/share/applications/brave-browser.desktop
 cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.desktop
-sed -i -e 's/^Icon=.*$/Icon=network-firewall/g' ~/.local/share/applications/pulse.desktop
+sed -i -e 's/^Icon=.*$/Icon=bitwarden/g' ~/.local/share/applications/pulse.desktop
+cp /usr/share/applications/firefox.desktop ~/.local/share/applications/firefox.desktop
+sed -i -e 's/^Icon=.*$/Icon=firefox-developer-icon/g' ~/.local/share/applications/firefox.desktop
 # update database
 update-desktop-database -v ~/.local/share/applications
 
@@ -240,7 +241,6 @@ fi
 # theming ----------------------------------------------------------------------------------------------------------------------------
 NORDIC_DIR=${TWEAKS_DIR}/nordic
 NORDZY_DIR=${TWEAKS_DIR}/nordzy
-ZAFIRO_DIR=${TWEAKS_DIR}/zafiro
 NORDIC_VERSION_FILE=${TWEAKS_DIR}/nordic_version
 
 # Nordic theme
@@ -273,30 +273,6 @@ if [[ "$(git pull 2>&1)" != "Already up to date." ]]; then
   ./scripts/install.sh
 fi
 
-# Zafiro Nord Dark (grey) Icons
-echo
-echo "installing zafiro nord dark icons"
-mkdir -p ${ZAFIRO_DIR}
-cd ${ZAFIRO_DIR}
-[[ ! -d ${ZAFIRO_DIR}/Zafiro-Nord-Dark ]] && git clone https://github.com/zayronxio/Zafiro-Nord-Dark
-cd ${ZAFIRO_DIR}/Zafiro-Nord-Dark
-git checkout .
-git pull
-echo "-> replacing green folder icons with grey and name to match repo"
-sed -i 's/Zafiro-Nord-Black/Zafiro-Nord-Dark/g' index.theme
-find ./places -type f -exec sed -i -e 's/#a3be8c/#85a8b5/g' {} \;
-find ./places -type f -exec sed -i -e 's/#8daf71/#7396a3/g' {} \;
-find ./places -type f -exec sed -i -e 's/#8eac75/#7396a3/g' {} \;
-find ./places -type f -exec sed -i -e 's/#80a264/#637279/g' {} \;
-find ./places -type f -exec sed -i -e 's/#87a7a9/#9cb4be/g' {} \;
-find ./places -type f -exec sed -i -e 's/#769b9d/#6f8088/g' {} \;
-mkdir -p ~/.local/share/icons
-cd ~
-[[ ! -L .icons ]] && ln -s ~/.local/share/icons .icons # need to do this before cursors install because they go in .icons
-cd ~/.local/share/icons
-[[ ! -L Zafiro-Nord-Dark ]] && ln -s ${ZAFIRO_DIR}/Zafiro-Nord-Dark
-cd ${CURRDIR}
-
 # Nordzy Icons
 echo
 echo "installing nordzy icons"
@@ -322,7 +298,6 @@ cd ${CURRDIR}
 # Attempt to actually set theme in various ways
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
-#gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
 gsettings set org.gnome.desktop.interface icon-theme 'Nordzy-dark'
 gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
