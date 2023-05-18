@@ -1,8 +1,16 @@
 dunst
 fuzzel
+giflib
 gtk2
 gtk3
 gtk4
+libheif
+libjpeg
+libjxl
+libpng
+librsvg
+libtiff
+libwebp
 playerctl
 polkit
 polkit-gnome
@@ -11,6 +19,7 @@ qt6-wayland
 sway
 swaybg
 swayidle
+swayimg
 swaylock
 swaynagmode
 waybar-git

@@ -323,7 +323,7 @@ cd ${CURRDIR}
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 gsettings set org.gnome.desktop.interface gtk-theme "${NORDIC_THEME}"
 #gsettings set org.gnome.desktop.interface icon-theme 'Zafiro-Nord-Dark'
-gsettings set org.gnome.desktop.interface icon-theme 'Nordzy'
+gsettings set org.gnome.desktop.interface icon-theme 'Nordzy-dark'
 gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors'
 gsettings set org.gnome.desktop.wm.preferences theme "${NORDIC_THEME}"
 mkdir -p ~/.config/gtk-4.0
