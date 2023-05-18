@@ -196,6 +196,8 @@ cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.deskt
 sed -i -e 's/^Icon=.*$/Icon=bitwarden/g' ~/.local/share/applications/pulse.desktop
 cp /usr/share/applications/firefox.desktop ~/.local/share/applications/firefox.desktop
 sed -i -e 's/^Icon=.*$/Icon=firefox-developer-icon/g' ~/.local/share/applications/firefox.desktop
+cp /usr/share/applications/swayimg.desktop ~/.local/share/applications/swayimg.desktop
+sed -i -e 's/^Icon=.*$/Icon=folder-pictures/g' ~/.local/share/applications/swayimg.desktop
 # update database
 update-desktop-database -v ~/.local/share/applications
 
