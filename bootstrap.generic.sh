@@ -94,7 +94,7 @@ fi
 
 cd $CURRDIR
 
-TMP_TODO=
+TMP_TODO="none"
 if [[ -f ${HOME}/tmp/bootstrap_TODO ]]; then
   TMP_TODO=$(cat ${HOME}/tmp/bootstrap_TODO)
   rm -f ${HOME}/tmp/bootstrap_TODO
@@ -107,6 +107,6 @@ echo "bootstrap done."
 echo
 echo "things to do manually:"
 echo
-echo "- install nord brave theme:"
-echo "   - https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
+#echo "- install nord brave theme:"
+#echo "   - https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
 echo ${TMP_TODO}
