@@ -282,7 +282,8 @@ cd ${NORDZY_DIR}/icons
 git pull
 ./install.sh
 cp ~/dotfiles/icons/tidal.svg ~/.icons/Nordzy-dark/apps/scalable/
-ln -s ~/.icons/Nordzy-dark/apps/scalable/tidal.svg ~/.icons/Nordzy-dark/apps/scalable/tidal-hifi.svg
+[[ ! -L ~/.icons/Nordzy-dark/apps/scalable/tidal-hifi.svg ]] && \
+  ~/.icons/Nordzy-dark/apps/scalable/tidal.svg ~/.icons/Nordzy-dark/apps/scalable/tidal-hifi.svg
 cd ${CURRDIR}
 
 # Nordzy Cursors
