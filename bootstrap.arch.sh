@@ -190,14 +190,13 @@ for app in $(cat ${SCRIPTDIR}/launcher-blacklist.txt); do
   fi
 done
 # fix icons
+sed -i -e 's/^Icon=.*$/Icon=media-player/g' ~/.local/share/applications/tidal-hifi.desktop
 cp /usr/share/applications/org.codeberg.dnkl.foot.desktop ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 sed -i -e 's/^Icon=.*$/Icon=terminal/g' ~/.local/share/applications/org.codeberg.dnkl.foot.desktop
 cp /usr/share/applications/pulse.desktop ~/.local/share/applications/pulse.desktop
 sed -i -e 's/^Icon=.*$/Icon=bitwarden/g' ~/.local/share/applications/pulse.desktop
 cp /usr/share/applications/firefox.desktop ~/.local/share/applications/firefox.desktop
 sed -i -e 's/^Icon=.*$/Icon=firefox-developer-icon/g' ~/.local/share/applications/firefox.desktop
-cp /usr/share/applications/swayimg.desktop ~/.local/share/applications/swayimg.desktop
-sed -i -e 's/^Icon=.*$/Icon=folder-pictures/g' ~/.local/share/applications/swayimg.desktop
 # update database
 update-desktop-database -v ~/.local/share/applications
 
