@@ -1,6 +1,11 @@
 # arch-specific shit
 
-if [[ -o login ]]; then
+# explicitly some XDG stuff
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_STATE_HOME=${HOME}/.local/state
+
+function postlogin {
   # login shell. lets upgrade all the things.
   fastfetch
   echo
@@ -19,4 +24,4 @@ if [[ -o login ]]; then
     exit 0
   fi
   de
-fi
+}

@@ -1,0 +1,2 @@
+# exclude vendor directory by default
+--glob=!vendor/*

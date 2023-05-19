@@ -40,6 +40,7 @@ mkdir -p .config
 cd .config
 [[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
 [[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
+[[ ! -L ripgrep ]] && ln -s ${SCRIPTDIR}/config/ripgrep ripgrep
 cd ~
 mkdir -p .cargo
 cd .cargo

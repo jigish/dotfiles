@@ -19,6 +19,9 @@ fi
 
 # Customize to your needs...
 
+# zsh options
+setopt prompt_sp
+
 # editor stuff
 export VISUAL=nvim
 export EDITOR=$VISUAL
@@ -27,10 +30,8 @@ alias vi='nvim'
 alias v='nvim'
 alias e='nvim'
 
-# explicitly some XDG stuff
-export XDG_CONFIG_HOME=${HOME}/.config
-export XDG_DATA_HOME=${HOME}/.local/share
-export XDG_STATE_HOME=${HOME}/.local/state
+# ripgrep config
+export RIPGREP_CONFIG_PATH=${HOME}/.config/ripgrep/config
 
 # helpful aliases
 [ -x "$(which lsd)" ] && alias ls='lsd'
@@ -39,7 +40,7 @@ alias la='ls -alh'
 alias lt='ls -alrth'
 alias gits='git s' # lol
 
-# Paths
+# paths
 export GOPATH=${HOME}/code/go
 if [[ ":${PATH}:" != *":${HOME}/bin:"* ]]; then
   export PATH=${HOME}/bin:${PATH}
@@ -47,10 +48,12 @@ fi
 if [[ ":${PATH}:" != *":${GOPATH}/bin:"* ]]; then
   export PATH=${PATH}:${GOPATH}/bin
 fi
-# Expected working dir for code
+# expected working dir for code
 export CODE=${HOME}/code
 
 # rg > pt > ag > ack
+alias pt=rg
+alias ag=rg
 alias ack=rg
 
 # hub > git
@@ -61,23 +64,32 @@ function gclone {
   git clone git@github.com:$1
 }
 
-# zoxide
-eval "$(zoxide init zsh)"
-
-# Weather :)
+# weather :)
 function weather {
   curl -s wttr.in/$1
 }
 
+# zoxide
+eval "$(zoxide init zsh)"
+
+# source os/nflx/local stuff
 export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 [[ -s "${HOME}/.zshrc.${UNAME_S}" ]] && source "${HOME}/.zshrc.${UNAME_S}"
 [[ -s "${HOME}/.zshrc.netflix" ]] && source "${HOME}/.zshrc.netflix"
 [[ -s "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
+
+# fzf
 [[ -f "${HOME}/.fzf.zsh" ]] && source ~/.fzf.zsh
 
-setopt prompt_sp
-
+# explicit completions
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
+# powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ -o login ]]; then
+  if type 'postlogin' 2>/dev/null | grep -q 'function'; then
+    postlogin
+  fi
+fi
