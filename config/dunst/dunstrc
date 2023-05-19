@@ -55,7 +55,7 @@
   markup = full
 
   icon_corner_radius = 0
-  icon_theme = "Zafiro-Nord-Dark"
+  icon_theme = "Nordzy-dark"
   min_icon_size = 32
   max_icon_size = 128
   icon_position = left
@@ -64,22 +64,22 @@
 
 [brave]
   appname = "Brave"
-  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/brave.svg
+  new_icon = /home/jigish/.icons/Nordzy-dark/apps/scalable/brave.svg
 
 [slack-firefox]
   appname = "Firefox"
   body = "app.slack.com"
-  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
+  new_icon = /home/jigish/.icons/Nordzy-dark/apps/scalable/slack.svg
 
 [slack-brave]
   appname = "Brave"
   body = "app.slack.com"
-  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/scalable/slack.svg
+  new_icon = /home/jigish/.icons/Nordzy-dark/apps/scalable/slack.svg
 
 [gcal-brave]
   appname = "Brave"
   body = "calendar.google.com"
-  new_icon = /home/jigish/.icons/Zafiro-Nord-Dark/apps/48/calendar.svg
+  new_icon = /home/jigish/.icons/Nordzy-dark/apps/48/calendar.svg
 
 [urgency_low]
   frame_color = "#2E3440F0"

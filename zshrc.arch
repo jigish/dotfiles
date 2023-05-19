@@ -2,6 +2,8 @@
 
 if [[ -o login ]]; then
   # login shell. lets upgrade all the things.
+  fastfetch
+  echo
   echo "welcome ${USER}. upgrade all the things? q for quit."
   read -n 1 r
   if [[ "$r" = "q" ]]; then

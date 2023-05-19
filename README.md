@@ -18,7 +18,7 @@ Common
 
 Common
 - Terminal: `foot`
-- Icon Theme: Zafiro-Nord-Dark customized with grey places icons
+- Icon Theme: Nordzy-dark
 - Cursor Theme: Nordzy
 
 #### Arch Linux [Daily Driver]
@@ -32,6 +32,8 @@ Common
 #### Ubuntu
 
 - DE: GNOME (Vanilla Ubuntu)
+- Icon Theme: Nordzy-dark
+- Cursor Theme: Nordzy
 
 ### OSX
 
