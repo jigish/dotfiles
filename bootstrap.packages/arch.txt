@@ -22,7 +22,6 @@ lsd
 mesa
 mesa-utils
 moreutils
-neofetch
 neovim
 noto-fonts
 noto-fonts-cjk

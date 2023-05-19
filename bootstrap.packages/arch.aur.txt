@@ -1,4 +1,5 @@
 doas-sudo-shim
+fastfetch
 kbct-git
 pdsh
 tidal-hifi-bin
