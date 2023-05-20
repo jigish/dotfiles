@@ -66,7 +66,11 @@ function gclone {
 
 # weather :)
 function weather {
-  curl -s wttr.in/$1
+  if [[ -z $2 ]]; then
+    curl -s wttr.in/$1
+  else
+    curl -s "wttr.in/$1?format=$2"
+  fi
 }
 
 # zoxide
