@@ -79,70 +79,10 @@ paru -S ${NOCONFIRM} --needed $(cat ${SCRIPTDIR}/bootstrap.packages/arch.* |sort
 paru -c ${NOCONFIRM}
 paru -Scc --noconfirm # always clear caches
 
-set +e
-doas systemctl is-enabled docker.service >/dev/null
-if [[ "$?" != "0" ]]; then
-  set -e
-  echo
-  echo "enabling docker.service"
-  doas systemctl enable --now docker.service
-  doas usermod -aG docker $USER
-else
-  set -e
-fi
-
-# install virtualbox guest stuff in needed
-set +e
-doas dmesg |grep "Hypervisor detected" >/dev/null
-if [[ "$?" = "0" ]]; then
-  set -e
-
-  # vmware version
-  #echo
-  #echo "hypervisor detected: installing vmware tools"
-  #paru -S ${NOCONFIRM} --needed open-vm-tools gtkmm3
-  #set +e
-  #doas systemctl is-enabled vmtoolsd.service >/dev/null
-  #if [[ "$?" != "0" ]]; then
-    #set -e
-    #echo
-    #echo "enabling vmtoolsd.service"
-    #doas systemctl enable --now vmtoolsd.service
-  #else
-    #set -e
-  #fi
-  #set +e
-  #doas systemctl is-enabled vmware-vmblock-fuse.service >/dev/null
-  #if [[ "$?" != "0" ]]; then
-    #set -e
-    #echo
-    #echo "enabling vmware-vmblock-fuse.service"
-    #doas systemctl enable --now vmware-vmblock-fuse.service
-  #else
-    #set -e
-  #fi
-  #cd ${CURRDIR}
-
-  # virtualbox version
-  echo
-  echo "hypervisor detected: installing virtualbox guest utils"
-  paru -S ${NOCONFIRM} --needed virtualbox-guest-utils-nox
-  set +e
-  doas systemctl is-enabled vboxservice.service >/dev/null
-  if [[ "$?" != "0" ]]; then
-    set -e
-    echo
-    echo "enabling vboxservice.service"
-    doas systemctl enable --now vboxservice.service
-  else
-    set -e
-  fi
-
-  cd ~
-  [[ ! -L .zshrc.virtualbox ]] && ln -s ${SCRIPTDIR}/zshrc.virtualbox .zshrc.virtualbox
-  cd ${CURRDIR}
-else
-  set -e
+# add usbhid module
+doas modprobe -v usbhid
+if [[ ! -f /etc/modules-load.d/usbhid.conf ]]; then
+  echo "usbhid" |doas tee -a /etc/modules-load.d/usbhid.conf
 fi
 
 # add user to seat if need be
@@ -156,7 +96,7 @@ else
   set -e
 fi
 
-# enable seatd
+# enable seatd at boot
 set +e
 doas systemctl is-enabled seatd.service >/dev/null
 if [[ "$?" != "0" ]]; then
@@ -166,6 +106,75 @@ if [[ "$?" != "0" ]]; then
   doas systemctl enable --now seatd.service
 else
   set -e
+fi
+
+# enable pipewire.service at boot
+set +e
+systemctl --user is-enabled pipewire.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling pipewire.service"
+  systemctl --user enable --now pipewire.service
+else
+  set -e
+fi
+
+# enable docker.service at boot
+set +e
+doas systemctl is-enabled docker.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling docker.service"
+  doas systemctl enable --now docker.service
+  doas usermod -aG docker $USER
+else
+  set -e
+fi
+
+# enable reflector.service and reflector.timer at boot
+set +e
+doas systemctl is-enabled reflector.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling reflector.service"
+  doas systemctl enable --now reflector.service
+else
+  set -e
+fi
+set +e
+doas systemctl is-enabled reflector.timer >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling reflector.timer"
+  doas systemctl enable --now reflector.timer
+else
+  set -e
+fi
+
+
+# remap keys
+echo
+echo "remapping keys"
+doas mkdir -p /etc/kbct
+[[ ! -L /etc/kbct/config.yml ]] && doas ln -s ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
+set +e
+doas systemctl is-enabled kbct.service >/dev/null
+if [[ "$?" != "0" ]]; then
+  set -e
+  echo
+  echo "enabling kbct.service"
+  doas modprobe -v uinput
+  if [[ ! -f /etc/modules-load.d/uinput.conf ]]; then
+    echo "uinput" |doas tee -a /etc/modules-load.d/uinput.conf
+  fi
+  doas systemctl enable --now kbct.service
+else
+  set -e
+  doas systemctl restart kbct.service
 fi
 
 # fixes for native wayland
@@ -198,45 +207,6 @@ cp /usr/share/applications/firefox.desktop ~/.local/share/applications/firefox.d
 sed -i -e 's/^Icon=.*$/Icon=firefox-developer-icon/g' ~/.local/share/applications/firefox.desktop
 # update database
 update-desktop-database -v ~/.local/share/applications
-
-# enable pipewire.service at boot
-set +e
-systemctl --user is-enabled pipewire.service >/dev/null
-if [[ "$?" != "0" ]]; then
-  set -e
-  echo
-  echo "enabling pipewire.service"
-  systemctl --user enable --now pipewire.service
-else
-  set -e
-fi
-
-# remap keys
-echo
-echo "remapping keys"
-doas mkdir -p /etc/kbct
-[[ ! -L /etc/kbct/config.yml ]] && doas ln -s ${SCRIPTDIR}/kbct-config.yml /etc/kbct/config.yml
-set +e
-doas systemctl is-enabled kbct.service >/dev/null
-if [[ "$?" != "0" ]]; then
-  set -e
-  echo
-  echo "enabling kbct.service"
-  doas modprobe -v uinput
-  if [[ ! -f /etc/modules-load.d/uinput.conf ]]; then
-    echo "uinput" |doas tee -a /etc/modules-load.d/uinput.conf
-  fi
-  doas systemctl enable --now kbct.service
-else
-  set -e
-  doas systemctl restart kbct.service
-fi
-
-# add usbhid module
-doas modprobe -v usbhid
-if [[ ! -f /etc/modules-load.d/usbhid.conf ]]; then
-  echo "usbhid" |doas tee -a /etc/modules-load.d/usbhid.conf
-fi
 
 # theming ----------------------------------------------------------------------------------------------------------------------------
 NORDIC_DIR=${TWEAKS_DIR}/nordic

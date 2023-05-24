@@ -35,6 +35,7 @@ pipewire-pulse
 procps-ng
 python
 python-pynvim
+reflector
 ripgrep
 rustup
 seatd
