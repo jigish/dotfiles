@@ -16,12 +16,4 @@ function postlogin {
     exit 0
   fi
   ~/dotfiles/bootstrap.sh
-
-  echo "start de? q for quit."
-  read -n 1 r
-  if [[ "$r" = "q" ]]; then
-    echo "exiting"
-    exit 0
-  fi
-  de
 }
