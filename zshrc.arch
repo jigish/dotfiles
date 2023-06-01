@@ -6,14 +6,10 @@ export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_STATE_HOME=${HOME}/.local/state
 
 function postlogin {
-  # login shell. lets upgrade all the things.
+  # login shell
   fastfetch
-  echo
-  echo "welcome ${USER}. upgrade all the things? q for quit."
-  read -n 1 r
-  if [[ "$r" = "q" ]]; then
-    echo "exiting"
-    exit 0
-  fi
+}
+
+function upgrade {
   ~/dotfiles/bootstrap.sh
 }
