@@ -3,6 +3,7 @@ bat
 bolt
 coreutils
 diffutils
+direnv
 docker
 docker-compose
 dust
@@ -33,6 +34,7 @@ pipewire-audio
 pipewire-jack
 pipewire-pulse
 procps-ng
+pyenv
 python
 python-pynvim
 reflector

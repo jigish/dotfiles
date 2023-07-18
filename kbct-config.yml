@@ -1,4 +1,4 @@
-- keyboards: [ "AT Translated Set 2 keyboard" ]
+- keyboards: [ "AT Translated Set 2 keyboard", "AONE Varmilo Keyboard" ]
   keymap:
     capslock: esc
     leftalt: leftmeta

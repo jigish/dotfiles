@@ -1,0 +1,8 @@
+#!/bin/bash
+
+set -e
+
+doas systemctl stop docker.service
+doas ip link set docker0 down
+doas brctl delbr docker0
+doas systemctl start docker.service

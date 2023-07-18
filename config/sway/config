@@ -53,6 +53,10 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
    middle_emulation disabled
    pointer_accel 1
 }
+input "1452:772:Mitsumi_Electric_Apple_Optical_USB_Mouse" {
+   natural_scroll disabled
+   pointer_accel 1
+}
 
 ### nag config ###
 set $nag exec swaynagmode

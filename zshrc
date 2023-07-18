@@ -88,6 +88,12 @@ export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 # explicit completions
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+eval "$(direnv hook zsh)"
+
 # powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
