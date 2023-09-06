@@ -1,3 +1,4 @@
+brave-bin
 doas-sudo-shim
 fastfetch
 kbct-git

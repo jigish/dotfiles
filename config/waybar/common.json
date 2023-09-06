@@ -39,10 +39,12 @@
     "format": "{icon}",
     "format-icons": {
       "1": "<span font='InputMono Nerd Font Complete'></span>",
-      "2": "<span font='icomoon'>󰈹</span>",
+      "2": "<span font='icomoon'></span>",
       "3": "<span font='InputMono Nerd Font Complete'>󰒱</span>",
       "4": "<span font='icomoon'></span>",
+      "5": "<span font='icomoon'>󰈹</span>",
       "brave": "<span font='icomoon'></span>",
+      "firefox": "<span font='icomoon'>󰈹</span>",
       "default": "<span font='InputMono Nerd Font Complete'></span>"
     }
   },

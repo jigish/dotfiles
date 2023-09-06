@@ -114,9 +114,9 @@ set $menu fuzzel
 
 ### application workspaces ###
 assign [app_id="foot"] workspace number 1
-#assign [app_id="brave-browser"] workspace number 2
-assign [app_id="firefox"] workspace number 2
-# because we use firefox for slack, we're going to assign it to workspace 3 manually
+assign [app_id="brave-browser"] workspace number 2
+assign [app_id="firefox"] workspace number 5
+# because we use brave for slack, we're going to assign it to workspace 3 manually
 assign [app_id="tidal-hifi"] workspace number 4
 
 ### key bindings ###
