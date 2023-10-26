@@ -182,6 +182,8 @@ echo
 echo "waylandifying applications"
 cd ~/.config
 [[ ! -L electron-flags.conf ]] && ln -s ${SCRIPTDIR}/config/electron-flags.conf
+[[ ! -L chromium-flags.conf ]] && ln -s ${SCRIPTDIR}/config/chromium-flags.conf
+[[ ! -L brave-flags.conf ]] && ln -s ${SCRIPTDIR}/config/chromium-flags.conf brave-flags.conf
 cd ${CURRDIR}
 mkdir -p ~/.local/share/applications
 for f in tidal-hifi; do # brave-browser would need to be here to if we use it
