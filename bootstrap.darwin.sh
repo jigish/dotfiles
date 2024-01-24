@@ -2,11 +2,6 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-# install fzf
-echo
-echo "bootstrapping fzf"
-${SCRIPTDIR}/bootstrap.fzf.sh
-
 # create links
 mkdir -p ~/.config
 cd ~/.config
@@ -21,11 +16,13 @@ echo
 echo "bootstrapping via brew"
 ${SCRIPTDIR}/bootstrap.brew.sh
 
+# bootstrap fzf (install completions, etc)
 echo
-echo "installing fonts"
-for f in $(find ${SCRIPTDIR}/fonts -type f); do
-  cp ${f} ~/Library/Fonts/
-done
+echo "bootstrapping fzf"
+${SCRIPTDIR}/bootstrap.fzf.sh
+
+# installing fonts
+$SCRIPTDIR/bootstrap.darwin.fonts.sh
 
 echo
 echo "installing kitty"

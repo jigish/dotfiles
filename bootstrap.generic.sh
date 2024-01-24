@@ -83,12 +83,12 @@ echo 'installing and updating tmux plugins'
 mkdir -p ~/code
 
 # run company-specific shit
-if [ "$1" = "netflix" ]; then
+if [ "$1" = "airbnb" ]; then
   echo
-  echo "bootstrapping netflix"
+  echo "bootstrapping airbnb"
   cd ~
-  [[ ! -d dotfiles-netflix ]] && git clone ssh://git@stash.corp.netflix.com:7999/~jigishp/dotfiles.git dotfiles-netflix
-  cd dotfiles-netflix
+  [[ ! -d dotfiles-airbnb ]] && git clone TODO
+  cd dotfiles-airbnb
   git pull
   ./bootstrap.sh
 fi
@@ -106,8 +106,8 @@ echo
 echo
 echo "bootstrap done."
 echo
-echo "things to do manually:"
-echo
-#echo "- install nord brave theme:"
+#echo "things to do manually:"
+#echo
+#echo "- install nord brave/chrome theme:"
 #echo "   - https://chrome.google.com/webstore/detail/nord/abehfkkfjlplnjadfcjiflnejblfmmpj?hl=en"
 echo ${TMP_TODO}

@@ -2,7 +2,7 @@
 
 SCRIPTDIR=$(cd `dirname $0` && pwd)
 
-[[ ! -x $(which brew) ]] && ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+[[ ! -x $(which brew) ]] && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew analytics off
 brew update
 brew upgrade

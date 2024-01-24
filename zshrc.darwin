@@ -1,11 +1,10 @@
 # Darwin specific shit
 
-fpath=(/usr/local/share/zsh-completions $fpath)
+export PATH=${PATH}:/opt/homebrew/bin
 
-# proper ctags man
-export MANPATH=$HOME/bin/ctags-root/share/man:$MANPATH
+fpath=(/opt/homebrew/share/zsh-completions $fpath)
 
 # old vim since vim is aliased to nvim
 function ovim {
-  /usr/local/bin/vim
+  /usr/bin/vim
 }

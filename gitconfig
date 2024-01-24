@@ -56,26 +56,5 @@
   auto = 0
 [push]
   default = tracking
-[heroku]
-  account = personal
-[url "ssh://git@stash.corp.netflix.com:7999"]
-	insteadOf = https://stash.corp.netflix.com/scm
 [url "git@github.com:"]
 	insteadOf = https://github.com/
-[hub]
-	protocol = https
-[http "https://stash.prod.netflix.net:7006"]
-	sslCert = /home/jigish/.metatron/certificates/user.crt
-	sslKey = /home/jigish/.metatron/certificates/user.key
-	sslVerify = true
-[url "https://stash.prod.netflix.net:7006/scm"]
-	insteadOf = ssh://git@stash.corp.netflix.com:7999
-[url "https://stash.prod.netflix.net:7006"]
-	insteadOf = https://stash.corp.netflix.com
-	insteadOf = https://stash.corp.netflix.com:7006
-	insteadOf = https://stash.corp.netflix.com:7004
-	insteadOf = https://stash.netflix.com
-[http "https://stash-corp-ci-stable.prod.netflix.net:7006"]
-	sslCert = /home/jigish/.metatron/certificates/user.crt
-	sslKey = /home/jigish/.metatron/certificates/user.key
-	sslVerify = true

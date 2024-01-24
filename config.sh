@@ -43,7 +43,9 @@ if [[ "${BOOTSTRAP_OS}" = "linux" ]]; then
     echo "you're running on some non-systemd linux distribution dude: no /etc/os-release" >&2
     exit 1
   fi
-elif [[ "${BOOTSTRAP_OS}" != "darwin" ]]; then
+elif [[ "${BOOTSTRAP_OS}" = "darwin" ]]; then
+    export LINUX_DISTRO=na
+else
   echo "you're running on some bullshit os dude: ${BOOTSTRAP_OS}" >&2
   exit 1
 fi
