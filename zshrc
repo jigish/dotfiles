@@ -76,10 +76,13 @@ function weather {
 # zoxide
 eval "$(zoxide init zsh)"
 
-# source os/nflx/local stuff
+# rust
+. "$HOME/.cargo/env"
+
+# source os/airbnb/local stuff
 export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 [[ -s "${HOME}/.zshrc.${UNAME_S}" ]] && source "${HOME}/.zshrc.${UNAME_S}"
-[[ -s "${HOME}/.zshrc.netflix" ]] && source "${HOME}/.zshrc.netflix"
+[[ -s "${HOME}/.zshrc.airbnb" ]] && source "${HOME}/.zshrc.airbnb"
 [[ -s "${HOME}/.zshrc.local" ]] && source "${HOME}/.zshrc.local"
 
 # fzf
@@ -88,10 +91,12 @@ export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 # explicit completions
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
+# direnv
 eval "$(direnv hook zsh)"
 
 # powerlevel10k

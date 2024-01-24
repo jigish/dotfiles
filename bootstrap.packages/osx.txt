@@ -11,6 +11,7 @@ git
 gnu-sed
 gnupg
 go
+golangci-lint
 htop
 hub
 jq

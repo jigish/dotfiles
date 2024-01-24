@@ -1,3 +1,15 @@
+-- setup language servers
+local lspconfig = require('lspconfig')
+lspconfig.gopls.setup {}
+lspconfig.golangci_lint_ls.setup {}
+lspconfig.pyright.setup {}
+lspconfig.rust_analyzer.setup {
+  -- Server-specific settings. See `:help lspconfig-setup`
+  settings = {
+    ['rust-analyzer'] = {},
+  },
+}
+
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)

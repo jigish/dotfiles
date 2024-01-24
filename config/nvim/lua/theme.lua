@@ -1,6 +1,7 @@
 -- color scheme
 vim.opt.background = 'dark'
-vim.cmd.colorscheme('nord')
+vim.g.contrast = true
+require('nord').set()
 local colors = require('nord.named_colors')
 
 -- lualine
@@ -50,3 +51,20 @@ vim.api.nvim_create_user_command('ToggleColorColumn',
   end,
   {})
 vim.cmd.ToggleColorColumn()
+
+-- headlines config
+require("headlines").setup({
+    markdown = {
+        headline_highlights = {
+            "Headline1",
+            "Headline2",
+            "Headline3",
+            "Headline4",
+            "Headline5",
+            "Headline6",
+        },
+        codeblock_highlight = "CodeBlock",
+        dash_highlight = "Dash",
+        quote_highlight = "Quote",
+    },
+})

@@ -7,7 +7,11 @@ return {
       'nvim-treesitter/nvim-treesitter',
     },
     config = function()
-      require('go').setup()
+      require('go').setup({
+        diagnostic = {
+          hdlr = true,
+        },
+      })
     end,
     event = {'CmdlineEnter'},
     ft = {'go', 'gomod'},

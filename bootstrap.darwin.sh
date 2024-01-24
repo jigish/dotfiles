@@ -12,14 +12,13 @@ cd ~/bin
 [[ ! -L rebrew ]] && ln -s ${SCRIPTDIR}/bin/rebrew
 
 # set up brew & pip
-echo
-echo "bootstrapping via brew"
 ${SCRIPTDIR}/bootstrap.brew.sh
 
 # bootstrap fzf (install completions, etc)
-echo
-echo "bootstrapping fzf"
 ${SCRIPTDIR}/bootstrap.fzf.sh
+
+# installing rust
+$SCRIPTDIR/bootstrap.darwin.rust.sh
 
 # installing fonts
 $SCRIPTDIR/bootstrap.darwin.fonts.sh
