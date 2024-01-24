@@ -1,7 +1,21 @@
+-- nvim-tree
+require('nvim-tree').setup({
+  sort = {
+    sorter = 'case_sensitive',
+  },
+  renderer = {
+    group_empty = true,
+  },
+  filters = {
+    dotfiles = true,
+  },
+})
+vim.keymap.set('n', '<leader>T', '<cmd>NvimTreeToggle<CR>')
+
 -- aerial
 require('aerial').setup({
   layout = {
-    default_direction = 'prefer_left',
+    default_direction = 'left',
   },
   on_attach = function(bufnr)
     -- Jump forwards/backwards with '{' and '}'
@@ -9,5 +23,4 @@ require('aerial').setup({
     vim.keymap.set('n', '}', '<cmd>AerialNext<CR>', { buffer = bufnr })
   end,
 })
--- You probably also want to set a keymap to toggle aerial
-vim.keymap.set('n', '<leader>o', '<cmd>AerialToggle!<CR>')
+vim.keymap.set('n', '<leader>O', '<cmd>AerialToggle<CR>')

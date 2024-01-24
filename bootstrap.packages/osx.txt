@@ -2,6 +2,7 @@ bash-completion
 coreutils
 ctags
 curl
+delta
 direnv
 fd
 fzf
@@ -16,6 +17,7 @@ htop
 hub
 jq
 lua
+lua-language-server
 lsd
 neofetch
 neovim
@@ -26,6 +28,7 @@ readline
 ripgrep
 rlwrap
 rustup
+sad
 task
 tmux
 tree-sitter

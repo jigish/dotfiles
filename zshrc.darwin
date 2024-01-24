@@ -3,6 +3,8 @@
 export PATH=${PATH}:/opt/homebrew/bin
 
 fpath=(/opt/homebrew/share/zsh-completions $fpath)
+fpath=(/opt/homebrew/share/zsh/functions $fpath)
+fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
 
 # old vim since vim is aliased to nvim
 function ovim {

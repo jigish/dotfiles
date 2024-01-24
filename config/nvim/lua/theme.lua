@@ -6,10 +6,44 @@ local colors = require('nord.named_colors')
 
 -- lualine
 require('lualine').setup({
+  sections = {
+    lualine_a = {'mode'},
+    lualine_b = {'branch', 'diff', 'diagnostics'},
+    lualine_c = {'filename', require("dr-lsp").lspCount, require('lsp-progress').progress},
+    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_y = {'progress'},
+    lualine_z = {'location'}
+  },
   options = {
     theme = 'nord'
   }
 })
+-- listen to lsp-progress event and refresh lualine
+vim.api.nvim_create_augroup("lualine_augroup", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  group = "lualine_augroup",
+  pattern = "LspProgressStatusUpdated",
+  callback = require("lualine").refresh,
+})
+
+-- quick fix window
+require('pqf').setup({
+  signs = {
+    error = ' ',
+    warning = ' ',
+    info = ' ',
+    hint = '󰌶 '
+  },
+  show_multiple_lines = false,
+  max_filename_length = 0,
+})
+
+-- gutter signs
+local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
 
 -- show extra whitespace
 vim.api.nvim_set_hl(0, 'ExtraWhitespace', { bg = colors.red })
@@ -33,7 +67,7 @@ vim.api.nvim_create_autocmd({ 'BufWinLeave' }, {
 
 -- color column
 local function has_value (tab, val)
-    for index, value in ipairs(tab) do
+    for _, value in ipairs(tab) do
         if value == val then
             return true
         end

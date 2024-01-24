@@ -13,13 +13,17 @@ foot
 fzf
 gdb
 git
+git-delta
 go
+golangci-lint
 go-yq
 htop
 jq
 less
 light
 lsd
+lua
+lua-language-server
 mesa
 mesa-utils
 moreutils
@@ -40,6 +44,7 @@ python-pynvim
 reflector
 ripgrep
 rustup
+sad
 seatd
 tar
 tmux

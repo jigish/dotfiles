@@ -1,8 +1,10 @@
 [include]
   path = ~/.gitconfig.local
+  path = ~/dotfiles/config/delta/themes.gitconfig
 [core]
   excludesfile = ~/.git-global-ignore
   editor = nvim
+  pager = delta
 [difftool]
   prompt = false
 [diff]
@@ -58,3 +60,5 @@
   default = tracking
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[delta]
+  features = arctic-fox

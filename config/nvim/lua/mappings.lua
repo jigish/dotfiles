@@ -7,7 +7,6 @@ cnoreabbrev <expr> Wq ((getcmdtype() is# ':' && getcmdline() is# 'Wq')?('wq'):('
 cnoreabbrev <expr> Wa ((getcmdtype() is# ':' && getcmdline() is# 'Wa')?('wa'):('Wa'))
 ]])
 
-
 -- remap s and S to be more useful (split lines)
 vim.keymap.set('n', 's', 'i<CR><ESC>==')
 vim.keymap.set('n', 'S', 'd$O<ESC>p==')
@@ -18,12 +17,12 @@ vim.keymap.set('n', '<leader>yp', '"*p')
 
 -- delete trailing whitespace
 vim.api.nvim_create_user_command('DeleteTrailingWhitespace', '%s:\\(\\S*\\)\\s\\+$:\\1:', {})
-vim.keymap.set('n', '<leader><F6>', ':DeleteTrailingWhitespace<CR>')
+vim.keymap.set('n', '<leader><F6>', '<cmd>DeleteTrailingWhitespace<CR>')
 
 -- buffer management
-vim.keymap.set('n', '<leader>bd', ':bdelete<CR>')
-vim.keymap.set('n', '<leader>bD', ':bdelete!<CR>')
-vim.keymap.set('n', '<leader>fD', ':call delete(@%)<CR>:bdelete!<CR>')
+vim.keymap.set('n', '<leader>bd', '<cmd>bdelete<CR>')
+vim.keymap.set('n', '<leader>bD', '<cmd>bdelete!<CR>')
+vim.keymap.set('n', '<leader>fD', '<cmd>call delete(@%)<CR><cmd>bdelete!<CR>')
 
 -- splitting
 vim.keymap.set('t', '<M-c>', '<C-\\><C-n>')

@@ -29,6 +29,7 @@ vim.opt.spell = false
 -- appearance
 --vim.opt.linespace = 1 -- add space between lines
 vim.opt.title = true
+vim.opt.termguicolors = true
 
 -- tabs and returns
 vim.opt.expandtab = true -- by default expand tabs to spaces
