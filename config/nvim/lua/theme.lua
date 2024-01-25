@@ -77,10 +77,10 @@ local function has_value (tab, val)
 end
 vim.api.nvim_create_user_command('ToggleColorColumn',
   function()
-    if has_value(vim.opt.colorcolumn:get(), '+0') then
-      vim.opt.colorcolumn:remove({ '+0' })
+    if has_value(vim.opt.colorcolumn:get(), '+1') then
+      vim.opt.colorcolumn:remove({ '+1' })
     else
-      vim.opt.colorcolumn:append({ '+0' })
+      vim.opt.colorcolumn:append({ '+1' })
     end
   end,
   {})
