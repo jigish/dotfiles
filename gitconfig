@@ -1,69 +1,67 @@
 [include]
-  path = ~/.gitconfig.local
-  path = ~/dotfiles/config/delta/themes.gitconfig
+	path = ~/.gitconfig.local
+	path = ~/dotfiles/config/delta/themes.gitconfig
 [core]
-  excludesfile = ~/.git-global-ignore
-  editor = nvim
-  pager = delta
+	excludesfile = ~/.git-global-ignore
+	editor = nvim
+	pager = delta
+	precomposeunicode = true
 [difftool]
-  prompt = false
+	prompt = false
 [diff]
-  tool = nvimdiff
+	tool = nvimdiff
 [difftool "nvimdiff"]
-  cmd = nvim -d $LOCAL $REMOTE
+	cmd = nvim -d $LOCAL $REMOTE
 [merge]
-  tool = nvimdiff
+	tool = nvimdiff
 [mergetool]
-  prompt = false
+	prompt = false
 [mergetool "nvimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+	diff = auto
+	status = auto
+	branch = auto
 [alias]
-  stat = status
-  s = status --ignore-submodules=untracked
-  c = commit
-  a = add
-  sn = status --untracked=no
-  save = stash save -u
-  co = checkout
-  cb = checkout -b
-  cp = cherry-pick
-  wc = whatchanged
-  l = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
-  f = fetch
-  fo = fetch origin
-  fom = fetch origin master:master
-  fod = fetch origin develop:develop
-  fu = fetch upstream
-  fum = fetch upstream master
-  b = branch
-  bd = branch -d
-  sub = submodule
-  suba = submodule add
-  subu = submodule update --init
-  pom = push origin master
-  po = push -u origin
-  pob = !sh -c 'git push -u origin `git r`'
-  pdo = push --delete origin
-  r = rev-parse --abbrev-ref HEAD
-  h = rev-parse HEAD
-  pr = pull-request -b master
-  prd = pull-request -b develop
+	stat = status
+	s = status --ignore-submodules=untracked
+	c = commit
+	a = add
+	sn = status --untracked=no
+	save = stash save -u
+	co = checkout
+	cb = checkout -b
+	cp = cherry-pick
+	wc = whatchanged
+	l = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
+	f = fetch
+	fo = fetch origin
+	fom = fetch origin master:master
+	fod = fetch origin develop:develop
+	fu = fetch upstream
+	fum = fetch upstream master
+	b = branch
+	bd = branch -d
+	sub = submodule
+	suba = submodule add
+	subu = submodule update --init
+	pom = push origin master
+	po = push -u origin
+	pob = !sh -c 'git push -u origin `git r`'
+	pdo = push --delete origin
+	r = rev-parse --abbrev-ref HEAD
+	h = rev-parse HEAD
+	pr = pull-request -b master
+	prd = pull-request -b develop
 [branch]
-  autosetuprebase = always
+	autosetuprebase = always
 [gc]
-  auto = 0
+	auto = 0
 [push]
 	default = current
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [delta]
-  features = arctic-fox
+	features = arctic-fox
 [rerere]
 	enabled = true
-[core]
-	precomposeunicode = true
-	excludesfile = /Users/jigish_patel/.gitignore_global
