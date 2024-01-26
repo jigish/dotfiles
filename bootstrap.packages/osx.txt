@@ -1,14 +1,15 @@
+awscli
 bash-completion
 coreutils
 ctags
 curl
-delta
 direnv
 fd
 fzf
 fzy
 gh
 git
+git-delta
 gnu-sed
 gnupg
 go

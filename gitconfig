@@ -57,8 +57,13 @@
 [gc]
   auto = 0
 [push]
-  default = tracking
+	default = current
 [url "git@github.com:"]
 	insteadOf = https://github.com/
 [delta]
   features = arctic-fox
+[rerere]
+	enabled = true
+[core]
+	precomposeunicode = true
+	excludesfile = /Users/jigish_patel/.gitignore_global
