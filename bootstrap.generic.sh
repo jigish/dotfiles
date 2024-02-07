@@ -87,8 +87,8 @@ if [ "$1" = "airbnb" ]; then
   echo
   echo "bootstrapping airbnb"
   cd ~
-  mkdir -p code/airbnb
-  cd code/airbnb
+  mkdir -p code/ghe/jigish-patel
+  cd code/ghe/jigish-patel
   [[ ! -d dotfiles ]] && git clone git@git.musta.ch:jigish-patel/dotfiles.git
   cd dotfiles
   git pull
