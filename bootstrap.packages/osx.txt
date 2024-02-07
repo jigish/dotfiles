@@ -1,5 +1,6 @@
 awscli
 bash-completion
+chruby
 coreutils
 ctags
 curl
@@ -28,6 +29,7 @@ python
 readline
 ripgrep
 rlwrap
+ruby-install
 rustup
 sad
 task
