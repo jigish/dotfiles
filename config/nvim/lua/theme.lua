@@ -86,6 +86,17 @@ vim.api.nvim_create_user_command('ToggleColorColumn',
   {})
 vim.cmd.ToggleColorColumn()
 
+-- todo highlighting
+require("todo-comments").setup({
+  highlight = {
+    pattern = {
+      [[.*<(KEYWORDS)\s*:]], -- TODO: something
+      [[.*<(KEYWORDS)$]], -- TODO
+      [=[.*<(KEYWORDS)\[.*\]:]=], -- TODO[jigish]: yet another thing
+    }
+  }
+})
+
 -- headlines config
 require("headlines").setup({
     markdown = {

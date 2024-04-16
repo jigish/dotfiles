@@ -37,7 +37,9 @@
 	f = fetch
 	fo = fetch origin
 	fom = fetch origin master:master
+	fon = fetch origin main:main
 	fod = fetch origin develop:develop
+	fop = fetch origin production:production
 	fu = fetch upstream
 	fum = fetch upstream master
 	b = branch

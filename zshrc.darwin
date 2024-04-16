@@ -1,10 +1,18 @@
 # Darwin specific shit
 
-export PATH=${PATH}:/opt/homebrew/bin
+if [[ -x "$(which brew)" ]]; then
+  export HOMEBREW_PREFIX=$(brew --prefix)
+  export PATH=${PATH}:${HOMEBREW_PREFIX}/bin
 
-fpath=(/opt/homebrew/share/zsh-completions $fpath)
-fpath=(/opt/homebrew/share/zsh/functions $fpath)
-fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+  fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
+  fpath=(${HOMEBREW_PREFIX}/share/zsh/functions $fpath)
+  fpath=(${HOMEBREW_PREFIX}/share/zsh/site-functions $fpath)
+
+  # chruby
+  source ${HOMEBREW_PREFIX}/opt/chruby/share/chruby/chruby.sh
+  source ${HOMEBREW_PREFIX}/opt/chruby/share/chruby/auto.sh
+fi
+
 
 # old vim since vim is aliased to nvim
 function ovim {

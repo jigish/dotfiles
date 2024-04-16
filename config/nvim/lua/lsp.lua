@@ -35,6 +35,10 @@ lspconfig.golangci_lint_ls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.rust_analyzer.setup {}
 
+-- Hover to show error (remove inline error message)
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
 -- Global mappings.
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
