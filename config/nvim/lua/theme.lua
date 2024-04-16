@@ -1,8 +1,9 @@
 -- color scheme
 vim.opt.background = 'dark'
 vim.g.contrast = true
-require('nord').set()
-local colors = require('nord.named_colors')
+require('nord').setup({})
+vim.cmd.colorscheme('nord')
+local colors = require('nord.colors')
 
 -- lualine
 require('lualine').setup({
@@ -46,7 +47,7 @@ for type, icon in pairs(signs) do
 end
 
 -- show extra whitespace
-vim.api.nvim_set_hl(0, 'ExtraWhitespace', { bg = colors.red })
+vim.api.nvim_set_hl(0, 'ExtraWhitespace', { bg = colors.palette['aurora']['red'] })
 vim.cmd.match({ 'ExtraWhitespace', '/\\s\\+$/' })
 vim.api.nvim_create_autocmd({ 'BufWinEnter' }, {
   pattern = '*',
@@ -94,7 +95,15 @@ require("todo-comments").setup({
       [[.*<(KEYWORDS)$]], -- TODO
       [=[.*<(KEYWORDS)\[.*\]:]=], -- TODO[jigish]: yet another thing
     }
-  }
+  },
+  colors = {
+    error = { "DiagnosticError", "ErrorMsg", "#DC2626" },
+    warning = { "DiagnosticWarn", "WarningMsg", "#FBBF24" },
+    info = { "DiagnosticInfo", "#2563EB" },
+    hint = { "DiagnosticHint", "#10B981" },
+    default = { "Identifier", "#7C3AED" },
+    test = { "Identifier", "#FF00FF" }
+  },
 })
 
 -- headlines config

@@ -1,6 +1,6 @@
 return {
   {
-    "shaunsingh/nord.nvim",
+    "gbprod/nord.nvim",
     lazy = false,
     priority = 1000,
   },
