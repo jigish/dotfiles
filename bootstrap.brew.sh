@@ -9,6 +9,7 @@ echo "bootstrapping via brew"
 brew analytics off
 brew update
 brew upgrade
+brew tap humanlogio/homebrew-tap
 brew install $(cat ${SCRIPTDIR}/bootstrap.packages/osx.txt)
 
 pip install --upgrade pip

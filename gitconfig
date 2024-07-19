@@ -44,6 +44,7 @@
 	fum = fetch upstream master
 	b = branch
 	bd = branch -d
+	bD = branch -D
 	sub = submodule
 	suba = submodule add
 	subu = submodule update --init

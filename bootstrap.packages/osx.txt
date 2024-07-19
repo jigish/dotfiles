@@ -17,6 +17,7 @@ go
 golangci-lint
 htop
 hub
+humanlog
 jq
 lua
 lua-language-server

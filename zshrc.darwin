@@ -2,7 +2,7 @@
 
 if [[ -x "$(which brew)" ]]; then
   export HOMEBREW_PREFIX=$(brew --prefix)
-  export PATH=${PATH}:${HOMEBREW_PREFIX}/bin
+  export PATH=${HOMEBREW_PREFIX}/opt/openjdk/bin:${PATH}:${HOMEBREW_PREFIX}/bin
 
   fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
   fpath=(${HOMEBREW_PREFIX}/share/zsh/functions $fpath)
