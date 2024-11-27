@@ -30,6 +30,12 @@ alias vi='nvim'
 alias v='nvim'
 alias e='nvim'
 
+# fix reverse history
+bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M vicmd '^r' history-incremental-search-backward
+bindkey '^N' down-line-or-history
+bindkey '^P' up-line-or-history
+
 # ripgrep config
 export RIPGREP_CONFIG_PATH=${HOME}/.config/ripgrep/config
 
@@ -79,6 +85,11 @@ eval "$(zoxide init zsh)"
 # rust
 . "$HOME/.cargo/env"
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
 # source os/airbnb/local stuff
 export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 [[ -s "${HOME}/.zshrc.${UNAME_S}" ]] && source "${HOME}/.zshrc.${UNAME_S}"
@@ -91,6 +102,10 @@ export UNAME_S=$(uname | tr '[[:upper:]]' '[[:lower:]]')
 # explicit completions
 which kubectl >/dev/null 2>&1 && source <(kubectl completion zsh)
 
+# python3
+alias python=python3
+alias pydoc=pydoc3
+alias pip=pip3
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"

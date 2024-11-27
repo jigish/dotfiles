@@ -17,14 +17,15 @@ go
 golangci-lint
 htop
 hub
-humanlog
 jq
 lua
 lua-language-server
 lsd
 neofetch
 neovim
+nvm
 p7zip
+pstree
 pyenv
 python
 readline

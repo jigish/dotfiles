@@ -9,11 +9,8 @@ echo "bootstrapping via brew"
 brew analytics off
 brew update
 brew upgrade
-brew tap humanlogio/homebrew-tap
 brew install $(cat ${SCRIPTDIR}/bootstrap.packages/osx.txt)
 
-pip install --upgrade pip
-pip install --upgrade pynvim
-pip install --upgrade pyright
+[[ -f ~/.bootstrap.packages.local ]] && brew install $(cat ~/.bootstrap.packages.local)
 
 go install github.com/nametake/golangci-lint-langserver@latest
