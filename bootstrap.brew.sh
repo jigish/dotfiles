@@ -10,6 +10,7 @@ brew analytics off
 brew update
 brew upgrade
 brew install $(cat ${SCRIPTDIR}/bootstrap.packages/osx.txt)
+brew install --cask $(cat ${SCRIPTDIR}/bootstrap.packages/osx.cask.txt)
 
 [[ -f ~/.bootstrap.packages.local ]] && brew install $(cat ~/.bootstrap.packages.local)
 

@@ -6,6 +6,7 @@ SCRIPTDIR=$(cd `dirname $0` && pwd)
 mkdir -p ~/.config
 cd ~/.config
 [[ ! -L kitty ]] && ln -s ${SCRIPTDIR}/config/kitty kitty
+[[ ! -L ghostty ]] && ln -s ${SCRIPTDIR}/config/ghostty ghostty
 mkdir -p ~/bin
 cd ~/bin
 [[ ! -L spotify ]] && ln -s ${SCRIPTDIR}/bin/spotify
@@ -23,7 +24,8 @@ $SCRIPTDIR/bootstrap.darwin.rust.sh
 # installing fonts
 $SCRIPTDIR/bootstrap.darwin.fonts.sh
 
-echo
-echo "installing kitty"
-curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
-  launch=n
+# we're trying out ghostty
+#echo
+#echo "installing kitty"
+#curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin \
+#  launch=n

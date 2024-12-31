@@ -1,0 +1,48 @@
+# Font Details
+font-family = InputMonoCompressed Thin
+font-family-bold = InputMonoCompressed Light
+font-family-italic = InputMonoCompressed ThinIta
+font-family-bold-italic = InputMonoCompressed LightIta
+font-style = Thin
+font-style-bold = Light
+font-style-italic = ThinIta
+font-style-bold-italic = LightIta
+font-synthetic-style = false
+font-size = 11
+font-thicken = true
+font-thicken = true
+
+# Appearance and Tabs
+theme = nord
+window-new-tab-position = current
+
+# Cursor & Mouse
+cursor-style = bar
+cursor-style-blink = true
+cursor-click-to-move = true
+mouse-hide-while-typing = true
+
+# Scrollback
+scrollback-limit = 4294967295
+
+# Quick Terminal
+quick-terminal-position = bottom
+
+# Other
+quit-after-last-window-closed = true
+
+# Keybindings
+# tmux-like tabs
+keybind = ctrl+a>c=new_tab
+keybind = ctrl+a>n=new_window
+keybind = ctrl+a>s=new_split:down
+keybind = ctrl+a>v=new_split:right
+keybind = alt+shift+h=goto_split:left
+keybind = alt+shift+j=goto_split:bottom
+keybind = alt+shift+k=goto_split:top
+keybind = alt+shift+l=goto_split:right
+keybind = alt+shift+.=next_tab
+keybind = alt+shift+,=previous_tab
+
+# OS-Specific Configs
+config-file = ?config.osx
