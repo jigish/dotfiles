@@ -20,6 +20,7 @@ require('nvim-treesitter.configs').setup {
     'javascript',
     'json',
     'jsonnet',
+    'just',
     'lua',
     'make',
     'markdown',
