@@ -38,9 +38,10 @@ cd ~
 [[ -f "${SCRIPTDIR}/zshrc.${LINUX_DISTRO}" && ! -L ".zshrc.${LINUX_DISTRO}" ]] && ln -s ${SCRIPTDIR}/zshrc.${LINUX_DISTRO} .zshrc.${LINUX_DISTRO}
 mkdir -p .config
 cd .config
+[[ ! -L direnv ]] && ln -s ${SCRIPTDIR}/config/direnv direnv
 [[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
-[[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
 [[ ! -L ripgrep ]] && ln -s ${SCRIPTDIR}/config/ripgrep ripgrep
+[[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
 cd ~
 mkdir -p .cargo
 cd .cargo
