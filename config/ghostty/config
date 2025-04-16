@@ -37,10 +37,10 @@ keybind = ctrl+a>c=new_tab
 keybind = ctrl+a>n=new_window
 keybind = ctrl+a>s=new_split:down
 keybind = ctrl+a>v=new_split:right
-keybind = alt+shift+h=goto_split:left
-keybind = alt+shift+j=goto_split:bottom
-keybind = alt+shift+k=goto_split:top
-keybind = alt+shift+l=goto_split:right
+keybind = ctrl+shift+h=goto_split:left
+keybind = ctrl+shift+j=goto_split:bottom
+keybind = ctrl+shift+k=goto_split:top
+keybind = ctrl+shift+l=goto_split:right
 keybind = alt+shift+.=next_tab
 keybind = alt+shift+,=previous_tab
 
