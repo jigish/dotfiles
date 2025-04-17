@@ -34,6 +34,10 @@ lspconfig.gopls.setup {}
 lspconfig.golangci_lint_ls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.rust_analyzer.setup {}
+lspconfig.ts_ls.setup {}
+lspconfig.omnisharp.setup {
+  cmd = { "dotnet", "/Users/jigish/.omnisharp/latest/OmniSharp.dll" },
+}
 
 -- Hover to show error (remove inline error message)
 vim.o.updatetime = 250

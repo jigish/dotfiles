@@ -46,8 +46,8 @@ vim.opt.visualbell = false
 
 -- line numbers, width, and scrolling
 vim.opt.number = true -- line numbers
-vim.opt.textwidth = 135
-vim.opt.wrapmargin = 135
+vim.opt.textwidth = 120
+vim.opt.wrapmargin = 120
 vim.opt.scrolloff = 3 -- 3 lines ahead of cursor for scrolling
 
 -- messages
@@ -64,12 +64,48 @@ vim.opt.ttimeoutlen = 0
 -- terminal stuff
 vim.g.terminal_scrollback_buffer_size = 2147483647 -- set terminal history super long
 
--- auto-open quick fix window on make and such. not sure if this is needed in neovim so it is commented out for now.
--- vim.api.vim_create_autocmd({ 'QuickFixCmdPost' }, {
---   pattern = '[^l]*',
---   command = 'nested cwindow',
--- })
--- vim.api.vim_create_autocmd({ 'QuickFixCmdPost' }, {
---   pattern = 'l*',
---   command = 'nested lwindow',
--- })
+-- gutter signs
+vim.diagnostic.config({
+    signs = {
+        text = {
+            [vim.diagnostic.severity.ERROR] = '󰅚 ',
+            [vim.diagnostic.severity.WARN]  = '󰀪 ',
+            [vim.diagnostic.severity.HINT]  = '󰌶 ',
+            [vim.diagnostic.severity.INFO]  = ' ',
+        },
+        linehl = {
+            [vim.diagnostic.severity.ERROR] = '',
+            [vim.diagnostic.severity.WARN]  = '',
+            [vim.diagnostic.severity.HINT]  = '',
+            [vim.diagnostic.severity.INFO]  = '',
+        },
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+            [vim.diagnostic.severity.WARN]  = 'DiagnosticSignWarn',
+            [vim.diagnostic.severity.HINT]  = 'DiagnosticSignHint',
+            [vim.diagnostic.severity.INFO]  = 'DiagnosticSignInfo',
+        },
+    },
+})
+
+-- color column
+local function has_value (tab, val)
+    for _, value in ipairs(tab) do
+        if value == val then
+            return true
+        end
+    end
+
+    return false
+end
+vim.api.nvim_create_user_command('ToggleColorColumn',
+  function()
+    if has_value(vim.opt.colorcolumn:get(), '+1') then
+      vim.opt.colorcolumn:remove({ '+1' })
+    else
+      vim.opt.colorcolumn:append({ '+1' })
+    end
+  end,
+  {})
+vim.cmd.ToggleColorColumn()
+

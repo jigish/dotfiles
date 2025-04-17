@@ -2,3 +2,5 @@
 /config/tmux/plugins/*
 /fonts/.uuid
 /config/kitty/kitty.d
+/config/nvim-old/tmp
+/config/nvim-snacks/tmp
