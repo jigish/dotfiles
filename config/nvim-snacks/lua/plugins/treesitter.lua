@@ -7,6 +7,7 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup({
         ensure_installed = {
+          'authzed',
           'bash',
           'c',
           'c_sharp',
@@ -21,7 +22,10 @@ return {
           'go',
           'gomod',
           'gosum',
+          'gotmpl',
+          'gowork',
           'hcl',
+          'helm',
           'html',
           'http',
           'ini',

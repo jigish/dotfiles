@@ -54,6 +54,9 @@ fi
 if [[ ":${PATH}:" != *":${GOPATH}/bin:"* ]]; then
   export PATH=${PATH}:${GOPATH}/bin
 fi
+if [[ ":${PATH}:" != *":${HOME}/.kubectl-plugins:"* ]]; then
+  export PATH=${PATH}:${HOME}/.kubectl-plugins
+fi
 # expected working dir for code
 export CODE=${HOME}/code
 

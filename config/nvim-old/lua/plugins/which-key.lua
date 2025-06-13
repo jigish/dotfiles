@@ -1,3 +1,3 @@
 return {
-  { "folke/which-key.nvim" },
+  { "folke/which-key.nvim", opts = {} },
 }

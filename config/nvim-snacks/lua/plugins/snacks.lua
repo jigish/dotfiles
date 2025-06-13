@@ -67,5 +67,7 @@ return {
     { "<localleader>gl", function() Snacks.lazygit.log() end, desc = "Open Git Log" },
     { "<leader>gL", function() Snacks.lazygit.log() end, desc = "Open Git Log (File)" },
     { "<localleader>gL", function() Snacks.lazygit.log() end, desc = "Open Git Log (File)" },
+    { "<leader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
+    { "<localleader>gb", function() Snacks.git.blame_line() end, desc = "Git Blame Line" },
   }
 }

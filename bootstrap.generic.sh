@@ -42,6 +42,7 @@ cd .config
 [[ ! -L nvim ]] && ln -s ${SCRIPTDIR}/config/nvim nvim
 [[ ! -L ripgrep ]] && ln -s ${SCRIPTDIR}/config/ripgrep ripgrep
 [[ ! -L tmux ]] && ln -s ${SCRIPTDIR}/config/tmux tmux
+[[ ! -L k9s ]] && ln -s ${SCRIPTDIR}/config/k9s k9s
 cd ~
 mkdir -p .cargo
 cd .cargo
