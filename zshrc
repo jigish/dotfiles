@@ -85,6 +85,9 @@ function weather {
 # zoxide
 eval "$(zoxide init zsh)"
 
+# direnv
+eval "$(direnv hook zsh)"
+
 # rust
 . "$HOME/.cargo/env"
 
@@ -113,9 +116,6 @@ alias pip=pip3
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-# direnv
-eval "$(direnv hook zsh)"
 
 # powerlevel10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
