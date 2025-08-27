@@ -17,6 +17,7 @@ gnu-sed
 gnupg
 go
 golangci-lint
+grpcurl
 gs
 htop
 hub
