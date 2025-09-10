@@ -1,0 +1,2 @@
+just-lsp
+tree-sitter-cli

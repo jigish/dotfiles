@@ -73,6 +73,11 @@ echo
 echo "bootstrapping ${BOOTSTRAP_OS}"
 ${SCRIPTDIR}/bootstrap.${BOOTSTRAP_OS}.sh
 
+# run cargo shit
+echo
+echo "bootstrapping cargo packages"
+${SCRIPTDIR}/bootstrap.cargo.sh
+
 # clean/install/update tmux plugins
 export XDG_CONFIG_DIR=${HOME}/.config
 echo
