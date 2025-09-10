@@ -2,6 +2,7 @@ awscli
 bash-completion
 bash-language-server
 chruby
+cloc
 coreutils
 ctags
 curl
@@ -13,6 +14,7 @@ fzy
 gh
 git
 git-delta
+git-filter-repo
 gnu-sed
 gnupg
 go
@@ -27,6 +29,7 @@ lazygit
 lsd
 lua
 lua-language-server
+luarocks
 neofetch
 neovim
 nvm
@@ -44,6 +47,7 @@ task
 tectonic
 terraform-ls
 tmux
+tree
 tree-sitter
 wget
 xclip
