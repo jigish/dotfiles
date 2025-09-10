@@ -1,2 +1,4 @@
 [global]
 load_dotenv = true
+[whitelist]
+prefix = [ "~/code/github/collate", "~/code/github/collate-skunkworks", "~/code/github/collate-customer" ]
