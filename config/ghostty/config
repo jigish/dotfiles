@@ -46,3 +46,4 @@ keybind = alt+shift+,=previous_tab
 
 # OS-Specific Configs
 config-file = ?config.osx
+keybind = shift+enter=text:\x1b\r

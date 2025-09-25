@@ -2,11 +2,10 @@ return {
   { 'neovim/nvim-lspconfig',
     config = function()
       -- setup language servers
-      local lspconfig = require('lspconfig')
-      lspconfig.bashls.setup {}
-      lspconfig.dockerls.setup {}
-      lspconfig.just.setup {}
-      lspconfig.lua_ls.setup {
+      vim.lsp.enable('bashls')
+      vim.lsp.enable('dockerls')
+      vim.lsp.enable('just')
+      vim.lsp.config('lua_ls', {
         on_init = function(client)
           local path = client.workspace_folders[1].name
           if not vim.loop.fs_stat(path..'/.luarc.json') and not vim.loop.fs_stat(path..'/.luarc.jsonc') then
@@ -35,18 +34,17 @@ return {
           end
           return true
         end
-      }
-      lspconfig.gopls.setup {}
-      lspconfig.golangci_lint_ls.setup {}
-      lspconfig.omnisharp.setup {
-        cmd = { "dotnet", "/Users/jigish/.omnisharp/latest/OmniSharp.dll" },
-      }
-      lspconfig.pyright.setup {}
-      lspconfig.rust_analyzer.setup {}
-      lspconfig.sqls.setup {}
-      lspconfig.ts_ls.setup {}
-      lspconfig.terraformls.setup {}
-      lspconfig.yamlls.setup {}
+      })
+      vim.lsp.enable('lua_ls')
+      vim.lsp.enable('gopls')
+      vim.lsp.enable('golangci_lint_ls')
+      vim.lsp.enable('roslyn')
+      vim.lsp.enable('pyright')
+      vim.lsp.enable('rust_analyzer')
+      vim.lsp.enable('sqls')
+      vim.lsp.enable('ts_ls')
+      vim.lsp.enable('terraformls')
+      vim.lsp.enable('yamlls')
 
       -- Hover to show error (remove inline error message)
       vim.o.updatetime = 250

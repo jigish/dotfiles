@@ -34,27 +34,28 @@
 	cp = cherry-pick
 	wc = whatchanged
 	l = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
+	la = log --graph --all --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s'
+  lr = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s' --remotes='origin/release/*' main
 	f = fetch
 	fo = fetch origin
-	fom = fetch origin master:master
-	fon = fetch origin main:main
+	fom = fetch origin main:main
 	fod = fetch origin develop:develop
 	fop = fetch origin production:production
 	fu = fetch upstream
-	fum = fetch upstream master
+	fum = fetch upstream main
 	b = branch
 	bd = branch -d
 	bD = branch -D
 	sub = submodule
 	suba = submodule add
 	subu = submodule update --init
-	pom = push origin master
+	pom = push origin main
 	po = push -u origin
 	pob = !sh -c 'git push -u origin `git r`'
 	pdo = push --delete origin
 	r = rev-parse --abbrev-ref HEAD
 	h = rev-parse HEAD
-	pr = pull-request -b master
+	pr = pull-request -b main
 	prd = pull-request -b develop
 [branch]
 	autosetuprebase = always
