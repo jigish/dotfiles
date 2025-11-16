@@ -1,12 +1,13 @@
 return {
-  { 'echasnovski/mini.icons', version = '*', opts = {} },
+  { 'nvim-mini/mini.icons', version = '*', opts = {} },
+  { 'nvim-mini/mini.files', version = '*', opts = {} },
   {
-    'echasnovski/mini.trailspace',
+    'nvim-mini/mini.trailspace',
     version = '*',
     opts = {},
   },
   {
-    'echasnovski/mini.move',
+    'nvim-mini/mini.move',
     version = false,
     opts = {
       mappings = {
@@ -25,7 +26,7 @@ return {
     },
   },
   {
-    'echasnovski/mini.comment',
+    'nvim-mini/mini.comment',
     version = '*',
     opts = {
       mappings = {
@@ -46,7 +47,7 @@ return {
     },
   },
   {
-    'echasnovski/mini.surround',
+    'nvim-mini/mini.surround',
     version = '*',
     opts = {
       mappings = {

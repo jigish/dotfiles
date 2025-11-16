@@ -45,6 +45,7 @@ return {
       vim.lsp.enable('ts_ls')
       vim.lsp.enable('terraformls')
       vim.lsp.enable('yamlls')
+      vim.lsp.enable('protols')
 
       -- Hover to show error (remove inline error message)
       vim.o.updatetime = 250

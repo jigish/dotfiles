@@ -52,3 +52,11 @@ vim.keymap.set('n', '<A-t>', ':vsplit<CR>:terminal<CR>:set nonumber<CR>')
 vim.keymap.set('n', '<A-T>', ':split<CR>:terminal<CR>:set nonumber<CR>')
 vim.keymap.set('t', '<A-t>', '<C-\\><C-n>:vsplit<CR>:terminal<CR>:set nonumber<CR>')
 vim.keymap.set('t', '<A-T>', '<C-\\><C-n>:split<CR>:terminal<CR>:set nonumber<CR>')
+
+-- mini.files
+vim.keymap.set('n', '<leader>f', function()
+  require('mini.files').open()
+end, { desc = "open mini.files" })
+vim.keymap.set('n', '<localleader>f', function()
+  require('mini.files').open()
+end, { desc = "open mini.files" })

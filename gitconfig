@@ -28,6 +28,9 @@
 	c = commit
 	a = add
 	sn = status --untracked=no
+	st = stash
+	stp = stash push -u
+	stashp = stash push -u
 	save = stash save -u
 	co = checkout
 	cb = checkout -b

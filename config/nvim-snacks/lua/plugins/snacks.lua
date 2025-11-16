@@ -10,7 +10,7 @@ return {
     animate = { enabled = true },
     bigfile = { enabled = true },
     bufdelete = { enabled = true },
-    explorer = { enabled = true },
+    --explorer = { enabled = true },
     git = { enabled = true },
     gitbrowse = { enabled = true },
     image = { enabled = true },
@@ -55,8 +55,8 @@ return {
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer" },
     { "<localleader>bd", function() Snacks.picker.grep() end, desc = "Delete Buffer" },
     -- file explorer
-    { "<leader>f", function() Snacks.explorer.open() end, desc = "File Explorer" },
-    { "<localleader>f", function() Snacks.explorer.open() end, desc = "File Explorer" },
+    --{ "<leader>f", function() Snacks.explorer.open() end, desc = "File Explorer" },
+    --{ "<localleader>f", function() Snacks.explorer.open() end, desc = "File Explorer" },
     -- git browse
     { "<leader>go", function() Snacks.gitbrowse.open() end, desc = "Open Repo in Browser" },
     { "<localleader>go", function() Snacks.gitbrowse.open() end, desc = "Open Repo in Browser" },
