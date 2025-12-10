@@ -1,4 +1,35 @@
 return {
+  { "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+      vim.diagnostic.config({
+        virtual_text = false,
+        signs = {
+            text = {
+                [vim.diagnostic.severity.ERROR] = '●',
+                [vim.diagnostic.severity.WARN]  = '●',
+                [vim.diagnostic.severity.HINT]  = '●',
+                [vim.diagnostic.severity.INFO]  = '●',
+            },
+            linehl = {
+                [vim.diagnostic.severity.ERROR] = '',
+                [vim.diagnostic.severity.WARN]  = '',
+                [vim.diagnostic.severity.HINT]  = '',
+                [vim.diagnostic.severity.INFO]  = '',
+            },
+            numhl = {
+                [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
+                [vim.diagnostic.severity.WARN]  = 'DiagnosticSignWarn',
+                [vim.diagnostic.severity.HINT]  = 'DiagnosticSignHint',
+                [vim.diagnostic.severity.INFO]  = 'DiagnosticSignInfo',
+            },
+        },
+        underline = true,
+      }) -- Disable Neovim's default virtual text diagnostics
+    end,
+  },
   { 'neovim/nvim-lspconfig',
     config = function()
       -- setup language servers
@@ -48,8 +79,8 @@ return {
       vim.lsp.enable('protols')
 
       -- Hover to show error (remove inline error message)
-      vim.o.updatetime = 250
-      vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+      --vim.o.updatetime = 250
+      --vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
       -- Global mappings.
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)

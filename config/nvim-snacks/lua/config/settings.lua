@@ -64,30 +64,6 @@ vim.opt.ttimeoutlen = 0
 -- terminal stuff
 vim.g.terminal_scrollback_buffer_size = 2147483647 -- set terminal history super long
 
--- gutter signs
-vim.diagnostic.config({
-    signs = {
-        text = {
-            [vim.diagnostic.severity.ERROR] = '󰅚 ',
-            [vim.diagnostic.severity.WARN]  = '󰀪 ',
-            [vim.diagnostic.severity.HINT]  = '󰌶 ',
-            [vim.diagnostic.severity.INFO]  = ' ',
-        },
-        linehl = {
-            [vim.diagnostic.severity.ERROR] = '',
-            [vim.diagnostic.severity.WARN]  = '',
-            [vim.diagnostic.severity.HINT]  = '',
-            [vim.diagnostic.severity.INFO]  = '',
-        },
-        numhl = {
-            [vim.diagnostic.severity.ERROR] = 'DiagnosticSignError',
-            [vim.diagnostic.severity.WARN]  = 'DiagnosticSignWarn',
-            [vim.diagnostic.severity.HINT]  = 'DiagnosticSignHint',
-            [vim.diagnostic.severity.INFO]  = 'DiagnosticSignInfo',
-        },
-    },
-})
-
 -- color column
 local function has_value (tab, val)
     for _, value in ipairs(tab) do
@@ -126,3 +102,9 @@ vim.api.nvim_create_autocmd('BufWritePre', {
   end,
   group = go_fmt_group,
 })
+
+-- no squiggly
+local hl_groups = { 'DiagnosticUnderlineError' }
+for _, hl in ipairs(hl_groups) do
+  vim.cmd.highlight(hl .. ' gui=underline')
+end

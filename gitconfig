@@ -29,9 +29,13 @@
 	a = add
 	sn = status --untracked=no
 	st = stash
-	stp = stash push -u
 	stashp = stash push -u
+	stp = stash push -u
 	save = stash save -u
+	stashl = stash list --stat
+	stl = stash list --stat
+	stashs = stash show -p stash@{0}
+	sts = stash show -p stash@{0}
 	co = checkout
 	cb = checkout -b
 	cp = cherry-pick

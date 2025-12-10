@@ -5,3 +5,18 @@ vim.api.nvim_create_autocmd("User", {
   pattern = "LspProgressStatusUpdated",
   callback = require("lualine").refresh,
 })
+
+require("tiny-inline-diagnostic").setup({
+  preset = "powerline",
+  options = {
+    add_messages = {
+      display_count = true,
+    },
+    multilines = {
+      enabled = true,
+    },
+    show_source = {
+      enabled = true,
+    },
+  },
+})
