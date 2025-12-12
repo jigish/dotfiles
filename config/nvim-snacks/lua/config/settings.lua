@@ -104,7 +104,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 })
 
 -- no squiggly
-local hl_groups = { 'DiagnosticUnderlineError' }
+local hl_groups = {
+  'DiagnosticUnderlineError',
+  'DiagnosticUnderlineHint',
+  'DiagnosticUnderlineInfo',
+  'DiagnosticUnderlineOk',
+  'DiagnosticUnderlineWarn',
+}
 for _, hl in ipairs(hl_groups) do
   vim.cmd.highlight(hl .. ' gui=underline')
 end
