@@ -9,3 +9,5 @@
 
 # OS X stuff
 .DS_Store
+
+**/.claude/settings.local.json

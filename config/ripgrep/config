@@ -1,2 +1,3 @@
-# exclude vendor directory by default
---glob=!vendor/*
+# Disabled: this silently dropped all vendor/ matches from every rg run. Searches should include
+# vendored code. If you re-enable an exclusion, prefer a per-invocation --glob so it isn't global.
+# --glob=!vendor/*

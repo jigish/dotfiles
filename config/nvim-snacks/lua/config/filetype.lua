@@ -10,3 +10,27 @@ vim.filetype.add({
     ["helmfile.*%.ya?ml"] = "helm",
   },
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = {
+    'c',
+    'cpp',
+    'cs',
+    'go',
+    'h',
+    'helm',
+    'java',
+    'js',
+    'json',
+    'md',
+    'proto',
+    'py',
+    'pyi',
+    'rb',
+    'rs',
+    'ts',
+    'yaml',
+    'zed',
+  },
+  callback = function() vim.treesitter.start() end,
+})

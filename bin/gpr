@@ -1,4 +1,4 @@
 #!/bin/bash
 
 url=$(git remote -v | grep origin | head -1 |awk '{print $2}' |sed 's/^git@//' |sed 's.:./.' |sed 's/.git$//')
-open "https://${url}/compare/$(git r)?expand=1"
+open "https://${url}/compare/$(git rp)?expand=1"

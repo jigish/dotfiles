@@ -37,7 +37,11 @@ bindkey '^N' down-line-or-history
 bindkey '^P' up-line-or-history
 
 # ripgrep config
-export RIPGREP_CONFIG_PATH=${HOME}/.config/ripgrep/config
+# Disabled: a custom RIPGREP_CONFIG_PATH silently applied `--glob=!vendor/*` to every rg run
+# (hiding vendored code), and combined with USE_BUILTIN_RIPGREP=0 below it triggers Claude Code's
+# "Search returns no results / config discovery fails" bug. Re-enable only if you drop the vendor
+# glob and understand the Grep-tool interaction.
+# export RIPGREP_CONFIG_PATH=${HOME}/.config/ripgrep/config
 
 # helpful aliases
 [ -x "$(which lsd)" ] && alias ls='lsd'
@@ -45,6 +49,7 @@ alias l='ls -alh'
 alias la='ls -alh'
 alias lt='ls -alrth'
 alias gits='git s' # lol
+alias clearlsp='rm -f /Users/jigish/.local/state/nvim/lsp.log'
 
 # paths
 export GOPATH=${HOME}/code/go
@@ -126,3 +131,41 @@ if [[ -o login ]]; then
     postlogin
   fi
 fi
+
+# Jarvis: td auto-resolves repo root
+alias td='td -w "$(git rev-parse --show-toplevel 2>/dev/null || echo .)"'
+
+# ========================================
+# Claude Code CLI Configuration
+# ========================================
+# USE_BUILTIN_RIPGREP: Controls which ripgrep binary Claude Code uses
+#
+# Background:
+#   - Claude Code's "Grep" tool is actually powered by ripgrep (rg), not GNU grep
+#   - By default, Claude Code uses a BUNDLED ripgrep via @vscode/ripgrep npm package
+#   - The bundled version goes through a Node.js wrapper layer, adding overhead
+#
+# Performance Impact:
+#   - System ripgrep: Direct binary execution (faster)
+#   - Bundled ripgrep: Node.js wrapper → native module → execution (5-10x slower)
+#   - In large codebases, this overhead becomes significant
+#
+# Setting:
+#   - USE_BUILTIN_RIPGREP=0 → Use system ripgrep (recommended for performance)
+#   - USE_BUILTIN_RIPGREP=1 → Use bundled ripgrep (default)
+#
+# Known Issue: GitHub Issue #6415 reports this setting is sometimes ignored
+# Verify with: ps aux | grep rg (while Claude Code is searching)
+#
+# Reference: https://nikiforovall.blog/claude-code-rules/tips-and-tricks/install-ripgrep/
+#
+# CAUTION: Do NOT combine this with a custom RIPGREP_CONFIG_PATH. When Claude Code uses system
+# ripgrep it inherits that config; a custom config has caused Search to return no results / fail
+# config discovery (see cache/changelog.md: "Removed support for custom ripgrep configuration").
+# RIPGREP_CONFIG_PATH is intentionally left unset above for this reason.
+export USE_BUILTIN_RIPGREP=0
+
+# don't assume i'm afk. always wait for me to answer.
+export CLAUDE_AFK_TIMEOUT_MS=2147483647
+
+. "$HOME/.local/bin/env"
