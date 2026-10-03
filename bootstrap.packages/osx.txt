@@ -30,7 +30,6 @@ lsd
 lua
 lua-language-server
 luarocks
-neofetch
 neovim
 nvm
 p7zip
@@ -41,7 +40,6 @@ readline
 ripgrep
 rlwrap
 ruby-install
-rustup
 sad
 task
 tectonic
