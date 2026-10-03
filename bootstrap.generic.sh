@@ -54,16 +54,16 @@ echo 'symlinking custom scripts'
 cd ~
 mkdir -p bin
 cd bin
-for f in $(find ${SCRIPTDIR}/bin -maxdepth 1 -type f); do
+for f in $(find ${SCRIPTDIR}/bin -maxdepth 1 -type f |grep -v DS_Store); do
   [[ ! -L $(basename ${f}) ]] && ln -s ${f}
 done
 if [[ -d ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} ]]; then
-  for f in $(find ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} -type f); do
+  for f in $(find ${SCRIPTDIR}/bin/${BOOTSTRAP_OS} -type f |grep -v DS_Store); do
     [[ ! -L $(basename ${f}) ]] && ln -s ${f}
   done
 fi
 if [[ ! -z ${LINUX_DISTRO} && -d ${SCRIPTDIR}/bin/linux/${LINUX_DISTRO} ]]; then
-  for f in $(find ${SCRIPTDIR}/bin/linux/${LINUX_DISTRO} -type f); do
+  for f in $(find ${SCRIPTDIR}/bin/linux/${LINUX_DISTRO} -type f |grep -v DS_Store); do
     [[ ! -L $(basename ${f}) ]] && ln -s ${f}
   done
 fi
