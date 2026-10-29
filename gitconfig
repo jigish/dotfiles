@@ -66,8 +66,8 @@
 	swc = switch -c
 	swm = "!f(){ git switch -c ${1} main; }; f"
   lr = log --graph --pretty=format:'%Cred[%h]%Creset%Cgreen[%ci]%C(bold blue)[%an]%Creset%C(yellow)%d%Creset %s' --remotes='origin/release/*' main
-  cleanb = "!f(){ for b in $(git b |grep jigish |grep -v '^+' |grep -v '^*'); do git bd $b; done; }; f"
-  cleanbf = "!f(){ for b in $(git b |grep jigish |grep -v '^+' |grep -v '^*'); do git bdf $b; done; }; f"
+  cleanb = "!f(){ for b in $(git b |grep jigish |grep -v jigish/cortana |grep -v '^+' |grep -v '^*'); do git bd $b; done; }; f"
+  cleanbf = "!f(){ for b in $(git b |grep jigish |grep -v jigish/cortana |grep -v '^+' |grep -v '^*'); do git bdf $b; done; }; f"
 [branch]
 	autosetuprebase = always
 [gc]

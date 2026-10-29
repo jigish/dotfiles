@@ -1,4 +1,3 @@
 # Appearance and Tabs
-# waiting for 1.3.2+ to change this back to tabs
-macos-titlebar-style = transparent
+macos-titlebar-style = tabs
 macos-option-as-alt = true
